@@ -10,6 +10,38 @@
 import 'cypress-file-upload';
 require('@4tw/cypress-drag-drop')
 
+Cypress.Commands.add("goToLogin", () => {
+    cy.visit("https://www.saucedemo.com/")
+    cy.url().should("contain", "saucedemo")
+
+    cy.fixture("DOM/Account/Account.Page").then((the) => {
+        cy.get(the.input.username).click()
+            .type(the.data.user) // introducir texto en el campo username
+        
+        cy.get(the.input.password).click()
+            .type(the.data.password) // introducir texto en el campo password
+        
+        cy.get(the.submitButton).click() // Hacer click en el button Log in
+    
+        cy.url().should("contain", "inventory") // El usuario debe estar registrado
+    })
+
+    cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
+        cy.get(the.buttonAddToCart).eq(2).click() //hace click sobre el botón "Add to cart"
+
+        cy.expect(the.buttonShoppingCart).to.exist //valida que ya exista un producto en el cart
+    }) 
+})
+
+Cypress.Commands.add("removeProductPLP", () => {
+    cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
+        cy.contains(the.buttonAddToCart, /^Remove/).click() //hace click sobre el botón "Remove"
+
+        cy.get(the.buttonShoppingCart).should('not.exist') // se resta -1 en icono del carrito de compras
+
+        cy.get(the.buttonAddToCart).eq(2).should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart"
+    })
+})
 
 Cypress.Commands.add("Login", () =>
 {

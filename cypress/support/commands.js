@@ -45,10 +45,11 @@ Cypress.Commands.add("removeProductPLP", () => {
 
 Cypress.Commands.add("removeProductPDP", () => {
     cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
-        cy.get(the.productItem).eq(2).click() // nos lleva al PDP
+        //precondición: encontrarse en el PDP
+        cy.get(the.productItem).eq(2).click() 
+        cy.url().should("contain", "inventory-item")
 
-        cy.url().should("contain", "inventory-item") // se valida que la url sea del PDP
-
+        //acción
         cy.contains(the.buttonAddToCartPDP, /^Remove/).click() //hace click sobre el botón "Remove"
 
         cy.get(the.buttonShoppingCart).should('not.exist') // se resta -1 en icono del carrito de compras

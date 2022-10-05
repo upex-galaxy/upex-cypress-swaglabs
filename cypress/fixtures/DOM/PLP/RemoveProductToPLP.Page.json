@@ -1,4 +1,5 @@
 {
     "buttonAddToCart": "button.btn_inventory",
-    "buttonShoppingCart": ".shopping_cart_link span"
+    "buttonShoppingCart": ".shopping_cart_link span",
+    "productItem":".inventory_item_label a"
 }

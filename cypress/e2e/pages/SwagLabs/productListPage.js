@@ -10,7 +10,6 @@ class productListPage {
         "productDescription": () => cy.get(".inventory_item_desc"),
         "productPrice": () => cy.get(".inventory_item_price")
     }
-
 }
 module.exports = new productListPage()
 

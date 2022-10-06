@@ -24,15 +24,15 @@ describe("US GX-984 | SwagLabs | SCP | Agregar producto al carrito de compras de
         productListPage.elements.shippingCartItems().should("not.exist")
     })
 
-    it.only("US GX-984 | TS: GX-985 | TC1:  Validar agregar un producto al SCP desde el PLP", () => {
+    it("US GX-984 | TS: GX-985 | TC1:  Validar agregar un producto al SCP desde el PLP", () => {
            //Validar agregar un producto al Shopping Cart
             productListPage.elements.productList().eq(1).within(() => {
             //Guardar el elemento que contiene el titulo del producto
-            productListPage.elements.productTitle().as("productTitle")
+            productListPage.elements.productTitle().invoke("text").as("productTitle")
             //Guardar el elemento que contiene el precio del producto
-            productListPage.elements.productPrice().as("productPrice")
+            productListPage.elements.productPrice().invoke("text").as("productPrice")
             //Guardar el elemento que contiene la descripcion del producto
-            productListPage.elements.productDescription().as("productDescription")
+            productListPage.elements.productDescription().invoke("text").as("productDescription")
             //Hacer click al boton "Add to cart"
             productListPage.elements.addToCart_buttonList().click()
             //Validar que el boton "Add to cart" cambie a "Remove"
@@ -46,22 +46,28 @@ describe("US GX-984 | SwagLabs | SCP | Agregar producto al carrito de compras de
         productListPage.elements.shoppingCart_link().click()
         cy.url().should("contain","/cart")
         //Validar caracteristicas del producto previamente agregado
-        cy.get("@productTitle").should("contain", "Sauce Labs Bike Light")
-        cy.get("@productPrice").should("contain", "$9.99")
-        cy.get("@productDescription").should("contain","A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.")
+        cy.get("@productTitle").then((theProductTitle) => {
+            productListPage.elements.productTitle().should("contain",theProductTitle)
+        })
+        cy.get("@productPrice").then((theProductPrice) => {
+            productListPage.elements.productPrice().should("contain",theProductPrice)
+        })
+        cy.get("@productDescription").then((theProductDescription) => {
+            productListPage.elements.productDescription().should("contain",theProductDescription)
+        })
     
     })
 
     it("US GX-984 | TS: GX-985 | TC2: Validar agregar un producto al SCP desde el PDP", () => {
-    
+        
     })
 
     it("US GX-984 | TS: GX-985 | TC3: Validar agregar 2 productos al SCP 1 desde el PLP y el otro desde el PDP", () => {
         
     })
 
-    it("US GX-984 | TS: GX-985 | TC4: Validar agregar 2 productos al SCP desde el PLP", () => {
-        
+    it.only("US GX-984 | TS: GX-985 | TC4: Validar agregar 2 productos al SCP desde el PLP", () => {
+
     })
 
     it("US GX-984 | TS: GX-985 | TC5: Validar agregar 2 productos al SCP desde el PDP", () => {

@@ -45,14 +45,14 @@ Cypress.Commands.add("addProductToCart", () => {
 Cypress.Commands.add("removeProductPLP", () => {
     cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
 
-        cy.get('button.btn_inventory')
+        cy.get(the.buttonAddToCart)
             .eq(this.selectedItem)
             .click() //hace click sobre el botón "Remove"
 
         cy.get(the.buttonShoppingCart)
             .should('not.exist') // se resta -1 en icono del carrito de compras
 
-        cy.get('button.btn_inventory')
+        cy.get(the.buttonAddToCart)
             .eq(this.selectedItem)
             .should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart"
     })
@@ -60,39 +60,26 @@ Cypress.Commands.add("removeProductPLP", () => {
 
 Cypress.Commands.add("removeProductPDP", () => {
     cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
+
         //precondición: encontrarse en el PDP
-        cy.get(the.productItem).eq(2).click() 
+        cy.get(the.productItem)
+            .eq(this.selectedItem)
+            .click() //Va al PDP del producto seleccionado anteriormente como precondición
+            
         cy.url().should("contain", "inventory-item")
-
+            
         //acción
-        cy.contains(the.buttonAddToCartPDP, /^Remove/).click() //hace click sobre el botón "Remove"
-
-        cy.get(the.buttonShoppingCart).should('not.exist') // se resta -1 en icono del carrito de compras
-
-        cy.get(the.buttonAddToCart).should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart"
+        cy.contains(the.buttonAddToCartPDP, /^Remove/)
+            .click() //hace click sobre el botón "Remove"
+        
+        cy.get(the.buttonShoppingCart)
+            .should('not.exist') // se resta -1 en icono del carrito de compras
+        
+        cy.get(the.buttonAddToCart)
+            .should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart" */
     })
 })
-
-Cypress.Commands.add("remove3ProductPLP", () => {
-
-    cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
-        cy.get(the.buttonAddToCart).eq(3).click() //hace click sobre el botón "Add to cart"
-        cy.get(the.buttonAddToCart).eq(5).click() 
-        cy.get(the.buttonShoppingCart).should('have.text', '3') //valida que en el carrito hayan 3 productos
-    })
-
-    cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
-        cy.get(the.buttonAddToCart).eq(2).click() //hace click sobre el botón "Remove"
-        cy.get(the.buttonAddToCart).eq(3).click()
-        cy.get(the.buttonAddToCart).eq(5).click()
-        cy.get(the.buttonShoppingCart).should('not.exist') // se resta -1 en icono del carrito de compras
-
-        cy.get(the.buttonAddToCart).eq(2).should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart"
-    })
-})
-
-
-
+        
 Cypress.Commands.add("Login", () =>
 {
     cy.fixture("DOM/sauce/login.Page").then((the) =>

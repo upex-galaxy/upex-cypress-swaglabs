@@ -2,7 +2,7 @@ const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
 	// @Ely: En GALAXY L1, no usaremos el projectId todavía, se establecerá null:
-	projectId: '',
+	projectId: 'w1xpti',
 	// 1280×720 is considered to be the most suitable screen resolution for the desktop website version:
 	viewportWidth: 1280,
 	viewportHeight: 720,

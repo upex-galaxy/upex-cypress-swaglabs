@@ -8,7 +8,6 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 import 'cypress-file-upload';
-import { getCypressElementCoordinates } from 'cypress-real-events/getCypressElementCoordinates';
 require('@4tw/cypress-drag-drop')
 
 Cypress.Commands.add("userIsloggedIn", () => {

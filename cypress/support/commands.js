@@ -11,11 +11,11 @@ import 'cypress-file-upload';
 import { getCypressElementCoordinates } from 'cypress-real-events/getCypressElementCoordinates';
 require('@4tw/cypress-drag-drop')
 
-Cypress.Commands.add("goToLogin", () => {
-    cy.visit("https://www.saucedemo.com/") // ir a url
-    cy.url().should("contain", "saucedemo")
-
+Cypress.Commands.add("userIsloggedIn", () => {
     cy.fixture("DOM/Account/Account.Page").then((the) => {
+        cy.visit(the.url) // ir a url
+        cy.url().should("contain", "saucedemo")
+        
         cy.get(the.input.username)
             .type(the.data.user) // introducir texto en el campo username
         
@@ -47,10 +47,10 @@ Cypress.Commands.add("removeProductPLP", () => {
 
         cy.get(the.buttonAddToCart)
             .eq(this.selectedItem)
-            .click() //hace click sobre el botón "Remove"
+            .click() //hace click sobre el botón "Remove" del producto previamente añadido
 
         cy.get(the.buttonShoppingCart)
-            .should('not.exist') // se resta -1 en icono del carrito de compras
+            .should('not.exist') // se resta -1 en icono del SCP
 
         cy.get(the.buttonAddToCart)
             .eq(this.selectedItem)
@@ -61,7 +61,7 @@ Cypress.Commands.add("removeProductPLP", () => {
 Cypress.Commands.add("removeProductPDP", () => {
     cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
 
-        //precondición: encontrarse en el PDP
+        //precondición: usuario se situa en el PDP
         cy.get(the.productItem)
             .eq(this.selectedItem)
             .click() //Va al PDP del producto seleccionado anteriormente como precondición
@@ -73,7 +73,7 @@ Cypress.Commands.add("removeProductPDP", () => {
             .click() //hace click sobre el botón "Remove"
         
         cy.get(the.buttonShoppingCart)
-            .should('not.exist') // se resta -1 en icono del carrito de compras
+            .should('not.exist') // se resta -1 en icono del SCP
         
         cy.get(the.buttonAddToCart)
             .should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart" */

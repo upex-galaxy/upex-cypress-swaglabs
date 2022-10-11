@@ -41,6 +41,36 @@ Cypress.Commands.add("addProductToCart", () => {
             })
 })
 
+Cypress.Commands.add("addProductCustom", (num) => {
+    let list = []
+    
+    cy.get('button.btn_inventory')
+    .should('have.length.greaterThan', 0)
+    .its('length')
+    .then($LengthButton => {
+        while (list.length < num) {
+            const RandomNumber = Cypress._.random(0, $LengthButton - 1)  // TODO: el 5 deberia ser de la cantidad de items en el inventario
+            if (list.includes(RandomNumber)){
+                continue
+            }
+            else {
+                list.push(RandomNumber)
+            }
+        }
+
+        cy.log('lista de indices de items a seleccionar:')
+        cy.log(list)
+        // TODO guardar list en la variable global que no es global.
+    
+        for (const indice of list){
+            cy.get('button.btn_inventory')
+                .eq(indice)
+                .click()  
+        }
+    })
+    // TODO renombrar las variables con nombres mas apropiados.
+})
+
 Cypress.Commands.add("removeProductPLP", () => {
     cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
 
@@ -66,6 +96,28 @@ Cypress.Commands.add("removeProductPDP", () => {
             .click() //Va al PDP del producto seleccionado anteriormente como precondición
             
         cy.url().should("contain", "inventory-item")
+            
+        //acción
+        cy.contains(the.buttonAddToCartPDP, /^Remove/)
+            .click() //hace click sobre el botón "Remove"
+        
+        cy.get(the.buttonShoppingCart)
+            .should('not.exist') // se resta -1 en icono del SCP
+        
+        cy.get(the.buttonAddToCart)
+            .should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart" */
+    })
+})
+
+Cypress.Commands.add("removeProductSCP", () => {
+    cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
+
+        //precondición: usuario se situa en el PDP
+        cy.get(the.productItem)
+            .eq(this.selectedItem)
+            .click() //Va al PDP del producto seleccionado anteriormente como precondición
+            
+        cy.url().should("contain", "cart.html")
             
         //acción
         cy.contains(the.buttonAddToCartPDP, /^Remove/)

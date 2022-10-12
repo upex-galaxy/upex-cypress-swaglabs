@@ -61,7 +61,7 @@ Cypress.Commands.add("addProductCustom", (num) => {
 })
 
 Cypress.Commands.add("removeCustomProductsPLP", () => {
-    cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
+    cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
 
         cy.get(the.buttonShoppingCart).should('have.text', this.numOfProducts) //se valida que haya el numero de productos en el SCP
 
@@ -86,7 +86,7 @@ Cypress.Commands.add("removeCustomProductsPLP", () => {
 })
 
 Cypress.Commands.add("removeCustomProductsPDP", () => {
-    cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
+    cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
 
         cy.get(the.buttonShoppingCart).should('have.text', this.numOfProducts)
         
@@ -120,7 +120,7 @@ Cypress.Commands.add("removeCustomProductsPDP", () => {
 })
 
 Cypress.Commands.add("removeCustomProductsSCP", () => {
-    cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
+    cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
 
         cy.get(the.buttonShoppingCart).should('have.text', this.numOfProducts) //se valida que haya el numero de productos en el icono de SCP
 
@@ -145,9 +145,6 @@ Cypress.Commands.add("removeCustomProductsSCP", () => {
         }
     })
 })
-
-
-
         
 Cypress.Commands.add("Login", () =>
 {
@@ -222,7 +219,7 @@ Cypress.Commands.add("addProductToCart", () => {
 })
 
 Cypress.Commands.add("removeProductPLP", () => {
-    cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
+    cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
 
         cy.get(the.buttonAddToCart)
             .eq(this.selectedItem)
@@ -238,7 +235,7 @@ Cypress.Commands.add("removeProductPLP", () => {
 })
 
 Cypress.Commands.add("removeProductPDP", () => {
-    cy.fixture("DOM/PLP/RemoveProductToPLP.Page").then((the) => {
+    cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
 
         //precondición: usuario se situa en el PDP
         cy.get(the.productItem)

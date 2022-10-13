@@ -63,7 +63,7 @@ Cypress.Commands.add("addProductCustom", (num) => {
 Cypress.Commands.add("removeCustomProductsPLP", () => {
     cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
 
-        cy.get(the.buttonShoppingCart).should('have.text', this.numOfProducts) //se valida que haya el numero de productos en el SCP
+        cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se valida que haya el numero de productos en el SCP
 
         for (const indice of this.listRandom){
             cy.get(the.buttonAddToCart)
@@ -77,10 +77,16 @@ Cypress.Commands.add("removeCustomProductsPLP", () => {
             this.numOfProducts = this.numOfProducts - 1
 
             if (this.numOfProducts === 0) {
-                cy.get(the.buttonShoppingCart).should('not.exist')
+                cy.get(the.shoppingCartAlert).should('not.exist')
             } else {
-                cy.get(the.buttonShoppingCart).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
+                cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
             }
+
+            cy.get(the.shoppingCartLink).click() //se hace click en el icono del SCP
+
+            cy.get(the.cartItem).should('have.length', this.numOfProducts) //se valida que se elimina el producto del SCP
+
+            cy.get(the.continueShoppingBtn).click() //se hace click en el button "continue shopping"
         }
     })
 })
@@ -88,7 +94,7 @@ Cypress.Commands.add("removeCustomProductsPLP", () => {
 Cypress.Commands.add("removeCustomProductsPDP", () => {
     cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
 
-        cy.get(the.buttonShoppingCart).should('have.text', this.numOfProducts)
+        cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts)
         
         //precondición: usuario se situa en el PDP de cada producto, al no poder usar cy.visit(), se recurre a este paso
         for (const indice of this.listRandom){
@@ -101,7 +107,7 @@ Cypress.Commands.add("removeCustomProductsPDP", () => {
             cy.contains(the.buttonAddToCartPDP, /^Remove/)
                 .click() //hace click sobre el botón "Remove"
             
-            cy.get(the.backToProducts).click()
+            cy.get(the.backToProductsBtn).click()
             
             cy.get(the.buttonAddToCart)
                 .eq(indice)
@@ -110,10 +116,16 @@ Cypress.Commands.add("removeCustomProductsPDP", () => {
             this.numOfProducts = this.numOfProducts - 1
 
             if (this.numOfProducts === 0) {
-                cy.get(the.buttonShoppingCart).should('not.exist')
+                cy.get(the.shoppingCartAlert).should('not.exist')
             } else {
-                cy.get(the.buttonShoppingCart).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
+                cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
             }
+
+            cy.get(the.shoppingCartLink).click() //se hace click en el icono del SCP
+
+            cy.get(the.cartItem).should('have.length', this.numOfProducts) //se valida que se elimina el producto del SCP
+
+            cy.get(the.continueShoppingBtn).click() //se hace click en el button "continue shopping"
         }
 
     })
@@ -122,9 +134,9 @@ Cypress.Commands.add("removeCustomProductsPDP", () => {
 Cypress.Commands.add("removeCustomProductsSCP", () => {
     cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
 
-        cy.get(the.buttonShoppingCart).should('have.text', this.numOfProducts) //se valida que haya el numero de productos en el icono de SCP
+        cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se valida que haya el numero de productos en el icono de SCP
 
-        cy.get(the.buttonShoppingCart).click() //se hace click en el icono del SCP
+        cy.get(the.shoppingCartLink).click() //se hace click en el icono del SCP
 
         cy.get(the.cartItem).should('have.length', this.numOfProducts) //se valida que la cantidad de productos en el SCP sea la introducida previamente
 
@@ -138,9 +150,9 @@ Cypress.Commands.add("removeCustomProductsSCP", () => {
             cy.get(the.cartItem).should('have.length', this.numOfProducts)//se valida que los productos sean eliminados del SCP
             
             if (this.numOfProducts === 0) {
-                cy.get(the.buttonShoppingCart).should('not.exist') //se valida que cuando no hay ningun producto el icono rojo desaparece del SCP
+                cy.get(the.shoppingCartAlert).should('not.exist') //se valida que cuando no hay ningún producto el alert desaparece del SCP
             } else {
-                cy.get(the.buttonShoppingCart).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
+                cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
             }
         }
     })

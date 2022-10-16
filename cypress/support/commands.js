@@ -35,7 +35,7 @@ Cypress.Commands.add("addProductCustom", (num) => {
     .its('length')
     .then($LengthButton => {
         while (list.length < num) {
-            const RandomNumber = Cypress._.random(0, $LengthButton - 1)  // TODO: el 5 deberia ser de la cantidad de items en el inventario
+            const RandomNumber = Cypress._.random(0, $LengthButton - 1)
             if (list.includes(RandomNumber)){
                 continue
             }
@@ -46,7 +46,6 @@ Cypress.Commands.add("addProductCustom", (num) => {
 
         cy.log('lista de indices de items a seleccionar:')
         cy.log(list)
-        // TODO guardar list en la variable global que no es global.
 
         this.listRandom = list
         this.numOfProducts = num
@@ -57,7 +56,6 @@ Cypress.Commands.add("addProductCustom", (num) => {
                 .click()  
         }
     })
-    // TODO renombrar las variables con nombres mas apropiados.
 })
 
 Cypress.Commands.add("removeCustomProductsPLP", () => {

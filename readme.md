@@ -1,4 +1,4 @@
-[![CYPEX](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/f9y7eu/cypex&style=for-the-badge&logo=cypress)](https://dashboard.cypress.io/projects/f9y7eu/runs)
+[![CYPEX L1 SWAGLABS](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/n1k8t6&style=for-the-badge&logo=cypress)](https://dashboard.cypress.io/projects/n1k8t6/runs)
 
 # Testing Automation - Cypress 10.9.0 + Cucumber
 ![UPEX's Banners (linkedin) (1)](https://user-images.githubusercontent.com/91127281/189470339-acea5782-16f1-4f06-9ce0-df54fd3ead9d.png)

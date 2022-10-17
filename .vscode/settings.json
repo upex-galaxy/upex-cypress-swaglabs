@@ -20,7 +20,7 @@
 	"cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)\\(",
 	"cucumberautocomplete.stepRegExSymbol": "'",
 	"window.zoomLevel": 1,
-	"workbench.colorTheme": "Winter is Coming (Dark Blue)",
+	"workbench.colorTheme": "SynthWave '84",
 	"cSpell.language": "en,es",
 	"terminal.integrated.defaultProfile.windows": "Git Bash",
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -28,7 +28,7 @@
 		"editor.defaultFormatter": "vscode.html-language-features"
 	},
 	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "vscode.typescript-language-features"
 	},
 	"[Typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"

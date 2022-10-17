@@ -23,7 +23,5 @@ describe('US GX-1684 | TS: ✅SwagLabs | SCP PLP | Retornar desde SCP a la secci
         cy.get(SCdata.input.goToShoppingCart).click();
         cy.get(SCdata.input.continueShopping).click();
         cy.url().should('contain', 'inventory.html');
-
     });
-
 });

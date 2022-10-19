@@ -42,6 +42,7 @@
 	"editor.formatOnType": true,
 	"editor.formatOnPaste": false,
 	"editor.formatOnSave": false,
+	"editor.wordWrap": "on",
 	"editor.accessibilitySupport": "off",
 	"editor.bracketPairColorization.independentColorPoolPerBracketType": true,
 	"python.formatting.provider": "autopep8",
@@ -71,6 +72,7 @@
 		"cucumber"
 	],
 	"workbench.iconTheme": "material-icon-theme",
+	"material-icon-theme.folders.color": "#7cb342",
 	"material-icon-theme.files.associations": {
 		"*.tx.js": "Test-jsx",
 		"*.cy.js": "Test-js",

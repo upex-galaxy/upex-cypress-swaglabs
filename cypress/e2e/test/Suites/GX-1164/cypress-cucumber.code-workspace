@@ -1,0 +1,87 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../.."
+		},
+		{
+			"path": "../../../../../../../.."
+		}
+	],
+	"settings": {
+		"cucumberautocomplete.strictGherkinCompletion": true,
+		"cucumberautocomplete.strictGherkinValidation": false,
+		"cucumberautocomplete.customParameters": [
+			{
+				"parameter": "{ab}",
+				"value": "(a|b)"
+			}
+		],
+		"cucumberautocomplete.skipDocStringsFormat": true,
+		"cucumberautocomplete.formatConfOverride": {
+			"But": "relative"
+		},
+		"cucumberautocomplete.onTypeFormat": true,
+		"cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)\\(",
+		"cucumberautocomplete.stepRegExSymbol": "'",
+		"window.zoomLevel": 1,
+		"workbench.colorTheme": "Shades of Purple",
+		"terminal.integrated.defaultProfile.windows": "Git Bash",
+		"workbench.settings.editor": "json",
+		"workbench.iconTheme": "material-icon-theme",
+		"material-icon-theme.folders.color": "#7cb342",
+		"material-icon-theme.files.associations": {
+			"*.tx.js": "Test-jsx",
+			"*.cy.js": "Test-js",
+			"*.Page.json": "3d",
+			"*.js": "Cypress",
+			"commands.js": "webpack",
+			"*.json": "Cypress",
+			".cypress-cucumber-preprocessorrc.json": "cucumber",
+			"cucumber-html-report.js": "cucumber",
+			"cucumber-json-formatter.exe": "cucumber",
+			"cucumber-report.json": "cucumber",
+			"jsconfig.json": "Javascript-map",
+			"settings.json": "Vscode"
+		},
+		"material-icon-theme.folders.associations": {
+			"api-testing": "api",
+			"db-testing": "database",
+			"ui-testing": "app",
+			"BDD Stories": "rules",
+			"feature-example": "rules",
+			"us-example": "Storybook",
+			"suite-example": "test",
+			"suites": "test",
+			"cucumber-json": "Resolver",
+			"cucumber-report.html": "Resolver",
+			"Features": "Resolver",
+			"DOM": "class",
+			"DesignPatterns": "context",
+			"How-to": "content",
+			"US": "Storybook",
+			"test-plan": "meta",
+			"mochawesome-report": "log",
+			"smoke": "rules",
+			"sanity": "rules",
+			"regression": "rules",
+			"in-sprint": "rules",
+			"cucumber-test": "Resolver",
+			"fixtures": "container",
+			"support": "Helper",
+			"xhr-fetch": "batch",
+			"material-icons": "examples",
+			"workflows": "github"
+		},
+		"cypressHelper.menuItems": {
+			"OpenCypress": false,
+			"RunCypress": false,
+			"GenerateCustomCommandTypes": true,
+			"GoToCustomCommand": false,
+			"FindCustomCommandReferences": true,
+			"FindStepDefinitionReferences": true,
+			"SchemaGenerator": false,
+			"ParseHAR": false,
+			"mockAutocomplete": false
+		}
+	}
+}

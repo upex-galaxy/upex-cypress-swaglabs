@@ -53,8 +53,7 @@ describe('GX-2513 ✅SwagLabs | Checkout | Finalizar o Cancelar la compra de un 
 
     it('2514 | TC2: Validar que el usuario cancela la compra de un producto', () => {
         productspage.addtocartbutton();
-        productspage.clickShoppingcart();
-        
+        productspage.clickShoppingcart();  
         cartpage.GotoCheckout();
 
         checkoutpage.InputName(info.name);

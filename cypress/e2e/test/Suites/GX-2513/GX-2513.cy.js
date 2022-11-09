@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 
-import {CartPage} from "../../../../support/Pages/CartPage";
+import {CartPage} from "../../../../support/Pages/ShoppingCartPage";
 import {CheckoutPage} from "../../../../support/Pages/CheckoutPage";
 import {HomePage} from "../../../../support/Pages/HomePage";
-import {ProductsPage} from "../../../../support/Pages/ProductsPage";
+import {ProductsPage} from "../../../../support/Pages/ProductListPage";
 
 describe('GX-2513 ✅SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en la Website',()=>{
     let info;

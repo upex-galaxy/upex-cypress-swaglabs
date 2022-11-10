@@ -1,23 +1,28 @@
 /// <reference types="cypress" />
 
-import {CartPage} from "../../../../support/Pages/CartPage";
-import {CheckoutPage} from "../../../../support/Pages/CheckoutPage";
-import {HomePage} from "../../../../support/Pages/HomePage";
-import {ProductsPage} from "../../../../support/Pages/ProductsPage";
+import {ProductCartPage} from "../../../../support/Pages/GX-2513/ProductCartPage";
+import {CheckoutPage} from "../../../../support/Pages/GX-2513/CheckoutPage";
+import {HomePage} from "../../../../support/Pages/GX-2513/HomePage";
+import {ProductsListPage} from "../../../../support/Pages/GX-2513/ProductsListPage";
+
 
 describe('GX-2513 ✅SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en la Website',()=>{
     let info;
+    let productinfo;
     const user= "standard_user";
     const pass = "secret_sauce";
     const homepage = new HomePage();
-    const productspage = new ProductsPage();
-    const cartpage = new CartPage();
+    const productslistpage = new ProductsListPage();
+    const productcartpage = new ProductCartPage();
     const checkoutpage = new CheckoutPage();
 
     beforeEach(()=>{
         
         cy.fixture("DOM/GX-2513/GX-2513-purchase-information").then(information => {
             info = information;
+        })
+        cy.fixture('DOM/GX-2513/product-information').then(information => {
+            productinfo = information;
         })
         cy.visit('');
         homepage.InputUser(user);
@@ -28,10 +33,10 @@ describe('GX-2513 ✅SwagLabs | Checkout | Finalizar o Cancelar la compra de un 
 
     it('2514 | TC1: Validar que el usuario finaliza la compra de un producto',() => {
 
-        productspage.addtocartbutton();
-        productspage.clickShoppingcart();
+        productslistpage.addProductocart(productinfo.productID);
+        productslistpage.GotoShoppingcart();
         
-        cartpage.GotoCheckout();
+        productcartpage.GotoCheckout();
 
         checkoutpage.InputName(info.name);
         checkoutpage.InputSurname(info.lastname);
@@ -52,9 +57,10 @@ describe('GX-2513 ✅SwagLabs | Checkout | Finalizar o Cancelar la compra de un 
     })
 
     it('2514 | TC2: Validar que el usuario cancela la compra de un producto', () => {
-        productspage.addtocartbutton();
-        productspage.clickShoppingcart();  
-        cartpage.GotoCheckout();
+        productslistpage.addProductocart(productinfo.productID);
+        productslistpage.GotoShoppingcart();
+        
+        productcartpage.GotoCheckout();
 
         checkoutpage.InputName(info.name);
         checkoutpage.InputSurname(info.lastname);
@@ -63,5 +69,7 @@ describe('GX-2513 ✅SwagLabs | Checkout | Finalizar o Cancelar la compra de un 
         checkoutpage.cancelButton()
             .should('exist')
             .click();
+        productslistpage.Checktitle()
+            .should('have.text', "Products");
     })
 })

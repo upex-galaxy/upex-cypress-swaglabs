@@ -18,6 +18,7 @@ import './commands'
 import 'cypress-react-selector';
 import "cypress-real-events/support";
 
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 require('cypress-plugin-api')

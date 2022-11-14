@@ -1,0 +1,40 @@
+{
+    "product1":{
+        "image":"#item_0_img_link",
+        "buttonAdd":"#add-to-cart-sauce-labs-bike-light",
+        "buttonRemove":"#remove-sauce-labs-bike-light"
+    },
+    "product2":{
+        "image":"#item_1_img_link",
+        "buttonAdd":"#add-to-cart-sauce-labs-bolt-t-shirt",
+        "buttonRemove":"#remove-sauce-labs-bolt-t-shirt"
+    },
+    "product3":{
+        "image":"#item_2_img_link",
+        "buttonAdd":"#add-to-cart-sauce-labs-onesie"
+    },
+    "product4":{
+        "image":"#item_3_img_link",
+        "buttonAdd":".btn.btn_primary.btn_small.btn_inventory"
+    },
+    "product5":{
+        "image":"#item_4_img_link",
+        "buttonAdd":"#add-to-cart-sauce-labs-backpack"
+    },
+    "product6":{
+        "image":"#item_5_img_link",
+        "buttonAdd":"#add-to-cart-sauce-labs-fleece-jacket"
+    },
+    "buttonBackToProduct":"#back-to-products",
+    "shoppingCart":"a.shopping_cart_link",
+    "checkout": "#checkout",
+    "firstName":"#first-name",
+    "lastName":"#last-name",
+    "postalCode":"#postal-code",
+    "buttonContinue":"#continue",
+    "buttonFinish":"#finish",
+    "buttonCancel":"#cancel",
+    "buttonRemove":".btn.btn_secondary.btn_small.cart_button",
+    "buttonContShop":"#continue-shopping"
+
+}

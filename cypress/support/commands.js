@@ -265,6 +265,16 @@ Cypress.Commands.add("removeProductPDP", () => {
             .should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart" 
     })
 })
+Cypress.Commands.add("LogIn", () => {
+    cy.fixture("DOM/Account/Account.Page").then((the) => {
+        cy.get(the.input.username)
+            .type(the.data.user)
+        cy.get(the.input.password)
+            .type(the.data.password)
+        cy.get(the.submitButton)
+            .click()
+    })
+})
 
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })

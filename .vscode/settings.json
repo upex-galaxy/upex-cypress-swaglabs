@@ -54,16 +54,6 @@
 	"prettier.useTabs": true,
 	"prettier.arrowParens": "avoid",
 	"workbench.settings.editor": "json",
-	"cSpell.userWords": [
-		"appium",
-		"appiumby",
-		"Automator",
-		"badeball",
-		"chromedriver",
-		"demoqa",
-		"Elyer",
-		"Uper"
-	],
 	"git.enableSmartCommit": true,
 	"editor.tabCompletion": "on",
 	"editor.lineHeight": 20,
@@ -77,13 +67,18 @@
 		"*.tx.js": "Test-jsx",
 		"*.cy.js": "Test-js",
 		"*.Page.json": "3d",
+		"*.Page.js": "3d",
 		"*.js": "Cypress",
 		"commands.js": "webpack",
+		"*.yml": "todo",
 		"*.json": "Cypress",
-		".cypress-cucumber-preprocessorrc.json": "cucumber",
+		"scripts.js": "console",
 		"cucumber-report.json": "cucumber",
 		"jsconfig.json": "Javascript-map",
-		"settings.json": "Vscode"
+		"settings.json": "Vscode",
+		"launch.json": "http",
+		"package-lock.json": "npm",
+		"package.json": "npm"
 	},
 	"material-icon-theme.folders.associations": {
 		"api-testing": "api",
@@ -91,12 +86,12 @@
 		"ui-testing": "app",
 		"BDD Stories": "rules",
 		"feature-example": "rules",
-		"us-example": "Storybook",
-		"suite-example": "test",
+		"Step-Definitions": "test",
 		"suites": "test",
 		"cucumber-json": "Resolver",
 		"DOM": "class",
-		"DesignPatterns": "context",
+		"POM": "context",
+		"Pages": "context",
 		"How-to": "content",
 		"US": "Storybook",
 		"test-plan": "meta",
@@ -123,4 +118,7 @@
 		"ParseHAR": false,
 		"mockAutocomplete": false
 	},
+	"githubPullRequests.ignoredPullRequestBranches": [
+		"cypex"
+	],
 }

@@ -20,4 +20,6 @@ import "cypress-real-events/support";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+require('cy-verify-downloads').addCustomCommand();
 require('cypress-plugin-api')
+require('cypress-xpath');

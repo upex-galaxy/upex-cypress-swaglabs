@@ -2,13 +2,13 @@
 // This example commands.js shows you how to
 // create various custom commands and overwrite
 // existing commands.
-//
 // For more comprehensive examples of custom
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
 import 'cypress-file-upload';
 require('@4tw/cypress-drag-drop')
+require('cypress-downloadfile/lib/downloadFileCommand')
 
 Cypress.Commands.add("userIsloggedIn", () => {
     cy.fixture("DOM/Account/Account.Page").then((the) => {

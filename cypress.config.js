@@ -1,4 +1,6 @@
 const { defineConfig } = require('cypress');
+const {downloadFile} = require('cypress-downloadfile/lib/addPlugin')
+const { verifyDownloadTasks } = require('cy-verify-downloads');
 
 module.exports = defineConfig({
 	// @Ely: AHORA TENEMOS NUESTRO PROPIO CYPRESS DASHBOARD PARA VER NUESTRAS EJECUCIONES EN LA WEB:
@@ -21,13 +23,15 @@ module.exports = defineConfig({
 	// Number of times to retry a failed test. If a number is set, tests will retry in both runMode and openMode:
 	retries: 0,
 	// Whether Cypress will record a video of the test run when running on headless:
-	video: false,
+	video: true,
 	// E2E Testing runner
 	e2e: {
 		// Enables cross-origin and improved session support, including the cy.origin and cy.session commands:
-		experimentalSessionAndOrigin: true, // Para poder ver el Test Run de pruebas API, ésto debe estar en FALSE.
+		experimentalSessionAndOrigin: false, // Para poder ver el Test Run de pruebas API, ésto debe estar en FALSE.
 		// Use Cypress plugins:
 		setupNodeEvents(on, config) {
+			on('task', {downloadFile})
+			on('task', verifyDownloadTasks);
 			return require('./cypress/plugins/index.js')(on, config)			
 		},		
 		// Glob pattern to determine what test files to load:

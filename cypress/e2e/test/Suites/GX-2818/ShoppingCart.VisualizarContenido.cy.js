@@ -1,4 +1,4 @@
-describe('GX-2818 : SwagLabs | SCP | Acceder al Shopping Cart y visualizar contenido', () => {
+describe('GX-2818: SwagLabs | SCP | Acceder al Shopping Cart y visualizar contenido', () => {
 	// SH + ALT + F
 	beforeEach('Precondición: El usiario debe estar logueado', () => {
 		cy.visit('https://www.saucedemo.com/')

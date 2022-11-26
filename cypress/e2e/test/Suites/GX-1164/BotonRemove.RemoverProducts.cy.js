@@ -11,7 +11,7 @@ describe("SwagLabs | PLP PDP | Remover productos del SCP desde el PLP y PDP", ()
         cy.removeCustomProductsPLP() //elimina n productos desde PLP
     })
 
-    it.only("US-GX-1164 | TS 1165 | TC2: Validar remover uno o mas productos del shopping cart desde el PDP", () => {
+    it("US-GX-1164 | TS 1165 | TC2: Validar remover uno o mas productos del shopping cart desde el PDP", () => {
         cy.removeCustomProductsPDP() //elimina n productos desde PDP
     })
     

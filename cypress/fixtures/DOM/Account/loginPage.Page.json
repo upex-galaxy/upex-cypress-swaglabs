@@ -1,0 +1,26 @@
+{
+	"TC1": {
+		"name": "471 | TC1: Validar LogIn exitoso.",
+		"username": "standard_user",
+		"password": "secret_sauce",
+		"expected": "inventory.html"
+	},
+	"TC2": {
+		"name": "471 | TC2: Validar la confirmación de usuario bloqueado.",
+		"username": "locked_out_user",
+		"password": "secret_sauce",
+		"expected": "Epic sadface: Sorry, this user has been locked out."
+	},
+	"TC3": {
+		"name": "471 | TC3: Validar el NO poder ingresar con usuario invalido.",
+		"username": "galaxy_user",
+		"password": "secret_sauce",
+		"expected": "Epic sadface: Username and password do not match any user in this service"
+	},
+	"TC4": {
+		"name": "471 | TC4: Validar el NO poder ingresar con datos nulos.",
+		"username": "NaN",
+		"password": "NaN",
+		"expected": "Epic sadface: Username is required"
+	}
+}

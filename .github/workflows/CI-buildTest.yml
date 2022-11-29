@@ -24,7 +24,7 @@ jobs:
               with:
                   browser: chrome
                   command: |
-                    npm run file */**/GX-935/*.cy.js
+                    npm run file */**/GX-3599/*.cy.js
                   record: true
               env:
                   # pass the Dashboard record key as an environment variable
@@ -46,8 +46,9 @@ jobs:
                   password: ${{secrets.XRAY_CLIENT_SECRET}}
                   testFormat: 'junit'
                   testPaths: 'reports/test-results.xml'
-                  testExecKey: 'GX-5'
+                  testExecKey: 'GX-3601'
                   projectKey: 'GX'
+                  
             - name: 🔔Slack Notification of Done
               uses: rtCamp/action-slack-notify@v2.2.0
               env:

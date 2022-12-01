@@ -120,9 +120,5 @@
 	},
 	"githubPullRequests.ignoredPullRequestBranches": [
 		"cypex"
-	],
-	"cSpell.words": [
-		"mochawesome",
-		"PREC"
-	],
+	]
 }

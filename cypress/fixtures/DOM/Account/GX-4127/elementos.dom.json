@@ -1,0 +1,14 @@
+{
+	"username": {
+		"input": "[id='user-name']",
+		"data1": "standard_user",
+		"data2": "locked_out_user",
+		"data3": "usuario578",
+		"data5": "standard_user"
+	},
+	"password": {
+		"input": "",
+		"data": ""
+	},
+	"buttonlogin": "[id='login-button']"
+}

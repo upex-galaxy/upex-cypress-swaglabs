@@ -1,48 +1,48 @@
-const datas = require('../../')
+const data = require('../../../../fixtures/DOM/Account/GX-4127/loginPage.Page.json')
 
-describe('login - swaglabs', () => {
+describe(data.test.us, () => {
 	beforeEach('precondicion: visitar sitio login', () => {
 		cy.visit('https://www.saucedemo.com/')
-		//cy.url().should('login')
+		cy.url().should('contain', 'saucedemo')
 	})
 
-	it('TC#1: poder registrarse exitosamente', () => {
-		cy.get("[id='user-name']").type('standard_user')
-		cy.get("[id='password']").type('secret_sauce')
-		cy.get("[id='login-button']").click()
+	it(data.test.TC1,() => {
+		cy.get(data.username.input).type(data.username.data1)
+		cy.get(data.password.input).type(data.password.data)
+		cy.get(data.buttonlogin).click()
+        cy.url().should('contain','inventory.html')
 	})
 
-	it('TC#2: usuario intenta iniciar sesión con cuenta bloqueada', () => {
-		cy.get("[id='user-name']").type('locked_out_user')
-		cy.get("[id='password']").type('secret_sauce')
-		cy.get("[id='login-button']").click()
-		cy.get('[data-test="error"]').should('include.text', 'Epic sadface: Sorry, this user has been locked out.')
+	it(data.test.TC2, () => {
+		cy.get(data.username.input).type(data.username.data2)
+		cy.get(data.password.input).type(data.password.data)
+		cy.get(data.buttonlogin).click()
+		cy.get(data.error.input).should('include.text', data.error.msj1)
 	})
 
-	it('TC#3: usuario intenta iniciar sesión con un cuenta incorrecta o inexistente', () => {
-		cy.get("[id='user-name']").type('usuario578')
-		cy.get("[id='password']").type('secret_sauce')
-		cy.get("[id='login-button']").click()
-		cy.get('[data-test="error"]').should('include.text', 'Epic sadface: Username and password do not match any user in this service')
+	it(data.test.TC3,() => {
+		cy.get(data.username.input).type(data.username.data3)
+		cy.get(data.password.input).type(data.password.data)
+		cy.get(data.buttonlogin).click()
+		cy.get(data.error.input).should('include.text', data.error.msj2)
 	})
 
-	it('TC#4: usuario intenta iniciar sesión dejando el campo username vacío en el formulario', () => {
-		cy.get("[id='user-name']")
-		cy.get("[id='password']").type('secret_sauce')
-		cy.get("[id='login-button']").click()
-		cy.get('[data-test="error"]').should('include.text', 'Epic sadface: Username is required')
+	it(data.test.TC4, () => {
+		cy.get(data.password.input).type(data.password.data)
+		cy.get(data.buttonlogin).click()
+		cy.get(data.error.input).should('include.text', data.error.msj3)
 	})
 
-	it('TC#5: usuario intenta iniciar sesión dejando el campo password vacío en el formulario', () => {
-		cy.get("[id='user-name']").type('standard_user')
-		cy.get("[id='password']")
-		cy.get("[id='login-button']").click()
-		cy.get('[data-test="error"]').should('include.text', 'Epic sadface: Password is required')
+	it(data.test.TC5, () => {
+		cy.get(data.username.input).type(data.username.data5)
+		cy.get(data.password.input)
+		cy.get(data.buttonlogin).click()
+		cy.get(data.error.input).should('include.text', data.error.msj4)
 	})
-	it('TC#6: usuario intenta iniciar sesión dejando campos vacíos en el formulario', () => {
-		cy.get("[id='user-name']")
-		cy.get("[id='password']")
-		cy.get("[id='login-button']").click()
-		cy.get('[data-test="error"]').should('include.text', 'Epic sadface: Username is required')
+	it(data.test.TC6, () => {
+		cy.get(data.username.input)
+		cy.get(data.password.input)
+		cy.get(data.buttonlogin).click()
+		cy.get(data.error.input).should('include.text', data.error.msj3)
 	})
 })

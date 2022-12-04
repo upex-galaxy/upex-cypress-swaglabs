@@ -1,0 +1,34 @@
+{
+	"test":{
+	"us":"✅SwagLabs | Account | Iniciar sesión y BR de Accesos",
+	"TC1": "4128 | TC1: Validar que usuario ingrese exitosamente",
+	"TC2":"4128 | TC2: Validar que usuario inicie sesión con cuenta bloqueada",
+	"TC3":"4128 | TC3: Validar que usuario inicie sesión con una cuenta no registrada",
+	"TC4":"4128 | TC4: Validar que usuario NO pueda iniciar sesión dejando el campo username vacío",
+	"TC5":"4128 | TC5: Validar que usuario NO pueda iniciar sesión dejando el campo password vacío",
+	"TC6":"4128 | TC6: Validar que usuario NO pueda iniciar sesión dejando campos vacíos"		
+	},
+
+	"username": {
+		"input": "[id='user-name']",
+		"data1": "standard_user",
+		"data2": "locked_out_user",
+		"data3": "usuario578",
+		"data5": "standard_user"
+	},
+	"password": {
+		"input": "[id='password']",
+		"data": "secret_sauce"
+	},
+	"buttonlogin": "[id='login-button']",
+	"error":{
+       "input": "[data-test='error']",
+		"msj1":"Epic sadface: Sorry, this user has been locked out.",
+		"msj2":"Epic sadface: Username and password do not match any user in this service",
+		"msj3":"Epic sadface: Username is required",
+		"msj4":"Epic sadface: Password is required"
+	}
+}
+
+
+

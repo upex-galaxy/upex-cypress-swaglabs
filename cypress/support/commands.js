@@ -6,7 +6,7 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-import 'cypress-file-upload';
+import 'cypress-file-upload'; import 'cypress-wait-until';
 require('@4tw/cypress-drag-drop')
 require('cypress-downloadfile/lib/downloadFileCommand')
 
@@ -265,6 +265,24 @@ Cypress.Commands.add("removeProductPDP", () => {
             .should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart" 
     })
 })
+Cypress.Commands.add("selectProduct", (productName) => {
+    cy.get("div.inventory_item_name").each(($el, index, $list) => {
+        if ($el.text().includes(productName))
+        {
+            cy.get("button.btn.btn_primary.btn_small.btn_inventory").eq(0).click()
+            cy.get("a.shopping_cart_link").should('have.length.greaterThan', 0)
+            }
+    })
+})
+Cypress.Commands.add("removeProduct", (productName) => {
+    cy.get("div.inventory_item_name").each(($el, index, $list) => {
+        if ($el.text().includes(productName))
+        {
+            cy.get("button.btn.btn_secondary.btn_small.cart_button").eq(0).click()
+            }
+    })
+})
+
 
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })

@@ -5,7 +5,13 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "cypress open",
-		"file": "cypress run --browser chrome --reporter cypress-multi-reporters --reporter-options configFile=jsconfig.json --record --key 8df5adbc-d9ad-42c6-ac95-10e300434f77 --spec"
+		"file": "cypress run --browser chrome --reporter cypress-multi-reporters --reporter-options configFile=jsconfig.json --record --key 8df5adbc-d9ad-42c6-ac95-10e300434f77 --spec",
+		"rm:reports": "rm reports/* || true",
+		"regression": "cypress run --browser chrome --reporter cypress-multi-reporters --reporter-options configFile=jsregression.json",
+		"regression:report": "cypress run --browser chrome --reporter mochawesome --reporter-options reportDir=mochawesome-report,overwrite=false,html=false,json=true",
+		"report:xml": "jrm reports/regression-report.xml \"reports/*.xml\"",
+		"report:json": "mochawesome-merge mochawesome-report/*.json>mochawesome.json",
+		"report:html": "marge mochawesome.json"
 	},
 	"keywords": [
 		"cypress",
@@ -31,7 +37,9 @@
 		"cypress-react-selector": "3.0.0",
 		"cypress-real-events": "1.7.1",
 		"cypress-recurse": "1.20.0",
+		"cypress-wait-until": "1.7.2",
 		"cypress-xpath": "2.0.1",
+		"junit-report-merger": "4.0.0",
 		"mocha": "10.0.0",
 		"mocha-junit-reporter": "2.0.2",
 		"mochawesome": "7.1.3",

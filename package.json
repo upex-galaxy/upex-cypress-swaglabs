@@ -5,7 +5,13 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "cypress open",
-		"file": "cypress run --browser chrome --reporter cypress-multi-reporters --reporter-options configFile=jsconfig.json --record --key 8df5adbc-d9ad-42c6-ac95-10e300434f77 --spec"
+		"file": "cypress run --browser chrome --reporter cypress-multi-reporters --reporter-options configFile=jsconfig.json --record --key 8df5adbc-d9ad-42c6-ac95-10e300434f77 --spec",
+		"rm:reports": "rm reports/* || true",
+		"regression": "cypress run --browser chrome --reporter cypress-multi-reporters --reporter-options configFile=jsregression.json",
+		"regression:report": "cypress run --browser chrome --reporter mochawesome --reporter-options reportDir=mochawesome-report,overwrite=false,html=false,json=true",
+		"report:xml": "jrm reports/regression-report.xml \"reports/*.xml\"",
+		"report:json": "mochawesome-merge mochawesome-report/*.json>mochawesome.json",
+		"report:html": "marge mochawesome.json"
 	},
 	"keywords": [
 		"cypress",

@@ -282,7 +282,76 @@ Cypress.Commands.add("removeProduct", (productName) => {
             }
     })
 })
+//GX-4138: Precondición: Visitar page Login 
+Cypress.Commands.add("pageLogin", () => {
+    cy.fixture("DOM/swaglabs/GX-4138/login.Page").then((the) => { 
+        cy.visit(the.url)  //comando de acción directa
+        cy.url().should('contain', 'saucedemo') //deberia de contener 'saucedemo'
 
+    })
+})
+//GX-4138: Ingresar user valido 
+Cypress.Commands.add("loginUserValid", () => {
+    cy.fixture("DOM/swaglabs/GX-4138/login.Page").then((the) => {
+        cy.get(the.username.input).type(the.username.data.valid.uStandard)
+            .should("have.attr", "type", "text")
+        cy.get(the.password.input).type(the.password.data.valid)
+            .should("have.attr", "type", "password")
+        cy.get(the.buttonLogin).click()
+
+    })
+})
+//GX-4138: Ingresar user bloqueado 
+Cypress.Commands.add("loginUserLocked", () => {
+    cy.fixture("DOM/swaglabs/GX-4138/login.Page").then((the) => {
+        cy.get(the.username.input).type(the.username.data.locked)
+            .should("have.attr", "type", "text")
+        cy.get(the.password.input).type(the.password.data.valid)
+            .should("have.attr", "type", "password")
+        cy.get(the.buttonLogin).click() 
+        
+    })
+})
+//GX-4138: Ingresar user Incorrect
+Cypress.Commands.add("loginUserIncorrect", () => {
+    cy.fixture("DOM/swaglabs/GX-4138/login.Page").then((the) => {
+        cy.get(the.username.input).type(the.username.data.invalid.userIncorrect)
+            .should("have.attr", "type", "text")
+        cy.get(the.password.input).type(the.password.data.invalid.passIncorrect)
+            .should("have.attr", "type", "password")
+        cy.get(the.buttonLogin).click() 
+    
+    })
+})
+//GX-4138: Ingresar user Inexistente
+Cypress.Commands.add("loginUserNonExistent", () => {
+    cy.fixture("DOM/swaglabs/GX-4138/login.Page").then((the) => {
+        cy.get(the.username.input).clear().type(the.username.data.invalid.userNonExistent)
+            .should("have.attr", "type", "text")
+        cy.get(the.password.input).clear().type(the.password.data.invalid.passNonExistent)
+            .should("have.attr", "type", "password")
+        cy.get(the.buttonLogin).click() 
+        
+    })
+})
+//GX-4138: Ingresar user con campos vacios
+Cypress.Commands.add("loginUserEmptyFields", () => {
+    cy.fixture("DOM/swaglabs/GX-4138/login.Page").then((the) => {
+    cy.get(the.username.input).click()
+        .should("have.attr", "type", "text")
+    cy.get(the.password.input).click()
+        .should("have.attr", "type", "password")
+    cy.get(the.buttonLogin).click() 
+    
+    })
+})
+//GX-4138: Visitar un Endpoint
+Cypress.Commands.add("gotoEndpoint", (url) => {
+    cy.visit(url, {failOnStatusCode: false})
+})
+Cypress.Commands.add("assertEndpoint", () => {
+    cy.get("h3[data-test='error']").should("contain", "when you are logged in.")
+})
 
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })

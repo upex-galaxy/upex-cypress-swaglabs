@@ -1,0 +1,29 @@
+{
+    "url": "https://www.saucedemo.com/",
+    "username": {
+        "input": "[data-test='username']",
+        "data": {
+        "valid": {
+            "uStandard": "standard_user",
+            "uProblem": "problem_user",
+            "uPerformance": "performance_glitch_user"
+            },
+        "invalid": {
+            "userIncorrect": "standard_use",
+            "userNonExistent": "anaM_user"
+        },
+        "locked": "locked_out_user"
+        }
+    },
+    "password": {
+        "input": "[data-test='password']",
+        "data": {
+        "valid": "secret_sauce",
+        "invalid": {
+            "passIncorrect": "secret_sauc",
+            "passNonExistent": "secret_ana"
+        }
+        }
+    },
+    "buttonLogin":"[data-test='login-button']" 
+}

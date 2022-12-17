@@ -18,3 +18,4 @@
 ```Suites/How-to/UI-testing/xpaths/xpath.test.cy.js ✖``` <br>
    **Error:** El baseUrl del archivo cypress.config.json hace fallar el test, esto esta aclarado dentro del mismo. <br>
    **FIX:** Se buscará la forma de ignorar el baseUrl (pendiente) <br>
+   

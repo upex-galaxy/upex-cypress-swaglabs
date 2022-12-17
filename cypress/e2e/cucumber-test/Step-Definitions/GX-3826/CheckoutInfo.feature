@@ -28,7 +28,7 @@ Feature: ✅SwagLabs | Checkout Info | Insertar información del comprador.
 			| Lionel    | Messi    |      | Postal Code is required |
 
 	# Cases that are Failing: 
-	# 		| L!onel    | Messi    | 1212 | Special characters are not allowed |
+	# 		| L!onel    | Messi    | 1212 | Special characters are not allowed | 
 	# 		| Lionel    | Mess!    | 1212 | Special characters are not allowed |
 	# 		| Lionel    | Messi    | !2!2 | Special characters are not allowed |
 	# 		| L10nel    | Messi    | 1212 | Numeric characters not allowed     |

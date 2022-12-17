@@ -1,0 +1,8 @@
+{
+    "SCurl":"https://www.saucedemo.com/cart.html",
+
+    "input": {
+    "goToShoppingCart": ".shopping_cart_link",
+    "continueShopping": "[data-test='continue-shopping']"
+    }
+}

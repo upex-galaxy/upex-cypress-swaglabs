@@ -35,6 +35,6 @@ module.exports = defineConfig({
 		specPattern: ['**/*.feature', 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}'],
 		// Url used as prefix for cy.visit() or cy.request() command's url 
 		// (NO USAR BASEURL SI SE EJECUTA UN INDEX.HTML):
-		//baseUrl: 'https://www.saucedemo.com/'
+		baseUrl: 'https://www.saucedemo.com/'
 	}
 })

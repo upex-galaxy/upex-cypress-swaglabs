@@ -12,6 +12,7 @@ describe('GX-2530 ✅📜PDP | Category Search | Buscar productos por Filtros de
         cy.fixture("DOM/GX-2530/information").then(data => {
             info = data;
         })
+        cy.viewport(1920, 1080)
         cy.visit('https://academybugs.com/find-bugs/');
     })
     it('2535 | TC1: Valida que el usuario busque los items por categoría de la tienda', () => {

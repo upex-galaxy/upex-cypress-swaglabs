@@ -26,27 +26,29 @@ Cypress.Commands.add('userIsloggedIn', () => {
 	})
 })
 
-Cypress.Commands.add('addProductCustom', (num) => {
-	let list = []
-
-	cy.get('button.btn_inventory')
-		.should('have.length.greaterThan', 0)
-		.its('length')
-		.then($LengthButton => {
-			while (list.length < num) {
-				const RandomNumber = Cypress._.random(0, $LengthButton - 1)
-				if (list.includes(RandomNumber)) {
-					continue
-				} else {
-					list.push(RandomNumber)
-				}
-			}
+Cypress.Commands.add("addProductCustom", (num) => {
+    
+    let list = []
+    
+    cy.get('button.btn_inventory')
+    .should('have.length.greaterThan', 0)
+    .its('length')
+    .then($LengthButton => {
+        while (list.length < num) {
+            const RandomNumber = Cypress._.random(0, $LengthButton - 1)
+            if (list.includes(RandomNumber)){
+                continue
+            }
+            else {
+                list.push(RandomNumber)
+            }
+        }
 
 			cy.log('lista de indices de items a seleccionar:')
 			cy.log(list)
 
-			this.listRandom = list
-			this.numOfProducts = num
+        this.listRandom = list
+        this.numOfProducts = num
 
 			for (const indice of list) {
 				cy.get('button.btn_inventory').eq(indice).click()
@@ -54,87 +56,101 @@ Cypress.Commands.add('addProductCustom', (num) => {
 		})
 })
 
-Cypress.Commands.add('removeCustomProductsPLP', () => {
-	cy.fixture('DOM/BotonRemove/RemoveProducts.Page').then((the) => {
-		cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se valida que haya el numero de productos en el SCP
+Cypress.Commands.add("removeCustomProductsPLP", () => {
+    cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
 
-		for (const indice of this.listRandom) {
-			cy.get(the.buttonAddToCart).eq(indice).click() //hace click sobre el botón "Remove" de cada uno de los productos previamente añadidos
+        cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se valida que haya el numero de productos en el SCP
 
-			cy.get(the.buttonAddToCart).eq(indice).should('have.text', 'Add to cart') //se valida que cada button "remove" cambie a "add to cart"
+        for (const indice of this.listRandom){
+            cy.get(the.buttonAddToCart)
+                .eq(indice)
+                .click()//hace click sobre el botón "Remove" de cada uno de los productos previamente añadidos
 
-			this.numOfProducts = this.numOfProducts - 1
+            cy.get(the.buttonAddToCart)
+                .eq(indice)
+                .should('have.text', 'Add to cart') //se valida que cada button "remove" cambie a "add to cart"
+            
+            this.numOfProducts = this.numOfProducts - 1
 
-			if (this.numOfProducts === 0) {
-				cy.get(the.shoppingCartAlert).should('not.exist')
-			} else {
-				cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
-			}
+            if (this.numOfProducts === 0) {
+                cy.get(the.shoppingCartAlert).should('not.exist')
+            } else {
+                cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
+            }
 
 			cy.get(the.shoppingCartLink).click() //se hace click en el icono del SCP
 
-			cy.get(the.cartItem).should('have.length', this.numOfProducts) //se valida que se elimina el producto del SCP
+            cy.get(the.cartItem).should('have.length', this.numOfProducts) //se valida que se elimina el producto del SCP
 
 			cy.get(the.continueShoppingBtn).click() //se hace click en el button "continue shopping"
 		}
 	})
 })
 
-Cypress.Commands.add('removeCustomProductsPDP', () => {
-	cy.fixture('DOM/BotonRemove/RemoveProducts.Page').then((the) => {
-		cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts)
+Cypress.Commands.add("removeCustomProductsPDP", () => {
+    cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
 
-		//precondición: usuario se situa en el PDP de cada producto, al no poder usar cy.visit(), se recurre a este paso
-		for (const indice of this.listRandom) {
-			cy.get(the.productItem).eq(indice).click() //Va al PDP del producto seleccionado anteriormente como precondición
+        cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts)
+        
+        //precondición: usuario se situa en el PDP de cada producto, al no poder usar cy.visit(), se recurre a este paso
+        for (const indice of this.listRandom){
+            cy.get(the.productItem)
+            .eq(indice)
+            .click()//Va al PDP del producto seleccionado anteriormente como precondición
+            
+            cy.url().should("contain", "inventory-item")
+            
+            cy.contains(the.buttonAddToCartPDP, /^Remove/)
+                .click() //hace click sobre el botón "Remove"
+            
+            cy.get(the.backToProductsBtn).click()
+            
+            cy.get(the.buttonAddToCart)
+                .eq(indice)
+                .should('have.text', 'Add to cart') //se valida que cada button "remove" cambie a "add to cart" */
+            
+            this.numOfProducts = this.numOfProducts - 1
 
-			cy.url().should('contain', 'inventory-item')
-
-			cy.contains(the.buttonAddToCartPDP, /^Remove/).click() //hace click sobre el botón "Remove"
-
-			cy.get(the.backToProductsBtn).click()
-
-			cy.get(the.buttonAddToCart).eq(indice).should('have.text', 'Add to cart') //se valida que cada button "remove" cambie a "add to cart" */
-
-			this.numOfProducts = this.numOfProducts - 1
-
-			if (this.numOfProducts === 0) {
-				cy.get(the.shoppingCartAlert).should('not.exist')
-			} else {
-				cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
-			}
+            if (this.numOfProducts === 0) {
+                cy.get(the.shoppingCartAlert).should('not.exist')
+            } else {
+                cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
+            }
 
 			cy.get(the.shoppingCartLink).click() //se hace click en el icono del SCP
 
-			cy.get(the.cartItem).should('have.length', this.numOfProducts) //se valida que se elimina el producto del SCP
+            cy.get(the.cartItem).should('have.length', this.numOfProducts) //se valida que se elimina el producto del SCP
 
 			cy.get(the.continueShoppingBtn).click() //se hace click en el button "continue shopping"
 		}
 	})
 })
 
-Cypress.Commands.add('removeCustomProductsSCP', () => {
-	cy.fixture('DOM/BotonRemove/RemoveProducts.Page').then((the) => {
-		cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se valida que haya el numero de productos en el icono de SCP
+Cypress.Commands.add("removeCustomProductsSCP", () => {
+    cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
+
+        cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se valida que haya el numero de productos en el icono de SCP
 
 		cy.get(the.shoppingCartLink).click() //se hace click en el icono del SCP
 
-		cy.get(the.cartItem).should('have.length', this.numOfProducts) //se valida que la cantidad de productos en el SCP sea la introducida previamente
+        cy.get(the.cartItem).should('have.length', this.numOfProducts) //se valida que la cantidad de productos en el SCP sea la introducida previamente
 
-		for (const indice of this.listRandom) {
-			cy.get(the.buttonRemoveShoppingCart).eq(0).click() //hace click sobre el botón "Remove" de cada uno de los productos previamente añadidos
+        for (const indice of this.listRandom) {
+            cy.get(the.buttonRemoveShoppingCart)
+                .eq(0)
+                .click()//hace click sobre el botón "Remove" de cada uno de los productos previamente añadidos
+            
+            this.numOfProducts = this.numOfProducts - 1
 
-			this.numOfProducts = this.numOfProducts - 1
-
-			cy.get(the.cartItem).should('have.length', this.numOfProducts) //se valida que los productos sean eliminados del SCP
-
-			if (this.numOfProducts === 0) {
-				cy.get(the.shoppingCartAlert).should('not.exist') //se valida que cuando no hay ningún producto el alert desaparece del SCP
-			} else {
-				cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
-			}
-		}
-	})
+            cy.get(the.cartItem).should('have.length', this.numOfProducts)//se valida que los productos sean eliminados del SCP
+            
+            if (this.numOfProducts === 0) {
+                cy.get(the.shoppingCartAlert).should('not.exist') //se valida que cuando no hay ningún producto el alert desaparece del SCP
+            } else {
+                cy.get(the.shoppingCartAlert).should('have.text', this.numOfProducts) //se resta -1 en icono del SCP por cada click en "remove"
+            }
+        }
+    })
 })
 
 Cypress.Commands.add('Login', () => {
@@ -173,13 +189,13 @@ Cypress.Commands.add('DragDropY', (obj, X, Y) => {
 	cy.get(obj).should('have.attr', 'style', `position: relative; left: 0px; top: ${Y}px;`)
 })
 
-Cypress.Commands.add('addProductToCart', () => {
-	cy.get('button.btn_inventory')
-		.should('have.length.greaterThan', 0)
-		.its('length')
-		.then(($LengthButton) => {
-			const RandomNumber = Cypress._.random(0, $LengthButton - 1)
-			this.selectedItem = RandomNumber
+Cypress.Commands.add("addProductToCart", () => {
+    cy.get('button.btn_inventory')
+            .should('have.length.greaterThan', 0)
+            .its('length')
+            .then($LengthButton => {
+                const RandomNumber = Cypress._.random(0, $LengthButton - 1)
+                this.selectedItem = RandomNumber
 
 			cy.get('button.btn_inventory').eq(RandomNumber).click() //Añade un producto random al SCP
 		})
@@ -189,26 +205,39 @@ Cypress.Commands.add('removeProductPLP', () => {
 	cy.fixture('DOM/BotonRemove/RemoveProducts.Page').then((the) => {
 		cy.get(the.buttonAddToCart).eq(this.selectedItem).click() //hace click sobre el botón "Remove" del producto previamente añadido
 
-		cy.get(the.buttonShoppingCart).should('not.exist') // se resta -1 en icono del SCP
+        cy.get(the.buttonAddToCart)
+            .eq(this.selectedItem)
+            .click() //hace click sobre el botón "Remove" del producto previamente añadido
 
-		cy.get(the.buttonAddToCart).eq(this.selectedItem).should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart"
-	})
+        cy.get(the.buttonShoppingCart)
+            .should('not.exist') // se resta -1 en icono del SCP
+
+        cy.get(the.buttonAddToCart)
+            .eq(this.selectedItem)
+            .should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart"
+    })
 })
 
-Cypress.Commands.add('removeProductPDP', () => {
-	cy.fixture('DOM/BotonRemove/RemoveProducts.Page').then((the) => {
-		//precondición: usuario se situa en el PDP
-		cy.get(the.productItem).eq(this.selectedItem).click() //Va al PDP del producto seleccionado anteriormente como precondición
+Cypress.Commands.add("removeProductPDP", () => {
+    cy.fixture("DOM/BotonRemove/RemoveProducts.Page").then((the) => {
 
-		cy.url().should('contain', 'inventory-item')
-
-		//acción
-		cy.contains(the.buttonAddToCartPDP, /^Remove/).click() //hace click sobre el botón "Remove"
-
-		cy.get(the.buttonShoppingCart).should('not.exist') // se resta -1 en icono del SCP
-
-		cy.get(the.buttonAddToCart).should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart"
-	})
+        //precondición: usuario se situa en el PDP
+        cy.get(the.productItem)
+            .eq(this.selectedItem)
+            .click() //Va al PDP del producto seleccionado anteriormente como precondición
+            
+        cy.url().should("contain", "inventory-item")
+            
+        //acción
+        cy.contains(the.buttonAddToCartPDP, /^Remove/)
+            .click() //hace click sobre el botón "Remove"
+        
+        cy.get(the.buttonShoppingCart)
+            .should('not.exist') // se resta -1 en icono del SCP
+        
+        cy.get(the.buttonAddToCart)
+            .should('have.text', 'Add to cart') // se valida que el button "remove" cambie a "add to cart" 
+    })
 })
 Cypress.Commands.add('selectProduct', (productName) => {
 	cy.get('div.inventory_item_name').each(($el, index, $list) => {

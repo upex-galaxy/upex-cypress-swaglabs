@@ -1,7 +1,7 @@
 describe("SwagLabs | PLP PDP | Remover productos del SCP desde el PLP y PDP", () => {
 
     let selectedItem, listRandom, numOfProducts
-
+    
     beforeEach("Precondición: el usuario se encuentra logueado y previamente tiene uno o más productos añadidos al carrito de compras", () => {
         cy.userIsloggedIn() //loguea al usuario
         cy.addProductCustom(6) //añade n productos al SCP

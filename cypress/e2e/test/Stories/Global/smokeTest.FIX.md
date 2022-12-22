@@ -18,4 +18,9 @@
 ```Suites/How-to/UI-testing/xpaths/xpath.test.cy.js ✖``` <br>
    **Error:** El baseUrl del archivo cypress.config.json hace fallar el test, esto esta aclarado dentro del mismo. <br>
    **FIX:** Se buscará la forma de ignorar el baseUrl (pendiente) <br>
+
+```Suites/GX-2530/GX-2530.cy.js ✖```<br>
+    **Error:** cy.click() can only be called on a single element <br>
+    *El selector del objeto del archivo ProductListPage.js se encontraba duplicado<br>
+    **FIX:** Se obtuvo el elemento desde otro punto, solucionando el problema<br>   
    

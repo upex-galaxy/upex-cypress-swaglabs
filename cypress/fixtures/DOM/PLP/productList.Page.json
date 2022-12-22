@@ -1,0 +1,7 @@
+{
+    "PLPurl":"https://www.saucedemo.com/inventory.html",
+    "inputAddtoCart":{
+        "Backpack":"[data-test='add-to-cart-sauce-labs-backpack']"
+    }
+ 
+}

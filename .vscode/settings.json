@@ -20,7 +20,7 @@
 	"cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)\\(",
 	"cucumberautocomplete.stepRegExSymbol": "'",
 	"window.zoomLevel": 1,
-	"workbench.colorTheme": "Winter is Coming (Dark Blue)",
+	"workbench.colorTheme": "Dracula",
 	"cSpell.language": "en,es",
 	"terminal.integrated.defaultProfile.windows": "Git Bash",
 	"editor.defaultFormatter": "esbenp.prettier-vscode",

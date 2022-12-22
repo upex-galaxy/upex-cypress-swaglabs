@@ -1,8 +1,5 @@
-export class ProductListPage{
-    selectProduct(productname) {
-        cy.get('h3')
-            .children('a[class="ec_image_link_cover"]')
-            .contains(productname)
-            .click({force:true});
-    }
+export class ProductListPage {
+	selectProduct() {
+        cy.get('[href="https://academybugs.com/store/blue-hoodie/"]').eq(2).click();
+	}
 }

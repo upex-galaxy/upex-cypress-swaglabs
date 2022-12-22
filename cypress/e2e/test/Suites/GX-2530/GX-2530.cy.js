@@ -4,7 +4,7 @@ import { ProductDetailedPage } from "../../../../support/Pages/AcademyBugs/Produ
 import { ProductListPage } from "../../../../support/Pages/AcademyBugs/ProductListPage";
 
 describe('GX-2530 ✅📜PDP | Category Search | Buscar productos por Filtros de categoría en el PDP', () => {
-    let info;
+    // let info;
     const productlistpage = new ProductListPage;
     const productdetailedpage = new ProductDetailedPage
 
@@ -16,7 +16,7 @@ describe('GX-2530 ✅📜PDP | Category Search | Buscar productos por Filtros de
         cy.visit('https://academybugs.com/find-bugs/');
     })
     it('2535 | TC1: Valida que el usuario busque los items por categoría de la tienda', () => {
-        productlistpage.selectProduct(info.productname);
+        productlistpage.selectProduct();
         productdetailedpage.ClickonAccesories();
         productdetailedpage.Checkmenu().should('exist');
         productdetailedpage.ClickonHandbagpurse();

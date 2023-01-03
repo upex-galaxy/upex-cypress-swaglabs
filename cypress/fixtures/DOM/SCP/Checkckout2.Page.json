@@ -1,0 +1,24 @@
+{
+    "login": {
+        "username": "[data-test='username']",
+        "password": "[data-test='password']",
+        "submit": "[data-test='login-button']"
+    },
+    "item": {
+        "add": "[data-test*='add-to-cart']",
+        "remove": "[data-test*='remove']"
+    },
+    "Cart": "#shopping_cart_container",
+    "AddedItems": ".shopping_cart_link span",
+    "checkout": "[data-test='checkout']",
+    "form": {
+        "firstName": "#first-name",
+        "lastName": "#last-name",
+        "postalCode": "#postal-code",
+        "continue": "#continue"
+    },
+    "checkout2": {
+        "finish": "[data-test='finish']",
+        "cancel": "[data-test='cancel']"
+    }
+}

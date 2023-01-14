@@ -1,3 +1,4 @@
+
 describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	beforeEach('Precondición: Situado en la página de Login', () => {
 		cy.visit('https://www.saucedemo.com/')
@@ -73,13 +74,27 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		cy.get("[data-test='error']")
 		cy.contains('Epic sadface: Username is required').should('be.visible')
 	})
-	it.only('6517 | TC10: Validar usuario ingresa al endpoint /inventory.html', () => {
+	it('6517 | TC10: Validar usuario ingresa al endpoint /inventory.html', () => {
 
 		cy.visit('https://www.saucedemo.com/inventory.html', {failOnStatusCode: false})
 		cy.get("[data-test='error']").should('contain', "Epic sadface: You can only access '/inventory.html' when you are logged in.")
 	})
-	it('6517 | TC11: Validar usuario ingresa al endpoint /cart.html', () => {})
-	it('6517 | TC12: Validar usuario ingresa al endpoint /checkout-step-one.html', () => {})
-	it('6517 | TC13: Validar usuario ingresa al endpoint /checkout-step-two.html', () => {})
-	it('6517 | TC14: Validar usuario ingresa al endpoint /checkout-complete.html', () => {})
+	it('6517 | TC11: Validar usuario ingresa al endpoint /cart.html', () => {
+
+        cy.visit('https://www.saucedemo.com/cart.html', {failOnStatusCode: false})
+		cy.get("[data-test='error']").should('contain', "Epic sadface: You can only access '/cart.html' when you are logged in.")
+	})
+    
+	it('6517 | TC12: Validar usuario ingresa al endpoint /checkout-step-one.html', () => {
+        cy.visit('https://www.saucedemo.com/cart.html', {failOnStatusCode: false})
+		cy.get("[data-test='error']").should('contain', "Epic sadface: You can only access '/cart.html' when you are logged in.")
+    })
+	it('6517 | TC13: Validar usuario ingresa al endpoint /checkout-step-two.html', () => {
+        cy.visit('https://www.saucedemo.com/checkout-step-two.html', {failOnStatusCode: false})
+		cy.get("[data-test='error']").should('contain', "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.")
+    })
+	it('6517 | TC14: Validar usuario ingresa al endpoint /checkout-complete.html', () => {
+        cy.visit('https://www.saucedemo.com/checkout-complete.html', {failOnStatusCode: false})
+		cy.get("[data-test='error']").should('contain', "Epic sadface: You can only access '/checkout-complete.html' when you are logged in.")
+    })
 })

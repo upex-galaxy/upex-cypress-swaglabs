@@ -110,7 +110,7 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
             cy.contains("Epic sadface: Username is required").should("be.visible")
 	})
 	it.only('6517 | TC10: Validar usuario ingresa al endpoint /inventory.html', () => {
-        failOnStatusCode: false
+        
         cy.visit("https://www.saucedemo.com/inventory.html")
         cy.url()
             .should("include", "inventory")        

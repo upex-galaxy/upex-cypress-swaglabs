@@ -49,8 +49,8 @@ export default defineConfig({
 		setupNodeEvents,
 		// baseUrl: ""
 	},
-
 	env: {
+		baseUrl:"https://www.saucedemo.com",
 		AdminUser: {
 			username: 'Admin',
 			password: 'admin123',

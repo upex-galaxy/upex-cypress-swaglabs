@@ -50,6 +50,7 @@ export default defineConfig({
 		// baseUrl: ""
 	},
 	env:{
+		baseUrl:"https://www.saucedemo.com",
 
 		AdminUser:{
 

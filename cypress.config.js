@@ -61,10 +61,36 @@ export default defineConfig({
 			dashboardIndex: "/dashboard/index",
 			signUp: "https://coderbyte.com/sl" 
 		},
+		
 		user: {
 			username: "upexTesting",
 			email: "sai@upextesting.com",
 			password: "1234567"
-		}
+		},
+		swagLabsEP:{
+			inventory:"https://www.saucedemo.com/inventory.html",
+			cart:"https://www.saucedemo.com/cart.html",
+			checkoutOne:"https://www.saucedemo.com/checkout-step-one.html",
+			checkoutTwo:"https://www.saucedemo.com/checkout-step-two.html",
+			checkoutAll:"https://www.saucedemo.com/checkout-complete.html"
+		
+		},
+		ErrorEP:{
+			inventoryError:"Epic sadface: You can only access '/inventory.html' when you are logged in.",
+			cartError:"Epic sadface: You can only access '/cart.html' when you are logged in.",
+			checkoutOneError:"Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.",
+			checkoutTwoError:"Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
+			checkoutAllError:"Epic sadface: You can only access '/checkout-complete.html' when you are logged in."
+		
+		},
+		flagsErrorSL:{
+			lockedUser:"Epic sadface: Sorry, this user has been locked out.",
+			PassOrUserInv:"Epic sadface: Username and password do not match any user in this service",
+			UserNull:"Epic sadface: Username is required",
+			PassNull:"Epic sadface: Password is required",
+			
+			
+		},
 	}
+	
 })

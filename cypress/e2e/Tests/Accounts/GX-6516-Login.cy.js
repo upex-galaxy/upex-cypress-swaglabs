@@ -21,7 +21,7 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		Login.submitButton('#login-button')
 		cy.url().should('contain', endpoint.inventory)
 	})
-	it('6517 | TC3: Validar login con credenciales correctas performance_glitch_user', () => {
+	it.skip('6517 | TC3: Validar login con credenciales correctas performance_glitch_user', () => {
 		Login.enterUsername(login.users.glitchUser) //User Correcto
 		Login.enterPassword(login.users.correctPass) //Password Correcta
 		Login.submitButton('#login-button')

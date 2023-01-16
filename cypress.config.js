@@ -68,11 +68,11 @@ export default defineConfig({
 		
 		swagLabs:{
 			endpoint: {
-				inventory: '/inventory.html',
-				cart: '/cart.html',
-				checkoutOne: '/checkout-step-one.html',
-				checkoutTwo: '/checkout-step-two.html',
-				checkoutAll: '/checkout-complete.html',
+				inventory:'/inventory.html',
+				cart:'/cart.html',
+				checkoutOne:'/checkout-step-one.html',
+				checkoutTwo:'/checkout-step-two.html',
+				checkoutAll:'/checkout-complete.html',
 			},
 			login:{
 				users: {

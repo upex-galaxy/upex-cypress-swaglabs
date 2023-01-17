@@ -7,11 +7,10 @@
     "data":{
         "password":"secret_sauce",
         "user":"standar_user",
-        "Lockeduser":"locked_out_user",
-        "buguser":"problem_user",
-        "glitchuser":"performance_glitch_user",
-        "nullpass":""
-        
+        "Locked_user":"locked_out_user",
+        "bug_user":"problem_user",
+        "glitch_user":"performance_glitch_user"
+                
 
     },
     "error":"[data-test='error']"

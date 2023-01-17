@@ -11,7 +11,6 @@
         "buguser":"problem_user",
         "glitchuser":"performance_glitch_user",
         "nullpass":""
-        
 
     },
     "error":"[data-test='error']"

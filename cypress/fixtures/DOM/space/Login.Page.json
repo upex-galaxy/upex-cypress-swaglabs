@@ -6,7 +6,7 @@
 
     "data":{
         "password":"secret_sauce",
-        "user":"standar_user",
+        "user":"standard_user",
         "Lockeduser":"locked_out_user",
         "buguser":"problem_user",
         "glitchuser":"performance_glitch_user",

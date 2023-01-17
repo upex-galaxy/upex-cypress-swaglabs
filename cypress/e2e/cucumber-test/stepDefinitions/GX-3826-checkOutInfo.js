@@ -9,11 +9,11 @@ context("SwagLabs | Checkout Info | Insertar información del comprador.", () =>
     Given("El usuario ingresa a la WebPage de Swag Labs con una cuenta valida", () =>
     {
         cy.visit("https://www.saucedemo.com/")
-        cy.fixture("DOM/GX-3826/Login.Page").then((the) => 
+        cy.fixture("DOM/space/Login.Page").then((the) => 
         {
             cy.get(the.input.username).type(the.data.user)
             cy.get(the.input.password).type(the.data.password)
-            cy.get(the.submitButton).click()
+            cy.get("#login-button").click()
         })
     })
     And("El usuario agrega un producto al SC", ()=>
@@ -57,7 +57,7 @@ context("SwagLabs | Checkout Info | Insertar información del comprador.", () =>
     })
 
 	// # @TC_GX-3899 @TS_GX-3827 @Gherkin
-	describe.skip("3827 | TC2:  Validar cuando no se ingresen datos dispare BR2, BR3, BR4, BR5, BR6, BR7, BR8, BR9 Respectivamente", () => {
+	describe("3827 | TC2:  Validar cuando no se ingresen datos dispare BR2, BR3, BR4, BR5, BR6, BR7, BR8, BR9 Respectivamente", () => {
         
         Then("Rellenara los campos de First Name con {string}, el campo de Last Name con {string}, y el campo Zip con {string}", (FirstName, LastName, Zip) => { 
             FirstName && cy.get("[placeholder='First Name']").type(FirstName)
@@ -77,7 +77,7 @@ context("SwagLabs | Checkout Info | Insertar información del comprador.", () =>
 
 
 	// # @TC_GX-4176 @TS_GX-3827 @Gherkin
-    describe.skip("3827 | TC3: Validar Funcion del Botón Cancel de Checkout - step - one Page", () => {
+    describe("3827 | TC3: Validar Funcion del Botón Cancel de Checkout - step - one Page", () => {
         Then("El usuario presiona el botón Cancel", () =>
         {
             cy.get("#cancel")

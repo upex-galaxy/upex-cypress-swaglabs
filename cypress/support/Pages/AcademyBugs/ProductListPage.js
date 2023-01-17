@@ -1,8 +1,8 @@
 export class ProductListPage{
     selectProduct(productname) {
-        cy.get('h3')
-            .children('a[class="ec_image_link_cover"]')
+        cy.get('h3[class$="ec_product_title_type1"]')
+            .children()
             .contains(productname)
-            .click({force:true});
+            .click();
     }
 }

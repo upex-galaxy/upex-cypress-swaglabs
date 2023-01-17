@@ -50,7 +50,7 @@ export default defineConfig({
 		// baseUrl: ""
 	},
 	env: {
-		baseUrl:"https://www.saucedemo.com",
+		baseUrl: 'https://www.saucedemo.com',
 		AdminUser: {
 			username: 'Admin',
 			password: 'admin123',
@@ -65,24 +65,23 @@ export default defineConfig({
 			email: 'sai@upextesting.com',
 			password: '1234567',
 		},
-		
-		swagLabs:{
+		swagLabs: {
 			endpoint: {
-				inventory:'/inventory.html',
-				cart:'/cart.html',
-				checkoutOne:'/checkout-step-one.html',
-				checkoutTwo:'/checkout-step-two.html',
-				checkoutAll:'/checkout-complete.html',
+				inventory: '/inventory.html',
+				cart: '/cart.html',
+				checkoutOne: '/checkout-step-one.html',
+				checkoutTwo: '/checkout-step-two.html',
+				checkoutAll: '/checkout-complete.html',
 			},
-			login:{
+			login: {
 				users: {
 					correctUser: 'standard_user',
 					correctPass: 'secret_sauce',
 					lockUser: 'locked_out_user',
-					problemUser:'problem_user',
+					problemUser: 'problem_user',
 					passInv: 'invalid_password',
-					glitchUser:'performance_glitch_user',
-					userInv:'invalid_username',
+					glitchUser: 'performance_glitch_user',
+					userInv: 'invalid_username',
 				},
 				errorMsg: {
 					inventoryError: "Epic sadface: You can only access '/inventory.html' when you are logged in.",
@@ -95,9 +94,7 @@ export default defineConfig({
 					UserNull: 'Epic sadface: Username is required',
 					PassNull: 'Epic sadface: Password is required',
 				},
-			}	
-			
-		}
-	}	
+			},
+		},
+	},
 })
-

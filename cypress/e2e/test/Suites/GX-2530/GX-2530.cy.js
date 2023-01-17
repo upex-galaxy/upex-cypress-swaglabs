@@ -7,7 +7,6 @@ describe('GX-2530 ✅📜PDP | Category Search | Buscar productos por Filtros de
     // let info;
     const productlistpage = new ProductListPage;
     const productdetailedpage = new ProductDetailedPage
-
     before(() => {
         cy.fixture("DOM/GX-2530/information").then(data => {
             info = data;

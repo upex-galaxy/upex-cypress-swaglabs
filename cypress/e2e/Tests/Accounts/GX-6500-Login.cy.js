@@ -3,22 +3,22 @@ import {Login} from '@pages/LoginMigue.Page.js'
 
 // crear constantes global del enviroment 
 const {login, endpoint, errorMessage} = Cypress.env('swagLabs')
-const  {SwagLabsUrl} = Cypress.env()
+const  {baseUrl} = Cypress.env()
 
 
 describe("✅SwagLabs | Account | Iniciar sesión y BR de Accesos", () => 
 {
   beforeEach("Precondicion: Usurio debe estar situado en la página de Login", () => {
-    cy.visit(SwagLabsUrl)
+    cy.visit(baseUrl)
     cy.url().should('contain', 'saucedemo')
   })
 
-  it.only("6501 | TC1:  Validar iniciar sesión exitosamente cuando “Username“ es standard_user y “Password“ secret_sauce.", () => {
+  it("6501 | TC1:  Validar iniciar sesión exitosamente cuando “Username“ es standard_user y “Password“ secret_sauce.", () => {
       Login.enterInputUsername(login.user.standarUser)
       Login.enterInputPassword(login.user.secretSauce)
       Login.enterSubmitButton('#login-button')
       cy.url().should('contain', endpoint.inventory)
-      //cy.url("https://www.saucedemo.com/inventory.html").should("contain", "inventory")
+      
   })
 
   it("6501 | TC2:  Validar NO poder iniciar sesión exitosamente cuando “Username“ es locked_out_user y “Password“ secret_sauce.", () => {
@@ -38,7 +38,7 @@ it("6501 | TC3:  Validar NO poder iniciar sesión exitosamente cuando “Usernam
     cy.url("https://www.saucedemo.com/inventory.html").should("contain", "inventory")
 })
 
-it.skip("6501 | TC4:  Validar NO poder iniciar sesión exitosamente cuando “Username“ es performance_glitch_user y “Password“ secret_sauce.", () => {
+it("6501 | TC4:  Validar NO poder iniciar sesión exitosamente cuando “Username“ es performance_glitch_user y “Password“ secret_sauce.", () => {
     cy.get("[type = 'text']").type("performance_glitch_user")
     cy.get("[type = 'password']").type("secret_sauce")
     cy.get("#login-button")

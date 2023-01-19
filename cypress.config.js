@@ -4,12 +4,6 @@ import pkg from '@badeball/cypress-cucumber-preprocessor'
 const { addCucumberPreprocessorPlugin } = pkg
 import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild.js'
 import { downloadFile } from 'cypress-downloadfile/lib/addPlugin.js'
-import { defineConfig } from 'cypress'
-import createBundler from '@bahmutov/cypress-esbuild-preprocessor'
-import pkg from '@badeball/cypress-cucumber-preprocessor'
-const { addCucumberPreprocessorPlugin } = pkg
-import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild.js'
-import { downloadFile } from 'cypress-downloadfile/lib/addPlugin.js'
 
 async function setupNodeEvents(on, config) {
 	// This is required for the preprocessor to be able to generate JSON reports after each run, and more,

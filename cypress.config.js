@@ -4,11 +4,18 @@ import pkg from '@badeball/cypress-cucumber-preprocessor'
 const { addCucumberPreprocessorPlugin } = pkg
 import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild.js'
 import { downloadFile } from 'cypress-downloadfile/lib/addPlugin.js'
+import { defineConfig } from 'cypress'
+import createBundler from '@bahmutov/cypress-esbuild-preprocessor'
+import pkg from '@badeball/cypress-cucumber-preprocessor'
+const { addCucumberPreprocessorPlugin } = pkg
+import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild.js'
+import { downloadFile } from 'cypress-downloadfile/lib/addPlugin.js'
 
 async function setupNodeEvents(on, config) {
 	// This is required for the preprocessor to be able to generate JSON reports after each run, and more,
 	await addCucumberPreprocessorPlugin(on, config)
 
+	on('task', { downloadFile })
 	on('task', { downloadFile })
 
 	on(
@@ -24,7 +31,7 @@ async function setupNodeEvents(on, config) {
 
 export default defineConfig({
 	// @Ely: CYPRESS DASHBOARD PARA VER NUESTRAS EJECUCIONES EN LA WEB:
-	projectId: '',
+	projectId: 'n1k8t6',
 	// 1280×720 is considered to be the most suitable screen resolution for the desktop website version:
 	viewportWidth: 1280,
 	viewportHeight: 720,
@@ -46,20 +53,19 @@ export default defineConfig({
 		// Glob pattern to determine what test files to load:
 		specPattern: ['cypress/e2e/cucumber-test/Gherkin/*.feature', 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}'],
 		// Use Cypress plugins:
-    	setupNodeEvents,
+		setupNodeEvents,
 		// baseUrl: ""
 	},
-	env:{
-		SwagLabsUrl : "https://www.saucedemo.com",
-		AdminUser:{
-
-			username: "Admin",
-			password: "admin123"
+	env: {
+		baseUrl: 'https://www.saucedemo.com',
+		AdminUser: {
+			username: 'Admin',
+			password: 'admin123',
 		},
-		endpoint:{
-			authLogin: "/auth/login",
-			dashboardIndex: "/dashboard/index",
-			signUp: "https://coderbyte.com/sl" 
+		endpoint: {
+			authLogin: '/auth/login',
+			dashboardIndex: '/dashboard/index',
+			signUp: 'https://coderbyte.com/sl',
 		},
 		user: {
 			username: "upexTesting",

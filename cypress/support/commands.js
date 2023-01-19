@@ -16,6 +16,7 @@ const {authLogin, dashboardIndex} = Cypress.env('endpoint')
 import {signin} from '@pages/SignIn.Page.js'
 
 
+
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
@@ -56,3 +57,5 @@ Cypress.Commands.add('SignIn', ()=>{
         signin.submitLogin()
     })
 })
+
+

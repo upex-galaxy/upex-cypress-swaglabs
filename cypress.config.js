@@ -1,15 +1,15 @@
-import { defineConfig } from 'cypress';
-import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
-import pkg from '@badeball/cypress-cucumber-preprocessor';
-const {addCucumberPreprocessorPlugin} = pkg;
-import {createEsbuildPlugin} from '@badeball/cypress-cucumber-preprocessor/esbuild.js';
-import { downloadFile } from 'cypress-downloadfile/lib/addPlugin.js';
+import { defineConfig } from 'cypress'
+import createBundler from '@bahmutov/cypress-esbuild-preprocessor'
+import pkg from '@badeball/cypress-cucumber-preprocessor'
+const { addCucumberPreprocessorPlugin } = pkg
+import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild.js'
+import { downloadFile } from 'cypress-downloadfile/lib/addPlugin.js'
 
 async function setupNodeEvents(on, config) {
 	// This is required for the preprocessor to be able to generate JSON reports after each run, and more,
 	await addCucumberPreprocessorPlugin(on, config)
 
-	on('task', {downloadFile})
+	on('task', { downloadFile })
 
 	on(
 		'file:preprocessor',
@@ -50,7 +50,7 @@ export default defineConfig({
 		// baseUrl: ""
 	},
 	env:{
-
+		SwagLabsUrl : "https://www.saucedemo.com",
 		AdminUser:{
 
 			username: "Admin",
@@ -65,6 +65,42 @@ export default defineConfig({
 			username: "upexTesting",
 			email: "sai@upextesting.com",
 			password: "1234567"
+		},
+		// ----------- SwagLabs ------------ //
+		// Datos fijos seleccionados
+		swagLabs: {
+			endpoint: {
+				inventory: '/inventory.html',
+				cart: '/cart.html',
+				checkoutStepOne: '/checkout-step-one.html',
+				checkoutStepTwo: '/checkout-step-two.html',
+				checkoutComplete: '/checkout-complete.html',
+			},
+			login: {
+				user: {
+					standarUser: 'standard_user',
+					secretSauce: 'secret_sauce',
+					lockedOutUser: 'locked_out_user',
+					problemUser: 'problem_user',
+					performanceGlitchUser: 'performance_glitch_user',
+					invalidUser: 'invalid_user',
+					invalidPassword: 'invalid_password',
+				},
+				errorMessage: {
+					passwordError: 'Epic sadface: Username and password do not match any user in this service',
+					userError: 'Epic sadface: Username and password do not match any user in this service',
+					passwordNull: 'Epic sadface: Password is required',
+					userNull: 'Epic sadface: Username is required',
+					userPasswordNull: 'Epic sadface: Username is required',
+					inventoryError: "Epic sadface: You can only access '/inventory.html' when you are logged in.",
+					cartError: "Epic sadface: You can only access '/cart.html' when you are logged in.",
+					stepOneError: "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.",
+					stepTwoError: "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
+					completeError: "Epic sadface: You can only access '/checkout-complete.html' when you are logged in.",
+				},
+			}
 		}
+			
+		
 	}
 })

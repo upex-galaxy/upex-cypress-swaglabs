@@ -74,3 +74,19 @@ Cypress.Commands.add('SignIn', ()=>{
         signin.submitLogin()
     })
 })
+
+
+Cypress.Commands.add('getActualOrder', ()=>{
+    cy.get('.inventory_item').each((item)=>{
+        cy.wrap(item).within((card)=>{
+            cy.get('.inventory_item_name').then((name)=>{
+                let productName = name.text()
+                Cypress.env('itemNames').push(productName)
+            })
+            cy.get('.inventory_item_price').then((price)=>{
+                let productPrice = parseFloat(price.text().replace('$',''))
+                Cypress.env('itemPrices').push(productPrice)
+            })
+        })
+    })
+})

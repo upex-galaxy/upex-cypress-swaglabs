@@ -16,24 +16,7 @@ const {authLogin, dashboardIndex} = Cypress.env('endpoint')
 import {signin} from '@pages/SignIn.Page.js'
 
 
-//  LOGIN SWAGLABS
-// Cypress.Commands.add('Login', (username, password)=>
-// {
-//     cy.fixture("DOM/space/Login.Page")
-//         cy.get(the.username.input)
-//             .type(username)
-//         cy.get(the.password.input)
-//             .type(password)
-//         cy.get(the.submitButton).click()
-        
-// })
-// cy.get("[type='text']")
-// .type('standard_user')
-// cy.get("[type='password']")
-// .type('secret_sauce')
-// cy.get('#login-button')
-// cy.contains('Login')
-// .click()
+
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
@@ -74,8 +57,6 @@ Cypress.Commands.add('SignIn', ()=>{
         signin.submitLogin()
     })
 })
-
-
 Cypress.Commands.add('getActualOrder', ()=>{
     cy.get('.inventory_item').each((item)=>{
         cy.wrap(item).within((card)=>{

@@ -1,0 +1,35 @@
+
+    {
+        "inputs":{
+            "usermane":"#user-name" ,
+            "password":"#password"
+        },
+    
+        "Data":{
+            "UsuarioOK":"standard_user",
+            "passwordOK":"secret_sauce",
+            "UsuarioBloqueado": "locked_out_user",
+            "UsuarioNotOK": "problem_user",
+            "glitch_user":"performance_glitch_user"
+        },
+    
+        "endpoints": {
+            "urlInventory":"/inventory.html"
+            
+        },
+        
+        "msgError":{
+            "inventory": "Epic sadface: You can only access '/inventory.html' when you are logged in.",
+            "cart": "Epic sadface: You can only access '/cart.html' when you are logged in.",
+            "checkout-step-one":"Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.",
+            "checkout-step-two": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
+            "checkout-complete":"Epic sadface: You can only access '/checkout-complete.html' when you are logged in."
+        },
+    
+        
+        "TextError": "Epic sadface: Sorry, this user has been locked out."
+    
+        
+    }
+
+

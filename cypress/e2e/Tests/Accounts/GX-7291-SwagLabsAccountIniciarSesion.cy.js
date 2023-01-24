@@ -55,4 +55,27 @@ describe ('SwagLabs | Account | Iniciar sesión y BR de Accesos',()=>{
         cy.visit(baseUrl + the.endpoints.urlInventory,{failOnStatusCode: false})
         login.get.error().should('contain.text',the.msgError.inventory)
     })
+
+    it('TC7: Validar usuario intenta al endpoint /cart.html',()=>{
+        cy.visit(baseUrl + the.endpoints.urlCart,{failOnStatusCode: false})
+        login.get.error().should('contain.text',the.msgError.cart)
+    })
+
+    it('TC8: Validar usuario intenta al endpoint /checkout-step-one.html',()=>{
+        cy.visit(baseUrl + the.endpoints.urlCheckoutStepOne,{failOnStatusCode: false})
+        login.get.error().should('contain.text',the.msgError.checkoutStepOne)
+    })
+
+    it('TC9: Validar usuario intenta al endpoint /checkout-step-two.html',()=>{
+        cy.visit(baseUrl + the.endpoints.urlCheckoutStepTwo,{failOnStatusCode: false})
+        login.get.error().should('contain.text',the.msgError.checkoutStepTwo)
+    })
+
+    
+    it('TC10: Validar usuario intenta al endpoint /checkout-complete.html',()=>{
+        cy.visit(baseUrl + the.endpoints.urlCheckoutComplete,{failOnStatusCode: false})
+        login.get.error().should('contain.text',the.msgError.checkoutComplete)
+    })
+
+
 })

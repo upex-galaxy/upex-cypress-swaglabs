@@ -14,16 +14,20 @@
         },
     
         "endpoints": {
-            "urlInventory":"/inventory.html"
+            "urlInventory":"/inventory.html",
+            "urlCart": "/cart.html",
+            "urlCheckoutStepOne":"/checkout-step-one.html",
+            "urlCheckoutStepTwo":"/checkout-step-two.html",
+            "urlCheckoutComplete": "/checkout-complete.html"
             
         },
         
         "msgError":{
             "inventory": "Epic sadface: You can only access '/inventory.html' when you are logged in.",
             "cart": "Epic sadface: You can only access '/cart.html' when you are logged in.",
-            "checkout-step-one":"Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.",
-            "checkout-step-two": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
-            "checkout-complete":"Epic sadface: You can only access '/checkout-complete.html' when you are logged in."
+            "checkoutStepOne":"Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.",
+            "checkoutStepTwo": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
+            "checkoutComplete":"Epic sadface: You can only access '/checkout-complete.html' when you are logged in."
         },
     
         

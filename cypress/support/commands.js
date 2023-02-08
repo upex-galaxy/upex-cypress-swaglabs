@@ -40,7 +40,7 @@ Cypress.Commands.add('SL',(username,password)=>{
         // cy.url().should("contain", "saucedemo")
         username && Login.enterUsername(username)
         password && Login.enterPassword(password)
-        Login.submitLogin()
+        Login.submitButton()
 
         cy.url().should("contain", endpoint.inventory)
         

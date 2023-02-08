@@ -11,8 +11,10 @@ import 'cypress-file-upload'
 import 'cypress-wait-until'
 import '@4tw/cypress-drag-drop'
 import 'cypress-downloadfile/lib/downloadFileCommand'
+import { Login } from '@pages/loginFranco.Page'
 import {login} from '@pages/Login.Page'
 const {authLogin, dashboardIndex} = Cypress.env('endpoint')
+const {endpoint} = Cypress.env('swagLabs')
 import {signin} from '@pages/SignIn.Page.js'
 
 
@@ -32,15 +34,15 @@ import {signin} from '@pages/SignIn.Page.js'
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('Login',(username,password)=>{
-    cy.session('login',()=>{
-        cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php")
-        cy.url().should("contain", authLogin)
-        username && login.enterUsername(username)
-        password && login.enterPassword(password)
-        login.submitLogin()
+Cypress.Commands.add('SL',(username,password)=>{
+    cy.session('Login',()=>{
+        cy.visit(baseURL)
+        // cy.url().should("contain", "saucedemo")
+        username && Login.enterUsername(username)
+        password && Login.enterPassword(password)
+        Login.submitLogin()
 
-        cy.url().should("contain", dashboardIndex)
+        cy.url().should("contain", endpoint.inventory)
         
     })
 })
@@ -57,17 +59,5 @@ Cypress.Commands.add('SignIn', ()=>{
         signin.submitLogin()
     })
 })
-Cypress.Commands.add('getActualOrder', ()=>{
-    cy.get('.inventory_item').each((item)=>{
-        cy.wrap(item).within((card)=>{
-            cy.get('.inventory_item_name').then((name)=>{
-                let productName = name.text()
-                Cypress.env('itemNames').push(productName)
-            })
-            cy.get('.inventory_item_price').then((price)=>{
-                let productPrice = parseFloat(price.text().replace('$',''))
-                Cypress.env('itemPrices').push(productPrice)
-            })
-        })
-    })
-})
+
+

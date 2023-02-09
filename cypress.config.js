@@ -66,6 +66,12 @@ export default defineConfig({
 			password: '1234567',
 		},
 		swagLabs: {
+			checkout:{
+				firstNameError:'Error: First Name is required',
+				lastNameError:'Error: Last Name is required',
+				postalCodeError: 'Error: Postal Code is required'
+
+			},
 			endpoint: {
 				inventory: '/inventory.html',
 				cart: '/cart.html',
@@ -93,6 +99,7 @@ export default defineConfig({
 					PassOrUserInv: 'Epic sadface: Username and password do not match any user in this service',
 					UserNull: 'Epic sadface: Username is required',
 					PassNull: 'Epic sadface: Password is required',
+
 				},
 			},
 		},

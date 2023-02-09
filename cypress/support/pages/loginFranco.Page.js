@@ -11,12 +11,13 @@ class login {
 		continueButton:()=>cy.get("#continue"),
         lastNameCO:()=>cy.get("#last-name"),
         firstNameCO:()=>cy.get("#first-name"),
-		postalCodeCO:()=>("#postal-code"),
-		checkoutButton:()=>cy.get("#checkout"),
+		postalCodeCO:()=>cy.get("#postal-code"),
+		checkoutButton:()=>cy.get('#checkout'),
 		invContainer:()=>cy.get(".inventory_container"),
 		invItem:()=> cy.get(".inventory_item"),
-		addCart:()=>cy.get('[id="add-to-cart-sauce"]').click(),
-		Cart:()=>("#shopping_cart_container").click()
+		addCart:()=>cy.get('[id*="add-to-cart-sauce"]'),
+		cart:()=>cy.get("#shopping_cart_container")
+		
 	}
 	enterUsername(text) {
 		this.get.inputUsername().type(text)
@@ -28,15 +29,15 @@ class login {
 		this.get.loginButton().click()
 	}
 	firstName(text){
-		this.get.firstNameCO().type(text)
+		this.get.firstNameCO().click().type(text)
 
 	}
 	lastName(text){
-		this.get.lastNameCO().type(text)
+		this.get.lastNameCO().click().type(text)
 
 	}
 	postalCode(text){
-		this.get.postalCodeCO().type(text)
+		this.get.postalCodeCO().click().type(text)
 
 	}
 	cancel(){
@@ -44,18 +45,20 @@ class login {
 		
 	}
 	continue(){
-		this.get.cancelButton().click()
+		this.get.continueButton().click()
 	
 	}
 	
 	background(){
 		this.get.invContainer().within((list)=>{
-			const product = list.length
-			const randomProduct = (Math.floor(Math.random(product * list)))
-			this.get.invItem().eq(randomProduct)
-			this.get.Cart()	
-			this.get.checkoutButton()	
+			const product = list.length + 1
+			const randomProduct = (Math.floor(Math.random() * product))
+			this.get.invItem().eq(randomProduct).then(()=>{
+				this.get.addCart().eq(randomProduct).click()
+			})
 		})
+		this.get.cart().click()
+		this.get.checkoutButton().click()
 	}
 }
 export const Login = new login()

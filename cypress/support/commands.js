@@ -14,6 +14,7 @@ import 'cypress-downloadfile/lib/downloadFileCommand'
 import { Login } from '@pages/loginFranco.Page'
 import {login} from '@pages/Login.Page'
 const {authLogin, dashboardIndex} = Cypress.env('endpoint')
+const {baseUrl} = Cypress.env()
 const {endpoint} = Cypress.env('swagLabs')
 import {signin} from '@pages/SignIn.Page.js'
 
@@ -36,7 +37,7 @@ import {signin} from '@pages/SignIn.Page.js'
 
 Cypress.Commands.add('SL',(username,password)=>{
     cy.session('Login',()=>{
-        cy.visit(baseURL)
+        cy.visit(baseUrl)
         // cy.url().should("contain", "saucedemo")
         username && Login.enterUsername(username)
         password && Login.enterPassword(password)

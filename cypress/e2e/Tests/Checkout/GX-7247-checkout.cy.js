@@ -38,7 +38,7 @@ describe("SwagLabs | Checkout Info | Insert buyer information.",()=>{
         Login.postalCode(faker.address.zipCode('#####'))
         Login.continue()
         Login.get.error().should('contain', checkout.lastNameError)
-        cy.url().should('contain', endpoint.inventory)
+        cy.url().should('contain', endpoint.checkoutOne)
     })
     
     it("GX-7248 | TC4:  Validate User enters null data in the form field [Postal Code]",()=>{
@@ -48,7 +48,7 @@ describe("SwagLabs | Checkout Info | Insert buyer information.",()=>{
         //POSTAL CODE NULL.
         Login.continue()
         Login.get.error().should('contain', checkout.postalCodeError)
-        cy.url().should('contain', endpoint.inventory)
+        cy.url().should('contain', endpoint.checkoutOne)
     })
     
     it.skip("GX-7248 | TC5:  Validate user enters special characters in the form fields [First, Last, Postal Code].",()=>{

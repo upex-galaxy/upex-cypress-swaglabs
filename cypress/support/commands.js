@@ -35,7 +35,7 @@ import {signin} from '@pages/SignIn.Page.js'
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('SL',(username,password)=>{
+Cypress.Commands.add('Login',(username,password)=>{
     cy.session('Login',()=>{
         cy.visit(baseUrl)
         // cy.url().should("contain", "saucedemo")

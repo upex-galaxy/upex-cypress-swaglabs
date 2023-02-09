@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker';
-import { Login } from '@pages/loginFranco.Page'
 import { Inventory } from '@pages/inventory.Page'
 import { Cart } from '@pages/cart.Page'
 import { CheckoutStepOne } from '@pages/checkoutStepOne.Page'

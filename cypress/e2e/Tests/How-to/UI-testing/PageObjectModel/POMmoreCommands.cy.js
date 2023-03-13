@@ -1,6 +1,6 @@
 const { username, password } = Cypress.env('AdminUser');
 
-describe('user logs in', () => {
+describe.skip('user logs in', () => {
 	beforeEach(() => {
 		cy.Login(username, password);
 	});

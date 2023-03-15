@@ -1,95 +1,100 @@
 
+import { initsesion } from "@pages/loginLCasco.Page"
+
+const {login, endpoint} = Cypress.env('swagLabs')
+const {baseUrl}= Cypress.env()
+
 describe('Login Logout Swag Labs',()=>{
     beforeEach('',()=>{
-        cy.visit('https://www.saucedemo.com/')
+        cy.visit(baseUrl)
         cy.url().should('contain','sauce')
     })
 
-    it('TC1 validar login correcto standard_user',()=>{
-        cy.get('#user-name').type('standard_user')
-        cy.get('#password').type('secret_sauce')
-        cy.get('#login-button').click()
+    it('GX-10240|TC1 validar login correcto standard_user',()=>{
+        initsesion.inputUserName(login.users.correctUser)
+        initsesion.inputPassword(login.users.correctPass)
+        initsesion.clickButtonLogin()
         cy.url().should('contain','/inventory.html')
     })
 
-    it('TC2 validar login correcto problem_user',()=>{
-        cy.get('#user-name').type('problem_user')
-        cy.get('#password').type('secret_sauce')
-        cy.get('#login-button').click()
+    it('GX-10240|TC2 validar login correcto problem_user',()=>{
+        initsesion.inputUserName(login.users.problemUser)
+        initsesion.inputPassword(login.users.correctPass)
+        initsesion.clickButtonLogin()
     })
 
-    it('TC3 validar login correcto performance_glitch_user',()=>{
-        cy.get('#user-name').type('performance_glitch_user')
-        cy.get('#password').type('secret_sauce')
-        cy.get('#login-button').click()
+    it('GX-10240|TC3 validar login correcto performance_glitch_user',()=>{
+        initsesion.inputUserName(login.users.glitchUser)
+        initsesion.inputPassword(login.users.correctPass)
+        initsesion.clickButtonLogin()
     })
 
 
-    it ('TC4 Validar login con cuenta bloqueada',()=>{
-        cy.get('#user-name').type('locked_out_user')
-        cy.get('#password').type('secret_sauce')
-        cy.get('#login-button').click()
-        cy.get("[data-test='error']").should('have.text','Epic sadface: Sorry, this user has been locked out.')
+    it ('GX-10240|TC4 Validar login con cuenta bloqueada',()=>{
+        initsesion.inputUserName(login.users.lockUser)
+        initsesion.inputPassword(login.users.correctPass)
+        initsesion.clickButtonLogin()
+        initsesion.get.ErrorMsj().should('have.text',login.errorMsg.lockedUser)
     })
 
-    it('TC05 validar login account y password null',()=>{
-        cy.get('#login-button').click()
-        cy.get("[data-test='error']").should('have.text','Epic sadface: Username is required')
+    it('GX-10240|TC05 validar login account y password null',()=>{
+        initsesion.clickButtonLogin()
+        initsesion.get.ErrorMsj().should('have.text',login.errorMsg.UserNull)
     })
 
-    it('TC06 validar login account valido y password null',()=>{
-        cy.get('#user-name').type('problem_user')
-        cy.get('#login-button').click()
-        cy.get("[data-test='error']").should('have.text','Epic sadface: Password is required')
+    it('GX-10240|TC06 validar login account valido y password null',()=>{
+        initsesion.inputUserName('problem_user')
+        initsesion.clickButtonLogin()
+        initsesion.get.ErrorMsj().should('have.text',login.errorMsg.PassNull)
     })
 
-    it('TC07 validar login account null y password valido',()=>{
-        cy.get('#password').type('secret_sauce')
-        cy.get('#login-button').click()
-        cy.get("[data-test='error']").should('have.text','Epic sadface: Username is required')
+    it('GX-10240|TC07 validar login account null y password valido',()=>{
+        initsesion.inputPassword(login.users.correctPass)
+        initsesion.clickButtonLogin()
+        initsesion.get.ErrorMsj().should('have.text',login.errorMsg.UserNull)
     })
 
-    it('TC08 validar login con user inexistente y password valido',()=>{
-        cy.get('#user-name').type('holaMundo')
-        cy.get('#password').type('secret_sauce')
-        cy.get('#login-button').click()
-        cy.get("[data-test='error']").should('have.text','Epic sadface: Username and password do not match any user in this service')
+    it('GX-10240|TC08 validar login con user inexistente y password valido',()=>{
+        initsesion.inputUserName(login.users.passInv)
+        initsesion.inputPassword(login.users.correctPass)
+        initsesion.clickButtonLogin()
+        initsesion.get.ErrorMsj().should('have.text',login.errorMsg.PassOrUserInv)
     })
 
-    it ('TC09 validar login con user problem_user',()=>{
-        cy.get('#user-name').type('problem_user')
-        cy.get('#password').type('secret_sauce')
-        cy.get('#login-button').click()
+    it ('GX-10240|TC09 validar login con user problem_user',()=>{
+        initsesion.inputUserName(login.users.problemUser)
+        initsesion.inputPassword(login.users.correctPass)
+        initsesion.clickButtonLogin()
     })
 
-    it(' TC10 Validar url /cart.html',()=>{
+    it(' GX-10240|TC10 Validar url /cart.html',()=>{
         cy.visit('https://www.saucedemo.com/cart.html',{failOnStatusCode: false})
-        cy.get("[data-test='error']").contains("Epic sadface: You can only access '/cart.html' when you are logged in.")
+        initsesion.get.ErrorMsj().contains(login.errorMsg.cartError)
     })
 
     
-    it(' TC11 Validar url /checkout-step-one.html',()=>{
+    it('GX-10240| TC11 Validar url /checkout-step-one.html',()=>{
         cy.visit('https://www.saucedemo.com/checkout-step-one.html',{failOnStatusCode: false})
-        cy.get("[data-test='error']").contains("Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.")
+        initsesion.get.ErrorMsj().contains(login.errorMsg.checkoutOneError)
     })
 
-    it(' TC12 Validar url /checkout-step-two.html',()=>{
+    it(' GX-10240|TC12 Validar url /checkout-step-two.html',()=>{
         cy.visit('https://www.saucedemo.com/checkout-step-two.html',{failOnStatusCode: false})
-        cy.get("[data-test='error']").contains("Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.")
+        initsesion.get.ErrorMsj().contains(login.errorMsg.checkoutTwoError)
     })
 
-    it(' TC12 Validar URL /checkout-complete.html',()=>{
+    it('GX-10240| TC13 Validar URL /checkout-complete.html',()=>{
         cy.visit('https://www.saucedemo.com/checkout-complete.html',{failOnStatusCode: false})
-        cy.get("[data-test='error']").contains("Epic sadface: You can only access '/checkout-complete.html' when you are logged in.")
+        initsesion.get.ErrorMsj().contains(login.errorMsg.checkoutAllError)
     })
 
-    it('TC13 Validar logout correcto',()=>{
-        cy.get('#user-name').type('standard_user')
-        cy.get('#password').type('secret_sauce')
-        cy.get('#login-button').click()
+    it('GX-10240|TC14 Validar logout correcto',()=>{
+        initsesion.inputUserName('standard_user')
+        initsesion.inputPassword('secret_sauce')
+        initsesion.clickButtonLogin()
         cy.url().should('contain','/inventory.html')
-        cy.get('#react-burger-menu-btn').click()
-        cy.get('#logout_sidebar_link').click()
+        initsesion.clickButtonMenu()
+        initsesion.clickButtonLogOut()
     })
     
 

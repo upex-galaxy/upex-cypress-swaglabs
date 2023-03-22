@@ -1,36 +1,43 @@
+import { Checkout } from '@pages/Checkoutform.page';
+import { login } from '@pages/Login.Page';
+import { plp } from '@pages/PLP-SCP';
+
+const base = Cypress.env('baseUrl');
+
 describe('GX-11192', () => {
-	beforeEach('Precondition', () => {
-		cy.visit('https://www.saucedemo.com');
-		cy.get('#user-name').type('standard_user');
-		cy.get('#password').type('secret_sauce');
-		cy.get('#login-button').click();
-		cy.get('#add-to-cart-sauce-labs-backpack').click(); //add item to cart
-		cy.get('[class="shopping_cart_link"]').click(); //go to cart
-		cy.get('#checkout').click(); //go to checkout
+	beforeEach('Precondicion para llegar hasta el checkout', () => {
+		cy.visit(base);
+		login.enterUsername('standard_user');
+		login.enterPassword('secret_sauce');
+		login.submitLogin();
+		plp.Add();
+		plp.Cart();
+		plp.Checkout();
 	});
-	it('TC1: Validar que el Usuario 1 puede realizar checkout con datos validos', () => {
-		cy.get('#first-name').type('Leonardo');
-		cy.get('#last-name').type('Millan');
-		cy.get('#postal-code').type('6050');
-		cy.get('#continue').click();
-		cy.get('#finish').should('contain', 'Finish');
+
+	it('11193 | TC1: Validar que el Usuario 1 puede realizar checkout con datos validos', () => {
+		Checkout.firstname('Leonardo');
+		Checkout.lastname('Millan');
+		Checkout.postalCode('6050');
+		Checkout.continue();
+		Checkout.Finish();
 	});
-	it('TC2: Validar que el Usuario 1 NO puede realizar checkout con campo name vacio', () => {
-		cy.get('#last-name').type('Millan');
-		cy.get('#postal-code').type('6050');
-		cy.get('#continue').click();
-		cy.get('[class="error-message-container error"]').should('contain', 'Error: First Name is required');
+	it('11193 | TC2: Validar que el Usuario 1 NO puede realizar checkout con campo name vacio', () => {
+		Checkout.lastname('Millan');
+		Checkout.postalCode('6050');
+		Checkout.continue();
+		Checkout.FBR2();
 	});
-	it('TC3: Validar que el Usuario 1 NO puede realizar checkout con campo last name vacio', () => {
-		cy.get('#first-name').type('Leonardo');
-		cy.get('#postal-code').type('6050');
-		cy.get('#continue').click();
-		cy.get('[class="error-message-container error"]').should('contain', 'Error: Last Name is required');
+	it('11193 | TC3: Validar que el Usuario 1 NO puede realizar checkout con campo last name vacio', () => {
+		Checkout.firstname('Leonardo');
+		Checkout.postalCode('6050');
+		Checkout.continue();
+		Checkout.FBR3();
 	});
-	it('TC4: Validar que el Usuario 1 NO puede realizar checkout con campo postal code vacio', () => {
-		cy.get('#first-name').type('Leonardo');
-		cy.get('#last-name').type('Millan');
-		cy.get('#continue').click();
-		cy.get('[class="error-message-container error"]').should('contain', 'Error: Postal Code is required');
+	it('11193 | TC4: Validar que el Usuario 1 NO puede realizar checkout con campo postal code vacio', () => {
+		Checkout.firstname('Leonardo');
+		Checkout.lastname('Millan');
+		Checkout.continue();
+		Checkout.FBR4();
 	});
 });

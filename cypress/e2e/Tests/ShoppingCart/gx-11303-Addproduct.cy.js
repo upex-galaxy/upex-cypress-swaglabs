@@ -3,6 +3,6 @@ describe('GX-11303', () => {
 		cy.visit();
 	});
 	it('TC1', () => {
-		cy.get;
+		cy.get();
 	});
 });

@@ -18,8 +18,10 @@ describe('GX-11303', () => {
 		plp.AddTwoRandomItem();
 		plp.CheckaddBttcart();
 	});
-	it('TC3: Validar que (Name) y (Price) es el mismo del item agregado en la seccion Cart', () => {
+	it('TC3: Validar que (Name) es el mismo del item agregado en la seccion Cart', () => {
 		plp.ValidateNameItem();
 	});
+	it('TC4: Validar que (Price) es el mismo del item agregado en la seccion Cart', () => {
+		plp.ValidatePriceItem();
+	});
 });
-//ses

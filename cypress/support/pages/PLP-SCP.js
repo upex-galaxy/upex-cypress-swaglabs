@@ -54,6 +54,19 @@ class PLP {
 				this.get.ScpItem().contains(nameItem);
 			});
 	}
+	ValidatePriceItem() {
+		const num = Math.round(Math.random() * 5);
+		this.get
+			.Rprice()
+			.eq(num)
+			.then(PriceItem => {
+				const priceItem = PriceItem.text();
+				cy.log(priceItem);
+				this.get.RAdd().eq(num).click();
+				this.get.gotocart().click();
+				this.get.ScpItem().contains(PriceItem);
+			});
+	}
 }
 export const plp = new PLP();
 //h

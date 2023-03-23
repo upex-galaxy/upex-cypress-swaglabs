@@ -67,6 +67,19 @@ class PLP {
 				this.get.ScpItem().contains(priceItem);
 			});
 	}
+	SelectRandomItem() {
+		const num = Math.round(Math.random() * 5);
+		this.get.Rtitle().eq(num).click();
+	}
+	PdpAddCart() {
+		this.get.RAdd().click();
+	}
+	CheckBttRemove() {
+		this.get.CRemove().should('be.visible');
+	}
+	CheckAddBtnCart() {
+		this.get.gotocart().should('contain', '1');
+	}
 }
 export const plp = new PLP();
 //h

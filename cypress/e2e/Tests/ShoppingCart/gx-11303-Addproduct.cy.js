@@ -24,4 +24,10 @@ describe('GX-11303', () => {
 	it('TC4: Validar que (Price) es el mismo del item agregado en la seccion Cart', () => {
 		plp.ValidatePriceItem();
 	});
+	it('TC5: Validar agregar item desde el PDP y que sume 1+ en el icono (Cart)', () => {
+		plp.SelectRandomItem();
+		plp.PdpAddCart();
+		plp.CheckBttRemove();
+		plp.CheckAddBtnCart();
+	});
 });

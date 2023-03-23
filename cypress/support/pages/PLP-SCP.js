@@ -64,7 +64,7 @@ class PLP {
 				cy.log(priceItem);
 				this.get.RAdd().eq(num).click();
 				this.get.gotocart().click();
-				this.get.ScpItem().contains(PriceItem);
+				this.get.ScpItem().contains(priceItem);
 			});
 	}
 }

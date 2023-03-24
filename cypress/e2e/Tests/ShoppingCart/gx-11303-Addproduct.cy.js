@@ -1,5 +1,5 @@
 import { login as Login } from '@pages/Login.Page';
-import { plp } from '@pages/PLP-SCP.Page';
+import { plp } from '@pages/PLP-SCP';
 const { login } = Cypress.env('swagLabs');
 const base = Cypress.env('baseUrl');
 
@@ -31,3 +31,4 @@ describe('GX-11303', () => {
 		plp.CheckAddBtnCart();
 	});
 });
+//h

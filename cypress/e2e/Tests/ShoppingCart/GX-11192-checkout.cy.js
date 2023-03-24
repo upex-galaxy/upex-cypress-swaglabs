@@ -1,6 +1,6 @@
 import { Checkout } from '@pages/Checkoutform.page';
 import { login } from '@pages/Login.Page';
-import { plp } from '@pages/PLP-SCP.Page';
+import { plp } from '@pages/PLP-SCP';
 
 const base = Cypress.env('baseUrl');
 
@@ -41,3 +41,4 @@ describe('GX-11192', () => {
 		Checkout.FBR4();
 	});
 });
+//h

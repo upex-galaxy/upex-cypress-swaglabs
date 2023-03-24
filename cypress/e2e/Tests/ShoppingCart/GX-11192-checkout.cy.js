@@ -1,6 +1,6 @@
 import { Checkout } from '@pages/Checkoutform.page';
 import { login } from '@pages/Login.Page';
-import { plp } from '@pages/PLP-SCP';
+import { plp } from '@pages/PLP-SCP.Page';
 
 const base = Cypress.env('baseUrl');
 

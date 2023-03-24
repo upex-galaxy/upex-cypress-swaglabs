@@ -1,5 +1,5 @@
 import { login as Login } from '@pages/Login.Page';
-import { plp } from '@pages/PLP-SCP';
+import { plp } from '@pages/PLP-SCP.Page';
 const { login } = Cypress.env('swagLabs');
 const base = Cypress.env('baseUrl');
 

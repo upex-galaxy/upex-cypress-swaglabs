@@ -32,13 +32,20 @@ import { signin } from '@pages/SignIn.Page.js';
 
 Cypress.Commands.add('Login', (username, password) => {
 	cy.session('login', () => {
-		cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php');
+		cy.visit('https://www.saucedemo.com/');
+		cy.url().should('contain', 'saucedemo');
+		cy.get('[name = "user-name"]').type(username);
+		cy.get('[name= "password"]').type(password);
+		cy.get('[type= "submit"]').click();
+		cy.url().should('include', 'inventory');
+
+		/*cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php');
 		cy.url().should('contain', authLogin);
 		username && login.enterUsername(username);
 		password && login.enterPassword(password);
 		login.submitLogin();
 
-		cy.url().should('contain', dashboardIndex);
+		cy.url().should('contain', dashboardIndex);*/
 	});
 });
 

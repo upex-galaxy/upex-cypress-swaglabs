@@ -74,3 +74,28 @@ Cypress.Commands.add('getActualOrder', () => {
 		});
 	});
 });
+
+//todo: If you want to Add <quantity> of items into the Cart
+Cypress.Commands.add('addToCartItems', itemsToAdd => {
+	let max = 1;
+	for (let i = 0; i < itemsToAdd; i++) {
+		if (max > itemsToAdd) {
+			cy.get('[data-test*=add]').then(AvailableItems => {
+				//todo: 1ro se obtiene la cantidad actual de items
+				const remainingItems = AvailableItems.length;
+				max = remainingItems;
+				let randomItemIndex = Math.floor(Math.random() * remainingItems) - 1;
+				//todo: 2do obtener la Card del item con botón en "Add To Cart" para hacerle click y guardar  variables
+				cy.wrap(AvailableItems)
+					.eq(randomItemIndex)
+					.parentsUntil('.inventory_list')
+					.within(() => {
+						cy.get('.inventory_item_name').then(itemName => Cypress.env('addedItemName', itemName));
+						cy.get('.inventory_item_price').then(itemPrice => Cypress.env('addedItemPrice', itemPrice));
+						cy.get('button').click({ force: true });
+						cy.get('button').should('have.text', 'Remove');
+					});
+			});
+		}
+	}
+});

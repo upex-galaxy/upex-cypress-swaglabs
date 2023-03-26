@@ -1,3 +1,4 @@
+/* eslint-disable for-direction */
 const username = 'standard_user';
 const password = 'secret_sauce';
 
@@ -10,19 +11,32 @@ describe('SwagLabs | Checkout Info | Insertar información del comprador.', () =
 		cy.get('#password').type(password);
 		cy.get('#login-button').click();
 
-		cy.get('.inventory_container').within(list => {
-			const producto = list.length + 1;
-			const randomProduct = Math.floor(Math.random() * producto);
-			cy.get('.inventory_item')
-				.eq(randomProduct)
-				.then(() => {
-					cy.get('#add-to-cart-sauce-labs-backpack').eq(randomProduct).click();
-				});
-		});
+		cy.addToCartItems(3);
+
+		cy.log('PRUEBA FINALIZADA!!!!!!!!!!!');
+
+		cy.get('.inventory_list')
+			.children()
+			.then(items => {
+				const itemsQuantity = items.length;
+				let randomItemIndex = Math.floor(Math.random() * itemsQuantity) - 1;
+				cy.wrap(items)
+					.eq(randomItemIndex)
+					.within(() => {
+						cy.get('button').click();
+					});
+			});
+		cy.get('#shopping_cart_container span').should('have.text', 1);
+
 		//agregar producto aleatorio al carrito
 	});
 
 	it.only('GX-10740|TC01 validar que el usuario complete exitosamente el formulario del comprador', () => {
+		cy.visit('https://www.saucedemo.com/cart.html');
+		cy.url().should('contain', 'cart.html');
+		cy.get('#checkout').click();
+		cy.url().should('contain', 'checkout-step-one.html');
+
 		expect(1).eq(1);
 	});
 

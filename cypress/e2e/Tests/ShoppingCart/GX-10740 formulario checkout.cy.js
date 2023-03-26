@@ -10,17 +10,26 @@ describe('SwagLabs | Checkout Info | Insertar información del comprador.', () =
 		cy.get('#password').type(password);
 		cy.get('#login-button').click();
 
-		cy.get('.inventory_container').within(list => {
-			const producto = list.length + 1;
-			const randomProduct = Math.floor(Math.random() * producto);
-			cy.get('.inventory_item')
-				.eq(randomProduct)
-				.then(() => {
-					cy.get('#add-to-cart-sauce-labs-backpack').eq(randomProduct).click();
+		//hacer un for para agregar 2 productos al carrito , y
+		// se puede con un Each pero hay que determinar cuales son los index 2 numeros random que no se repitan
+
+		let selectproducto1 = Math.floor(Math.random() * prod);
+
+		let addProduct = function (number) {
+			cy.wrap(list)
+				.eq(number)
+				.within(() => {
+					cy.get('button').click();
 				});
-		});
-		//agregar producto aleatorio al carrito
+		};
+		addProduct(selectproducto1);
+		//addProduct(randomItems2);
+
+		cy.log(`Number one is: ${randomItems1}`);
+		//cy.log(`Number one is: ${randomItems2}`);
 	});
+
+	//agregar producto aleatorio al carrito
 
 	it.only('GX-10740|TC01 validar que el usuario complete exitosamente el formulario del comprador', () => {
 		expect(1).eq(1);

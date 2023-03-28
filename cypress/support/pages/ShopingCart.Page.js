@@ -13,6 +13,7 @@ class ShoppingCart {
 		removeBtn: () => cy.get('[data-test*="remove-"]'),
 		iconSC: () => cy.get('#shopping_cart_container'),
 		quantityProducts: () => cy.get('#shopping_cart_container'),
+		checkout: () => cy.get('[data-test*=checkout]'),
 	};
 	removeLastProduct() {
 		// Remover un producto del SCP
@@ -27,6 +28,9 @@ class ShoppingCart {
 	}
 	goToSC() {
 		this.get.iconSC().click();
+	}
+	SubmitCheckout() {
+		this.get.checkout().click();
 	}
 }
 

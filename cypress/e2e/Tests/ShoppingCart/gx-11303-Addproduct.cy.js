@@ -1,6 +1,8 @@
 import { login as Login } from '@pages/Login.Page';
-import { plp } from '@pages/PLP-SCP.Page';
-const { login } = Cypress.env('swagLabs');
+import { cart as ShoppingCart } from '@pages/ShopingCart.Page';
+import { productDetailPage } from '@pages/ProductDetailPage.Page';
+const { login, endpoint } = Cypress.env('swagLabs');
+import { ProductListpage, nameItem, priceItem } from '@pages/ProductList.Page';
 const base = Cypress.env('baseUrl');
 
 describe('GX-11303', () => {
@@ -9,25 +11,30 @@ describe('GX-11303', () => {
 		Login.enterUsername(login.users.correctUser);
 		Login.enterPassword(login.users.correctPass);
 		Login.submitLogin();
+		cy.url().should('contain', endpoint.inventory);
 	});
 	it('TC1: Agregar al carrito dos items random y verificar que el boton (Add to cart) Cambien a (Remove)', () => {
-		plp.AddTwoRandomItem();
-		plp.CheckChangeBtn();
+		ProductListpage.AddtoCartItemRandom(); //first Item
+		ProductListpage.AddtoCartItemRandom(); //Second item
+		ProductListpage.get.Removeofcart().should('be.visible').its('length').and('eq', 2); //Validate that (exist, visible) 2 button remove
 	});
 	it('TC2: Agregar al carrito dos items random y verificar que el icono (Cart) sume dos items (2)', () => {
-		plp.AddTwoRandomItem();
-		plp.CheckaddBttcart();
+		ProductListpage.AddtoCartItemRandom(); //first Item
+		ProductListpage.AddtoCartItemRandom(); //second item
+		ProductListpage.get.cart().contains('2');
 	});
-	it('TC3: Validar que (Name) es el mismo del item agregado en la seccion Cart', () => {
-		plp.ValidateNameItem();
+	it('TC3: Validar que (Name y Price) es el mismo del item agregado en la seccion Cart', () => {
+		ProductListpage.GetRandomItem();
+		ProductListpage.GetName();
+		ProductListpage.GetPrice();
+		ProductListpage.addtoCartItemRandom();
+		ProductListpage.GotoShopingCart();
+		ShoppingCart.get.Productname().should('contain', nameItem);
+		ShoppingCart.get.Productprice().should('contain', priceItem);
 	});
-	it('TC4: Validar que (Price) es el mismo del item agregado en la seccion Cart', () => {
-		plp.ValidatePriceItem();
-	});
-	it('TC5: Validar agregar item desde el PDP y que sume 1+ en el icono (Cart)', () => {
-		plp.SelectRandomItem();
-		plp.PdpAddCart();
-		plp.CheckBttRemove();
-		plp.CheckAddBtnCart();
+	it('TC4: Validar agregar item desde el PDP y que sume 1+ en el icono (Cart)', function () {
+		ProductListpage.SelectrandomItem();
+		productDetailPage.AddItemToCart();
+		productDetailPage.get.cart().contains(1);
 	});
 });

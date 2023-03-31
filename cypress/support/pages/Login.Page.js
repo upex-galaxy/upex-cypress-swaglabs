@@ -6,6 +6,7 @@ class Login {
 		passwordInput: () => cy.get('[name="password"]'),
 		submitButton: () => cy.get('[type="submit"]'),
 		forgotLink: () => cy.get('[class*="login-forgot"] p'),
+		ErrorMsgContainer: () => cy.get('[class*=error-message]'),
 	};
 
 	// Accionable de Cypress

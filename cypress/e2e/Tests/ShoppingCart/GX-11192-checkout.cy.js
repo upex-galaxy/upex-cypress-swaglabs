@@ -42,3 +42,4 @@ describe('GX-11192', () => {
 		Checkout.get.errorContainer().should('contain', checkout.errorMsg.BusinessRule4);
 	});
 });
+//h

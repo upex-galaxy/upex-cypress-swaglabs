@@ -1,4 +1,4 @@
-import { formCheck } from '@pages/loginCheckoutLCasco.Page';
+import { formCheck } from '@pages/formCheckoutLCasco.Page';
 import formCheckOut from '@data/checkoutStep2Form';
 
 describe('SwagLabs | Checkout Info | Insertar información del comprador.', () => {

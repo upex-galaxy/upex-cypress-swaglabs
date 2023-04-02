@@ -95,6 +95,18 @@ export default defineConfig({
 					PassNull: 'Epic sadface: Password is required',
 				},
 			},
+			checkout: {
+				errorMsg: {
+					BusinessRule2: 'Error: First Name is required',
+					BusinessRule3: 'Error: Last Name is required',
+					BusinessRule4: 'Error: Postal Code is required',
+					BusinessRule5: 'Error: Special characters are not allowed',
+					BusinessRule6: 'Error: Special characters are not allowed',
+					BusinessRule7: 'Error: Special characters are not allowed',
+					BusinessRule8: 'Error: Numeric characters not allowed',
+					BusinessRule9: 'Error: Numeric characters not allowed',
+				},
+			},
 		},
 	},
 });

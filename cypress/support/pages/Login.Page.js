@@ -21,4 +21,4 @@ class Login {
 	}
 }
 
-export const login = new Login();
+export const loginExample = new Login();

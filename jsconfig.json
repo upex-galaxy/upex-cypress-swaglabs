@@ -4,7 +4,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"@pages/*": ["./cypress/support/pages/*"],
-			"@helper/*": ["./cypress/support/helper/*"]
+			"@helper/*": ["./cypress/support/helper/*"],
+			"@data/*": ["./cypress/fixtures/data/*"]
 		}
 	},
 	"exclude": ["node_modules"],

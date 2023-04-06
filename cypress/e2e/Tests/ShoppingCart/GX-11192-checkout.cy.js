@@ -1,5 +1,5 @@
 import { Checkout } from '@pages/Checkoutform.page';
-import { loginExample } from '@pages/loginExample.Page';
+import { loginExample } from '@pages/Login.Page';
 import { ProductListpage } from '@pages/ProductList.Page';
 import { cart } from '@pages/ShopingCart.Page';
 const { login, endpoint, checkout } = Cypress.env('swagLabs');

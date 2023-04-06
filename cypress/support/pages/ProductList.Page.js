@@ -9,7 +9,7 @@ class Productlistpage {
 		Productprice: () => cy.get('[class*=item_price]'),
 		Productimg: () => cy.get('[class*=item_img]'),
 		Addtocart: () => cy.get('[class*=btn_primary]'),
-		Removeofcart: () => cy.get('[class*=btn_secondary]'),
+		ButtonRemove: () => cy.get('[class*=btn_secondary]'),
 		cart: () => cy.get('[class*=shopping_cart_link]'),
 	};
 	SelectrandomItem() {
@@ -24,6 +24,29 @@ class Productlistpage {
 	AddtoCartItemRandom() {
 		this.get.Addtocart().then(num => {
 			let Num = Math.floor(Math.random() * num.length + 1) - 1;
+			this.get.Addtocart().eq(Num).click();
+		});
+	}
+	addtoCartItemRandom() {
+		//seleccionar item random
+		this.get.Addtocart().then(Large => {
+			let num = Math.floor(Math.random() * Large.length + 1) - 1;
+			Num.push(num);
+			//extraer nombre
+			this.get
+				.Productname()
+				.eq(Num)
+				.then(text1 => {
+					NameItem.push(text1.text());
+				});
+			//extraer precio
+			this.get
+				.Productprice()
+				.eq(Num)
+				.then(text2 => {
+					PriceItem.push(text2.text());
+				});
+			//agregar al carrito
 			this.get.Addtocart().eq(Num).click();
 		});
 	}

@@ -16,18 +16,24 @@ describe('GX-11303', () => {
 	it('TC1: Agregar al carrito dos items random y verificar que el boton (Add to cart) Cambien a (Remove)', () => {
 		ProductListpage.AddtoCartItemRandom(); //first Item
 		ProductListpage.AddtoCartItemRandom(); //Second item
-		ProductListpage.get.Removeofcart().should('be.visible').its('length').and('eq', 2); //Validate that (exist, visible) 2 button remove
-		ProductListpage.get.Removeofcart().should('have.lengthOf', 2);
-		ProductListpage.get.Removeofcart().should('exist');
-		ProductListpage.get.Removeofcart().then(large => {
+		ProductListpage.get.ButtonRemove().should('be.visible').its('length').and('eq', 2); //Validate that (exist, visible) 2 button remove
+		ProductListpage.get.ButtonRemove().should('have.lengthOf', 2);
+		ProductListpage.get.ButtonRemove().should('exist');
+		ProductListpage.get.ButtonRemove().then(large => {
 			const large2 = large.length;
 			expect(large2).eql(2);
 			expect(large).to.have.lengthOf(2);
 		});
 	});
-	it('TC2: Agregar al carrito dos items random y verificar que el icono (Cart) sume dos items (2)', () => {
+	it('TC2: Agregar al carrito multiples items para validar que sume 1 por cada item en el icono (Cart)', () => {
 		ProductListpage.AddtoCartItemRandom(); //first Item
-		ProductListpage.AddtoCartItemRandom(); //second item
+		ProductListpage.get.cart().contains('1');
+		ProductListpage.get.cart().should('have.text', 1);
+		ProductListpage.get.cart().then(cart => {
+			expect(cart).to.have.text(1);
+			expect(cart.text()).eql('1');
+		});
+		ProductListpage.AddtoCartItemRandom(); //second Item
 		ProductListpage.get.cart().contains('2');
 		ProductListpage.get.cart().should('have.text', 2);
 		ProductListpage.get.cart().then(cart => {
@@ -36,9 +42,6 @@ describe('GX-11303', () => {
 		});
 	});
 	it('TC3: Validar que (Name y Price) es el mismo del item agregado en la seccion Cart', () => {
-		ProductListpage.GetRandomItem();
-		ProductListpage.GetName();
-		ProductListpage.GetPrice();
 		ProductListpage.addtoCartItemRandom();
 		ProductListpage.GotoShopingCart();
 		ShoppingCart.get.Productname().should('contain', nameItem);
@@ -50,7 +53,7 @@ describe('GX-11303', () => {
 			expect(Price.text()).to.include(priceItem);
 		});
 	});
-	it('TC4: Validar agregar item desde el PDP y que sume 1+ en el icono (Cart)', function () {
+	it('TC4: Validar agregar item desde el PDP y que sume 1+ en el icono (Cart)', () => {
 		ProductListpage.SelectrandomItem();
 		productDetailPage.AddItemToCart();
 		productDetailPage.get.cart().contains(1);

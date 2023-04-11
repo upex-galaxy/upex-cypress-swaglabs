@@ -71,7 +71,6 @@ jobs:
                   browser: chrome
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
                       npm run file cypress/e2e/Tests/Accounts/GX-11521-LoginForm.cy.js
-                      npm run file cypress/e2e/Tests/Accounts/GX-11521-LoginForm.cy.js
 
             - name: ✅Import Test Results to Xray
               if: always()

@@ -1,4 +1,4 @@
-import { login as Login } from '@pages/Login.Page';
+import { loginExample } from '@pages/Login.Page';
 import { cart as ShoppingCart } from '@pages/ShopingCart.Page';
 import { productDetailPage } from '@pages/ProductDetailPage.Page';
 const { login, endpoint } = Cypress.env('swagLabs');
@@ -8,9 +8,9 @@ const base = Cypress.env('baseUrl');
 describe('GX-11303', () => {
 	beforeEach('Precondicion para estar en el PLP', () => {
 		cy.visit(base);
-		Login.enterUsername(login.users.correctUser);
-		Login.enterPassword(login.users.correctPass);
-		Login.submitLogin();
+		loginExample.enterUsername(login.users.correctUser);
+		loginExample.enterPassword(login.users.correctPass);
+		loginExample.submitLogin();
 		cy.url().should('contain', endpoint.inventory);
 	});
 	it('TC1: Agregar al carrito dos items random y verificar que el boton (Add to cart) Cambien a (Remove)', () => {

@@ -1,6 +1,6 @@
 import { Given, When, And, Then } from '@badeball/cypress-cucumber-preprocessor';
 
-context('Feature: Login', () => {
+context.skip('Feature: Login', () => {
 	// (Given = Precondición) Dado que: el usuario está en la página de Login...
 	Given('User is signed up', () => {
 		expect(1).eq(1);

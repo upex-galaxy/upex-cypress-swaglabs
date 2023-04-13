@@ -14,6 +14,10 @@ class ShoppingCart {
 		iconSC: () => cy.get('#shopping_cart_container'),
 		quantityProducts: () => cy.get('#shopping_cart_container'),
 		checkout: () => cy.get('[data-test*=checkout]'),
+		Productname: () => cy.get('[class*=item_name]'),
+		Productdesc: () => cy.get('[class*=item_desc]'),
+		Productprice: () => cy.get('[class*=item_price]'),
+		Productimg: () => cy.get('[class*=item_img]'),
 	};
 	removeLastProduct() {
 		// Remover un producto del SCP

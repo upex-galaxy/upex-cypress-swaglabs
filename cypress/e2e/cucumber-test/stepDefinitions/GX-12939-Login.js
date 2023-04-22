@@ -1,6 +1,5 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import { loginpage } from '@pages/loginGabe.Page';
-const { endpoint } = Cypress.env('swagLabs');
 const { baseUrl } = Cypress.env();
 
 context('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {

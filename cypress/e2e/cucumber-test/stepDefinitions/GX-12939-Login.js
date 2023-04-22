@@ -1,5 +1,6 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import { loginpage } from '@pages/loginGabe.Page';
+const { endpoint } = Cypress.env('swagLabs');
 const { baseUrl } = Cypress.env();
 
 context('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
@@ -33,7 +34,7 @@ context('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		When('ingrese al endpoint {string} sin logearse', url => {
 			cy.visit(url).should('contain', baseUrl);
 		});
-		Then('sera redirecionado a la pagina de login mostrando el {string}>', logError => {
+		Then('sera redirecionado a la pagina de login mostrando el {string}', logError => {
 			loginpage.get.logmesage().should('contain', logError);
 		});
 	});

@@ -9,7 +9,7 @@
     Si utilizó Cucumber como tal: Chequear el archivo Gherkin esté decentemente escrito y que Funcione la Ejecución en CI.
     Si la persona usó CI, POM y Cucumber correctamente, es motivo para que suba a Nivel 2 mediante un Challenge (una nueva US asignada)
 */
-import { login as Login } from '@pages/Login.Page';
+import { loginExample as Login } from '@pages/Login.Page';
 import { inv } from '@pages/Inventory.Page';
 import { cart } from '@pages/ShopingCart.Page';
 const { login, endpoint } = Cypress.env('swagLabs');

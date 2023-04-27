@@ -1,5 +1,5 @@
 import { Checkout } from '@pages/Checkoutform.page';
-import { login as Login } from '@pages/Login.Page';
+import { loginExample } from '@pages/Login.Page';
 import { ProductListpage } from '@pages/ProductList.Page';
 import { cart } from '@pages/ShopingCart.Page';
 const { login, endpoint, checkout } = Cypress.env('swagLabs');
@@ -8,9 +8,9 @@ const base = Cypress.env('baseUrl');
 describe('GX-11192', () => {
 	beforeEach('Precondicion para llegar hasta el checkout', () => {
 		cy.visit(base);
-		Login.enterUsername(login.users.correctUser);
-		Login.enterPassword(login.users.correctPass);
-		Login.submitLogin();
+		loginExample.enterUsername(login.users.correctUser);
+		loginExample.enterPassword(login.users.correctPass);
+		loginExample.submitLogin();
 		ProductListpage.AddtoCartItemRandom();
 		ProductListpage.GotoShopingCart();
 		cart.SubmitCheckout();

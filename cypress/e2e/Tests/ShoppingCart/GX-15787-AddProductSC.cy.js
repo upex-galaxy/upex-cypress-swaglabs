@@ -5,6 +5,9 @@ import { LoginPage } from '@pages/LoginPage';
 import { ProductPage } from '@pages/ProductPage';
 import { ShoppingCartPage } from '@pages/ShoppingCartPage';
 import { ProductDetailPage } from '@pages/ProductDetailPage';
+const inventoryHtml = Cypress.env('swagLabs');
+const base = Cypress.env('baseUrl')
+
 
 describe('US GX-15787 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o PDP', () => {
 
@@ -22,7 +25,7 @@ describe('US GX-15787 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de c
   });
 
 	beforeEach('User log in Swag Labs Website', () => {       
-		cy.visit('https://www.saucedemo.com/');
+		cy.visit(base);
 		loginPage.fillUsernameField(data.data.user);
 		loginPage.fillPasswordField(data.data.password);
     cy.get('#login-button').click();
@@ -31,7 +34,7 @@ describe('US GX-15787 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de c
   });
   
   it('15787 | TC1: Add a product from the PLP to the Shopping-Cart successfully', () => {
-		cy.get('span[class="title"]').should('exist');
+    cy.url().should('include', inventoryHtml.endpoint.inventory);
 		productPage.ClickAddToCartButton();
 		cy.get('a[class="shopping_cart_link"]').click();
 		cy.get('div[class="cart_item"]').should('exist');
@@ -43,7 +46,7 @@ describe('US GX-15787 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de c
   });
   
   it('15787 | TC1: Add a product from the PDP to the Shopping-Cart successfully', () => {
-    cy.get('span[class="title"]').should('exist');
+    cy.url().should('include', inventoryHtml.endpoint.inventory );
     productPage.ClickLinkProduct();
     productDetailPage.ClickAddToCartButton();
     cy.get('a[class="shopping_cart_link"]').click();

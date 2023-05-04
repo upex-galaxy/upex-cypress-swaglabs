@@ -18,6 +18,17 @@ import { initSessionSwagLabs } from '@pages/loginLCasco2.Page';
 const { login } = Cypress.env('swagLabs');
 const { baseUrl } = Cypress.env();
 
+// Cypress.Commands.add('PDP', () => {
+// 	  cy.request({
+// 			url: 'https://www.saucedemo.com/inventory-item.html:id:3',
+// 			method: 'GET',
+// 			qs: {
+// 				id: '4',
+// 			},
+// 		}).then(respuesta => {
+// 			expect(respuesta.status).to.be.equal(200);
+// 		});
+// })
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //

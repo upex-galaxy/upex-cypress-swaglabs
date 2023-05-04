@@ -20,7 +20,7 @@ const { baseUrl } = Cypress.env();
 
 // Cypress.Commands.add('PDP', () => {
 // 	  cy.request({
-// 			url: 'https://www.saucedemo.com/inventory-item.html:id:3',
+// 			url: 'https://www.saucedemo.com/inventory-item.html:id:4',
 // 			method: 'GET',
 // 			qs: {
 // 				id: '4',

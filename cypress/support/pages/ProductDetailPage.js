@@ -1,4 +1,4 @@
-export class ProductDetailPage{
+class ProductDetailPage{
 
     constructor() {
         this.addToCartButton = '#add-to-cart-sauce-labs-backpack';
@@ -8,3 +8,5 @@ export class ProductDetailPage{
     cy.get(this.addToCartButton).click()
 }
 }
+
+export const productDetailPage = new ProductDetailPage()

@@ -1,14 +1,20 @@
-export class ProductPage{
+class ProductPage {
+	constructor() {
+		this.linkProduct = '#item_4_title_link';
+		this.inventoryItem = '.inventory_item';
+		this.btnInventory = '.btn_inventory';
+		this.inventoryName = '.inventory_item_name';
+		this.informationContainer = '.inventory_item_description';
+		this.addToCartButton = '[data-test^=add]';
+	}
 
-    constructor() {
-        this.addToCartButton = '#add-to-cart-sauce-labs-backpack';
-        this.linkProduct = '#item_4_title_link';
-    }
-    
-    ClickAddToCartButton(){
-    cy.get(this.addToCartButton).click()
-    }
-    ClickLinkProduct() {
-        return cy.get(this.linkProduct).click()
-    }
+	ClickAddToCartButton() {
+		cy.get(this.addToCartButton).click();
+	}
+
+	addRandomItem() {
+		return cy.get(this.informationContainer);
+	}
 }
+
+export const productPage = new ProductPage();

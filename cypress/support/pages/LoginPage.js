@@ -1,4 +1,4 @@
-export class LoginPage{
+class LoginPage{
 
     constructor() {
         this.userName = '#user-name';
@@ -26,3 +26,5 @@ export class LoginPage{
     }
 
 }
+
+export const loginPage = new LoginPage();

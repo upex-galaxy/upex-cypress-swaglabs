@@ -1,4 +1,4 @@
-export class ShoppingCartPage{
+class ShoppingCartPage{
 
     constructor() {
         this.inventoryItemName = '.inventory_item_name';
@@ -6,12 +6,16 @@ export class ShoppingCartPage{
         this.inventoryItemPrice = '.inventory_item_price';
         this.linkShoppingCart = 'a[class="shopping_cart_link"]';
         this.cartItem = 'div[class="cart_item"]';
-        this.removeButton = '#remove-sauce-labs-backpack';
+        this.removeButton = '[id^=remove]';
         this.shoppingCartBadge = 'span[class="shopping_cart_badge"]';
     }
     CheckInventoryName() {
-        return cy.get(this.inventoryItemName);
+
+        return cy.get(this.inventoryItemName)
+       
+        
     }
+
     CheckInventoryItemDesc() {
         return cy.get(this.inventoryItemDesc);
     }
@@ -21,14 +25,16 @@ export class ShoppingCartPage{
     ClickLinkShoppingCart() {
         cy.get(this.linkShoppingCart).click();
     }
-    CheckCartItem() {
-        cy.get(this.cartItem).should('exist');
+    GetCartItem() {
+        return cy.get(this.cartItem);
     }
-    CheckRemoveButton() {
-        cy.get(this.removeButton).should('have.text', 'Remove')
+    GetRemoveButton() {
+        return cy.get(this.removeButton);
     }
-    CheckAddItemSC() {
-        cy.get(this.shoppingCartBadge).should('exist').should('contain', '1')
+    GetAddItemSC() {
+        return cy.get(this.shoppingCartBadge);
     }
 
 }
+
+export const shoppingCartPage = new ShoppingCartPage();

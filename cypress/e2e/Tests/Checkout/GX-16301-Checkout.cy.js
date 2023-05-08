@@ -44,7 +44,7 @@ describe('GX-16301-Checkout', () => {
 			});
 		});
 	});
-	it.only('16301 | TC1: Validate “Button Cancel” cancel the purchase ', () => {
+	it.only('16301 | TC2: Validate “Button Cancel” cancel the purchase ', () => {
 		checkoutPage.ClickCancelBtn();
 		cy.url().should('include', env.endpoint.inventory);
 		shoppingCartPage.ClickLinkShoppingCart();

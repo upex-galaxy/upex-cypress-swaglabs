@@ -19,7 +19,7 @@ class ShoppingCartPage {
 		return cy.get(this.inventoryItemPrice);
 	}
 	ClickLinkShoppingCart() {
-		cy.get(this.linkShoppingCart).click();
+		return cy.get(this.linkShoppingCart).click();
 	}
 	GetCartItem() {
 		return cy.get(this.cartItem);

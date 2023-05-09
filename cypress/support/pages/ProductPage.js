@@ -1,26 +1,56 @@
 class ProductPage {
-	constructor() {
-		this.linkProduct = '#item_4_title_link';
-		this.inventoryItem = '.inventory_item';
-		this.btnInventory = '.btn_inventory';
-		this.inventoryName = '.inventory_item_name';
-		this.informationContainer = '.inventory_item_description';
-		this.addToCartButton = '[data-test^=add]';
-		this.backToProductsBtn = '[data-test=back-to-products';
-	}
+	get = {
+		linkProduct: () => cy.get('#item_4_title_link'),
+		inventoryItem: () => cy.get('.inventory_item'),
+		btnInventory: () => cy.get('.btn_inventory'),
+		inventoryName: () => cy.get('.inventory_item_name'),
+		informationContainer: () => cy.get('.inventory_item_description'),
+		addToCartButton: () => cy.get('[data-test^=add]'),
+		backToProductsBtn: () => cy.get('[data-test=back-to-products'),
+	};
 
 	ClickAddToCartButton() {
-		cy.get(this.addToCartButton).click();
+		this.get.addToCartButton().click();
 	}
 
-	addRandomItem1() {
-		return cy.get(this.informationContainer);
+	addRandomItemPLP1() {
+		this.get
+			.informationContainer()
+			.its('length')
+			.then(randomItem => {
+				let random = Cypress._.random(0, randomItem - 1);
+				this.get.informationContainer().eq(random).find('[class^=btn]').click();
+			});
 	}
-	addRandomItem2() {
-		return cy.get(this.informationContainer);
+	addRandomItemPLP2() {
+		this.get
+			.informationContainer()
+			.its('length')
+			.then(randomItem => {
+				let random = Cypress._.random(0, randomItem - 1);
+				cy.get('.inventory_item_description').eq(random).find('[class^=btn]').click();
+			});
+	}
+	addRandomItemPDP1() {
+		this.get
+			.informationContainer()
+			.its('length')
+			.then(randomItem => {
+				let random = Cypress._.random(0, randomItem - 1);
+				this.get.informationContainer().eq(random).find('a[id^="item"]').click();
+			});
+	}
+	addRandomItemPDP2() {
+		this.get
+			.informationContainer()
+			.its('length')
+			.then(randomItem => {
+				let random = Cypress._.random(0, randomItem - 1);
+				this.get.informationContainer().eq(random).find('a[id^="item"]').click();
+			});
 	}
 	ClickBackToProductBtn() {
-		cy.get(this.backToProductsBtn).click();
+		this.get.backToProductsBtn().click();
 	}
 }
 

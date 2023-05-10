@@ -31,5 +31,4 @@ class ShoppingCartPage {
 		this.get.shoppingCartBadge();
 	}
 }
-
 export const shoppingCartPage = new ShoppingCartPage();

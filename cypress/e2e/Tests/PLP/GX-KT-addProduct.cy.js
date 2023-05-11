@@ -1,15 +1,9 @@
-import { login } from '@pages/Login.Page';
-const { correctUser, correctPass } = Cypress.env('swagLabs').login.users;
-
 const randomIndexByElements = length => Math.floor(Math.random() * length);
 
 describe('KT Example Test: Add Product to the Shopping Cart', () => {
 	beforeEach(() => {
 		// runs before every it() test block}
-		cy.visit('/');
-		login.enterUsername(correctUser);
-		login.enterPassword(correctPass);
-		login.submitLogin();
+		cy.loginSuccess();
 	});
 	// -- Start: Cypress Tests --
 	it('Should add a product to the SCP and persists the same price items values', () => {

@@ -11,9 +11,12 @@ import 'cypress-file-upload';
 import 'cypress-wait-until';
 import '@4tw/cypress-drag-drop';
 import 'cypress-downloadfile/lib/downloadFileCommand';
-import { login } from '@pages/Login.Page';
+import { loginExample } from '@pages/Login.Page';
 const { authLogin, dashboardIndex } = Cypress.env('endpoint');
 import { signin } from '@pages/SignIn.Page.js';
+import { initSessionSwagLabs } from '@pages/loginLCasco2.Page';
+const { login } = Cypress.env('swagLabs');
+const { baseUrl } = Cypress.env();
 
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
@@ -41,9 +44,9 @@ Cypress.Commands.add('Login', (username, password) => {
 
 		/*cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php');
 		cy.url().should('contain', authLogin);
-		username && login.enterUsername(username);
-		password && login.enterPassword(password);
-		login.submitLogin();
+		username && loginExample.enterUsername(username);
+		password && loginExample.enterPassword(password);
+		loginExample.submitLogin();
 
 		cy.url().should('contain', dashboardIndex);*/
 	});
@@ -75,27 +78,25 @@ Cypress.Commands.add('getActualOrder', () => {
 	});
 });
 
-//todo: If you want to Add <quantity> of items into the Cart
-Cypress.Commands.add('addToCartItems', itemsToAdd => {
-	let max = 1;
-	for (let i = 0; i < itemsToAdd; i++) {
-		if (max > itemsToAdd) {
-			cy.get('[data-test*=add]').then(AvailableItems => {
-				//todo: 1ro se obtiene la cantidad actual de items
-				const remainingItems = AvailableItems.length;
-				max = remainingItems;
-				let randomItemIndex = Math.floor(Math.random() * remainingItems) - 1;
-				//todo: 2do obtener la Card del item con botón en "Add To Cart" para hacerle click y guardar  variables
-				cy.wrap(AvailableItems)
-					.eq(randomItemIndex)
-					.parentsUntil('.inventory_list')
-					.within(() => {
-						cy.get('.inventory_item_name').then(itemName => Cypress.env('addedItemName', itemName));
-						cy.get('.inventory_item_price').then(itemPrice => Cypress.env('addedItemPrice', itemPrice));
-						cy.get('button').click({ force: true });
-						cy.get('button').should('have.text', 'Remove');
-					});
-			});
-		}
-	}
+Cypress.Commands.add('loginSuccess', () => {
+	cy.visit(baseUrl);
+	cy.url().should('contain', 'sauce');
+	//login
+	initSessionSwagLabs.inputUserName(login.users.correctUser);
+	initSessionSwagLabs.inputPassword(login.users.correctPass);
+	initSessionSwagLabs.clickButtonLogin();
+});
+
+Cypress.Commands.add('addToCardOneRandomItem', () => {
+	cy.get('.inventory_list')
+		.children()
+		.then(items => {
+			const itemsQuantity = items.length;
+			let randomItemIndex = Math.floor(Math.random() * itemsQuantity) - 1;
+			cy.wrap(items)
+				.eq(randomItemIndex)
+				.within(() => {
+					cy.get('button').click();
+				});
+		});
 });

@@ -24,7 +24,7 @@ class ShoppingCartPage {
 	GetCartItem() {
 		this.get.cartItem();
 	}
-	GetRemoveButton() {
+	RemoveButton() {
 		this.get.removeButton();
 	}
 	GetAddItemSC() {

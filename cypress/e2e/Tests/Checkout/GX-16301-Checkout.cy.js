@@ -1,4 +1,4 @@
-import { loginPage } from '@pages/LoginPage';
+import { loginExample } from '@pages/Login.Page';
 import { productPage } from '@pages/ProductPage';
 import { shoppingCartPage } from '@pages/ShoppingCartPage';
 import { checkoutPage } from '@pages/checkoutPage';
@@ -16,9 +16,9 @@ describe('GX-16301-Checkout', () => {
 	});
 	beforeEach('Preconditions', () => {
 		cy.visit(base);
-		loginPage.fillUsernameField(env.login.users.correctUser);
-		loginPage.fillPasswordField(env.login.users.correctPass);
-		loginPage.ClickLoginButton();
+		loginExample.enterUsername(env.login.users.correctUser);
+		loginExample.enterPassword(env.login.users.correctPass);
+		loginExample.submitLogin();
 		productPage
 			.addRandomItem1()
 			.its('length')
@@ -44,7 +44,7 @@ describe('GX-16301-Checkout', () => {
 			});
 		});
 	});
-	it.only('16301 | TC2: Validate “Button Cancel” cancel the purchase ', () => {
+	it('16301 | TC2: Validate “Button Cancel” cancel the purchase ', () => {
 		checkoutPage.ClickCancelBtn();
 		cy.url().should('include', env.endpoint.inventory);
 		shoppingCartPage.ClickLinkShoppingCart();

@@ -18,17 +18,6 @@ import { initSessionSwagLabs } from '@pages/loginLCasco2.Page';
 const { login } = Cypress.env('swagLabs');
 const { baseUrl } = Cypress.env();
 
-
-
-
-		
-	
-			
-		
-
- 
-	
-
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //

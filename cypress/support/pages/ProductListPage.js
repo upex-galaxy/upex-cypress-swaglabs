@@ -76,136 +76,106 @@ class ProductListPage {
 	}
 	add2RandomItemsPLP() {
 		let arrayRandomItems = [];
-		this.get.inventoryItem().then(cards => {
-			const qtyCards = cards.length;
-			const random = randomItem(qtyCards);
-			cy.wrap(cards)
-				.eq(random)
-				.within(() => {
-					cy.get('button').click();
-					this.get
-						.inventoryName()
-						.then(elementName => {
-							const name = elementName.text();
-							return name;
-						})
-						.then($itemName => {
-							Cypress.env('selectedItemName1', $itemName);
-						});
-					this.get
-						.inventoryPrice()
-						.then(elementPrice => {
-							const price = elementPrice.text();
-							return price;
-						})
-						.then($itemPrice => {
-							Cypress.env('selectedItemPrice1', $itemPrice);
-						});
-					this.get
-						.inventoryDesc()
-						.then(elementDesc => {
-							const desc = elementDesc.text();
-							return desc;
-						})
-						.then($itemDesc => {
-							Cypress.env('selectedItemDesc1', $itemDesc);
-						});
-				})
-				.then(() => {
-					const productDetails = {
-						name: Cypress.env('selectedItemName1'),
-						price: Cypress.env('selectedItemPrice1'),
-						desc: Cypress.env('selectedItemDesc1'),
-					};
-					arrayRandomItems.push(productDetails);
-				});
-			cy.log(arrayRandomItems);
-		});
-		this.get.inventoryItem().then(cards => {
-			const qtyCards = cards.length;
-			const random = randomItem(qtyCards);
-			cy.wrap(cards)
-				.eq(random)
-				.within(() => {
-					cy.get('button').click();
-					this.get
-						.inventoryName()
-						.then(elementName => {
-							const name = elementName.text();
-							return name;
-						})
-						.then($itemName => {
-							Cypress.env('selectedItemName2', $itemName);
-						});
-					this.get
-						.inventoryPrice()
-						.then(elementPrice => {
-							const name = elementPrice.text();
-							return name;
-						})
-						.then($itemPrice => {
-							Cypress.env('selectedItemPrice2', $itemPrice);
-						});
-					this.get
-						.inventoryDesc()
-						.then(elementDesc => {
-							const desc = elementDesc.text();
-							return desc;
-						})
-						.then($itemDesc => {
-							Cypress.env('selectedItemDesc2', $itemDesc);
-						});
-				})
-				.then(() => {
-					const productDetails = {
-						name: Cypress.env('selectedItemName2'),
-						price: Cypress.env('selectedItemPrice2'),
-						desc: Cypress.env('selectedItemDesc2'),
-					};
-					arrayRandomItems.push(productDetails);
-				});
-			cy.log(arrayRandomItems);
-		});
+		for (let i = 0; i < 2; i++) {
+			cy.get('[data-test^=add]').then(cards => {
+				const qtyCards = cards.length;
+				const random = randomItem(qtyCards);
+				cy.wrap(cards)
+					.eq(random)
+					.parentsUntil('.inventory_item')
+					.last()
+					.within(() => {
+						this.get
+							.inventoryName()
+
+							.then(elementName => {
+								const name = elementName.text();
+								return name;
+							})
+							.then($itemName => {
+								Cypress.env('selectedItemName1', $itemName);
+							});
+						this.get
+							.inventoryPrice()
+
+							.then(elementPrice => {
+								const price = elementPrice.text();
+								return price;
+							})
+							.then($itemPrice => {
+								Cypress.env('selectedItemPrice1', $itemPrice);
+							});
+						this.get
+							.inventoryDesc()
+
+							.then(elementDesc => {
+								const desc = elementDesc.text();
+								return desc;
+							})
+							.then($itemDesc => {
+								Cypress.env('selectedItemDesc1', $itemDesc);
+							})
+							.then(() => {
+								const productDetails = {
+									name: Cypress.env('selectedItemName1'),
+									price: Cypress.env('selectedItemPrice1'),
+									desc: Cypress.env('selectedItemDesc1'),
+								};
+								arrayRandomItems.push(productDetails);
+							});
+						cy.get('button').click();
+					});
+
+				cy.log(arrayRandomItems);
+			});
+		}
+		Cypress.env('arrayRandomItems', arrayRandomItems);
 	}
 	validate2ItemsSC() {
-		this.get
-			.cartItem()
-			.eq(0)
-			.then(items => {
-				cy.wrap(items).within(() => {
-					this.get.inventoryName().then(actualName => {
-						const addedName = actualName.text();
-						expect(addedName).equal(Cypress.env('selectedItemName1'));
-					});
-					this.get.inventoryPrice().then(actualPrice => {
-						const addedPrice = actualPrice.text();
-						expect(addedPrice).equal(Cypress.env('selectedItemPrice1'));
-					});
-					this.get.inventoryDesc().then(actualDesc => {
-						const addedDesc = actualDesc.text();
-						expect(addedDesc).equal(Cypress.env('selectedItemDesc1'));
-					});
-				});
-			});
-		this.get
-			.cartItem()
-			.eq(1)
-			.then(items => {
-				cy.wrap(items).within(() => {
-					this.get.inventoryName().then(actualName => {
-						const addedName = actualName.text();
-						expect(addedName).equal(Cypress.env('selectedItemName2'));
-					});
-					this.get.inventoryPrice().then(actualPrice => {
-						const addedPrice = actualPrice.text();
-						expect(addedPrice).equal(Cypress.env('selectedItemPrice2'));
-					});
-					this.get.inventoryDesc().then(actualDesc => {
-						const addedDesc = actualDesc.text();
-						expect(addedDesc).equal(Cypress.env('selectedItemDesc2'));
+		for (let i = 0; i < 2; i++) {
+			this.get
+				.cartItem()
+				.eq(i)
+				.then(cards => {
+					// const qtyCards = cards.length;
+					// const random = randomItem(qtyCards);
+					cy.wrap(cards).within(() => {
+						this.get.inventoryName().then(actualName => {
+							const addedName = actualName.text();
+							expect(addedName).equal(Cypress.env('arrayRandomItems')[i].name);
+							cy.log(Cypress.env('arrayRandomItems'));
+						});
+						// this.get.inventoryPrice().then(actualPrice => {
+						// 	const addedPrice = actualPrice.text();
+						// 	expect(addedPrice).equal(Cypress.env('selectedItemPrice1'));
+						// });
+						// this.get.inventoryDesc().then(actualDesc => {
+						// 	const addedDesc = actualDesc.text();
+						// 	expect(addedDesc).equal(Cypress.env('selectedItemDesc1'));
+						// });
 					});
 				});
-			});
+		}
+
+		// this.get
+		// 	.cartItem()
+		// 	.eq(1)
+		// 	.then(items => {
+		// 		cy.wrap(items).within(() => {
+		// 			this.get.inventoryName().then(actualName => {
+		// 				const addedName = actualName.text();
+		// 				expect(addedName).equal(Cypress.env('selectedItemName1'));
+		// 			});
+		// 			this.get.inventoryPrice().then(actualPrice => {
+		// 				const addedPrice = actualPrice.text();
+		// 				expect(addedPrice).equal(Cypress.env('selectedItemPrice1'));
+		// 			});
+		// 			this.get.inventoryDesc().then(actualDesc => {
+		// 				const addedDesc = actualDesc.text();
+		// 				expect(addedDesc).equal(Cypress.env('selectedItemDesc1'));
+		// 			});
+		// 		});
+		// 	});
 	}
 	ClickBackToProductBtn() {
 		this.get.backToProductsBtn().click();

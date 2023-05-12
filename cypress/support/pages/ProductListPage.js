@@ -137,45 +137,23 @@ class ProductListPage {
 				.cartItem()
 				.eq(i)
 				.then(cards => {
-					// const qtyCards = cards.length;
-					// const random = randomItem(qtyCards);
 					cy.wrap(cards).within(() => {
 						this.get.inventoryName().then(actualName => {
 							const addedName = actualName.text();
 							expect(addedName).equal(Cypress.env('arrayRandomItems')[i].name);
 							cy.log(Cypress.env('arrayRandomItems'));
 						});
-						// this.get.inventoryPrice().then(actualPrice => {
-						// 	const addedPrice = actualPrice.text();
-						// 	expect(addedPrice).equal(Cypress.env('selectedItemPrice1'));
-						// });
-						// this.get.inventoryDesc().then(actualDesc => {
-						// 	const addedDesc = actualDesc.text();
-						// 	expect(addedDesc).equal(Cypress.env('selectedItemDesc1'));
-						// });
+						this.get.inventoryPrice().then(actualPrice => {
+							const addedPrice = actualPrice.text();
+							expect(addedPrice).equal(Cypress.env('arrayRandomItems')[i].price);
+						});
+						this.get.inventoryDesc().then(actualDesc => {
+							const addedDesc = actualDesc.text();
+							expect(addedDesc).equal(Cypress.env('arrayRandomItems')[i].desc);
+						});
 					});
 				});
 		}
-
-		// this.get
-		// 	.cartItem()
-		// 	.eq(1)
-		// 	.then(items => {
-		// 		cy.wrap(items).within(() => {
-		// 			this.get.inventoryName().then(actualName => {
-		// 				const addedName = actualName.text();
-		// 				expect(addedName).equal(Cypress.env('selectedItemName1'));
-		// 			});
-		// 			this.get.inventoryPrice().then(actualPrice => {
-		// 				const addedPrice = actualPrice.text();
-		// 				expect(addedPrice).equal(Cypress.env('selectedItemPrice1'));
-		// 			});
-		// 			this.get.inventoryDesc().then(actualDesc => {
-		// 				const addedDesc = actualDesc.text();
-		// 				expect(addedDesc).equal(Cypress.env('selectedItemDesc1'));
-		// 			});
-		// 		});
-		// 	});
 	}
 	ClickBackToProductBtn() {
 		this.get.backToProductsBtn().click();

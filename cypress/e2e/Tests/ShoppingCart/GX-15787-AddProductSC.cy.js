@@ -70,60 +70,58 @@ describe('US GX-15787 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de c
 		productDetailPage.validateItemSC();
 		shoppingCartPage.get.shoppingCartBadge().should('exist').should('contain', '1');
 	});
-	it.only('15787 | TC3: Add two products from the PLP to the Shopping-Cart successfully', () => {
+	it('15787 | TC3: Add two products from the PLP to the Shopping-Cart successfully', () => {
 		cy.url().should('include', inventoryHtml.endpoint.inventory);
 		productListPage.add2RandomItemsPLP();
 		shoppingCartPage.ClickLinkShoppingCart();
 		productListPage.validate2ItemsSC();
-
-		// cy.get('.cart_item')
-		// 	.eq(0)
-		// 	.within(() => {
-		// 		expect('.cart_item').to.exist;
-		// 		cy.get('a')
-		// 			.invoke('text')
-		// 			.then(title => {
-		// 				expect(title).to.exist;
-		// 			});
-		// 		cy.get('.inventory_item_desc')
-		// 			.invoke('text')
-		// 			.then(desc => {
-		// 				expect(desc).to.exist;
-		// 			});
-		// 		cy.get('.inventory_item_price')
-		// 			.invoke('text')
-		// 			.then(precio => {
-		// 				expect(precio).to.exist;
-		// 			});
-		// 	});
-		// cy.get('.cart_item')
-		// 	.eq(1)
-		// 	.within(() => {
-		// 		expect('.cart_item').to.exist;
-		// 		cy.get('a')
-		// 			.invoke('text')
-		// 			.then(title => {
-		// 				expect(title).to.exist;
-		// 			});
-		// 		cy.get('.inventory_item_desc')
-		// 			.invoke('text')
-		// 			.then(desc => {
-		// 				expect(desc).to.exist;
-		// 			});
-		// 		cy.get('.inventory_item_price')
-		// 			.invoke('text')
-		// 			.then(precio => {
-		// 				expect(precio).to.exist;
-		// 			});
-		// 	});
+		cy.get('.cart_item')
+			.eq(0)
+			.within(() => {
+				expect('.cart_item').to.exist;
+				cy.get('a')
+					.invoke('text')
+					.then(title => {
+						expect(title).to.exist;
+					});
+				cy.get('.inventory_item_desc')
+					.invoke('text')
+					.then(desc => {
+						expect(desc).to.exist;
+					});
+				cy.get('.inventory_item_price')
+					.invoke('text')
+					.then(precio => {
+						expect(precio).to.exist;
+					});
+			});
+		cy.get('.cart_item')
+			.eq(1)
+			.within(() => {
+				expect('.cart_item').to.exist;
+				cy.get('a')
+					.invoke('text')
+					.then(title => {
+						expect(title).to.exist;
+					});
+				cy.get('.inventory_item_desc')
+					.invoke('text')
+					.then(desc => {
+						expect(desc).to.exist;
+					});
+				cy.get('.inventory_item_price')
+					.invoke('text')
+					.then(precio => {
+						expect(precio).to.exist;
+					});
+			});
 		shoppingCartPage.get.removeButton().should('be.visible').should('have.lengthOf', 2).should('exist');
-		// productListPage.validate2ItemsSC();
-		// shoppingCartPage.get.shoppingCartBadge().should('exist').should('contain', '2');
+		shoppingCartPage.get.shoppingCartBadge().should('exist').should('contain', '2');
 	});
 
 	it('15787 | TC4: Add two products from the PDP to the Shopping-Cart successfully', () => {
 		productDetailPage.add2RandomItemsPDPinTheSC();
-		cy.url().should('contain', inventoryHtml.endpoint.product);
+		cy.url().should('contain', inventoryHtml.endpoint.inventory);
 		shoppingCartPage.ClickLinkShoppingCart();
 		cy.get('.cart_item')
 			.eq(0)

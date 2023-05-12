@@ -79,107 +79,60 @@ class ProductDetailPage {
 	}
 	add2RandomItemsPDPinTheSC() {
 		let arrayRandomItems = [];
-		this.get.informationContainer().then(cards => {
-			const qtyCards = cards.length;
-			const random = randomItem(qtyCards);
-			cy.wrap(cards)
-				.eq(random)
-				.within(() => {
-					cy.get('a[id^="item"]').click();
-				});
-		});
-		this.get
-			.inventoryContainer()
-			.within(() => {
-				this.get.addToCartButton().click();
-				this.get
-					.inventoryDetailName()
-					.then(elementName => {
-						const name = elementName.text();
-						return name;
-					})
-					.then($itemName => {
-						Cypress.env('selectedItemName1', $itemName);
+		for (let i = 0; i < 2; i++) {
+			this.get.informationContainer().then(cards => {
+				const qtyCards = cards.length;
+				const random = randomItem(qtyCards);
+				cy.wrap(cards)
+					.eq(random)
+					.within(() => {
+						cy.get('a[id^="item"]').click();
 					});
-				this.get
-					.inventoryDetailPrice()
-					.then(elementPrice => {
-						const price = elementPrice.text();
-						return price;
-					})
-					.then($itemPrice => {
-						Cypress.env('selectedItemPrice1', $itemPrice);
-					});
-				this.get
-					.inventoryDetailDesc()
-					.then(elementDesc => {
-						const desc = elementDesc.text();
-						return desc;
-					})
-					.then($itemDesc => {
-						Cypress.env('selectedItemDesc1', $itemDesc);
-					});
-			})
-			.then(() => {
-				const productDetails = {
-					name: Cypress.env('selectedItemName1'),
-					price: Cypress.env('selectedItemPrice1'),
-					desc: Cypress.env('selectedItemDesc1'),
-				};
-				arrayRandomItems.push(productDetails);
 			});
-		cy.log(arrayRandomItems);
-		this.get.backToProductsBtn().click();
-		this.get.informationContainer().then(cards => {
-			const qtyCards = cards.length;
-			const random = randomItem(qtyCards);
-			cy.wrap(cards)
-				.eq(random)
+			this.get
+				.inventoryContainer()
 				.within(() => {
-					cy.get('a[id^="item"]').click();
+					this.get.addToCartButton().click();
+					this.get
+						.inventoryDetailName()
+						.then(elementName => {
+							const name = elementName.text();
+							return name;
+						})
+						.then($itemName => {
+							Cypress.env('selectedItemName1', $itemName);
+						});
+					this.get
+						.inventoryDetailPrice()
+						.then(elementPrice => {
+							const price = elementPrice.text();
+							return price;
+						})
+						.then($itemPrice => {
+							Cypress.env('selectedItemPrice1', $itemPrice);
+						});
+					this.get
+						.inventoryDetailDesc()
+						.then(elementDesc => {
+							const desc = elementDesc.text();
+							return desc;
+						})
+						.then($itemDesc => {
+							Cypress.env('selectedItemDesc1', $itemDesc);
+						});
+				})
+				.then(() => {
+					const productDetails = {
+						name: Cypress.env('selectedItemName1'),
+						price: Cypress.env('selectedItemPrice1'),
+						desc: Cypress.env('selectedItemDesc1'),
+					};
+					arrayRandomItems.push(productDetails);
 				});
-		});
-		this.get
-			.inventoryContainer()
-			.within(() => {
-				this.get.addToCartButton().click();
-				this.get
-					.inventoryDetailName()
-					.then(elementName => {
-						const name = elementName.text();
-						return name;
-					})
-					.then($itemName => {
-						Cypress.env('selectedItemName2', $itemName);
-					});
-				this.get
-					.inventoryDetailPrice()
-					.then(elementPrice => {
-						const price = elementPrice.text();
-						return price;
-					})
-					.then($itemPrice => {
-						Cypress.env('selectedItemPrice2', $itemPrice);
-					});
-				this.get
-					.inventoryDetailDesc()
-					.then(elementDesc => {
-						const desc = elementDesc.text();
-						return desc;
-					})
-					.then($itemDesc => {
-						Cypress.env('selectedItemDesc2', $itemDesc);
-					});
-			})
-			.then(() => {
-				const productDetails = {
-					name: Cypress.env('selectedItemName2'),
-					price: Cypress.env('selectedItemPrice2'),
-					desc: Cypress.env('selectedItemDesc2'),
-				};
-				arrayRandomItems.push(productDetails);
-			});
-		cy.log(arrayRandomItems);
+			cy.log(arrayRandomItems);
+			this.get.backToProductsBtn().click();
+		}
+		Cypress.env('arrayRandomItems', arrayRandomItems);
 	}
 }
 

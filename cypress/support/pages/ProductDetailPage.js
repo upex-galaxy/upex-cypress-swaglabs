@@ -137,3 +137,8 @@ class ProductDetailPage {
 }
 
 export const productDetailPage = new ProductDetailPage();
+
+    ClickAddToCartButton() {
+    cy.get(this.addToCartButton).click()
+}
+}

@@ -73,6 +73,7 @@ export default defineConfig({
 				checkoutTwo: '/checkout-step-two.html',
 				checkoutAll: '/checkout-complete.html',
 				product: '/inventory-item.html'
+
 			},
 			login: {
 				users: {

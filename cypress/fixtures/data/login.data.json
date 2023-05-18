@@ -1,4 +1,8 @@
 {
+	"url": {
+		"MainUrl": "https://www.saucedemo.com"
+	},
+
 	"input": {
 		"Username": "#user-name",
 		"Password": "#password",

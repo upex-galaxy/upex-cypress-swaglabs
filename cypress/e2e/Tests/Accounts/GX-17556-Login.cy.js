@@ -1,7 +1,9 @@
 describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	beforeEach('Precondición: Usuario debe estar situado en la página de Login', () => {
-		cy.visit('https://www.saucedemo.com');
-		cy.url().should('contain', 'saucedemo');
+		cy.fixture('data/login.data').then(the => {
+			cy.visit(the.url.MainUrl);
+			cy.url().should('contain', 'saucedemo');
+		});
 	});
 	it('17557 | TC01 - Validar usuario inicia sesión correctamente', () => {
 		cy.fixture('data/login.data').then(the => {

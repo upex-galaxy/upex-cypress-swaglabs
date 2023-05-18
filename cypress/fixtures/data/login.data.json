@@ -1,0 +1,24 @@
+{
+	"input": {
+		"Username": "#user-name",
+		"Password": "#password",
+		"LoginButton": "#login-button",
+		"Message": "[data-test='error']"
+	},
+
+	"data": {
+		"StandardUser": "standard_user",
+		"LockedUser": "locked_out_user",
+		"Password": "secret_sauce",
+		"InvalidUser": "romanfenoy",
+		"InvalidPassword": "roman123"
+	},
+
+	"assertions": {
+		"LockedMessage": "Epic sadface: Sorry, this user has been locked out.",
+		"InvalidMessage": "Epic sadface: Username and password do not match any user in this service",
+		"MissingUsername": "Epic sadface: Username is required",
+		"MissingPassword": "Epic sadface: Password is required",
+		"MissingPassAndAcc": "Epic sadface: Username is required"
+	}
+}

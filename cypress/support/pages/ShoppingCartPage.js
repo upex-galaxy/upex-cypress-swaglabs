@@ -32,5 +32,3 @@ class ShoppingCartPage {
 	}
 }
 export const shoppingCartPage = new ShoppingCartPage();
-
-}

@@ -134,11 +134,9 @@ class ProductDetailPage {
 		}
 		Cypress.env('arrayRandomItems', arrayRandomItems);
 	}
+	ClickAddToCartButton() {
+		cy.get(this.addToCartButton).click();
+	}
 }
 
 export const productDetailPage = new ProductDetailPage();
-
-    ClickAddToCartButton() {
-    cy.get(this.addToCartButton).click()
-}
-}

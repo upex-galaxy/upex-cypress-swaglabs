@@ -1,37 +1,41 @@
+import { LoginBR } from 'cypress/support/pages/LoginBR.Page';
+
 describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	beforeEach('User must be in the Login page', () => {
-		// runs before every it() test block
+		cy.visit('/');
+		cy.url().should('contain', 'saucedemo');
 	});
 
 	it('17549 | TC1: Validate User can log in successfully', () => {
-		// Write your test case one here
+		LoginBR.HappyPath();
+		cy.url().should('contain', '/inventory.html');
 	});
 	it('17549 | TC2: Validate user cannot log in with empty data and BR5 is displayed', () => {
-		// Write your test case two here
+		LoginBR.emptyFields();
 	});
 	it('17549 | TC3: Validate user cannot log in with Only number in Username field and BR2 is displayed', () => {
-		// Write your test case two here
+		LoginBR.UserNumberOnly();
 	});
 	it('17549 | TC4: Validate user cannot log in with Especial Characters in Username field and BR2 is displayed', () => {
-		// Write your test case two here
+		LoginBR.UserEspCharacterOnly();
 	});
 	it('17549 | TC5: Validate user cannot log in with invalid Username only and BR2 is displayed', () => {
-		// Write your test case two here
+		LoginBR.invalidUserOnly();
 	});
 	it('17549 | TC6: Validate user cannot log in with invalid Password only and BR2 is displayed', () => {
-		// Write your test case two here
+		LoginBR.invalidPswdOnly();
 	});
 	it('17549 | TC7: Validate user cannot log in with empty Username field only and BR3 is displayed ', () => {
-		// Write your test case two here
+		LoginBR.emptyUserOnly();
 	});
 	it('17549 | TC8: Validate user cannot log in with empty Password field only and BR4 is displayed', () => {
-		// Write your test case two here
+		LoginBR.emptyPswdOnly();
 	});
 	it('17549 | TC9: Validate user cannot log in with Locked User credentials and BR1 is displayed', () => {
-		// Write your test case two here
+		LoginBR.LockedUser();
 	});
-	it('17549 | TC10: Validate User cannot access an Endpoint without Login', () => {
-		// Write your test case two here
+	it.only('17549 | TC10: Validate User cannot access an Endpoint without Login', () => {
+		LoginBR.Endpoint();
 	});
 });
 

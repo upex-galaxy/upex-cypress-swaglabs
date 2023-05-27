@@ -1,0 +1,46 @@
+[
+	{
+		"username": "standard_user",
+		"password": "secret_sauce"
+	},
+	{
+		"username": "problem_user",
+		"password": "secret_sauce"
+	},
+	{
+		"username": "performance_glitch_user",
+		"password": "secret_sauce"
+	},
+	{
+		"username": "locked_out_user",
+		"password": "secret_sauce"
+	},
+	{
+		"username": "",
+		"password": ""
+	},
+	{
+		"username": "standard_user",
+		"password": ""
+	},
+	{
+		"username": "",
+		"password": "secret_sauce"
+	},
+	{
+		"username": "invalid_user",
+		"password": "invalid_password"
+	},
+	{
+		"username": "invalid_user",
+		"password": "invalid_password"
+	},
+	{
+		"username": "standard_user",
+		"password": "secret_sauce"
+	},
+	{
+		"username": "incorrect_user",
+		"password": "valid_password"
+	}
+]

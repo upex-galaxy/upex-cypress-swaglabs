@@ -1,0 +1,8 @@
+{
+	"username": "standard_user",
+	"l_username": "locked_out_user",
+	"pr_username": "problem_user",
+	"pe_username": "performance_glitch_user",
+	"password": "secret_sauce",
+	"url": "https://www.saucedemo.com/"
+}

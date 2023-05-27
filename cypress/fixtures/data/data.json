@@ -4,5 +4,21 @@
 	"pr_username": "problem_user",
 	"pe_username": "performance_glitch_user",
 	"password": "secret_sauce",
-	"url": "https://www.saucedemo.com/"
+	"url": "https://www.saucedemo.com/",
+	"mensaje": "Sorry, this user has been locked out.",
+	"mensaje1": "Username is required",
+	"mensaje2": "Password is required",
+	"mensaje3": "Username and password do not match any user in this service",
+	"mensaje4": "You can only access '/inventory.html' when you are logged in.",
+	"mensaje5": "You can only access '/cart.html' when you are logged in.",
+	"mensaje6": "You can only access '/checkout-step-one.html' when you are logged in.",
+	"mensaje7": "You can only access '/checkout-step-two.html' when you are logged in.",
+	"mensaje8": "You can only access '/checkout-complete.html' when you are logged in.",
+	"name_false": "standar",
+	"psw_false": "false",
+	"ep1": "inventory.html",
+	"ep2": "cart.html",
+	"ep3": "checkout-step-one.html",
+	"ep4": "checkout-step-two.html",
+	"ep5": "checkout-complete.html"
 }

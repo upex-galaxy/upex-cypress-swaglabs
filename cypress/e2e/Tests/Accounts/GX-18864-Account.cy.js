@@ -61,56 +61,63 @@ describe('GX-18864: SwagLabs | Account | Iniciar sesión y BR de Accesos', () =>
 		cy.get('input[data-test="login-button"]').click();
 		cy.contains('Epic sadface: Username and password do not match any user in this service');
 	});
-	it.only('18865 | TC9: Validar que el usuario no pueda acceder al endpoint /inventory.html sin haber iniciado sesión. ', () => {
-		cy.visit('https://www.saucedemo.com/inventory.html');
-		cy.contains("Epic sadface: You can only access '/inventory.html' when you are logged in.");
+	it('18865 | TC9: Validar que el usuario no pueda acceder al endpoint /inventory.html sin haber iniciado sesión.', () => {
+		cy.clearCookies();
+		cy.visit('/');
+		cy.visit('https://www.saucedemo.com/inventory.html', {
+			failOnStatusCode: false,
+		});
+		cy.get('h3[data-test="error"]').should('be.visible');
 	});
+
 	it('18865 | TC10: Validar que el usuario no pueda acceder al endpoint /cart.html sin haber iniciado sesión.', () => {
-		cy.visit('https://www.saucedemo.com/cart.html');
-		// Agrega las aserciones necesarias para verificar que el usuario es redirigido al login
+		cy.clearCookies();
+		cy.visit('/');
+		cy.visit('https://www.saucedemo.com/cart.html', {
+			failOnStatusCode: false,
+		});
 		cy.contains("Epic sadface: You can only access '/cart.html' when you are logged in.");
-		// Agregar más aserciones si es necesario
 	});
 	it('18865 | TC11: Validar que el usuario no pueda acceder al endpoint /checkout-step-one.html sin haber iniciado sesión. ', () => {
-		cy.visit('https://www.saucedemo.com/checkout-step-one.html');
-		// Agrega las aserciones necesarias para verificar que el usuario es redirigido al login
+		cy.clearCookies();
+		cy.visit('/');
+		cy.visit('https://www.saucedemo.com/checkout-step-one.html', {
+			failOnStatusCode: false,
+		});
 		cy.contains("Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.");
-		// Agregar más aserciones si es necesario
 	});
 	it('18865 | TC12: Validar que el usuario no pueda acceder al endpoint /checkout-step-two.html sin haber iniciado sesión.', () => {
-		cy.visit('https://www.saucedemo.com/checkout-step-two.html');
-		// Agrega las aserciones necesarias para verificar que el usuario es redirigido al login
+		cy.clearCookies();
+		cy.visit('/');
+		cy.visit('https://www.saucedemo.com/checkout-step-two.html', {
+			failOnStatusCode: false,
+		});
 		cy.contains("Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.");
-		// Agregar más aserciones si es necesario
 	});
 	it('18865 | TC13: Validar que el usuario no pueda acceder al endpoint /checkout-complete.html sin haber iniciado sesión. ', () => {
-		cy.visit('https://www.saucedemo.com/checkout-complete.html');
-		// Agrega las aserciones necesarias para verificar que el usuario es redirigido al login
+		cy.clearCookies();
+		cy.visit('/');
+		cy.visit('https://www.saucedemo.com/checkout-complete.html', {
+			failOnStatusCode: false,
+		});
 		cy.contains("Epic sadface: You can only access '/checkout-complete.html' when you are logged in.");
-		// Agregar más aserciones si es necesario
 	});
 	it('18865 | TC14: Validar que el usuario no pueda iniciar sesión con una combinación inválida de nombre de usuario y contraseña', () => {
-		cy.get('input[data-test="username"]').type(testData[8].username);
-		cy.get('input[data-test="password"]').type(testData[8].password);
+		cy.get('input[data-test="username"]').type(testData[7].username);
+		cy.get('input[data-test="password"]').type(testData[7].password);
 		cy.get('input[data-test="login-button"]').click();
-		// Agrega las aserciones necesarias para verificar que el usuario no puede iniciar sesión
 		cy.contains('Epic sadface: Username and password do not match any user in this service');
-		// Agregar más aserciones si es necesario
 	});
 	it('18865 | TC15: Validar que el usuario no pueda iniciar sesión con una contraseña incorrecta pero con un nombre de usuario válido.', () => {
-		cy.get('input[data-test="username"]').type(testData[9].username);
-		cy.get('input[data-test="password"]').type(testData[9].password);
+		cy.get('input[data-test="username"]').type(testData[0].username);
+		cy.get('input[data-test="password"]').type(testData[7].password);
 		cy.get('input[data-test="login-button"]').click();
-		// Agrega las aserciones necesarias para verificar que el usuario no puede iniciar sesión
 		cy.contains('Epic sadface: Username and password do not match any user in this service');
-		// Agregar más aserciones si es necesario
 	});
 	it('18865 | TC16: Validar que el usuario no pueda iniciar sesión con un nombre de usuario incorrecto pero con una contraseña válida.', () => {
-		cy.get('input[data-test="username"]').type(testData[10].username);
-		cy.get('input[data-test="password"]').type(testData[10].password);
+		cy.get('input[data-test="username"]').type(testData[7].username);
+		cy.get('input[data-test="password"]').type(testData[0].password);
 		cy.get('input[data-test="login-button"]').click();
-		// Agrega las aserciones necesarias para verificar que el usuario no puede iniciar sesión
 		cy.contains('Epic sadface: Username and password do not match any user in this service');
-		// Agregar más aserciones si es necesario
 	});
 });

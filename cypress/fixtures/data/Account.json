@@ -32,15 +32,7 @@
 		"password": "invalid_password"
 	},
 	{
-		"username": "invalid_user",
-		"password": "invalid_password"
-	},
-	{
 		"username": "standard_user",
 		"password": "secret_sauce"
-	},
-	{
-		"username": "incorrect_user",
-		"password": "valid_password"
 	}
 ]

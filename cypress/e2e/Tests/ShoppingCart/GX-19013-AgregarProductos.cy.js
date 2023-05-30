@@ -1,4 +1,3 @@
-import { And } from '@badeball/cypress-cucumber-preprocessor';
 import the from '../../../fixtures/data/agregarProductos.json';
 
 describe('✅SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o PDP', () => {

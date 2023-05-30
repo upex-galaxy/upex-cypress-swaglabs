@@ -18,6 +18,7 @@ describe('✅SwagLabs | SCP | Agregar producto al carrito de compras desde el PL
 
 		cy.get(the.plp.Input.Label).should('contain', the.assertions.Backpack.Name);
 		cy.get(the.plp.Input.Label).should('contain', the.assertions.Backpack.Description);
+		cy.get(the.plp.Input.Label).should('contain', the.assertions.Backpack.Price);
 	});
 	it('TC02 - Validar agregar un producto al SCP desde el PDP', () => {
 		cy.get(the.plp.Input.Light).click();
@@ -26,6 +27,7 @@ describe('✅SwagLabs | SCP | Agregar producto al carrito de compras desde el PL
 
 		cy.get(the.plp.Input.Label).should('contain', the.assertions.Light.Name);
 		cy.get(the.plp.Input.Label).should('contain', the.assertions.Light.Description);
+		cy.get(the.plp.Input.Label).should('contain', the.assertions.Light.Price);
 	});
 	it('TC03 - Validar agregar 2 o mas productos al SCP desde el PLP', () => {
 		cy.get(the.plp.AddToCart.BoltTShirt).click();
@@ -34,6 +36,7 @@ describe('✅SwagLabs | SCP | Agregar producto al carrito de compras desde el PL
 
 		cy.get(the.plp.Input.Label).should('contain', the.assertions.BoltTShirt.Name).and('contain', the.assertions.Jacket.Name);
 		cy.get(the.plp.Input.Label).should('contain', the.assertions.BoltTShirt.Description).and('contain', the.assertions.Jacket.Description);
+		cy.get(the.plp.Input.Label).should('contain', the.assertions.BoltTShirt.Price).and('contain', the.assertions.Jacket.Price);
 	});
 	it('TC04 - Validar agregar 2 o mas productos al SCP desde el PDP', () => {
 		cy.get(the.plp.Input.Onesie).click();
@@ -46,6 +49,7 @@ describe('✅SwagLabs | SCP | Agregar producto al carrito de compras desde el PL
 
 		cy.get(the.plp.Input.Label).should('contain', the.assertions.Onesie.Name).and('contain', the.assertions.RedTShirt.Name);
 		cy.get(the.plp.Input.Label).should('contain', the.assertions.Onesie.Description).and('contain', the.assertions.RedTShirt.Description);
+		cy.get(the.plp.Input.Label).should('contain', the.assertions.Onesie.Price).and('contain', the.assertions.RedTShirt.Price);
 	});
 	it('TC05 - Validar agregar 2 o mas productos al SCP desde PLP y PDP', () => {
 		cy.get(the.plp.AddToCart.BoltTShirt).click();
@@ -55,5 +59,6 @@ describe('✅SwagLabs | SCP | Agregar producto al carrito de compras desde el PL
 
 		cy.get(the.plp.Input.Label).should('contain', the.assertions.BoltTShirt.Name).and('contain', the.assertions.Light.Name);
 		cy.get(the.plp.Input.Label).should('contain', the.assertions.BoltTShirt.Description).and('contain', the.assertions.Light.Description);
+		cy.get(the.plp.Input.Label).should('contain', the.assertions.BoltTShirt.Price).and('contain', the.assertions.Light.Price);
 	});
 });

@@ -42,8 +42,10 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		LoginBR.LockedUser();
 		cy.get('.error-message-container.error').should('contain', 'Sorry, this user has been locked out.');
 	});
-	it.skip('17549 | TC10: Validate User cannot access an Endpoint without Login', () => {
+
+	it('17549 | TC10: Validate User cannot access an Endpoint without Login', () => {
 		LoginBR.Endpoint();
+		cy.get('.error-message-container.error').should('contain', 'Epic sadface: You can only access');
 	});
 });
 

@@ -20,16 +20,17 @@
 			"BoltTShirt": "#add-to-cart-sauce-labs-bolt-t-shirt",
 			"Jacket": "#add-to-cart-sauce-labs-fleece-jacket",
 			"Onesie": "#add-to-cart-sauce-labs-onesie",
-			"RedTShirt": "#add-to-cart-test.allthethings()-t-shirt-(red)"
+			"RedTShirt": "[id='add-to-cart-test.allthethings()-t-shirt-(red)']"
 		},
-		"input": {
+		"Input": {
 			"Backpack": "#item_4_img_link",
 			"Light": "#item_0_img_link",
 			"BoltTShirt": "#item_1_img_link",
 			"Jacket": "#item_5_img_link",
 			"Onesie": "#item_2_img_link",
 			"RedTShirt": "#item_3_img_link",
-			"Cart": ".shopping_cart_link"
+			"Cart": ".shopping_cart_link",
+			"Label": ".cart_list"
 		}
 	},
 	"pdp": {
@@ -39,9 +40,9 @@
 			"BoltTShirt": "#add-to-cart-sauce-labs-bolt-t-shirt",
 			"Jacket": "#add-to-cart-sauce-labs-fleece-jacket",
 			"Onesie": "#add-to-cart-sauce-labs-onesie",
-			"RedTShirt": "#add-to-cart-test.allthethings()-t-shirt-(red)"
+			"RedTShirt": "[id='add-to-cart-test.allthethings()-t-shirt-(red)']"
 		},
-		"input": {
+		"Input": {
 			"Cart": "#shopping_cart_container",
 			"BackToPLP": "#back-to-products"
 		}

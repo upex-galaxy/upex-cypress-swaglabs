@@ -1,0 +1,24 @@
+{
+
+    "password" : "secret_sauce",
+    "passwordAdmin" : "admin123",
+    "userStandard" : "standard_user",
+    "userPerformance" : "performance_glitch_user",
+    "userNonExistent" : "new-user_*56--CH",
+    "userAdmin" : "admin",
+    "userAdmin123" : "admin123",
+    "userLong" : "fffffffffffffffffffffffffkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaaaaaaaaaaaaaaaaaaaaaa111111",
+    "userProblem" : "problem_user",
+    "userLocked" : "locked_out_user",
+    "endpointInventory" : "/inventory.html",
+    "endpointCart" : "/cart.html",
+    "endpointStepOne" : "/checkout-step-one.html",
+    "endpointStepTwo" : "/checkout-step-two.html",
+    "endpointComplete" : "/checkout-complete.html",
+    "lokcedUserMessage" : "Epic sadface: Sorry, this user has been locked out.",
+    "nonExistentUserMessage" : "Epic sadface: Username and password do not match any user in this service",
+    "emptyUserFieldMessage" : "Epic sadface: Username is required",
+    "emptyPasswordFieldMessage" : "Epic sadface: Password is required",
+    "startMessage" : "Epic sadface: You can only access '",
+    "endMessage" : "' when you are logged in."
+}

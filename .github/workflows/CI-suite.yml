@@ -70,7 +70,7 @@ jobs:
               with:
                   browser: chrome
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
-                      npm run file cypress/e2e/Tests/Accounts/GX-19099-PLPPDPRemov.cy.js
+                      cypress/e2e/Tests/PLP/GX-19099-PLPPDPRemov.cy.js
 
             - name: ✅Import Test Results to Xray
               if: always()

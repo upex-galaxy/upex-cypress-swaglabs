@@ -38,7 +38,7 @@ class RemoverPage {
 	removeFromPDP() {
 		cy.get(this.removeButtons.backpack).click();
 	}
-	//Ir al PDP del item4 q seria
+	//Ir al PDP del item4 q seria Backpack
 	goToPDP() {
 		cy.get(this.item4TitleLink).click();
 	}

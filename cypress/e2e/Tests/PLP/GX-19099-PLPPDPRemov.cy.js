@@ -1,4 +1,4 @@
-import RemoverPage from './removerPage.js';
+import RemoverPage from 'cypress/support/pages/RemoverPage.js';
 
 describe('GX-19099: SwagLabs | PLP PDP | Remover productos del SCP desde el PLP y PDP', () => {
 	const removerPage = new RemoverPage();
@@ -19,7 +19,7 @@ describe('GX-19099: SwagLabs | PLP PDP | Remover productos del SCP desde el PLP 
 
 	it('19100 | TC2: Validar eliminar más de un producto desde el PLP', () => {
 		removerPage.removeFromPLP();
-		removerPage.removeFromPLP();
+		removerPage.removeFromPLP2();
 		removerPage.verifyCartItemCount('1');
 	});
 
@@ -33,18 +33,16 @@ describe('GX-19099: SwagLabs | PLP PDP | Remover productos del SCP desde el PLP 
 		removerPage.goToPDP();
 		removerPage.removeFromPDP();
 		removerPage.goBackToProducts();
-		removerPage.goToPDP();
-		removerPage.removeFromPDP();
+		removerPage.goToPDP2();
+		removerPage.removeFromPDP2();
 		removerPage.verifyCartItemCount('1');
 	});
 
 	it('19100 | TC5: Validar eliminar TODOS los productos de una sola vez desde el PLP y quede vacío el carrito.', () => {
 		removerPage.removeFromPLP();
 		removerPage.verifyCartItemCount('2');
-		removerPage.removeFromPLP();
-		removerPage.removeFromPDP();
-		removerPage.verifyCartItemCount('1');
-		removerPage.removeFromPDP();
+		removerPage.removeFromPLP2();
+		removerPage.removeFromPDP3();
 		removerPage.verifyCartIsEmpty();
 	});
 });

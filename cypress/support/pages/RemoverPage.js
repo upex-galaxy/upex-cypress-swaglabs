@@ -19,6 +19,10 @@ class RemoverPage {
 		this.backToProductsButton = 'button[data-test="back-to-products"]';
 	}
 
+	get = {
+		cartContainer2: () => cy.get('.shopping_cart_link'),
+	};
+
 	login(username, password) {
 		cy.get(this.usernameInput).type(username);
 		cy.get(this.passwordInput).type(password);
@@ -62,14 +66,6 @@ class RemoverPage {
 
 	goBackToProducts() {
 		cy.get(this.backToProductsButton).click();
-	}
-
-	verifyCartItemCount(expectedCount) {
-		cy.get(this.cartContainer).should('contain', expectedCount);
-	}
-
-	verifyCartIsEmpty() {
-		cy.get(this.cartContainer).should('not.contain', 'Shoping');
 	}
 }
 

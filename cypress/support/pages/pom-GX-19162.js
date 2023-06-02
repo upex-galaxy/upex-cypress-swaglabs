@@ -11,22 +11,9 @@ class LoginSwagLabs{
     typeLogin(username, password) {
         cy.wait(1000)
         cy.visit('/')
-        if (username !== '' && password !== '') {
-            this.element.inputUsername().type(username)
-            this.element.inputPassword().type(password)
-            this.element.buttonLogin().click()
-        }
-        if (username === '' && password === '') {
-            this.element.buttonLogin().click()
-        }
-        if (username !== '' && password === '') {
-            this.element.inputUsername().type(username)
-            this.element.buttonLogin().click()
-        }
-        if (username === '' && password !== '') {
-            this.element.inputPassword().type(password)
-            this.element.buttonLogin().click()
-        }
+        username && this.element.inputUsername().type(username)
+        password && this.element.inputPassword().type(password)
+        this.element.buttonLogin().click()
     }
 
     notAuthorizedEndpoint(endpoint) {

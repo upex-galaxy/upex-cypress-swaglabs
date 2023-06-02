@@ -3,7 +3,7 @@ import { cartPage } from '@pages/SCP.Page';
 import { plp } from '@pages/PLP.Page';
 import { header } from '@pages/swagLabsHeader.Page';
 
-const url = Cypress.env('baseUrl');
+const { baseUrl } = Cypress.env();
 const randomElement = elementQ => Math.floor(Math.random() * elementQ);
 
 describe('US GX-14500- | TS: ✅SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o PDP', () => {
@@ -14,14 +14,14 @@ describe('US GX-14500- | TS: ✅SwagLabs | SCP | Agregar producto al carrito de 
 	});
 
 	beforeEach('User logged in', () => {
-		cy.visit(url);
+		cy.visit(baseUrl);
 		loginExample.enterUsername(data.user);
 		loginExample.enterPassword(data.password);
 		loginExample.submitLogin();
 		cy.url().should('contain', '/inventory.html');
 	});
 
-	it.only('14501 | TC1: Add a product from the PLP to the Shopping-Cart successfully', () => {
+	it('14501 | TC1: Add a product from the PLP to the Shopping-Cart successfully', () => {
 		plp.get.productList().then(elements => {
 			const cantidad = elements.length;
 			const randomIndex = randomElement(cantidad);
@@ -70,7 +70,35 @@ describe('US GX-14500- | TS: ✅SwagLabs | SCP | Agregar producto al carrito de 
 		});
 	});
 
-	it('14501 | TC2: Successfully adding multiple products from the PLP to the Shopping-Cart', () => {});
+	it.only('14501 | TC2: Successfully adding multiple products from the PLP to the Shopping-Cart', () => {
+		cy.addFromPLP().then(product => {
+			const { index, price, name, desc } = product;
+			//Validate button text from 'Add to cart' to 'Remove'
+			plp.get.itemButton().eq(index).should('have.text', 'Remove');
+
+			//Validate cart quantity
+			header.get.cartQuantity().should('have.text', '1');
+
+			header.get.iconSC().click();
+			cy.url().should('contain', 'cart.html');
+
+			cartPage.get.title().should('have.text', 'Your Cart');
+
+			//Validate product characteristics
+			cartPage.get.productPrice().then(actualPrice => {
+				const addedPrice = actualPrice.text();
+				expect(addedPrice).equal(price);
+			});
+			cartPage.get.productName().then(actualName => {
+				const addedName = actualName.text();
+				expect(addedName).equal(name);
+			});
+			cartPage.get.productDescription().then(actualDesc => {
+				const addedDesc = actualDesc.text();
+				expect(addedDesc).equal(desc);
+			});
+		});
+	});
 
 	it('14501 | TC3:  Add a product from the PDP to the Shopping-Cart successfully', () => {
 		//inventory-item

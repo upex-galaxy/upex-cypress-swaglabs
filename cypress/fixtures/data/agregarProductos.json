@@ -1,0 +1,82 @@
+{
+	"url": {
+		"Main": "https://www.saucedemo.com",
+		"Assertion": "saucedemo",
+		"Assertion2": "inventory"
+	},
+	"login": {
+		"Username": "#user-name",
+		"Password": "#password",
+		"Submit": "#login-button",
+		"Data": {
+			"Username": "standard_user",
+			"Password": "secret_sauce"
+		}
+	},
+	"plp": {
+		"AddToCart": {
+			"Backpack": "#add-to-cart-sauce-labs-backpack",
+			"Light": "#add-to-cart-sauce-labs-bike-light",
+			"BoltTShirt": "#add-to-cart-sauce-labs-bolt-t-shirt",
+			"Jacket": "#add-to-cart-sauce-labs-fleece-jacket",
+			"Onesie": "#add-to-cart-sauce-labs-onesie",
+			"RedTShirt": "[id='add-to-cart-test.allthethings()-t-shirt-(red)']"
+		},
+		"Input": {
+			"Backpack": "#item_4_img_link",
+			"Light": "#item_0_img_link",
+			"BoltTShirt": "#item_1_img_link",
+			"Jacket": "#item_5_img_link",
+			"Onesie": "#item_2_img_link",
+			"RedTShirt": "#item_3_img_link",
+			"Cart": ".shopping_cart_link",
+			"Label": ".cart_list"
+		}
+	},
+	"pdp": {
+		"AddToCart": {
+			"Backpack": "#add-to-cart-sauce-labs-backpack",
+			"Light": "#add-to-cart-sauce-labs-bike-light",
+			"BoltTShirt": "#add-to-cart-sauce-labs-bolt-t-shirt",
+			"Jacket": "#add-to-cart-sauce-labs-fleece-jacket",
+			"Onesie": "#add-to-cart-sauce-labs-onesie",
+			"RedTShirt": "[id='add-to-cart-test.allthethings()-t-shirt-(red)']"
+		},
+		"Input": {
+			"Cart": "#shopping_cart_container",
+			"BackToPLP": "#back-to-products"
+		}
+	},
+	"assertions": {
+		"Backpack": {
+			"Name": "Sauce Labs Backpack",
+			"Description": "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
+			"Price": "29.99"
+		},
+		"Light": {
+			"Name": "Sauce Labs Bike Light",
+			"Description": "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.",
+			"Price": "9.99"
+		},
+		"BoltTShirt": {
+			"Name": "Sauce Labs Bolt T-Shirt",
+			"Description": "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt.",
+			"Price": "15.99"
+		},
+		"Jacket": {
+			"Name": "Sauce Labs Fleece Jacket",
+			"Description": "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.",
+			"Price": "49.99"
+		},
+		"Onesie": {
+			"Name": "Sauce Labs Onesie",
+			"Description": "Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.",
+			"Price": "7.99"
+		},
+		"RedTShirt": {
+			"Name": "Test.allTheThings() T-Shirt (Red)",
+			"Description": "This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.",
+			"Price": "15.99"
+		}
+	}
+}

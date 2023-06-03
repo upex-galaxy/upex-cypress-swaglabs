@@ -70,33 +70,38 @@ describe('US GX-14500- | TS: ✅SwagLabs | SCP | Agregar producto al carrito de 
 		});
 	});
 
-	it.only('14501 | TC2: Successfully adding multiple products from the PLP to the Shopping-Cart', () => {
-		cy.addFromPLP().then(product => {
-			const { index, price, name, desc } = product;
-			//Validate button text from 'Add to cart' to 'Remove'
-			plp.get.itemButton().eq(index).should('have.text', 'Remove');
+	it('14501 | TC2: Successfully adding multiple products from the PLP to the Shopping-Cart', () => {
+		plp.get.productList().then(elements => {
+			for (let index = 0; index < elements.length; index++) {
+				cy.addFromPLP(index);
 
-			//Validate cart quantity
-			header.get.cartQuantity().should('have.text', '1');
+				//Validate button text from 'Add to cart' to 'Remove'
+				plp.get.itemButton().eq(index).should('have.text', 'Remove');
 
-			header.get.iconSC().click();
-			cy.url().should('contain', 'cart.html');
+				//Validate cart quantity
+				header.get.cartQuantity().should('have.text', index + 1);
 
-			cartPage.get.title().should('have.text', 'Your Cart');
+				header.get.iconSC().click();
+				cy.url().should('contain', 'cart.html');
 
-			//Validate product characteristics
-			cartPage.get.productPrice().then(actualPrice => {
-				const addedPrice = actualPrice.text();
-				expect(addedPrice).equal(price);
-			});
-			cartPage.get.productName().then(actualName => {
-				const addedName = actualName.text();
-				expect(addedName).equal(name);
-			});
-			cartPage.get.productDescription().then(actualDesc => {
-				const addedDesc = actualDesc.text();
-				expect(addedDesc).equal(desc);
-			});
+				cartPage.get.title().should('have.text', 'Your Cart');
+
+				//Validate product characteristics
+				cartPage.get.productPrice().then(actualPrice => {
+					const addedPrice = actualPrice.eq(index).text();
+					expect(addedPrice).equal(Cypress.env('itemPrice'));
+				});
+				cartPage.get.productName().then(actualName => {
+					const addedName = actualName.eq(index).text();
+					expect(addedName).equal(Cypress.env('itemName'));
+				});
+				cartPage.get.productDescription().then(actualDesc => {
+					const addedDesc = actualDesc.eq(index).text();
+					expect(addedDesc).equal(Cypress.env('itemDesc'));
+				});
+
+				cartPage.continueShoppingClick();
+			}
 		});
 	});
 
@@ -106,20 +111,4 @@ describe('US GX-14500- | TS: ✅SwagLabs | SCP | Agregar producto al carrito de 
 	});
 
 	it('14501 | TC4: Successfully adding multiple products from the PDP to the Shopping-Cart', () => {});
-
-	//________________________________________________________________________
-	// Comando predeterminado para que no ocurran errores de excepciones:
-	Cypress.on('uncaught:exception', (err, runnable) => {
-		// returning false here prevents Cypress from
-		// failing the test
-		return false;
-	});
-	// Comando predeterminado para que no aparezcan los Fetch en el log del Test Runner:
-	const origLog = Cypress.log;
-	Cypress.log = function (opts, ...other) {
-		if (opts.displayName === 'xhr' || (opts.displayName === 'fetch' && opts.url.startsWith('https://'))) {
-			return;
-		}
-		return origLog(opts, ...other);
-	};
 });

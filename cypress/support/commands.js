@@ -17,9 +17,7 @@ import { signin } from '@pages/SignIn.Page.js';
 import { initSessionSwagLabs } from '@pages/loginLCasco2.Page';
 const { login } = Cypress.env('swagLabs');
 const { baseUrl } = Cypress.env();
-import { cartPage } from '@pages/SCP.Page';
-import { plp } from '@pages/PLP.Page';
-import { header } from '@pages/swagLabsHeader.Page';
+
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
@@ -103,27 +101,22 @@ Cypress.Commands.add('addToCardOneRandomItem', () => {
 		});
 });
 
-Cypress.Commands.addFromPLP('Add and validate random product from the PLP to the Shopping-Cart', () => {
+import { plp } from '@pages/PLP.Page';
+Cypress.Commands.add('addFromPLP', index => {
 	plp.get.productList().then(elements => {
-		const cantidad = elements.length;
-		const randomIndex = randomElement(cantidad);
-		let itemPrice;
-		let itemName;
-		let itemDesc;
 		cy.wrap(elements)
-			.eq(randomIndex)
+			.eq(index)
 			.within(() => {
-				cy.get('button').click();
+				plp.get.itemButton().click();
 				plp.get.productPrice().then(elementPrice => {
-					itemPrice = elementPrice.text();
+					Cypress.env('itemPrice', elementPrice.text());
 				});
 				plp.get.productName().then(elementName => {
-					itemName = elementName.text();
+					Cypress.env('itemName', elementName.text());
 				});
 				plp.get.productDesc().then(elementDesc => {
-					itemDesc = elementDesc.text();
+					Cypress.env('itemDesc', elementDesc.text());
 				});
 			});
-		return { randomIndex, itemPrice, itemName, itemDesc };
 	});
 });

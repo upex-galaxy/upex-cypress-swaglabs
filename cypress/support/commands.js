@@ -120,3 +120,23 @@ Cypress.Commands.add('addFromPLP', index => {
 			});
 	});
 });
+
+import { pdp } from '@pages/PDP.Page';
+Cypress.Commands.add('addFromPDP', index => {
+	plp.get.productList().then(elements => {
+		cy.wrap(elements)
+			.eq(index)
+			.within(() => {
+				plp.get.itemButton().click();
+				plp.get.productPrice().then(elementPrice => {
+					Cypress.env('itemPrice', elementPrice.text());
+				});
+				plp.get.productName().then(elementName => {
+					Cypress.env('itemName', elementName.text());
+				});
+				plp.get.productDesc().then(elementDesc => {
+					Cypress.env('itemDesc', elementDesc.text());
+				});
+			});
+	});
+});

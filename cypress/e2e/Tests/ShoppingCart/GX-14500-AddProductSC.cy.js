@@ -2,6 +2,7 @@ import { loginExample } from '@pages/Login.Page';
 import { cartPage } from '@pages/SCP.Page';
 import { plp } from '@pages/PLP.Page';
 import { header } from '@pages/swagLabsHeader.Page';
+import { pdp } from '@pages/PDP.Page';
 
 const { baseUrl } = Cypress.env();
 const randomElement = elementQ => Math.floor(Math.random() * elementQ);
@@ -105,9 +106,56 @@ describe('US GX-14500- | TS: ✅SwagLabs | SCP | Agregar producto al carrito de 
 		});
 	});
 
-	it('14501 | TC3:  Add a product from the PDP to the Shopping-Cart successfully', () => {
-		//inventory-item
-		//Back to products
+	it.only('14501 | TC3:  Add a product from the PDP to the Shopping-Cart successfully', () => {
+		plp.get.productList().then(elements => {
+			const cantidad = elements.length;
+			const randomIndex = randomElement(cantidad);
+			cy.wrap(elements)
+				.eq(randomIndex)
+				.within(() => {
+					plp.productNameClick();
+				});
+		});
+		//item detail
+		pdp.itemButtonClick();
+		pdp.get.product().then(elements => {
+			cy.wrap(elements).within(() => {
+				pdp.get.productPrice().then(elementPrice => {
+					Cypress.env('itemPrice', elementPrice.text());
+				});
+				pdp.get.productName().then(elementName => {
+					Cypress.env('itemName', elementName.text());
+				});
+				pdp.get.productDesc().then(elementDesc => {
+					Cypress.env('itemDesc', elementDesc.text());
+				});
+			});
+		});
+
+		//Validate button text from 'Add to cart' to 'Remove'
+		pdp.get.itemButton().should('have.text', 'Remove');
+
+		//Validate cart quantity
+		header.get.cartQuantity().should('have.text', '1');
+
+		header.get.iconSC().click();
+		cy.url().should('contain', 'cart.html');
+
+		cartPage.get.title().should('have.text', 'Your Cart');
+
+		//Validate product characteristics
+		cartPage.get.productPrice().then(actualPrice => {
+			const addedPrice = actualPrice.text();
+			expect(addedPrice).equal(Cypress.env('itemPrice'));
+		});
+		cartPage.get.productName().then(actualName => {
+			const addedName = actualName.text();
+			expect(addedName).equal(Cypress.env('itemName'));
+		});
+		cartPage.get.productDescription().then(actualDesc => {
+			const addedDesc = actualDesc.text();
+			expect(addedDesc).equal(Cypress.env('itemDesc'));
+		});
 	});
 
 	it('14501 | TC4: Successfully adding multiple products from the PDP to the Shopping-Cart', () => {});

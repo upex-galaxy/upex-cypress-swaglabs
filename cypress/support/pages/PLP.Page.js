@@ -7,8 +7,8 @@ class PLP {
 		itemButton: () => cy.get('[class*=btn_inventory]'),
 	};
 
-	productNameClick() {
-		this.get.productName().click();
+	productNameClick(index) {
+		this.get.productName().eq(index).click();
 	}
 }
 

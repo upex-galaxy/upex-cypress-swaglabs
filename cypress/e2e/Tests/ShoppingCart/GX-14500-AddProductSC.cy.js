@@ -106,14 +106,14 @@ describe('US GX-14500- | TS: ✅SwagLabs | SCP | Agregar producto al carrito de 
 		});
 	});
 
-	it.only('14501 | TC3:  Add a product from the PDP to the Shopping-Cart successfully', () => {
+	it('14501 | TC3:  Add a product from the PDP to the Shopping-Cart successfully', () => {
 		plp.get.productList().then(elements => {
 			const cantidad = elements.length;
 			const randomIndex = randomElement(cantidad);
 			cy.wrap(elements)
 				.eq(randomIndex)
 				.within(() => {
-					plp.productNameClick();
+					plp.get.productName().click();
 				});
 		});
 		//item detail
@@ -158,5 +158,41 @@ describe('US GX-14500- | TS: ✅SwagLabs | SCP | Agregar producto al carrito de 
 		});
 	});
 
-	it('14501 | TC4: Successfully adding multiple products from the PDP to the Shopping-Cart', () => {});
+	it('14501 | TC4: Successfully adding multiple products from the PDP to the Shopping-Cart', () => {
+		plp.get.productList().then(elements => {
+			for (let index = 0; index < elements.length; index++) {
+				plp.productNameClick(index);
+				cy.url().should('contain', 'inventory-item');
+
+				cy.addFromPDP();
+
+				//Validate button text from 'Add to cart' to 'Remove'
+				pdp.get.itemButton().should('have.text', 'Remove');
+
+				//Validate cart quantity
+				header.get.cartQuantity().should('have.text', index + 1);
+
+				header.get.iconSC().click();
+				cy.url().should('contain', 'cart.html');
+
+				cartPage.get.title().should('have.text', 'Your Cart');
+
+				//Validate product characteristics
+				cartPage.get.productPrice().then(actualPrice => {
+					const addedPrice = actualPrice.eq(index).text();
+					expect(addedPrice).equal(Cypress.env('itemPrice'));
+				});
+				cartPage.get.productName().then(actualName => {
+					const addedName = actualName.eq(index).text();
+					expect(addedName).equal(Cypress.env('itemName'));
+				});
+				cartPage.get.productDescription().then(actualDesc => {
+					const addedDesc = actualDesc.eq(index).text();
+					expect(addedDesc).equal(Cypress.env('itemDesc'));
+				});
+
+				cartPage.continueShoppingClick();
+			}
+		});
+	});
 });

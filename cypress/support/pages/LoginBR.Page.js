@@ -3,7 +3,6 @@ class Session {
 		usernameInput: () => cy.get('#user-name'),
 		passwordInput: () => cy.get('#password'),
 		LoginBtn: () => cy.get('#login-button'),
-		// btnError: () => cy.get('.error-message-container.error'),
 	};
 
 	EnterData(username, password) {
@@ -13,12 +12,6 @@ class Session {
 
 	Submit() {
 		this.get.LoginBtn().click();
-	}
-
-	Endpoint() {
-		cy.visit('https://www.saucedemo.com/inventory.html', {
-			failOnStatusCode: false,
-		});
 	}
 }
 

@@ -1,9 +1,4 @@
 {
-	"inputs": {
-		"Username": "#user-name",
-		"Password": "#password"
-	},
-
 	"dataValid": {
 		"UsernameOK": "standard_user",
 		"PasswordOK": "secret_sauce"
@@ -13,12 +8,15 @@
 		"username": {
 			"User_Num": "123456",
 			"User_Esp": "$%^&*",
-			"WrongUser": "Upex123"
+			"WrongUser": "Upex123",
+			"EmptyUSer": ""
 		},
 		"password": {
-			"WrongPassword": "Psswd"
+			"WrongPassword": "Psswd",
+			"EmptyPassword": ""
 		}
 	},
 	"LockedUSer": "locked_out_user",
-	"LoginBton": "#login-button"
+	"LoginBton": "#login-button",
+	"errorMessage": ".error-message-container.error"
 }

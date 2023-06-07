@@ -1,24 +1,23 @@
-import { loginExample } from '@pages/Login.Page';
+import { loginExample as login } from '@pages/Login.Page';
 import { cartPage } from '@pages/SCP.Page';
 import { plp } from '@pages/PLP.Page';
 import { header } from '@pages/swagLabsHeader.Page';
 import { pdp } from '@pages/PDP.Page';
 
-const { baseUrl } = Cypress.env();
 const randomElement = elementQ => Math.floor(Math.random() * elementQ);
 
 describe('US GX-14500- | TS: ✅SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o PDP', () => {
 	before('', () => {
-		cy.fixture('SCP/data').then(datos => {
+		cy.fixture('data/data').then(datos => {
 			data = datos;
 		});
 	});
 
 	beforeEach('User logged in', () => {
-		cy.visit(baseUrl);
-		loginExample.enterUsername(data.user);
-		loginExample.enterPassword(data.password);
-		loginExample.submitLogin();
+		cy.visit('/');
+		login.enterUsername(data.username);
+		login.enterPassword(data.password);
+		login.submitLogin();
 		cy.url().should('contain', '/inventory.html');
 	});
 
@@ -26,21 +25,18 @@ describe('US GX-14500- | TS: ✅SwagLabs | SCP | Agregar producto al carrito de 
 		plp.get.productList().then(elements => {
 			const cantidad = elements.length;
 			const randomIndex = randomElement(cantidad);
-			let itemPrice;
-			let itemName;
-			let itemDesc;
 			cy.wrap(elements)
 				.eq(randomIndex)
 				.within(() => {
 					cy.get('button').click();
 					plp.get.productPrice().then(elementPrice => {
-						itemPrice = elementPrice.text();
+						Cypress.env('itemPrice', elementPrice.text());
 					});
 					plp.get.productName().then(elementName => {
-						itemName = elementName.text();
+						Cypress.env('itemName', elementName.text());
 					});
 					plp.get.productDesc().then(elementDesc => {
-						itemDesc = elementDesc.text();
+						Cypress.env('itemDesc', elementDesc.text());
 					});
 				});
 
@@ -58,15 +54,15 @@ describe('US GX-14500- | TS: ✅SwagLabs | SCP | Agregar producto al carrito de 
 			//Validate product characteristics
 			cartPage.get.productPrice().then(actualPrice => {
 				const addedPrice = actualPrice.text();
-				expect(addedPrice).equal(itemPrice);
+				expect(addedPrice).equal(Cypress.env('itemPrice'));
 			});
 			cartPage.get.productName().then(actualName => {
 				const addedName = actualName.text();
-				expect(addedName).equal(itemName);
+				expect(addedName).equal(Cypress.env('itemName'));
 			});
 			cartPage.get.productDescription().then(actualDesc => {
 				const addedDesc = actualDesc.text();
-				expect(addedDesc).equal(itemDesc);
+				expect(addedDesc).equal(Cypress.env('itemDesc'));
 			});
 		});
 	});

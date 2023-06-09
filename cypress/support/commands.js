@@ -11,13 +11,13 @@ import 'cypress-file-upload';
 import 'cypress-wait-until';
 import '@4tw/cypress-drag-drop';
 import 'cypress-downloadfile/lib/downloadFileCommand';
-import { plpAndPdp } from '@pages/pom-GX-19828'
 import { loginExample } from '@pages/Login.Page';
+import { plpAndPdp } from '@pages/pom-GX-19828'
 import { signin } from '@pages/SignIn.Page.js';
+const { authLogin, dashboardIndex } = Cypress.env('endpoint');
 import { initSessionSwagLabs } from '@pages/loginLCasco2.Page';
 const { login } = Cypress.env('swagLabs');
 const { baseUrl } = Cypress.env();
-const { authLogin, dashboardIndex } = Cypress.env('endpoint');
 
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
@@ -39,24 +39,6 @@ Cypress.Commands.add('typeLogin', (username, password) => {
 	plpAndPdp.element.inputUsername().type(username)
 	plpAndPdp.element.inputPassword().type(password)
 	plpAndPdp.element.buttonLogin().click()
-})
-
-Cypress.Commands.add('selectProduct', (productNumToSelect) => {
-	plpAndPdp.element.getProducts().children().then(products => {
-		const totalProducts = products.length;
-		let items = []
-		while (items.length < productNumToSelect) {
-			let selectProductRandom = Math.floor(Math.random() * totalProducts);
-			if (items.every(item => item !== selectProductRandom)) {
-				items.push(selectProductRandom)
-			}
-		}
-		for (const item of items) {
-			cy.wrap(products).eq(item).within(() => {
-				plpAndPdp.element.buttonProduct().click({ multiple: true });
-			});
-		}
-	})
 })
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

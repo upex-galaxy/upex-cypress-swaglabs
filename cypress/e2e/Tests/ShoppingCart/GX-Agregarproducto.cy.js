@@ -1,4 +1,4 @@
-const { Agregar } = require('@pages/agregarProd.page');
+import { Agregar } from '@pages/agregarProd.page';
 
 describe('SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o PDP', () => {
 	beforeEach(() => {

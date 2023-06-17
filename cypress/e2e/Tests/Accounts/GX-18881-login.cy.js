@@ -58,26 +58,46 @@ describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 
 	it('18882 | TC 9: Validar no iniciar sesión exitosamente si el usuario quiere ingresar al endpoint /inventory.html', () => {
 		cy.visit('https://www.saucedemo.com/inventory.html', { failOnStatusCode: false });
-		Login.elements.ErrorMessage().should('be.visible').contains('Epic').should('have.text','Epic sadface: You can only access '/inventory.html' when you are logged in.');
+		Login.elements
+			.ErrorMessage()
+			.should('be.visible')
+			.contains('Epic')
+			.should('have.text', "Epic sadface: You can only access '/inventory.html' when you are logged in.");
 	});
 
 	it('18882 | TC 10: Validar no iniciar sesión exitosamente si el usuario quiere ingresar al endpoint /cart.html', () => {
 		cy.visit('https://www.saucedemo.com/cart.html', { failOnStatusCode: false });
-		Login.elements.ErrorMessage().should('be.visible').contains('Epic').should('have.text','Epic sadface: You can only access '/cart.html' when you are logged in.');
+		Login.elements
+			.ErrorMessage()
+			.should('be.visible')
+			.contains('Epic')
+			.should('have.text', "Epic sadface: You can only access '/cart.html' when you are logged in.");
 	});
 
 	it('18882 | TC 11: Validar no iniciar sesión exitosamente si el usuario quiere ingresar al endpoint /checkout-step-one.html', () => {
 		cy.visit('https://www.saucedemo.com/checkout-step-one.html', { failOnStatusCode: false });
-		Login.elements.ErrorMessage().should('be.visible').contains('Epic').should('have.text','Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.');
+		Login.elements
+			.ErrorMessage()
+			.should('be.visible')
+			.contains('Epic')
+			.should('have.text', "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.");
 	});
 
 	it('18882 | TC 12: Validar no iniciar sesión exitosamente si el usuario quiere ingresar al endpoint /checkout-step-two.html', () => {
 		cy.visit('https://www.saucedemo.com/checkout-step-two.html', { failOnStatusCode: false });
-		Login.elements.ErrorMessage().should('be.visible').contains('Epic');
+		Login.elements
+			.ErrorMessage()
+			.should('be.visible')
+			.contains('Epic')
+			.should('have.text', "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.");
 	});
 
 	it('18882 | TC 13: Validar no iniciar sesión exitosamente si el usuario quiere ingresar al endpoint /checkout-complete.html', () => {
 		cy.visit('https://www.saucedemo.com/checkout-complete.html', { failOnStatusCode: false });
-		Login.elements.ErrorMessage().should('be.visible').contains('Epic').should('have.text','Epic sadface: You can only access '/checkout-complete.html' when you are logged in.');
+		Login.elements
+			.ErrorMessage()
+			.should('be.visible')
+			.contains('Epic')
+			.should('have.text', "Epic sadface: You can only access '/checkout-complete.html' when you are logged in.");
 	});
 });

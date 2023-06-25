@@ -50,5 +50,6 @@
 	"steptwomsg": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
 	"stepcompletemsg": "Epic sadface: You can only access '/checkout-complete.html' when you are logged in.",
 	"loginbutton": "#login-button",
-	"element": "[data-test='error']"
+	"element": "[data-test='error']",
+	"pagetwomsg": "Sauce Labs Backpack"
 }

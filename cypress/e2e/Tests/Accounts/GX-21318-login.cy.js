@@ -38,7 +38,7 @@ describe('GX-21318-✅-swag-labs-account-iniciar-sesion-y-br-de-accesos', () => 
 	});
 	it('GX-21319 | TC5: Validate log in with username and password that is not on database.', () => {
 		cy.get(the.userone.input).type(the.userone.data.invalid);
-		cy.get(the.userone.input).should('not.have.value', the.userone.data.invalid);
+		cy.get(the.userone.input).should('have.value', the.userone.data.invalid);
 		cy.get(the.password.input).type(the.password.data.invalid);
 		cy.get(the.password.input).should('have.value', the.password.data.invalid);
 		cy.get(the.loginbutton).click();

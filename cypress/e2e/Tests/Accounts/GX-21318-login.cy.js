@@ -1,4 +1,4 @@
-import the from '../../../fixtures/data/GX-21318/ToolsQA-LogIn-saucedemo.json';
+import the from '../../../fixtures/data/GX-21318/ToolsQA-LogIn.json';
 describe('GX-21318-✅-swag-labs-account-iniciar-sesion-y-br-de-accesos', () => {
 	beforeEach('Having access to the SUT', () => {
 		cy.visit('https://www.saucedemo.com/');

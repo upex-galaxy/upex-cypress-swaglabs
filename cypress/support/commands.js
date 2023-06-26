@@ -12,7 +12,6 @@ import 'cypress-wait-until';
 import '@4tw/cypress-drag-drop';
 import 'cypress-downloadfile/lib/downloadFileCommand';
 import { loginExample } from '@pages/Login.Page';
-import { plpAndPdp } from '@pages/pom-GX-19828'
 import { signin } from '@pages/SignIn.Page.js';
 const { authLogin, dashboardIndex } = Cypress.env('endpoint');
 import { initSessionSwagLabs } from '@pages/loginLCasco2.Page';
@@ -35,11 +34,7 @@ const { baseUrl } = Cypress.env();
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Cypress.Commands.add('typeLogin', (username, password) => {
-	plpAndPdp.element.inputUsername().type(username)
-	plpAndPdp.element.inputPassword().type(password)
-	plpAndPdp.element.buttonLogin().click()
-})
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

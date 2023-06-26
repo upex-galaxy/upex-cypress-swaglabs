@@ -12,7 +12,7 @@ describe('US GX-19828 | TS: ✅SwagLabs | PLP PDP | Remover productos del SCP de
     
     beforeEach('User is logged with one or more products add to the SCP.', () => {
         cy.visit(baseUrl)
-        cy.typeLogin(username, password) //commands
+        plpAndPdp.typeLogin(username, password)
         plpAndPdp.addProduct(numProductToAdd).then(arrayNamesReturs => { arrayNames = arrayNamesReturs })
         plpAndPdp.element.linkCartIcon().should('contain', numProductToAdd)
     })

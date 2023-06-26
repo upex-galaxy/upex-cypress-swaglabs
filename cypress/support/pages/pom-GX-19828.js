@@ -15,6 +15,12 @@ class PlpAndPdp {
         
     }
 
+    typeLogin(username, password) {
+        this.element.inputUsername().type(username)
+        this.element.inputPassword().type(password)
+        this.element.buttonLogin().click()
+    }
+
     addProduct(numProductoToAdd) {
         let arrayNames = []
         return this.element.getListProducts().children().then(products => {

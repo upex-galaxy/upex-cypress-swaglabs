@@ -52,13 +52,12 @@ export default defineConfig({
 	env: {
 		baseUrl: 'https://www.saucedemo.com',
 		AdminUser: {
-			username: 'Admin',
-			password: 'admin123',
+			username: 'standard_user',
+			password: 'secret_sauce',
 		},
 		endpoint: {
-			authLogin: '/auth/login',
-			dashboardIndex: '/dashboard/index',
-			signUp: 'https://coderbyte.com/sl',
+			PLP: '/inventory.html',
+			SCP: '/cart.html',
 		},
 		user: {
 			username: 'upexTesting',
@@ -72,8 +71,7 @@ export default defineConfig({
 				checkoutOne: '/checkout-step-one.html',
 				checkoutTwo: '/checkout-step-two.html',
 				checkoutAll: '/checkout-complete.html',
-				product: '/inventory-item.html'
-
+				product: '/inventory-item.html',
 			},
 			login: {
 				users: {

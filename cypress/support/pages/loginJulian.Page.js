@@ -13,7 +13,7 @@ class loginPage {
 		this.get.inputPassword().type(type);
 	}
 	clickLoginBtn(type) {
-		this.get.loginBtn().type(type);
+		this.get.loginBtn().click();
 	}
 }
 

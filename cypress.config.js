@@ -52,12 +52,13 @@ export default defineConfig({
 	env: {
 		baseUrl: 'https://www.saucedemo.com',
 		AdminUser: {
-			username: 'standard_user',
-			password: 'secret_sauce',
+			username: 'Admin',
+			password: 'admin123',
 		},
 		endpoint: {
-			PLP: '/inventory.html',
-			SCP: '/cart.html',
+			authLogin: '/auth/login',
+			dashboardIndex: '/dashboard/index',
+			signUp: 'https://coderbyte.com/sl',
 		},
 		user: {
 			username: 'upexTesting',

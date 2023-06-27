@@ -9,8 +9,12 @@ class ShoppingCart {
 		descriptionitemSCP: () => cy.get('inventory_details_desc'),
 	};
 
-	AddItemPLP() {
+	AddItem() {
 		this.get.addbutton().click();
+	}
+
+	RemoveItem() {
+		this.get.removebutton().click();
 	}
 
 	PickItemPLP() {
@@ -21,3 +25,5 @@ class ShoppingCart {
 		this.get.addbutton().click();
 	}
 }
+
+export const the = new this();

@@ -1,0 +1,21 @@
+{
+	"data": {
+		"valid": {
+			"correctUser": "standard_user",
+			"problemUser": "problem_user",
+			"performanceUser": "performance_glitch_user",
+			"password": "secret_sauce"
+		},
+		"invalid": {
+			"lockedUser": "locked_out_user",
+			"incorrectUser": "random_user"
+		}
+	},
+	"errorMsg": {
+		"errorMsg1": "Epic sadface: Sorry, this user has been locked out",
+		"errorMsg2": "Epic sadface: Username and password do not match any user in this service",
+		"errorMsg3": "Epic sadface: Username is required",
+		"errorMsg4": "Epic sadface: Password is required",
+		"inventoryErrorMsg": "Epic sadface: You can only access '/inventory.html' when you are logged in"
+	}
+}

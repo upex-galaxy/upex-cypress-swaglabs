@@ -12,8 +12,11 @@ class loginPage {
 	enterPassword(type) {
 		this.get.inputPassword().type(type);
 	}
-	clickLoginBtn(type) {
+	clickLoginBtn() {
 		this.get.loginBtn().click();
+	}
+	errMsg() {
+		this.get.errorMessage();
 	}
 }
 

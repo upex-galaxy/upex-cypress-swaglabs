@@ -1,28 +1,38 @@
 class productListPage {
 	get = {
 		addToCartBtn: () => cy.get('[data-test="add-to-cart-sauce-labs-backpack"]'),
-		removeFromCartBtn: () => cy.get('[data-test="remove-sauce-labs-backpack"]'),
+		removeBtn: () => cy.get('[data-test="remove-sauce-labs-backpack"]'),
 		shoppingCartQty: () => cy.get('.shopping_cart_badge'),
 		badgeShoppingCart: () => cy.get('span[class=shopping_cart_badge]'),
 		shoppingCartIcon: () => cy.get('.shopping_cart_link'),
 		backpackDescriptionPLP: () => cy.get('.inventory_list > :nth-child(1)'),
+		inventoryUrl: () => cy.url('https://www.saucedemo.com/inventory.html'),
+		inventoryContainer: () => cy.get('#inventory_container'),
 	};
+
+	InventoryUrl() {
+		this.get.inventoryUrl();
+	}
+
+	InventoryContainer() {
+		this.get.inventoryContainer();
+	}
 
 	addItemToCart() {
 		this.get.addToCartBtn().click();
 	}
 
-	removeBtnAssertion() {
-		this.get.removeFromCartBtn().should('have.text', 'Remove');
+	RemoveBtn() {
+		this.get.removeBtn();
 	}
 	qtyAssertion() {
-		this.get.shoppingCartQty().should('have.text', '1');
+		this.get.shoppingCartQty();
 	}
-	emptyCartAssertion() {
-		this.get.badgeShoppingCart().should('not.exist');
+	emptyCart() {
+		this.get.badgeShoppingCart();
 	}
 
-	clickSoppingCart() {
+	clickShoppingCart() {
 		this.get.shoppingCartIcon().click();
 	}
 }

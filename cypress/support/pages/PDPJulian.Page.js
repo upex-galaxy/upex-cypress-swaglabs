@@ -1,11 +1,15 @@
-class productDetailPage {
+class pdpDetailPage {
 	get = {
-		PDPendpoint: () => cy.url('/inventory-item.html?id=4'),
+		PDPendpoint: () => cy.url('/cart.html'),
+		itemDetailsPDP: () => cy.get('.cart_item'),
 	};
 
 	pdpEndpoint() {
 		this.get.PDPendpoint();
 	}
+	ItemDetailsPDP() {
+		this.get.itemDetailsPDP();
+	}
 }
 
-export const productdetailpage = new productDetailPage();
+export const pdpdetailpage = new pdpDetailPage();

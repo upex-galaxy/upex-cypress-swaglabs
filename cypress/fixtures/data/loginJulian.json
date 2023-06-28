@@ -21,5 +21,10 @@
 		"checkoutErrorMsg1": "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in",
 		"checkoutErrorMsg2": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in",
 		"checkoutErrorMsg3": "Epic sadface: You can only access '/checkout-complete.html' when you are logged in"
+	},
+	"product": {
+		"itemTitle": "Sauce Labs Backpack",
+		"itemDescription": "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
+		"itemPrice": "$29.99"
 	}
 }

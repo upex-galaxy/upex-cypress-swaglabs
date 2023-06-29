@@ -13,5 +13,6 @@
 	},
 
 	"loginButton": "#login-button",
-	"loginAssert": "#login_button_container"
+	"loginAssert": "#login_button_container",
+	"headerTitle": ".header_label"
 }

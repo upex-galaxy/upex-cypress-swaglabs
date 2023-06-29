@@ -10,13 +10,13 @@ describe('GX-21866 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de comp
 		cy.get(the.username.input).type(the.username.data.valid);
 		cy.get(the.password.input).type(the.password.data.valid);
 		cy.get(the.loginButton).click();
-		PDP.get.pageTitle().should('have.text', 'Swag Labs');
+		cy.get(the.headerTitle).should('have.text', 'Swag Labs');
 	});
 
 	it('GX-21867| TC1: Validate user adds item from PLP to SC successfully.', () => {
 		PDP.addButton();
-		SCP.get.scBadge().should('have.text', 1);
-		SCP.goToShoppingCart();
+		PLP.get.scBadge().should('have.text', 1);
+		PLP.goToShoppingCart();
 		PDP.get.continueButton().should('have.text', 'Continue Shopping');
 	});
 
@@ -24,14 +24,14 @@ describe('GX-21866 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de comp
 		PLP.itemTShirt();
 		PDP.get.backButton().should('have.text', 'Back to products');
 		PDP.addButton();
-		SCP.get.scBadge().should('have.text', 1);
-		SCP.goToShoppingCart();
+		PDP.get.scBadge().should('have.text', 1);
+		PDP.goToShoppingCart();
 		PDP.get.continueButton().should('have.text', 'Continue Shopping');
 	});
 
 	it('GX-21867| TC3: Validate string of “Add to Cart" button changes to "Remove" from PLP.', () => {
 		PDP.addButton();
-		SCP.get.scBadge().should('have.text', 1);
+		PLP.get.scBadge().should('have.text', 1);
 		PDP.get.removeButton().should('have.text', 'Remove');
 	});
 
@@ -39,7 +39,7 @@ describe('GX-21866 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de comp
 		PLP.itemTShirt();
 		PDP.get.backButton().should('have.text', 'Back to products');
 		PDP.addButton();
-		SCP.get.scBadge().should('have.text', 1);
+		PDP.get.scBadge().should('have.text', 1);
 		PDP.get.removeButton().should('have.text', 'Remove');
 	});
 
@@ -55,7 +55,7 @@ describe('GX-21866 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de comp
 				PLP.get.itemButton().click();
 			})
 			.then(() => {
-				SCP.goToShoppingCart();
+				PLP.goToShoppingCart();
 				PLP.get.itemTShirt().should('have.text', itemTShirt);
 				SCP.get.itemPriceShoppingCart().should('have.text', itemPrice);
 			});
@@ -73,7 +73,7 @@ describe('GX-21866 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de comp
 				PLP.get.itemButton().click();
 			})
 			.then(() => {
-				SCP.goToShoppingCart();
+				PDP.goToShoppingCart();
 				PLP.get.itemTShirt().should('have.text', itemName);
 				SCP.get.itemPriceShoppingCart().should('have.text', itemPrice);
 			});

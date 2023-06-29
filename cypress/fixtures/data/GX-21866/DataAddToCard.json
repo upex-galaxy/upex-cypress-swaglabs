@@ -12,5 +12,6 @@
 		}
 	},
 
-	"loginbutton": "#login-button"
+	"loginButton": "#login-button",
+	"loginAssert": "#login_button_container"
 }

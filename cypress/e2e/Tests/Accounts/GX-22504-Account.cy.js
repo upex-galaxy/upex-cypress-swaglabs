@@ -48,7 +48,7 @@ describe('GX-22504 | SwagLabs | Account | Iniciar sesión y BR de Accesos', () =
 	});
 	it('22505 | TC2: Validate No Authentication Access', () => {
 		cy.visit('/inventory.html', { failOnStatusCode: false });
-		login.get.errorMsg().should('have.text', "Epic sadface: You can only access '/inventory.html' when you are logged in.");
+		login.get.errorMsg().should('have.text', 'Epic sadface: You can only access \'/inventory.html\' when you are logged in.');
 		cy.url().should('contain', 'https://www.saucedemo.com/');
 	});
 });

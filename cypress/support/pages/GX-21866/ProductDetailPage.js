@@ -1,10 +1,10 @@
 class ShoppingCart {
 	get = {
-		loginassert: () => cy.get('#login_button_container'),
+		loginAssert: () => cy.get('#login_button_container'),
 		titlemainpage: () => cy.get('.title'),
 		addbutton: () => cy.get('#add-to-cart-sauce-labs-bolt-t-shirt'),
 		removebutton: () => cy.get('#remove-sauce-labs-bolt-t-shirt'),
-		carticon: () => cy.get('.shopping_cart_link'),
+		cartIcon: () => cy.get('.shopping_cart_link'),
 		scbadge: () => cy.get('.shopping_cart_badge'),
 		itemplp: () => cy.get('#item_1_title_link'),
 		itempdp: () => cy.get('#inventory_item_container'),
@@ -16,8 +16,8 @@ class ShoppingCart {
 		backtoproducts: () => cy.get('#back-to-products'),
 	};
 
-	carticon() {
-		this.get.carticon().click();
+	goToShoppingCart() {
+		this.get.cartIcon().click();
 	}
 
 	addbutton() {

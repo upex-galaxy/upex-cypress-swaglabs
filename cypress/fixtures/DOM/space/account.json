@@ -1,5 +1,12 @@
 {
 	"valid": {
+		"username1": "standard_user",
+		"username2": "problem_user",
+		"username3": "performance_glitch_user",
+		"password": "secret_sauce"
+	},
+
+	"validUsername3": {
 		"username": "standard_user",
 		"password": "secret_sauce"
 	},

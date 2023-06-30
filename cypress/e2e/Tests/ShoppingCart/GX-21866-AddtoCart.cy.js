@@ -1,12 +1,12 @@
 import { PDP } from '@pages/GX-21866/ProductDetailPage';
 import { PLP } from '@pages/GX-21866/ProductListPage';
-import { LP } from '@pages/GX-21866/LoginPage';
+import { loginPage } from '@pages/GX-21866/LoginPage';
 
 describe('GX-21866 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o PDP', () => {
 	beforeEach('Precondition: Having access to SUT and being logged in', () => {
 		cy.visit('/');
-		LP.loginPageLogin();
-		LP.headTitle();
+		loginPage.login('standard_user', 'secret_sauce');
+		loginPage.headTitle();
 	});
 
 	it('GX-21867| TC1: Validate user adds item from PLP to SC successfully.', () => {

@@ -6,16 +6,14 @@ class LoginPage {
 		headTitle: () => cy.get('.header_label'),
 	};
 
-	loginPageLogin() {
-		this.get.username().type(the.username.data.valid);
-		this.get.password().type(the.password.data.valid);
+	login(username, password) {
+		this.get.username().type(username);
+		this.get.password().type(password);
 		this.get.loginButton().click();
 	}
-
 	headTitle() {
 		this.get.headTitle().should('have.text', 'Swag Labs');
 	}
 }
 
-export const LP = new LoginPage();
-import the from '../../../fixtures/data/GX-21866/DataAddToCard.json';
+export const loginPage = new LoginPage();

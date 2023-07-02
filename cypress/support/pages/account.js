@@ -28,5 +28,13 @@ class Login {
 	closeErrorBtn() {
 		this.get.closeErrorBtn().click();
 	}
+	emptyFields(username, password) {
+		if (username != '') {
+			login.get.username().type(username);
+		}
+		if (password != '') {
+			login.get.password().type(password);
+		}
+	}
 }
 export const login = new Login();

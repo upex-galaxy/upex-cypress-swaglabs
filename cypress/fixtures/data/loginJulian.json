@@ -1,0 +1,25 @@
+{
+	"data": {
+		"valid": {
+			"correctUser": "standard_user",
+			"problemUser": "problem_user",
+			"performanceUser": "performance_glitch_user",
+			"password": "secret_sauce"
+		},
+		"invalid": {
+			"lockedUser": "locked_out_user",
+			"incorrectUser": "random_user"
+		}
+	},
+	"errorMsg": {
+		"errorMsg1": "Epic sadface: Sorry, this user has been locked out",
+		"errorMsg2": "Epic sadface: Username and password do not match any user in this service",
+		"errorMsg3": "Epic sadface: Username is required",
+		"errorMsg4": "Epic sadface: Password is required",
+		"inventoryErrorMsg": "Epic sadface: You can only access '/inventory.html' when you are logged in",
+		"cartErrorMsg": "Epic sadface: You can only access '/cart.html' when you are logged in",
+		"checkoutErrorMsg1": "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in",
+		"checkoutErrorMsg2": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in",
+		"checkoutErrorMsg3": "Epic sadface: You can only access '/checkout-complete.html' when you are logged in"
+	}
+}

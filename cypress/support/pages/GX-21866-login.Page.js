@@ -11,9 +11,6 @@ class LoginPage {
 		this.get.password().type(password);
 		this.get.loginButton().click();
 	}
-	headTitle() {
-		this.get.headTitle().should('have.text', 'Swag Labs');
-	}
 }
 
 export const loginPage = new LoginPage();

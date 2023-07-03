@@ -35,4 +35,4 @@ class ProductListPage {
 	}
 }
 export const PLP = new ProductListPage();
-import { SCP } from './ShoppingCartPage';
+import { SCP } from './GX-21866-ShoppingCart.Page';

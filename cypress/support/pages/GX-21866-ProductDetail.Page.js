@@ -51,4 +51,4 @@ class ProductDetailPage {
 }
 
 export const PDP = new ProductDetailPage();
-import { SCP } from './ShoppingCartPage';
+import { SCP } from './GX-21866-ShoppingCart.Page';

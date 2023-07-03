@@ -23,3 +23,4 @@ class LoginPage {
 }
 
 export const loginpage = new LoginPage();
+export const loginPage = new LoginPage();

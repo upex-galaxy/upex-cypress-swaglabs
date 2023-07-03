@@ -1,5 +1,5 @@
 import { loginpage } from '@pages/GX-22334-login.Page';
-import the from '../../../fixtures/data/loginJulian.json';
+import the from '@data/GX-22334-loginData.json';
 
 describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	beforeEach('El usuario debe estar situado en la página de Login', () => {

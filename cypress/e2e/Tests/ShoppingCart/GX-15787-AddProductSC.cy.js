@@ -1,7 +1,7 @@
-import { loginPage } from '@pages/GX-21866-login.Page';
-import { productListPage } from '@pages/GX-21866-ProductList.Page';
+import { loginPage } from '@pages/LoginPage';
+import { productListPage } from '@pages/ProductListPage';
 import { shoppingCartPage } from '@pages/ShoppingCartPage';
-import { productDetailPage } from '@pages/GX-21866-ProductDetail.Page';
+import { productDetailPage } from '@pages/ProductDetailPage';
 
 const inventoryHtml = Cypress.env('swagLabs');
 const base = Cypress.env('baseUrl');

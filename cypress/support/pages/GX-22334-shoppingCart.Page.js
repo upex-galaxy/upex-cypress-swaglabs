@@ -1,4 +1,4 @@
-class scpDetailPage {
+class SCPage {
 	get = {
 		SCPendpoint: () => cy.url('/cart.html'),
 		itemDetailsSCP: () => cy.get('.cart_item'),
@@ -12,4 +12,4 @@ class scpDetailPage {
 	}
 }
 
-export const scpdetailpage = new scpDetailPage();
+export const SCpage = new SCPage();

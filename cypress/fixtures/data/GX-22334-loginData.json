@@ -29,5 +29,16 @@
 		"itemTitle2": "Sauce Labs Fleece Jacket",
 		"itemDescription2": "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.",
 		"itemPrice2": "$49.99"
+	},
+	"endpoint": {
+		"login": "https://www.saucedemo.com/",
+		"inventory": "https://www.saucedemo.com/inventory.html",
+		"cart": "https://www.saucedemo.com/cart.html",
+		"product1": "https://www.saucedemo.com/inventory-item.html?id=1",
+		"product2": "https://www.saucedemo.com/inventory-item.html?id=5"
+	},
+	"addedProductAssertion": {
+		"removeBtn": "Remove",
+		"oneItem": "1"
 	}
 }

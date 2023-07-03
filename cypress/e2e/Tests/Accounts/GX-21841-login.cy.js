@@ -1,4 +1,4 @@
-import { loginpage } from '@pages/loginJulian.Page';
+import { loginpage } from '@pages/GX-22334-login.Page';
 import the from '../../../fixtures/data/loginJulian.json';
 
 describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {

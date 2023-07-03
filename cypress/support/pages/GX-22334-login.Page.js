@@ -1,4 +1,4 @@
-class loginPage {
+class LoginPage {
 	get = {
 		inputUsername: () => cy.get('[data-test="username"]'),
 		inputPassword: () => cy.get('[data-test="password"]'),
@@ -22,4 +22,4 @@ class loginPage {
 	}
 }
 
-export const loginpage = new loginPage();
+export const loginPage = new LoginPage();

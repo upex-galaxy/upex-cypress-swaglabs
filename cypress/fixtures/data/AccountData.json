@@ -8,5 +8,19 @@
 	"userName4": "papito1989",
 	"password4": "abc123",
 	"userName5": "standard_user",
-	"password6": "secret_sauce"
+	"password6": "secret_sauce",
+	"url1": "inventory.html",
+	"url2": "cart.html",
+	"url4": "checkout-step-one.html",
+	"url5": "checkout-step-two.html",
+	"url6": "checkout-complete.html",
+	"EpicSadFace": "Username is required",
+	"EpicSadFace1": "Password is required",
+	"EpicSadFace2": "Sorry, this user has been locked out.",
+	"EpicSadFace3": "Username and password do not match any user in this service",
+	"EpicSadFace4": "You can only access '/inventory.html' when you are logged in.",
+	"EpicSadFace5": "You can only access '/cart.html' when you are logged in.",
+	"EpicSadFace6": "You can only access '/checkout-step-one.html' when you are logged in.",
+	"EpicSadFace7": "You can only access '/checkout-step-two.html' when you are logged in.",
+	"EpicSadFace8": "You can only access '/checkout-complete.html' when you are logged in."
 }

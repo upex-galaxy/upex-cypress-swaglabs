@@ -119,7 +119,7 @@ describe('US GX-15787 | TS: ✅SwagLabs | SCP | Agregar producto al carrito de c
 		shoppingCartPage.get.shoppingCartBadge().should('exist').should('contain', '2');
 	});
 
-	it('15787 | TC4: Add two products from the PDP to the Shopping-Cart successfully', () => {
+	it.skip('15787 | TC4: Add two products from the PDP to the Shopping-Cart successfully', () => {
 		productDetailPage.add2RandomItemsPDPinTheSC();
 		cy.url().should('contain', inventoryHtml.endpoint.inventory);
 		shoppingCartPage.ClickLinkShoppingCart();

@@ -1,40 +1,40 @@
 [
 	{
-		"name": "22514| TC1:login into to inventory page",
+		"name": "22514 | TC1:login into to inventory page",
 		"username": "standard_user",
 		"password": "secret_sauce",
 		"expected": "Products"
 	},
 
 	{
-		"name": "22514| TC2:should display locked out mesage",
+		"name": "22514 | TC2:should display locked out mesage",
 		"username": "locked_out_user",
 		"password": "secret_sauce",
 		"expected": "Epic sadface: Sorry, this user has been locked out."
 	},
 
 	{
-		"name": "22514| TC3:should display incorrect username",
+		"name": "22514 | TC3:should display incorrect username",
 		"username": "dummy_userser",
 		"password": "secret_sauce",
 		"expected": "Epic sadface: Username and password do not match any user in this service"
 	},
 	{
-		"name": "22514| TC4:should display incorrect password",
+		"name": "22514 | TC4:should display incorrect password",
 		"username": "standard_user",
 		"password": "dummy_password",
 		"expected": "Epic sadface: Username and password do not match any user in this service"
 	},
 
 	{
-		"name": "22514| TC5:should show username required",
+		"name": "22514 | TC5:should show username required",
 		"username": "",
 		"password": "secret_sauce",
 		"expected": "Epic sadface: Username is required"
 	},
 
 	{
-		"name": "22514| TC6:should show password required",
+		"name": "22514 | TC6:should show password required",
 		"username": "standard_user",
 		"password": "",
 		"expected": "Epic sadface: Password is required"

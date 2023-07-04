@@ -1,6 +1,6 @@
-import { homeSaucePage } from '@pages/GX-22513-homeSaucePage';
-
-const tests = require('/cypress/fixtures/data/sauceUsers.json');
+import { homeSaucePag } from '@pages/GX-22513-homeSaucePage';
+import { inventoryPag } from '@pages/GX-22513-inventoryPage';
+import tests from '@data/sauceUsers.json';
 
 describe('', () => {
 	beforeEach(() => {
@@ -9,14 +9,25 @@ describe('', () => {
 
 	tests.forEach(test => {
 		it(test.name, () => {
-			homeSaucePage.typeUsername(test.username);
-			homeSaucePage.typePassword(test.password);
-			homeSaucePage.clickLogin();
+			// homeSaucePag.typeUsername(test.username);
+			// homeSaucePag.typePassword(test.password);
+			// homeSaucePag.clickLogin();
+
+			if (test.name === 'should show username required') {
+				homeSaucePag.typePassword(test.password);
+			} else if (test.name === 'should show password required') {
+				homeSaucePag.typeUsername(test.username);
+			} else {
+				homeSaucePag.typeUsername(test.username);
+				homeSaucePag.typePassword(test.password);
+			}
+
+			homeSaucePag.clickLogin();
 
 			if (test.name === 'login into to inventory page') {
-				InventoryPage.get.titleSpan().should('have.text', test.expected);
+				inventoryPag.get.titleSpan().should('have.text', test.expected);
 			} else {
-				homeSaucePage.get.errorMessage().should('have.text', test.expected);
+				homeSaucePag.get.errorMessage().should('have.text', test.expected);
 			}
 		});
 	});

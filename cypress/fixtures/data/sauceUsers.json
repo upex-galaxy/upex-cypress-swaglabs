@@ -24,5 +24,19 @@
 		"username": "standard_user",
 		"password": "dummy_password",
 		"expected": "Epic sadface: Username and password do not match any user in this service"
+	},
+
+	{
+		"name": "should show username required",
+		"username": "",
+		"password": "secret_sauce",
+		"expected": "Epic sadface: Username is required"
+	},
+
+	{
+		"name": "should show password required",
+		"username": "standard_user",
+		"password": "",
+		"expected": "Epic sadface: Password is required"
 	}
 ]

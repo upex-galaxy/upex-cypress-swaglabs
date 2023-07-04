@@ -6,7 +6,7 @@ class homeSaucePage {
 		errorMessage: () => cy.get('h3[data-test="error"]'),
 	};
 
-	typeUserName(username) {
+	typeUsername(username) {
 		this.get.usernameInput().type(username);
 	}
 
@@ -18,4 +18,4 @@ class homeSaucePage {
 		this.get.loginBtn().click();
 	}
 }
-module.exports = new homeSaucePage();
+export const homeSaucePag = new homeSaucePage();

@@ -13,7 +13,7 @@ describe('', () => {
 		it(test.name, () => {
 			if (test.name === '22514 | TC5:should show username required') {
 				homeSaucePag.typePassword(test.password);
-			} else if (test.name === '22514| TC6:should show password required') {
+			} else if (test.name === '22514 | TC6:should show password required') {
 				homeSaucePag.typeUsername(test.username);
 			} else {
 				homeSaucePag.typeUsername(test.username);

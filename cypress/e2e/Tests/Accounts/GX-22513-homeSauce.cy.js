@@ -11,9 +11,9 @@ describe('', () => {
 
 	tests.forEach(test => {
 		it(test.name, () => {
-			if (test.name === 'should show username required') {
+			if (test.name === '22514| TC5:should show username required') {
 				homeSaucePag.typePassword(test.password);
-			} else if (test.name === 'should show password required') {
+			} else if (test.name === '22514| TC6:should show password required') {
 				homeSaucePag.typeUsername(test.username);
 			} else {
 				homeSaucePag.typeUsername(test.username);
@@ -22,7 +22,7 @@ describe('', () => {
 
 			homeSaucePag.clickLogin();
 
-			if (test.name === 'login into to inventory page') {
+			if (test.name === '22514| TC1:login into to inventory page') {
 				inventoryPag.get.titleSpan().should('have.text', test.expected);
 			} else {
 				homeSaucePag.get.errorMessage().should('have.text', test.expected);

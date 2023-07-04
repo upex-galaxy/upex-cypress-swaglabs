@@ -9,6 +9,7 @@
 	"password4": "abc123",
 	"userName5": "standard_user",
 	"password6": "secret_sauce",
+	"url": "https://www.saucedemo.com/inventory.html",
 	"url1": "inventory.html",
 	"url2": "cart.html",
 	"url4": "checkout-step-one.html",

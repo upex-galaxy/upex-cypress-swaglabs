@@ -1,0 +1,11 @@
+{
+    "data":{
+        "username":{
+            "valid": "standard_user"
+        },
+        "password": {
+            "valid": "secret_sauce"
+        }
+    }
+    
+}

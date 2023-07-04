@@ -1,0 +1,27 @@
+[
+	{
+		"name": "should not authorize to go to inventory",
+		"endpoint": "/inventory.html",
+		"expected": "Epic sadface: You can only access '/inventory.html' when you are logged in."
+	},
+	{
+		"name": "should not authorize to go to cart",
+		"endpoint": "/cart.html",
+		"expected": "Epic sadface: You can only access '/cart.html' when you are logged in."
+	},
+	{
+		"name": "should not authorize to go to checkout step one",
+		"endpoint": "/checkout-step-one.html",
+		"expected": "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in."
+	},
+	{
+		"name": "should not authorize to go to checkout step two",
+		"endpoint": "/checkout-step-two.html",
+		"expected": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in."
+	},
+	{
+		"name": "should not authorize to go to checkout complete",
+		"endpoint": "/checkout-complete.html",
+		"expected": "Epic sadface: You can only access '/checkout-complete.html' when you are logged in."
+	}
+]

@@ -1,18 +1,16 @@
 import { homeSaucePag } from '@pages/GX-22513-homeSaucePage';
 import { inventoryPag } from '@pages/GX-22513-inventoryPage';
 import tests from '@data/sauceUsers.json';
+import endpoints from '@data/sauceEndpoins.json';
+const { baseUrl } = Cypress.env();
 
 describe('', () => {
 	beforeEach(() => {
-		cy.visit('https://saucedemo.com/');
+		cy.visit(baseUrl);
 	});
 
 	tests.forEach(test => {
 		it(test.name, () => {
-			// homeSaucePag.typeUsername(test.username);
-			// homeSaucePag.typePassword(test.password);
-			// homeSaucePag.clickLogin();
-
 			if (test.name === 'should show username required') {
 				homeSaucePag.typePassword(test.password);
 			} else if (test.name === 'should show password required') {
@@ -29,6 +27,13 @@ describe('', () => {
 			} else {
 				homeSaucePag.get.errorMessage().should('have.text', test.expected);
 			}
+		});
+	});
+
+	endpoints.forEach(endpoint => {
+		it(endpoint.name, () => {
+			cy.visit(baseUrl + endpoint.endpoint, { failOnStatusCode: false });
+			homeSaucePag.get.errorMessage().should('contain', endpoint.expected);
 		});
 	});
 });

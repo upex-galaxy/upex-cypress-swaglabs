@@ -1,16 +1,14 @@
-import credentials from '../../../fixtures/data/AccountData.json';
-import { Account } from '@pages/account.page';
+import credentials from '../../../fixtures/data/GX-17441-AccountData.json';
+import { Account } from '@pages/GX-17441-account.page';
 import { removeLogs } from '@helper/RemoveLogs';
 describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	beforeEach('precondition', () => {
 		cy.visit('https://www.saucedemo.com');
 	});
-	it('17442 | TC1: Validar el inicio de sesión de manera correcta (Happy path).', () => {
-		Account.getUserName().type(credentials.userName1);
-		Account.getUserName().should('have.value', credentials.userName1);
-		Account.getPassword().type(credentials.password1);
-		Account.getPassword().should('have.value', credentials.password1);
-		Account.clickSubmitButton();
+	it.only('17442 | TC1: Validar el inicio de sesión de manera correcta (Happy path).', () => {
+		Account.getLogin(credentials.userName1, credentials.password1);
+		Account.getLogin().should('have.text', credentials.userName1);
+		Account.clickSubmit();
 		cy.url().should('to.equal', credentials.url);
 	});
 	it('17442 | TC2: Validar el inicio de sesión con la cuenta bloqueada.', () => {
@@ -57,23 +55,23 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		Account.clickSubmitButton();
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace);
 	});
-	it('17442 | TC8: Validar autenticación de acceso ingresando sin registrarse desde el input /inventory.html.', () => {
+	it('17442 | TC8: Validar autenticación de acceso ingresando sin registrarse desde el endpoint /inventory.html.', () => {
 		cy.visit(credentials.url1, { failOnStatusCode: false });
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace4);
 	});
-	it('17442 | TC9: Validar autenticación de acceso ingresando sin registrarse desde el input /cart.html.', () => {
+	it('17442 | TC9: Validar autenticación de acceso ingresando sin registrarse desde el endpoint /cart.html.', () => {
 		cy.visit(credentials.url2, { failOnStatusCode: false });
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace5);
 	});
-	it('17442 | TC10: Validar autenticación de acceso ingresando sin registrarse desde el input /checkout-step-one.html.', () => {
+	it('17442 | TC10: Validar autenticación de acceso ingresando sin registrarse desde el endpoint /checkout-step-one.html.', () => {
 		cy.visit(credentials.url4, { failOnStatusCode: false });
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace6);
 	});
-	it('17442 | TC11: Validar autenticación de acceso ingresando sin registrarse desde el input /checkout-step-two.html.', () => {
+	it('17442 | TC11: Validar autenticación de acceso ingresando sin registrarse desde el endpoint /checkout-step-two.html.', () => {
 		cy.visit(credentials.url5, { failOnStatusCode: false });
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace7);
 	});
-	it('17442 | TC12: Validar autenticación de acceso ingresando sin registrarse desde el input /checkout-complete.html.', () => {
+	it('17442 | TC12: Validar autenticación de acceso ingresando sin registrarse desde el endpoint /checkout-complete.html.', () => {
 		cy.visit(credentials.url6, { failOnStatusCode: false });
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace8);
 	});

@@ -5,13 +5,11 @@ class account {
 		dataTex: () => cy.get('[data-test="error"]'),
 		getSubmitButton: () => cy.get('#login-button'),
 	};
-	getUserName() {
-		return cy.get('[data-test="username"]');
+	getLogin(name, password) {
+		name && this.get.getUsernameInput().type(name);
+		password && this.get.getPasswordInput().type(password);
 	}
-	getPassword() {
-		return cy.get('[data-test="password"]');
-	}
-	clickSubmitButton() {
+	clickSubmit() {
 		this.get.getSubmitButton().click();
 	}
 }

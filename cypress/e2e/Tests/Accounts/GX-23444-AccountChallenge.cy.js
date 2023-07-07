@@ -1,10 +1,10 @@
-import testCase from '../../../fixtures/DOM/space//accountChallenge.json';
-import endpoints from '../../../fixtures/DOM/space//endpoints.json';
+import testCase from '../../../fixtures/DOM/space/GX-23444-accountChallenge';
+import endpoints from '../../../fixtures/DOM/space/GX-23444-endpoints';
 import { login } from '@pages/accountPage';
 const { baseUrl } = Cypress.env();
 
 describe('GX-22504 | SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
-	beforeEach('', () => {
+	beforeEach('User must be situated in the website', () => {
 		cy.visit(baseUrl);
 	});
 	testCase.forEach(tests => {

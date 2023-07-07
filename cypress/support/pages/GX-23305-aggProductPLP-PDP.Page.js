@@ -9,6 +9,9 @@ class ATC {
         inventoryItemName: () => cy.get('.inventory_item_name'),
         inventoryItemDesc: () => cy.get('.inventory_item_desc'),
         inventoryItemPrice: () => cy.get('.inventory_item_price'),
+        inventoryDetailsName: () => cy.get('.inventory_details_name'),
+        inventoryDetailsDesc: () => cy.get('.inventory_details_desc'),
+        inventoryDetailsPrice: () => cy.get('.inventory_details_price'),
     }
     enterUsername(value) {
         this.get.usernameInput().type(value)
@@ -24,8 +27,15 @@ class ATC {
         }).then(() => {
             return randomItem
         })
-        
     }
-
+    selectRandomItemName() {
+        let randomItem
+        return this.get.inventoryItemName().then(largo => {
+            randomItem = Cypress._.random(0, largo.length - 1);
+            this.get.inventoryItemName().eq(randomItem).click();
+        }).then(() => {
+            return randomItem
+        })
+    }
 }
 export const addToCart  = new ATC()

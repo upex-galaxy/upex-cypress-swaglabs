@@ -53,7 +53,7 @@ describe('23305 | ✅SwagLabs | SCP | Agregar producto al carrito de compras des
             addToCart.get.inventoryItemPrice().should('have.text', itemPriceToCompare);
         })
     })
-    it.only('23306 | TC2: Validar agregar desde el PDP un artículo al shopping cart.', () => {
+    it('23306 | TC2: Validar agregar desde el PDP un artículo al shopping cart.', () => {
         // goes to PDP with Random item
         addToCart.selectRandomItemName();
         //

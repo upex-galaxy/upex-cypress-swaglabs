@@ -1,10 +1,10 @@
 import { homeSaucePag } from '@pages/GX-22513-homeSaucePage';
 import { inventoryPag } from '@pages/GX-22513-inventoryPage';
-import tests from '@data/sauceUsers.json';
-import endpoints from '@data/sauceEndpoins.json';
+import tests from '@data/GX-22513-sauceUsers.json';
+import endpoints from '@data/GX-22513-sauceEndpoins.json';
 const { baseUrl } = Cypress.env();
 
-describe('', () => {
+describe('GX-22513 SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	beforeEach(() => {
 		cy.visit(baseUrl);
 	});

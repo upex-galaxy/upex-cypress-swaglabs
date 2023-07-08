@@ -5,54 +5,52 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	beforeEach('precondition', () => {
 		cy.visit('https://www.saucedemo.com');
 	});
-	it.only('17442 | TC1: Validar el inicio de sesión de manera correcta (Happy path).', () => {
+	it('17442 | TC1: Validar el inicio de sesión de manera correcta (Happy path).', () => {
 		Account.getLogin(credentials.userName1, credentials.password1);
-		Account.getLogin().should('have.text', credentials.userName1);
+		Account.get.getUsernameInput().should('have.value', credentials.userName1);
+		Account.get.getPasswordInput().should('have.value', credentials.password1);
 		Account.clickSubmit();
 		cy.url().should('to.equal', credentials.url);
 	});
 	it('17442 | TC2: Validar el inicio de sesión con la cuenta bloqueada.', () => {
-		Account.getUserName().type(credentials.userName2);
-		Account.getUserName().should('have.value', credentials.userName2);
-		Account.getPassword().type(credentials.password2);
-		Account.getPassword().should('have.value', credentials.password2);
-		Account.clickSubmitButton();
+		Account.getLogin(credentials.userName2, credentials.password2);
+		Account.get.getUsernameInput().should('have.value', credentials.userName2);
+		Account.get.getPasswordInput().should('have.value', credentials.password2);
+		Account.clickSubmit();
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace2);
 	});
 	it('17442 | TC3: Validar el inicio de sesión con ingresando datos incorrectos.', () => {
-		Account.getUserName().type(credentials.userName3);
-		Account.getUserName().should('have.value', credentials.userName3);
-		Account.getPassword().type(credentials.password3);
-		Account.getPassword().should('have.value', credentials.password3);
-		Account.clickSubmitButton();
+		Account.getLogin(credentials.userName3, credentials.password3);
+		Account.get.getUsernameInput().should('have.value', credentials.userName3);
+		Account.get.getPasswordInput().should('have.value', credentials.password3);
+		Account.clickSubmit();
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace3);
 	});
 	it('17442 | TC4: Validar el inicio de sesión con ingresando datos inexistentes.', () => {
-		Account.getUserName().type(credentials.userName4);
-		Account.getUserName().should('have.value', credentials.userName4);
-		Account.getPassword().type(credentials.password4);
-		Account.getPassword().should('have.value', credentials.password4);
-		Account.clickSubmitButton();
+		Account.getLogin(credentials.userName4, credentials.password4);
+		Account.get.getUsernameInput().should('have.value', credentials.userName4);
+		Account.get.getPasswordInput().should('have.value', credentials.password4);
+		Account.clickSubmit();
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace3);
 	});
 	it('17442 | TC5: Validar el inicio de sesión con password  vacío.', () => {
-		Account.getUserName().type(credentials.userName5);
-		Account.getUserName().should('have.value', credentials.userName5);
-		Account.getPassword().should('have.attr', 'value').and('be.empty');
-		Account.clickSubmitButton();
+		Account.getLogin(credentials.userName5, credentials.password5);
+		Account.get.getUsernameInput().should('have.value', credentials.userName5);
+		Account.get.getPasswordInput().should('have.attr', 'value').and('be.empty');
+		Account.clickSubmit();
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace1);
 	});
 	it('17442 | TC6: Validar el inicio de sesión con Username vacío.', () => {
-		Account.getUserName().should('have.attr', 'value').and('be.empty');
-		Account.getPassword().type(credentials.password6);
-		Account.getPassword().should('have.value', credentials.password6);
-		Account.clickSubmitButton();
+		Account.get.getUsernameInput().should('have.attr', 'value').and('be.empty');
+		Account.getLogin('', credentials.password6);
+		Account.get.getPasswordInput().should('have.value', credentials.password6);
+		Account.clickSubmit();
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace);
 	});
 	it('17442 | TC7: Validar el inicio de sesión con username  y  password vacío.', () => {
-		Account.getUserName().should('have.attr', 'value').and('be.empty');
-		Account.getPassword().should('have.attr', 'value').and('be.empty');
-		Account.clickSubmitButton();
+		Account.get.getUsernameInput().should('have.attr', 'value').and('be.empty');
+		Account.get.getPasswordInput().should('have.attr', 'value').and('be.empty');
+		Account.clickSubmit();
 		Account.get.dataTex().should('contain.text', credentials.EpicSadFace);
 	});
 	it('17442 | TC8: Validar autenticación de acceso ingresando sin registrarse desde el endpoint /inventory.html.', () => {

@@ -1,4 +1,4 @@
-import { login } from '@pages/accountPage';
+import { login } from '@pages/account';
 import { valid, blocked, invalid } from '../../../fixtures/DOM/space/account.json';
 
 describe('GX-22504 | SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {

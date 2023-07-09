@@ -1,5 +1,5 @@
 import { Given, When, And, Then } from '@badeball/cypress-cucumber-preprocessor';
-import { login } from '@pages/accountPage';
+import { login } from '@pages/account';
 
 context('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	Given('User is situated in Swaglabs website', () => {

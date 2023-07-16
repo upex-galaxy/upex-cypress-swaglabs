@@ -64,15 +64,15 @@ describe('GX-22504 | SwagLabs | Account | Iniciar sesión y BR de Accesos', () =
 	});
 	it('22505 | TC2: Validate enter to an internal endpoint of the website without doing the LogIn before.', () => {
 		cy.visit('/inventory.html', { failOnStatusCode: false });
-		login.get.errorMsg().should('have.text', 'Epic sadface: You can only access \'/inventory.html\' when you are logged in.');
+		login.get.errorMsg().should('have.text', "Epic sadface: You can only access '/inventory.html' when you are logged in.");
 		cy.url().should('contain', 'https://www.saucedemo.com/');
 
 		cy.visit('/checkout-step-one.html', { failOnStatusCode: false });
-		login.get.errorMsg().should('have.text', 'Epic sadface: You can only access \'/checkout-step-one.html\' when you are logged in.');
+		login.get.errorMsg().should('have.text', "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.");
 		cy.url().should('contain', 'https://www.saucedemo.com/');
 
 		cy.visit('//checkout-complete.html', { failOnStatusCode: false });
-		login.get.errorMsg().should('have.text', 'Epic sadface: You can only access \'/checkout-complete.html\' when you are logged in.');
+		login.get.errorMsg().should('have.text', "Epic sadface: You can only access '/checkout-complete.html' when you are logged in.");
 		cy.url().should('contain', 'https://www.saucedemo.com/');
 	});
 });

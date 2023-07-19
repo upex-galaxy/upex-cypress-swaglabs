@@ -1,0 +1,22 @@
+{
+	"User": {
+		"valid": {
+			"Correct": "standard_user",
+			"Problem": "problem_user",
+			"Performance": "performance_glitch_user"
+		},
+		"invalid": {
+			"blocked": "locked_out_user",
+			"Incorrect": "NoEstáEnLaDB",
+			"Empty": ""
+		}
+	},
+	"Password": {
+		"valid": "secret_sauce",
+		"invalid": {
+			"incorrect": "CualquierCosa",
+			"Empty": ""
+		}
+	},
+	"UrlHome": "/inventory.html"
+}

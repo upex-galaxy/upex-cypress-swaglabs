@@ -3,6 +3,7 @@ import Credenciales from '@data/GX-25146-Login.json';
 const UserOK = Credenciales.User.valid.Correct;
 const PassOK = Credenciales.Password.valid;
 const UserBlocked = Credenciales.User.invalid.blocked;
+const UserNoExist = Credenciales.User.invalid.Incorrect;
 
 class login {
 	get = {
@@ -18,6 +19,10 @@ class login {
 
 	TypeBlockedUser() {
 		this.get.UserInput().type(UserBlocked);
+	}
+
+	TypeIncorrectUser() {
+		this.get.UserInput().type(UserNoExist);
 	}
 
 	TypeValidPass() {

@@ -18,5 +18,11 @@
 			"Empty": ""
 		}
 	},
-	"UrlHome": "/inventory.html"
+	"Url": {
+		"UrlHome": "/inventory.html",
+		"BaseUrl": "https://www.saucedemo.com"
+	},
+	"Error": {
+		"Blocked": "Epic sadface: Sorry, this user has been locked out."
+	}
 }

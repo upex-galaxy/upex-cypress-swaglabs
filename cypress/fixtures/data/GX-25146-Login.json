@@ -25,6 +25,7 @@
 	"Error": {
 		"Blocked": "Epic sadface: Sorry, this user has been locked out.",
 		"NotMatch": "Epic sadface: Username and password do not match any user in this service",
-		"UserRequired": "Epic sadface: Username is required"
+		"UserRequired": "Epic sadface: Username is required",
+		"PassRequired": "Epic sadface: Password is required"
 	}
 }

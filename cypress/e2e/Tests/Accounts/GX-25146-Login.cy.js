@@ -8,11 +8,11 @@ const UserOK = Credenciales.User.valid.Correct;
 const PassOK = Credenciales.Password.valid;
 const UserBlocked = Credenciales.User.invalid.blocked;
 const UserNoExist = Credenciales.User.invalid.Incorrect;
-const UserEmpty = Credenciales.User.invalid.Empty;
 const PassIncorrect = Credenciales.Password.invalid.incorrect;
 const BlockedMessage = Credenciales.Error.Blocked;
 const NotMatch = Credenciales.Error.NotMatch;
 const RequiredUser = Credenciales.Error.UserRequired;
+const RequiredPass = Credenciales.Error.PassRequired;
 
 describe('GX-25146-✅-swag-labs-account-iniciar-sesion-y-br-de-accesos', () => {
 	beforeEach('Usuario se encuentra en la Pagina de login', () => {
@@ -52,6 +52,14 @@ describe('GX-25146-✅-swag-labs-account-iniciar-sesion-y-br-de-accesos', () => 
 		Login.TypePass(PassOK);
 		Login.ClickButtonLogin();
 		Login.get.ErrorMessage().should('contain', RequiredUser); // Se verifica el trigger de la BR3, para validar que Username es Requerido
+		cy.url().should('contain', BaseUrl);
+	});
+
+	it('25147 | TC6: Validar el NO inicio de sesión con password vacío ', () => {
+		Login.TypeUser(UserOK);
+		//Se deja el Password vacío
+		Login.ClickButtonLogin();
+		Login.get.ErrorMessage().should('contain', RequiredPass); // Se verifica el trigger de la BR4, para validar que Password es Requerido
 		cy.url().should('contain', BaseUrl);
 	});
 });

@@ -62,4 +62,12 @@ describe('GX-25146-✅-swag-labs-account-iniciar-sesion-y-br-de-accesos', () => 
 		Login.get.ErrorMessage().should('contain', RequiredPass); // Se verifica el trigger de la BR4, para validar que Password es Requerido
 		cy.url().should('contain', BaseUrl);
 	});
+
+	it('25147 | TC7: Validar el NO inicio de sesión con todos los campos vacíos', () => {
+		// Se deja el campo Username vacío
+		// Se deja el campo Password vacío
+		Login.ClickButtonLogin();
+		Login.get.ErrorMessage().should('contain', RequiredUser); // Se verifica el trigger de la BR3 antes que la BR4, cuando ambos campos requeridos son vacíos
+		cy.url().should('contain', BaseUrl);
+	});
 });

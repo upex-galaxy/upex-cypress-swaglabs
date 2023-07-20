@@ -4,6 +4,7 @@ import Credenciales from '@data/GX-25146-Login.json';
 
 const UrlHome = Credenciales.Url.UrlHome;
 const BaseUrl = Credenciales.Url.BaseUrl;
+const CartUrl = Credenciales.Url.CartUrl;
 const UserOK = Credenciales.User.valid.Correct;
 const PassOK = Credenciales.Password.valid;
 const UserBlocked = Credenciales.User.invalid.blocked;
@@ -13,6 +14,8 @@ const BlockedMessage = Credenciales.Error.Blocked;
 const NotMatch = Credenciales.Error.NotMatch;
 const RequiredUser = Credenciales.Error.UserRequired;
 const RequiredPass = Credenciales.Error.PassRequired;
+const ErrorInitialMessage = Credenciales.Error.InitialMessage;
+const ErrorEndMessage = Credenciales.Error.EndMessage;
 
 describe('GX-25146-✅-swag-labs-account-iniciar-sesion-y-br-de-accesos', () => {
 	beforeEach('Usuario se encuentra en la Pagina de login', () => {
@@ -69,5 +72,13 @@ describe('GX-25146-✅-swag-labs-account-iniciar-sesion-y-br-de-accesos', () => 
 		Login.ClickButtonLogin();
 		Login.get.ErrorMessage().should('contain', RequiredUser); // Se verifica el trigger de la BR3 antes que la BR4, cuando ambos campos requeridos son vacíos
 		cy.url().should('contain', BaseUrl);
+	});
+
+	it('25147 | TC8: Validar NO acceder a ningún endpoind interno de la website cuando no se inicio sesión', () => {
+		cy.visit(CartUrl, { failOnStatusCode: false }); // Se saltea todos los fallos de status 4XX
+		// Se es reenviado a la Pagina principal de Login
+		cy.url().should('contain', BaseUrl);
+		//Se visualiza un cartel amistoso marcando que debe loguearse para acceder
+		Login.get.ErrorMessage().should('contain', ErrorInitialMessage + ' ' + "'" + CartUrl + "'" + ' ' + ErrorEndMessage);
 	});
 });

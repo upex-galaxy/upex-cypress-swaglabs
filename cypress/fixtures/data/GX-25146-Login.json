@@ -20,12 +20,15 @@
 	},
 	"Url": {
 		"UrlHome": "/inventory.html",
-		"BaseUrl": "https://www.saucedemo.com"
+		"BaseUrl": "https://www.saucedemo.com",
+		"CartUrl": "/cart.html"
 	},
 	"Error": {
 		"Blocked": "Epic sadface: Sorry, this user has been locked out.",
 		"NotMatch": "Epic sadface: Username and password do not match any user in this service",
 		"UserRequired": "Epic sadface: Username is required",
-		"PassRequired": "Epic sadface: Password is required"
+		"PassRequired": "Epic sadface: Password is required",
+		"InitialMessage": "Epic sadface: You can only access",
+		"EndMessage": "when you are logged in."
 	}
 }

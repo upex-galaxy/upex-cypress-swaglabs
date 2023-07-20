@@ -4,6 +4,7 @@ const UserOK = Credenciales.User.valid.Correct;
 const PassOK = Credenciales.Password.valid;
 const UserBlocked = Credenciales.User.invalid.blocked;
 const UserNoExist = Credenciales.User.invalid.Incorrect;
+const PassIncorrect = Credenciales.Password.invalid.incorrect;
 
 class login {
 	get = {
@@ -27,6 +28,10 @@ class login {
 
 	TypeValidPass() {
 		this.get.PassInput().type(PassOK);
+	}
+
+	TypeIncorrectPass() {
+		this.get.PassInput().type(PassIncorrect);
 	}
 
 	ClickButtonLogin() {

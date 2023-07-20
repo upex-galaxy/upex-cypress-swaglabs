@@ -24,9 +24,17 @@ describe('GX-25146-✅-swag-labs-account-iniciar-sesion-y-br-de-accesos', () => 
 		Login.get.ErrorMessage().should('contain', BlockedMessage); // Se verifica el trigger de la BR1
 		cy.url().should('contain', BaseUrl);
 	});
-	it.only('25147 | TC3: Validar el NO inicio de sesión con usuario invalido', () => {
+	it('25147 | TC3: Validar el NO inicio de sesión con usuario invalido', () => {
 		Login.TypeIncorrectUser();
 		Login.TypeValidPass();
+		Login.ClickButtonLogin();
+		Login.get.ErrorMessage().should('contain', NotMatch); // Se verifica el trigger de la BR2, para el caso de usuario invalido
+		cy.url().should('contain', BaseUrl);
+	});
+
+	it.only('25147 | TC4: Validar el NO inicio de sesión con password invalido', () => {
+		Login.TypeValidUser();
+		Login.TypeIncorrectPass();
 		Login.ClickButtonLogin();
 		Login.get.ErrorMessage().should('contain', NotMatch); // Se verifica el trigger de la BR2, para el caso de usuario invalido
 		cy.url().should('contain', BaseUrl);

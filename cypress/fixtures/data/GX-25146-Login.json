@@ -21,7 +21,10 @@
 	"Url": {
 		"UrlHome": "/inventory.html",
 		"BaseUrl": "https://www.saucedemo.com",
-		"CartUrl": "/cart.html"
+		"CartUrl": "/cart.html",
+		"Checkout1Url": "/checkout-step-one.html",
+		"Checkout2Url": "/checkout-step-two.html",
+		"CheckoutComUrl": "/checkout-complete.html"
 	},
 	"Error": {
 		"Blocked": "Epic sadface: Sorry, this user has been locked out.",

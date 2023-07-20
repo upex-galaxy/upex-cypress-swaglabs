@@ -5,8 +5,12 @@ import Credenciales from '@data/GX-25146-Login.json';
 const UrlHome = Credenciales.Url.UrlHome;
 const BaseUrl = Credenciales.Url.BaseUrl;
 const CartUrl = Credenciales.Url.CartUrl;
+const Checkout1Url = Credenciales.Url.Checkout1Url;
+const Checkout2Url = Credenciales.Url.Checkout2Url;
+const CheckoutComUrl = Credenciales.Url.CheckoutComUrl;
 const UserOK = Credenciales.User.valid.Correct;
 const PassOK = Credenciales.Password.valid;
+const UserProblem = Credenciales.User.valid.Problem;
 const UserBlocked = Credenciales.User.invalid.blocked;
 const UserNoExist = Credenciales.User.invalid.Incorrect;
 const PassIncorrect = Credenciales.Password.invalid.incorrect;
@@ -43,7 +47,7 @@ describe('GX-25146-✅-swag-labs-account-iniciar-sesion-y-br-de-accesos', () => 
 	});
 
 	it('25147 | TC4: Validar el NO inicio de sesión con password invalido', () => {
-		Login.TypeUser(UserOK);
+		Login.TypeUser(UserProblem);
 		Login.TypePass(PassIncorrect);
 		Login.ClickButtonLogin();
 		Login.get.ErrorMessage().should('contain', NotMatch); // Se verifica el trigger de la BR2, para el caso de usuario invalido
@@ -80,5 +84,29 @@ describe('GX-25146-✅-swag-labs-account-iniciar-sesion-y-br-de-accesos', () => 
 		cy.url().should('contain', BaseUrl);
 		//Se visualiza un cartel amistoso marcando que debe loguearse para acceder
 		Login.get.ErrorMessage().should('contain', ErrorInitialMessage + ' ' + "'" + CartUrl + "'" + ' ' + ErrorEndMessage);
+
+		cy.visit(UrlHome, { failOnStatusCode: false }); // Se saltea todos los fallos de status 4XX
+		// Se es reenviado a la Pagina principal de Login
+		cy.url().should('contain', BaseUrl);
+		//Se visualiza un cartel amistoso marcando que debe loguearse para acceder
+		Login.get.ErrorMessage().should('contain', ErrorInitialMessage + ' ' + "'" + UrlHome + "'" + ' ' + ErrorEndMessage);
+
+		cy.visit(Checkout1Url, { failOnStatusCode: false }); // Se saltea todos los fallos de status 4XX
+		// Se es reenviado a la Pagina principal de Login
+		cy.url().should('contain', BaseUrl);
+		//Se visualiza un cartel amistoso marcando que debe loguearse para acceder
+		Login.get.ErrorMessage().should('contain', ErrorInitialMessage + ' ' + "'" + Checkout1Url + "'" + ' ' + ErrorEndMessage);
+
+		cy.visit(Checkout2Url, { failOnStatusCode: false }); // Se saltea todos los fallos de status 4XX
+		// Se es reenviado a la Pagina principal de Login
+		cy.url().should('contain', BaseUrl);
+		//Se visualiza un cartel amistoso marcando que debe loguearse para acceder
+		Login.get.ErrorMessage().should('contain', ErrorInitialMessage + ' ' + "'" + Checkout2Url + "'" + ' ' + ErrorEndMessage);
+
+		cy.visit(CheckoutComUrl, { failOnStatusCode: false }); // Se saltea todos los fallos de status 4XX
+		// Se es reenviado a la Pagina principal de Login
+		cy.url().should('contain', BaseUrl);
+		//Se visualiza un cartel amistoso marcando que debe loguearse para acceder
+		Login.get.ErrorMessage().should('contain', ErrorInitialMessage + ' ' + "'" + CheckoutComUrl + "'" + ' ' + ErrorEndMessage);
 	});
 });

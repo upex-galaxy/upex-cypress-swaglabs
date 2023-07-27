@@ -1,9 +1,6 @@
-import { HomeSaucePage } from '@pages/GX-25579-login.Page';
+import { homeSagPage } from '@pages/GX-25579-login.Page';
 import values from '@data/GX-25579-Login.json';
-
-
 const { baseUrl } = Cypress.env();
-
 
 describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	beforeEach('Precondición: Usuario debe estar situado en la página de Login', () => {
@@ -15,21 +12,21 @@ describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		values.datosValidos.forEach(test => {
 			cy.log(`--- Usuario: ${test.username} ---`);
 			cy.visit(baseUrl);
-			HomeSaucePage.typeUsername(test.username);
-			HomeSaucePage.typePassword(test.password);
-			HomeSaucePage.clickLogin();
+			homeSagPage.typeUsername(test.username);
+			homeSagPage.typePassword(test.password);
+			homeSagPage.clickLogin();
 			cy.url().should('contain', values.endPoint[0]);
-			HomeSaucePage.elements.itemsContainer().should('be.visible');
+			homeSagPage.elements.itemsContainer().should('be.visible');
 		});
 	});
 
 	it('25580  | TC2: Validar no poder iniciar sesión cuando se ingresa una cuenta bloqueada', () => {
 		const lockedData = values.datosBloqueados;
 
-		HomeSaucePage.typeUsername(lockedData.username);
-		HomeSaucePage.typePassword(lockedData.password);
-		HomeSaucePage.clickLogin();
-		HomeSaucePage.elements.errorMessage().should('have.text', lockedData.expectedMessage);
+		homeSagPage.typeUsername(lockedData.username);
+		homeSagPage.typePassword(lockedData.password);
+		homeSagPage.clickLogin();
+		homeSagPage.elements.errorMessage().should('have.text', lockedData.expectedMessage);
 		cy.url().should('eql', `${baseUrl}/`);
 	});
 
@@ -37,10 +34,10 @@ describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		values.datosInvalidos.forEach(test => {
 			cy.log(`--- Caso: ${test.nameCase} ---`);
 			cy.visit(baseUrl);
-			HomeSaucePage.typeUsername(test.username);
-			HomeSaucePage.typePassword(test.password);
-			HomeSaucePage.clickLogin();
-			HomeSaucePage.elements.errorMessage().should('have.text', test.expectedMessage);
+			homeSagPage.typeUsername(test.username);
+			homeSagPage.typePassword(test.password);
+			homeSagPage.clickLogin();
+			homeSagPage.elements.errorMessage().should('have.text', test.expectedMessage);
 			cy.url().should('eql', `${baseUrl}/`);
 		});
 	});
@@ -49,10 +46,10 @@ describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		values.camposVacios.forEach(test => {
 			cy.log(`--- Caso: ${test.nameCase} ---`);
 			cy.visit(baseUrl);
-			HomeSaucePage.typeUsername(test.username);
-			HomeSaucePage.typePassword(test.password);
-			HomeSaucePage.clickLogin();
-			HomeSaucePage.elements.errorMessage().should('have.text', test.expectedMessage);
+			homeSagPage.typeUsername(test.username);
+			homeSagPage.typePassword(test.password);
+			homeSagPage.clickLogin();
+			homeSagPage.elements.errorMessage().should('have.text', test.expectedMessage);
 			cy.url().should('eql', `${baseUrl}/`);
 		});
 	});
@@ -63,7 +60,7 @@ describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 
 			cy.visit(baseUrl + test, { failOnStatusCode: false });
 			cy.url().should('eql', `${baseUrl}/`);
-			HomeSaucePage.elements.errorMessage().should('have.text', `Epic sadface: You can only access '${test}' when you are logged in.`);
+			homeSagPage.elements.errorMessage().should('have.text', `Epic sadface: You can only access '${test}' when you are logged in.`);
 		});
 	});
-}); 
+});

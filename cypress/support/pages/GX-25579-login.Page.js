@@ -19,4 +19,4 @@ class homeSaucePage {
 	}
 }
 
-export const HomeSaucePage = new homeSaucePage();
+export const homeSagPage = new homeSaucePage();

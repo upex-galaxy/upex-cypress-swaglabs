@@ -5,24 +5,67 @@ class Filters {
 		priceList: () => cy.get('[class$="item_price"]'),
 	};
 
-	selected(filterSelected) {
-		this.get.filtro().select(filterSelected);
-	}
+	//estos métodos obtienen elementos de la web, los parsea, los guarda en la var myArray
+	//que será retornada y luego copiada a una var externa para ser usada
 
 	nameAtoZ() {
-		//this.get.filtro().select('az');
+		let myArray = [];
+
+		filter.get
+			.nameList()
+			.each(item => {
+				const arr = item.text();
+				myArray.push(arr);
+			})
+			.then(() => {
+				return myArray.sort();
+			});
+		return myArray;
 	}
 
 	nameZtoA() {
-		//this.get.filtro().select('za');
+		let myArray = [];
+
+		filter.get
+			.nameList()
+			.each(item => {
+				const arr = item.text();
+				myArray.push(arr);
+			})
+			.then(() => {
+				return myArray.reverse();
+			});
+		return myArray;
 	}
 
 	priceLowHigh() {
-		//this.get.filtro().select('lohi');
+		let myArray = [];
+
+		filter.get
+			.priceList()
+			.each(item => {
+				const arr = item.text().slice(1);
+				myArray.push(parseFloat(arr));
+			})
+			.then(() => {
+				return myArray.sort((a, b) => a - b);
+			});
+		return myArray;
 	}
 
 	priceHighLow() {
-		//this.filtro().select('hilo');
+		let myArray = [];
+
+		filter.get
+			.priceList()
+			.each(item => {
+				const arr = item.text().slice(1);
+				myArray.push(parseFloat(arr));
+			})
+			.then(() => {
+				return myArray.sort((a, b) => b - a);
+			});
+		return myArray;
 	}
 }
 

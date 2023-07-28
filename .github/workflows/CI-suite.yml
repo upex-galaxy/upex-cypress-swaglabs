@@ -70,7 +70,7 @@ jobs:
               with:
                   browser: chrome
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
-                      npm run file cypress/e2e/cucumber-test/Gherkin/GX-25835-Filtrar-productos.cy.js
+                      npm run file cypress/e2e/cucumber-test/Gherkin/GX-25835-FiltrarProductos.cy.js
 
             - name: ✅Import Test Results to Xray
               if: always()

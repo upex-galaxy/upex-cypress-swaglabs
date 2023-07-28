@@ -1,4 +1,4 @@
-import { filter } from '@pages/GX-25385-FiltrarProductos';
+import { filter } from '@pages/GX-25835-FiltrarProductos';
 
 describe('US GX-25835 | TS: SwagLabs | PLP Sorting | Filtrar productos por nombre o precio', () => {
 	beforeEach('PRC: Usuario debe estar en la login page', () => {

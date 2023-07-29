@@ -1,13 +1,15 @@
 import { filter } from '@pages/GX-25835-FiltrarProductos';
+const username = Cypress.env('swagLabs').login.users.correctUser;
+const password = Cypress.env('swagLabs').login.users.correctPass;
 
 describe('US GX-25835 | TS: SwagLabs | PLP Sorting | Filtrar productos por nombre o precio', () => {
 	beforeEach('PRC: Usuario debe estar en la login page', () => {
 		cy.visit('https://www.saucedemo.com/');
 		cy.url().should('contain', 'saucedemo');
-		cy.get('[data-test="username"]').type('standard_user');
-		cy.get('[data-test="password"]').type('secret_sauce');
-		cy.get('[data-test="login-button"]').click();
-		//cy.login('standard_user', 'secret_sauce');
+
+		filter.get.inputUsername().type(username);
+		filter.get.inputPassword().type(password);
+		filter.get.submitButton().click();
 	});
 
 	it('25836 | TC01: Validar filtrar por nombre descendente al elegir opción “Name (Z TO A)“', () => {

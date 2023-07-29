@@ -1,5 +1,8 @@
 class Filters {
 	get = {
+		inputUsername: () => cy.get('[data-test="username"]'),
+		inputPassword: () => cy.get('[data-test="password"]'),
+		submitButton: () => cy.get('[data-test="login-button"]'),
 		filtro: () => cy.get('[data-test="product_sort_container"]'),
 		nameList: () => cy.get('[class$="item_name"]'),
 		priceList: () => cy.get('[class$="item_price"]'),

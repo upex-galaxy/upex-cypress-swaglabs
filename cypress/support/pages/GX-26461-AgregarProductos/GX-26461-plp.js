@@ -3,33 +3,72 @@ class ProductList {
 		anyItem: () => cy.get('[class$="item_description"]'),
 		itemName: () => cy.get('[class$="item_name"]'),
 		itemDescription: () => cy.get('[class$="item_desc"]'),
-		itemButtons: () => cy.get('[class$="btn_small btn_inventory"]'),
+		itemPrice: () => cy.get('[class$="item_price"]'),
+		addToCartButton: () => cy.get('[class$="btn_inventory"]'),
 		cartIconLink: () => cy.get('[class="shopping_cart_link"]'),
 		added: () => cy.get('[class="shopping_cart_badge"]'),
 	};
 
-	addToCart() {
-		return this.randomAdd().then(r => {
-			this.get.itemButtons().eq(r).click();
-			return this.get.itemButtons().eq(r).invoke('text');
-		});
+	addToCart(randomProductSelected) {
+		this.get.addToCartButton().eq(randomProductSelected).click();
+		return this.get.addToCartButton().eq(randomProductSelected).invoke('text');
 	}
 
 	addedProducts() {
 		return this.get.added().invoke('text');
 	}
 
-	randomAdd() {
-		return this.get.itemButtons().then(index => {
-			const position = index.length - 1;
-			const ran = Cypress._.random(0, position);
-			return ran;
+	selectRandomProduct() {
+		return this.get.addToCartButton().then(index => {
+			const availableItems = Cypress._.random(0, index.length - 1);
+			return availableItems;
 		});
 	}
+
+	obtainDetails(randomItem) {
+		let arr = [];
+		return cy
+			.get('*')
+			.then(() => {
+				this.get
+					.itemName()
+					.eq(randomItem)
+					.then(nameItemSelected => {
+						arr.push(nameItemSelected.text());
+					});
+				this.get
+					.itemDescription()
+					.eq(randomItem)
+					.then(descriptionItemSelected => {
+						arr.push(descriptionItemSelected.text());
+					});
+				this.get
+					.itemPrice()
+					.eq(randomItem)
+					.then(priceItemSelected => {
+						arr.push(priceItemSelected.text());
+					});
+			})
+			.then(() => {
+				return arr;
+			});
+	}
+
+	// obtainName(randomItem) {
+	// 	return this.get.itemName().eq(randomItem).invoke('val');
+	// }
+
+	// obtainDescription(randomItem) {
+	// 	return this.get.itemDescription().eq(randomItem).invoke('text');
+	// }
+
+	// obtainPrice(randomItem) {
+	// 	return this.get.itemPrice().eq(randomItem).invoke('text');
+	// }
 
 	goToCart() {
 		this.get.cartIconLink().click();
 	}
 }
 
-export const plp = new ProductList();
+export const productListPage = new ProductList();

@@ -25,4 +25,4 @@ class ShoppingCart {
 	}
 }
 
-export const scp = new ShoppingCart();
+export const shoppingCartPage = new ShoppingCart();

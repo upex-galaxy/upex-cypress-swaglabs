@@ -36,7 +36,7 @@ describe('US GX-26461 | TS: SwagLabs | SCP | Agregar producto al carrito de comp
 		});
 	});
 
-	it.only('26462 | TC02: Validar añadir un producto del PDP al Shopping-Cart al presionar botón "Add to cart"', () => {
+	it('26462 | TC02: Validar añadir un producto del PDP al Shopping-Cart al presionar botón "Add to cart"', () => {
 		let productSelectedDetails;
 		productListPage.selectRandomProduct().then(randomProductSelected => {
 			productListPage.clickOnDetailsLink(randomProductSelected);

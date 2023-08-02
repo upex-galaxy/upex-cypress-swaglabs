@@ -1,6 +1,7 @@
 class ProductList {
 	get = {
 		anyItem: () => cy.get('[class$="item_description"]'),
+		goToDetails: () => cy.get('[id*="title_link"]'),
 		itemName: () => cy.get('[class$="item_name"]'),
 		itemDescription: () => cy.get('[class$="item_desc"]'),
 		itemPrice: () => cy.get('[class$="item_price"]'),
@@ -14,8 +15,12 @@ class ProductList {
 		return this.get.addToCartButton().eq(randomProductSelected).invoke('text');
 	}
 
-	addedProducts() {
+	productsAddedToCart() {
 		return this.get.added().invoke('text');
+	}
+
+	clickOnDetailsLink(randomItem) {
+		this.get.goToDetails().eq(randomItem).click();
 	}
 
 	selectRandomProduct() {
@@ -23,6 +28,10 @@ class ProductList {
 			const availableItems = Cypress._.random(0, index.length - 1);
 			return availableItems;
 		});
+	}
+
+	goToCart() {
+		this.get.cartIconLink().click();
 	}
 
 	obtainDetails(randomItem) {
@@ -52,22 +61,6 @@ class ProductList {
 			.then(() => {
 				return arr;
 			});
-	}
-
-	// obtainName(randomItem) {
-	// 	return this.get.itemName().eq(randomItem).invoke('val');
-	// }
-
-	// obtainDescription(randomItem) {
-	// 	return this.get.itemDescription().eq(randomItem).invoke('text');
-	// }
-
-	// obtainPrice(randomItem) {
-	// 	return this.get.itemPrice().eq(randomItem).invoke('text');
-	// }
-
-	goToCart() {
-		this.get.cartIconLink().click();
 	}
 }
 

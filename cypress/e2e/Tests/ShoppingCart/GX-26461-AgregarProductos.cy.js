@@ -14,51 +14,61 @@ describe('US GX-26461 | TS: SwagLabs | SCP | Agregar producto al carrito de comp
 	});
 
 	it('26462 | TC01: Validar añadir un producto del PLP al Shopping-Cart al presionar botón "Add to cart"', () => {
-		let productSelectedDetails;
+		let itemNameTextOnPLP;
+		let itemDescriptionTextOnPLP;
+		let itemPriceTextOnPLP;
+
 		productListPage.selectRandomProduct().then(randomProductSelected => {
-			productListPage.addToCartButton(randomProductSelected).should('be.eq', 'Add to cart');
+			productListPage.addToCartButton(randomProductSelected).should('contain', 'Add to cart');
 			productListPage.clickOnAddToCartButton(randomProductSelected);
-			productListPage.addToCartButton(randomProductSelected).should('be.eq', 'Remove');
+			productListPage.addToCartButton(randomProductSelected).should('contain', 'Remove');
 			productListPage.productsAddedToCart().should('be.eq', '1');
 			productListPage.obtainDetails(randomProductSelected).then(details => {
-				productSelectedDetails = details;
+				itemNameTextOnPLP = details[0];
+				itemDescriptionTextOnPLP = details[1];
+				itemPriceTextOnPLP = details[2];
 			});
 		});
 		productListPage.goToCart();
 		shoppingCartPage.obtainName().then(itemNameTextOnCart => {
-			expect(itemNameTextOnCart).to.equal(productSelectedDetails[0]);
+			expect(itemNameTextOnCart).to.equal(itemNameTextOnPLP);
 		});
 		shoppingCartPage.obtainDescription().then(itemDescriptionTextOnCart => {
-			expect(itemDescriptionTextOnCart).to.equal(productSelectedDetails[1]);
+			expect(itemDescriptionTextOnCart).to.equal(itemDescriptionTextOnPLP);
 		});
 		shoppingCartPage.obtainPrice().then(itemPriceTextOnCart => {
-			expect(itemPriceTextOnCart).to.equal(productSelectedDetails[2]);
+			expect(itemPriceTextOnCart).to.equal(itemPriceTextOnPLP);
 		});
 	});
 
 	it('26462 | TC02: Validar añadir un producto del PDP al Shopping-Cart al presionar botón "Add to cart"', () => {
-		let productSelectedDetails;
+		let itemNameTextOnPDP;
+		let itemDescriptionTextOnPDP;
+		let itemPriceTextOnPDP;
+
 		productListPage.selectRandomProduct().then(randomProductSelected => {
 			productListPage.clickOnDetailsLink(randomProductSelected);
 		});
 
-		productDetailPage.addToCartButton().should('be.eq', 'Add to cart');
+		productDetailPage.addToCartButton().should('contain', 'Add to cart');
 		productDetailPage.clickOnAddToCartButton();
-		productDetailPage.addToCartButton().should('be.eq', 'Remove');
+		productDetailPage.addToCartButton().should('contain', 'Remove');
 		productDetailPage.productsAddedToCart().should('be.eq', '1');
 		productDetailPage.obtainDetails(0).then(details => {
-			productSelectedDetails = details;
+			itemNameTextOnPDP = details[0];
+			itemDescriptionTextOnPDP = details[1];
+			itemPriceTextOnPDP = details[2];
 		});
 
 		productDetailPage.goToCart();
 		shoppingCartPage.obtainName().then(itemNameTextOnCart => {
-			expect(itemNameTextOnCart).to.equal(productSelectedDetails[0]);
+			expect(itemNameTextOnCart).to.equal(itemNameTextOnPDP);
 		});
 		shoppingCartPage.obtainDescription().then(itemDescriptionTextOnCart => {
-			expect(itemDescriptionTextOnCart).to.equal(productSelectedDetails[1]);
+			expect(itemDescriptionTextOnCart).to.equal(itemDescriptionTextOnPDP);
 		});
 		shoppingCartPage.obtainPrice().then(itemPriceTextOnCart => {
-			expect(itemPriceTextOnCart).to.equal(productSelectedDetails[2]);
+			expect(itemPriceTextOnCart).to.equal(itemPriceTextOnPDP);
 		});
 	});
 });

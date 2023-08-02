@@ -1,5 +1,6 @@
 import { removeLogs } from ("@helper/RemoveLogs");
 removeLogs;
+import { accountPage } from "@pages/GX-26662-Account-BR.page";
 
 
 

@@ -1,0 +1,50 @@
+{
+
+    "url": {
+        "BaseUrl": "https://www.saucedemo.com/",
+        "endpointInvent": "/inventory.html",
+        "endpointCart": "/cart.html",
+        "endpointCheck1": "/checkout-step-one.html",
+        "endpointCheck2": "/checkout-step-two.html",
+        "endpointCheck3": "/checkout-complete.html"
+
+    },
+
+    "validUserData": {
+        "userStandard": "standard_user",
+        "userProblem": "problem_user",
+        "userPerformance": "performance_glitch_user"
+    },
+
+    "invalidUserData": {
+        "lockedUser": "locked_out_user",
+        "NonExistingUser": "nonExisting",
+        "emptyUser": " "
+    },
+
+    "validPasswordData": {
+        "validPassword": "secret_sauce"
+    },
+
+    "invalidPasswordData": {
+        "invalidPassword": "nonExist",
+        "emptyPassword": " "
+    },
+
+    "ErrorContainer": {
+        "lockedMessage": "Epic sadface: Sorry, this user has been locked out.",
+        "matchMessage": "Epic sadface: Username and password do not match any user in this service",
+        "emptyUser": "Epic sadface: Username is required",
+        "emptyPassword": "Epic sadface: Password is required"
+    },
+
+    "ErrorEndpoint": {
+        "inventoryEnd": "Epic sadface: You can only access '/inventory.html' when you are logged in.",
+        "cartEnd": "Epic sadface: You can only access '/cart.html' when you are logged in.",
+        "checkoutEnd1": "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.",
+        "checkoutEnd2": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
+        "checkoutEnd3": "Epic sadface: You can only access '/checkout-complete.html' when you are logged in."
+    }
+
+    
+}

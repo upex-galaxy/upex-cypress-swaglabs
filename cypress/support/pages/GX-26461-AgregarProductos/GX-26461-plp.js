@@ -5,14 +5,22 @@ class ProductList {
 		itemName: () => cy.get('[class$="item_name"]'),
 		itemDescription: () => cy.get('[class$="item_desc"]'),
 		itemPrice: () => cy.get('[class$="item_price"]'),
-		addToCartButton: () => cy.get('[class$="btn_inventory"]'),
+		itemButton: () => cy.get('[class$="btn_inventory"]'),
 		cartIconLink: () => cy.get('[class="shopping_cart_link"]'),
 		added: () => cy.get('[class="shopping_cart_badge"]'),
 	};
 
-	addToCart(randomProductSelected) {
-		this.get.addToCartButton().eq(randomProductSelected).click();
-		return this.get.addToCartButton().eq(randomProductSelected).invoke('text');
+	clickOnAddToCartButton(randomProductSelected) {
+		this.get.itemButton().eq(randomProductSelected).click();
+	}
+
+	addToCartButton(randomProductSelected) {
+		return this.get
+			.itemButton()
+			.eq(randomProductSelected)
+			.then(button => {
+				return button.text();
+			});
 	}
 
 	productsAddedToCart() {
@@ -24,7 +32,7 @@ class ProductList {
 	}
 
 	selectRandomProduct() {
-		return this.get.addToCartButton().then(index => {
+		return this.get.itemButton().then(index => {
 			const availableItems = Cypress._.random(0, index.length - 1);
 			return availableItems;
 		});

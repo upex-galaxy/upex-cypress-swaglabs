@@ -35,4 +35,14 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.SubmitLogin();
 		cy.url().should('include', data.endpointInventory);
 	});
+	it.only('26970 | TC2: Validar el NO inicio de sesión con cuenta bloqueada al hacer click en el botón “Login“ y debería arrojar un mensaje “Sorry, this user has been locked out“.', () => {
+		
+		login.enterUsername(data.dataBloqueada.Username);
+		login.get.usernameInput().should('have.value', data.dataBloqueada.Username);
+		login.enterPassword(data.password);
+		login.get.passwordInput().should('have.value', data.password);
+		login.SubmitLogin();
+		login.get.errorMessage();
+		
+	});
 });

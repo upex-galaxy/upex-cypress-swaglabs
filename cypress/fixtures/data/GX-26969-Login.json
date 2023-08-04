@@ -17,6 +17,7 @@
         "Username":"locked_out_user"
         
     },
+    
     "endpointInventory":"/inventory.html",
     "swabLabs": "saucedemo"
 }

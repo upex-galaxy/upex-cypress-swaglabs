@@ -3,6 +3,7 @@ class Login{
 		usernameInput: () => cy.get('#user-name'),
 		passwordInput: () => cy.get('#password'),
 		submitButton: () => cy.get('#login-button'),
+		errorMessage: () => cy.get('.error-message-container.error')
 	};
 	
 	enterUsername(user) {
@@ -14,8 +15,9 @@ class Login{
 	SubmitLogin() {
 		this.get.submitButton().click();
 	}
-	
-	
+	messageResult() {
+		this.get.errorMessage().should('have.text','Sorry, this user has been locked out.');
+	}
 }
 
 class LogOut {

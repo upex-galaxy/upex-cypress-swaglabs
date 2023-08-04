@@ -1,9 +1,10 @@
-class Login{
+class Login {
 	get = {
 		usernameInput: () => cy.get('#user-name'),
 		passwordInput: () => cy.get('#password'),
 		submitButton: () => cy.get('#login-button'),
-		errorMessage: () => cy.get('.error-message-container.error')
+		errorMessageLocked: () => cy.get('.error-message-container.error'),
+		errorMessageInvalid: () => cy.get('.error-message-container.error')
 	};
 	
 	enterUsername(user) {
@@ -15,8 +16,11 @@ class Login{
 	SubmitLogin() {
 		this.get.submitButton().click();
 	}
-	messageResult() {
-		this.get.errorMessage().should('have.text','Sorry, this user has been locked out.');
+	messageResultLocked() {
+		this.get.errorMessageLocked().should('have.text', 'Sorry, this user has been locked out.');
+	}
+	messageResultInvalid() {
+		this.get.errorMessageInvalid().should('have.text', 'Username and password do not match any user in this service');
 	}
 }
 

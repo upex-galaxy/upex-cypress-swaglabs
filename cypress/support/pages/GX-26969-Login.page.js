@@ -3,13 +3,9 @@ class Login {
 		usernameInput: () => cy.get('#user-name'),
 		passwordInput: () => cy.get('#password'),
 		submitButton: () => cy.get('#login-button'),
-		errorMessageLocked: () => cy.get('.error-message-container.error'),
-		errorMessageInvalid: () => cy.get('.error-message-container.error'),
-		errorMessageEmptyUserField: () => cy.get('.error-message-container.error'),
-		errorMessageEmptyPasswordField: () => cy.get('.error-message-container.error'),
-		errorMessageEmptyFields:()=> cy.get('.error-message-container.error'),
 		usernameInputEmpty: () => cy.get('#user-name'),
-		passwordInputEmpty: () => cy.get('#password')
+		passwordInputEmpty: () => cy.get('#password'),
+		dataError: () => cy.get('[data-test="error"]'),
 	};
 	
 	enterUsername(user) {
@@ -26,21 +22,6 @@ class Login {
 	}
 	SubmitLogin() {
 		this.get.submitButton().click();
-	}
-	messageResultLocked() {
-		this.get.errorMessageLocked().should('have.text', 'Sorry, this user has been locked out.');
-	}
-	messageResultInvalid() {
-		this.get.errorMessageInvalid().should('have.text', 'Username and password do not match any user in this service');
-	}
-	messageResultEmptyUserField() {
-		this.get.errorMessageEmptyUserField().should('have.text', 'Username is required');
-	}
-	messageResultEmptyPasswordField() {
-		this.get.errorMessageEmptyPasswordField().should('have.text', 'Password is required');
-	}
-	messageResultEmptyFields() {
-		this.get.errorMessageEmptyFields().should('have.text', 'Username is required');
 	}
 }
 

@@ -42,7 +42,7 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.enterPassword(data.password);
 		login.get.passwordInput().should('have.value', data.password);
 		login.SubmitLogin();
-		login.get.errorMessageLocked();
+		login.get.dataError().should('contain.text', data.mensajesDeError.lockedUserError);
 	});
 	it('26970 | TC3: Validar el NO inicio de sesión con cuenta incorrecta o inexistente al hacer click en el botón “Login“ y debería arrojar un mensaje “Username and password do not match any user in this service".', () => {
 		login.enterUsername(data.dataInvalida.userNameInvalido);
@@ -50,7 +50,7 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.enterPassword(data.password);
 		login.get.passwordInput().should('have.value', data.password);
 		login.SubmitLogin();
-		login.get.errorMessageInvalid();
+		login.get.dataError().should('contain.text', data.mensajesDeError.invalidAccountError);
 	});
 	it('26970 | TC4: Validar el NO inicio de sesión sin rellenar el campo “Username“ al hacer click en el botón “Login“ y debería arrojar un mensaje “Username is required“.', () => {
 		login.enterUsernameEmpty(null);
@@ -58,7 +58,7 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.enterPassword(data.password);
 		login.get.passwordInput().should('have.value', data.password);
 		login.SubmitLogin();
-		login.get.errorMessageInvalid();
+		login.get.dataError().should('contain.text', data.mensajesDeError.UserNameError);
 	});
 	it('26970 | TC5: Validar el NO inicio de sesión sin rellenar el campo “Password“ al hacer click en el botón “Login“ y debería arrojar un mensaje “Password is required.“.', () => {
 		login.enterUsername(data.dataValida.userName1);
@@ -66,7 +66,7 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.enterPasswordEmpty(null);
 		login.get.passwordInput().should('have.value', '');
 		login.SubmitLogin();
-		login.get.errorMessageInvalid();
+		login.get.dataError().should('contain.text', data.mensajesDeError.PasswordError);
 
 	});
 	it('26970 | TC6: Validar el NO inicio de sesión sin rellenar los campos “Username“ y “Password“ al hacer click en el botón “Login“ y debería arrojar un mensaje “Username is required.“.', () => {
@@ -75,7 +75,12 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.enterPasswordEmpty(null);
 		login.get.passwordInput().should('have.value', '');
 		login.SubmitLogin();
-		login.get.errorMessageInvalid();
+		login.get.dataError().should('contain.text', data.mensajesDeError.UserNameError);
+	});
+	it('26970 | TC7: Validar que no se pueda ingresar al endpoint interno "/inventory.html" sin haber iniciado sesión.', () => {
+		cy.visit(data.endpointInventory, { failOnStatusCode: false });
+		login.get.dataError().should('contain.text', data.mensajesDeError.inventoryError);
 	});
 
-});
+
+}); 

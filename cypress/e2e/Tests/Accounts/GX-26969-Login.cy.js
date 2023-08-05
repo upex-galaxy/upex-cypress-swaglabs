@@ -52,12 +52,21 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.SubmitLogin();
 		login.get.errorMessageInvalid();
 	});
-	it.only('26970 | TC4: Validar el NO inicio de sesión sin rellenar el campo “Username“ al hacer click en el botón “Login“ y debería arrojar un mensaje “Username is required“.', () => {
-		login.enterUsername(null); 
+	it('26970 | TC4: Validar el NO inicio de sesión sin rellenar el campo “Username“ al hacer click en el botón “Login“ y debería arrojar un mensaje “Username is required“.', () => {
+		login.enterUsernameEmpty(null);
 		login.get.usernameInput().should('have.value', '');
 		login.enterPassword(data.password);
 		login.get.passwordInput().should('have.value', data.password);
 		login.SubmitLogin();
 		login.get.errorMessageInvalid();
+	});
+	it('26970 | TC5: Validar el NO inicio de sesión sin rellenar el campo “Password“ al hacer click en el botón “Login“ y debería arrojar un mensaje “Password is required.“.', () => {
+		login.enterUsername(data.dataValida.userName1);
+		login.get.usernameInput().should('have.value', data.dataValida.userName1);
+		login.enterPasswordEmpty(null);
+		login.get.passwordInput().should('have.value', '');
+		login.SubmitLogin();
+		login.get.errorMessageInvalid();
+
 	});
 });

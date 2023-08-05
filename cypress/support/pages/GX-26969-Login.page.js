@@ -5,14 +5,22 @@ class Login {
 		submitButton: () => cy.get('#login-button'),
 		errorMessageLocked: () => cy.get('.error-message-container.error'),
 		errorMessageInvalid: () => cy.get('.error-message-container.error'),
-		errorMessageEmptyUserField: () => cy.get('.error-message-container.error')
+		errorMessageEmptyUserField: () => cy.get('.error-message-container.error'),
+		usernameInputEmpty: () => cy.get('#user-name'),
+		passwordInputEmpty: () => cy.get('#password')
 	};
 	
-	enterUsername() {
-		this.get.usernameInput().clear();
+	enterUsername(user) {
+		this.get.usernameInput().type(user);
+	}
+	enterUsernameEmpty() {
+		this.get.usernameInputEmpty().clear();
 	}
 	enterPassword(password) {
 		this.get.passwordInput().type(password);
+	}
+	enterPasswordEmpty() {
+		this.get.passwordInputEmpty().clear();
 	}
 	SubmitLogin() {
 		this.get.submitButton().click();

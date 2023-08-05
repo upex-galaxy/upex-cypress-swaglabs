@@ -18,8 +18,8 @@
         
     },
         "CamposVacios":{
-            "userNameVacio":"*",
-            "passwordVacio":"*"
+            "userNameVacio":"",
+            "passwordVacio":""
     },
     
     "endpointInventory":"/inventory.html",

@@ -4,11 +4,12 @@ class Login {
 		passwordInput: () => cy.get('#password'),
 		submitButton: () => cy.get('#login-button'),
 		errorMessageLocked: () => cy.get('.error-message-container.error'),
-		errorMessageInvalid: () => cy.get('.error-message-container.error')
+		errorMessageInvalid: () => cy.get('.error-message-container.error'),
+		errorMessageEmptyUserField: () => cy.get('.error-message-container.error')
 	};
 	
-	enterUsername(user) {
-		this.get.usernameInput().type(user);
+	enterUsername() {
+		this.get.usernameInput().clear();
 	}
 	enterPassword(password) {
 		this.get.passwordInput().type(password);
@@ -21,6 +22,9 @@ class Login {
 	}
 	messageResultInvalid() {
 		this.get.errorMessageInvalid().should('have.text', 'Username and password do not match any user in this service');
+	}
+	messageResultEmptyUserField() {
+		this.get.errorMessageEmptyUserField().should('have.text', 'Username is required');
 	}
 }
 
@@ -37,4 +41,4 @@ class LogOut {
 	}
 }
 export const login = new Login();
-export const logOut = new LogOut();
+export const logOut = new LogOut(); 

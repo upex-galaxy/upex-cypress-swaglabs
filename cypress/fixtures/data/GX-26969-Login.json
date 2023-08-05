@@ -2,11 +2,11 @@
 
         "password":"secret_sauce",
         "dataValida":
-        {
+    {
         "userName1": "standard_user",
         "userName2": "problem_user",
         "userName3": "performance_glitch_user"
-        },
+    },
     
         "dataInvalida":{
         "userNameInvalido":"usuario_invalido",
@@ -16,6 +16,10 @@
     "dataBloqueada":{
         "Username":"locked_out_user"
         
+    },
+        "CamposVacios":{
+            "userNameVacio":"*",
+            "passwordVacio":"*"
     },
     
     "endpointInventory":"/inventory.html",

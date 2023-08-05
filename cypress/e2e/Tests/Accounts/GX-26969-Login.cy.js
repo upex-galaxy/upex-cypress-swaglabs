@@ -44,9 +44,17 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.SubmitLogin();
 		login.get.errorMessageLocked();
 	});
-	it.only('26970 | TC3: Validar el NO inicio de sesión con cuenta incorrecta o inexistente al hacer click en el botón “Login“ y debería arrojar un mensaje “Username and password do not match any user in this service".', () => {
+	it('26970 | TC3: Validar el NO inicio de sesión con cuenta incorrecta o inexistente al hacer click en el botón “Login“ y debería arrojar un mensaje “Username and password do not match any user in this service".', () => {
 		login.enterUsername(data.dataInvalida.userNameInvalido);
 		login.get.usernameInput().should('have.value', data.dataInvalida.userNameInvalido);
+		login.enterPassword(data.password);
+		login.get.passwordInput().should('have.value', data.password);
+		login.SubmitLogin();
+		login.get.errorMessageInvalid();
+	});
+	it.only('26970 | TC4: Validar el NO inicio de sesión sin rellenar el campo “Username“ al hacer click en el botón “Login“ y debería arrojar un mensaje “Username is required“.', () => {
+		login.enterUsername(null); 
+		login.get.usernameInput().should('have.value', '');
 		login.enterPassword(data.password);
 		login.get.passwordInput().should('have.value', data.password);
 		login.SubmitLogin();

@@ -6,6 +6,8 @@ class Login {
 		errorMessageLocked: () => cy.get('.error-message-container.error'),
 		errorMessageInvalid: () => cy.get('.error-message-container.error'),
 		errorMessageEmptyUserField: () => cy.get('.error-message-container.error'),
+		errorMessageEmptyPasswordField: () => cy.get('.error-message-container.error'),
+		errorMessageEmptyFields:()=> cy.get('.error-message-container.error'),
 		usernameInputEmpty: () => cy.get('#user-name'),
 		passwordInputEmpty: () => cy.get('#password')
 	};
@@ -33,6 +35,12 @@ class Login {
 	}
 	messageResultEmptyUserField() {
 		this.get.errorMessageEmptyUserField().should('have.text', 'Username is required');
+	}
+	messageResultEmptyPasswordField() {
+		this.get.errorMessageEmptyPasswordField().should('have.text', 'Password is required');
+	}
+	messageResultEmptyFields() {
+		this.get.errorMessageEmptyFields().should('have.text', 'Username is required');
 	}
 }
 

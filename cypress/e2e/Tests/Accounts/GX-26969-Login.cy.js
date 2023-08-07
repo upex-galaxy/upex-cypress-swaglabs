@@ -36,7 +36,6 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		cy.url().should('include', data.endpointInventory);
 	});
 	it('26970 | TC2: Validar el NO inicio de sesión con cuenta bloqueada al hacer click en el botón “Login“ y debería arrojar un mensaje “Sorry, this user has been locked out“.', () => {
-		
 		login.enterUsername(data.dataBloqueada.Username);
 		login.get.usernameInput().should('have.value', data.dataBloqueada.Username);
 		login.enterPassword(data.password);
@@ -67,7 +66,6 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.get.passwordInput().should('have.value', '');
 		login.SubmitLogin();
 		login.get.dataError().should('contain.text', data.mensajesDeError.PasswordError);
-
 	});
 	it('26970 | TC6: Validar el NO inicio de sesión sin rellenar los campos “Username“ y “Password“ al hacer click en el botón “Login“ y debería arrojar un mensaje “Username is required.“.', () => {
 		login.enterUsernameEmpty(null);
@@ -81,6 +79,20 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		cy.visit(data.endpointInventory, { failOnStatusCode: false });
 		login.get.dataError().should('contain.text', data.mensajesDeError.inventoryError);
 	});
-
-
-}); 
+	it('26970 | TC8: Validar que no se pueda ingresar al endpoint interno "/cart.html" sin haber iniciado sesión.', () => {
+		cy.visit(data.endpointCart, { failOnStatusCode: false });
+		login.get.dataError().should('contain.text', data.mensajesDeError.cartError);
+	});
+	it('26970 | TC9: Validar que no se pueda ingresar al endpoint interno "/checkout-step-one.html" sin haber iniciado sesión.', () => {
+		cy.visit(data.endpointCheck1, { failOnStatusCode: false });
+		login.get.dataError().should('contain.text', data.mensajesDeError.checkError1);
+	});
+	it('26970 | TC10: Validar que no se pueda ingresar al endpoint interno "/checkout-step-two.html" sin haber iniciado sesión.', () => {
+		cy.visit(data.endpointCheck2, { failOnStatusCode: false });
+		login.get.dataError().should('contain.text', data.mensajesDeError.checkError2);
+	});
+	it('26970 | TC11: Validar que no se pueda ingresar al endpoint interno "/checkout-complete.html" sin haber iniciado sesión.', () => {
+		cy.visit(data.endpointCheckComplete, { failOnStatusCode: false });
+		login.get.dataError().should('contain.text', data.mensajesDeError.checkErrorcomplete);
+	});
+});

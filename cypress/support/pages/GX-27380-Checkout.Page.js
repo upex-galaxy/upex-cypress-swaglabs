@@ -31,8 +31,29 @@ class AddProduct {
 	bttnCheckout() {
 		this.get.CheckoutNext().click();
 	}
-    
+}
+class ConfirmThePurchase{
+	get = {
+		nextContinue: () => cy.get('#continue'),
+		firstNameInput: () => cy.get('#first-name'),
+		lastNameInput: () => cy.get('#last-name'),
+		postalCodeInput:()=> cy.get('#postal-code')
+	};
+	bttnContinue() {
+		this.get.nextContinue().click();
+	}
+	firstNameField(name) {
+		this.get.firstNameInput().type(name);
+	}
+	lastNameField(name) {
+		this.get.lastNameInput().type(name);
+	}
+	postalCodeField(number) {
+		this.get.postalCodeInput().type(number);
+	}
+
 }
 
 export const login = new Login();
 export const addproduct = new AddProduct();
+export const finalpurchase = new ConfirmThePurchase();

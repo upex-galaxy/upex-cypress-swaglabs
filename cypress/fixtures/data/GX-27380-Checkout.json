@@ -1,4 +1,10 @@
 {
+    "FormularioDeDatos":{
+        "firstName":"Braian",
+        "lastName":"Ferreyra",
+        "postalCode":"08860"
+
+    },
     "userName": "standard_user",
     "password": "secret_sauce",
     "swagLabs": "saucedemo"

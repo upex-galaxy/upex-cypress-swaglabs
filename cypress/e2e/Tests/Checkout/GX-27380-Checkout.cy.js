@@ -29,7 +29,7 @@ describe('✅SwagLabs | Checkout | Visualizar el Resumen de Compra del Shopping 
 		addproduct.bttnShoppingCart();
 		addproduct.bttnCheckout();
 	});
-	it('27381| TC2: Validar poder agregar al menos un producto al "shopping-cart", visualizarlo en el mismo y avanzar hacia el "Checkout: Your Information", haciendo click en el boton "Checkout".', () => {
+	it('27381| TC3: Validar poder completar el formulario "Checkout: Your Information" con los datos correspondientes y avanzar hacia el "Checkout: Overview" al hacer click en el boton "continue".', () => {
 		login.enterUsername(data.userName);
 		login.get.userNameInput().should('have.value', data.userName);
 		login.enterPassword(data.password);
@@ -38,5 +38,37 @@ describe('✅SwagLabs | Checkout | Visualizar el Resumen de Compra del Shopping 
 		addproduct.buttonAdd();
 		addproduct.bttnShoppingCart();
 		addproduct.bttnCheckout();
+		finalpurchase.firstNameField(data.FormularioDeDatos.firstName);
+		finalpurchase.get.firstNameInput().should('have.value', data.FormularioDeDatos.firstName);
+		finalpurchase.lastNameField(data.FormularioDeDatos.lastName);
+		finalpurchase.get.lastNameInput().should('have.value', data.FormularioDeDatos.lastName);
+		finalpurchase.postalCodeField(data.FormularioDeDatos.postalCode);
+		finalpurchase.get.postalCodeInput().should('have.value', data.FormularioDeDatos.postalCode);
+		finalpurchase.bttnContinue();
+	});
+	it('27381| TC4: Validar poder visualizar la informacion de pago, envio, la sumatoria de los precios de los productos seleccionados sin tax, tax asociado a la compra y la sumatoria total de los productos seleccionados.', () => {
+		login.enterUsername(data.userName);
+		login.get.userNameInput().should('have.value', data.userName);
+		login.enterPassword(data.password);
+		login.get.passwordInput().should('have.value', data.password);
+		login.buttonLogin();
+		addproduct.buttonAdd();
+		addproduct.bttnShoppingCart();
+		addproduct.bttnCheckout();
+		finalpurchase.firstNameField(data.FormularioDeDatos.firstName);
+		finalpurchase.get.firstNameInput().should('have.value', data.FormularioDeDatos.firstName);
+		finalpurchase.lastNameField(data.FormularioDeDatos.lastName);
+		finalpurchase.get.lastNameInput().should('have.value', data.FormularioDeDatos.lastName);
+		finalpurchase.postalCodeField(data.FormularioDeDatos.postalCode);
+		finalpurchase.get.postalCodeInput().should('have.value', data.FormularioDeDatos.postalCode);
+		finalpurchase.bttnContinue();
+		finalpurchase.payment(data.ValidacionFinal.dataPayment);
+		finalpurchase.get.paymentInfo().should('contain.text', data.ValidacionFinal.dataPayment);
+		finalpurchase.shipping(data.ValidacionFinal.dataShipping);
+		finalpurchase.get.shippingInfo().should('contain.text', data.ValidacionFinal.dataShipping);
+		finalpurchase.price(data.ValidacionFinal.dataPriceTotal);
+		finalpurchase.get.priceTotal().should('contain.text', data.ValidacionFinal.dataPriceTotal);
+		finalpurchase.resultTotal(data.ValidacionFinal.dataTotal);
+		finalpurchase.get.total().should('contain.text', data.ValidacionFinal.dataTotal );
 	});
 });

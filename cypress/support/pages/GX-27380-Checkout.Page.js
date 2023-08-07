@@ -37,7 +37,11 @@ class ConfirmThePurchase{
 		nextContinue: () => cy.get('#continue'),
 		firstNameInput: () => cy.get('#first-name'),
 		lastNameInput: () => cy.get('#last-name'),
-		postalCodeInput:()=> cy.get('#postal-code')
+		postalCodeInput: () => cy.get('#postal-code'),
+		paymentInfo: () => cy.get('.summary_info_label'),
+		shippingInfo: () => cy.get('.summary_info_label'),
+		priceTotal: () => cy.get('.summary_info_label'),
+		total:()=> cy.get('.summary_total_label')
 	};
 	bttnContinue() {
 		this.get.nextContinue().click();
@@ -50,6 +54,18 @@ class ConfirmThePurchase{
 	}
 	postalCodeField(number) {
 		this.get.postalCodeInput().type(number);
+	}
+	payment() {
+		this.get.paymentInfo().eq(0);
+	}
+	shipping() {
+		this.get.shippingInfo().eq(1);
+	}
+	price() {
+		this.get.priceTotal().eq(2);
+	}
+	resultTotal() {
+		this.get.total();
 	}
 
 }

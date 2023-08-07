@@ -5,6 +5,13 @@
         "postalCode":"08860"
 
     },
+    "ValidacionFinal": {
+        "dataPayment":"Payment Information",
+        "dataShipping":"Shipping Information",
+        "dataPriceTotal":"Price Total",
+        "dataTotal":"Total: $"
+
+    },
     "userName": "standard_user",
     "password": "secret_sauce",
     "swagLabs": "saucedemo"

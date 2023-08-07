@@ -1,7 +1,7 @@
 import { removeLogs } from '@helper/RemoveLogs';
 removeLogs();
 import data from '../../../fixtures/data/GX-27380-Checkout.json';
-import { login } from '../../../support/pages/GX-27380-Checkout.Page';
+import { login, addproduct } from '../../../support/pages/GX-27380-Checkout.Page';
 
 removeLogs();
 
@@ -18,5 +18,15 @@ describe('✅SwagLabs | Checkout | Visualizar el Resumen de Compra del Shopping 
 		login.get.passwordInput().should('have.value', data.password);
 		login.buttonLogin();
 		
+	});
+	it.only('27381| TC2: Validar poder agregar al menos un producto al "shopping-cart", visualizarlo en el mismo y avanzar hacia el "Checkout: Your Information", haciendo click en el boton "Checkout".', () => {
+		login.enterUsername(data.userName);
+		login.get.userNameInput().should('have.value', data.userName);
+		login.enterPassword(data.password);
+		login.get.passwordInput().should('have.value', data.password);
+		login.buttonLogin();
+		addproduct.buttonAdd();
+		addproduct.bttnShoppingCart();
+		addproduct.bttnCheckout();
 	});
 });

@@ -41,7 +41,9 @@ class ConfirmThePurchase{
 		paymentInfo: () => cy.get('.summary_info_label'),
 		shippingInfo: () => cy.get('.summary_info_label'),
 		priceTotal: () => cy.get('.summary_info_label'),
-		total:()=> cy.get('.summary_total_label')
+		total: () => cy.get('.summary_total_label'),
+		finish: () => cy.get('#finish'),
+		messageOk:()=> cy.get('.complete-header')
 	};
 	bttnContinue() {
 		this.get.nextContinue().click();
@@ -66,6 +68,12 @@ class ConfirmThePurchase{
 	}
 	resultTotal() {
 		this.get.total();
+	}
+	bttnFinish() {
+		this.get.finish().click();
+	}
+	resultOk() {
+		this.get.messageOk();
 	}
 
 }

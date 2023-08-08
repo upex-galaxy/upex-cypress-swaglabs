@@ -9,7 +9,8 @@
         "dataPayment":"Payment Information",
         "dataShipping":"Shipping Information",
         "dataPriceTotal":"Price Total",
-        "dataTotal":"Total: $"
+        "dataTotal":"Total: $",
+        "buyOk":"Thank you for your order!"
 
     },
     "userName": "standard_user",

@@ -71,4 +71,33 @@ describe('✅SwagLabs | Checkout | Visualizar el Resumen de Compra del Shopping 
 		finalpurchase.resultTotal(data.ValidacionFinal.dataTotal);
 		finalpurchase.get.total().should('contain.text', data.ValidacionFinal.dataTotal );
 	});
+	it.only('27381| TC5: Validar poder visualizar la finalizacion de la compra con exito al hacer click en el boton "finish" arrojando el mensaje "Thank you for your order!".', () => {
+		login.enterUsername(data.userName);
+		login.get.userNameInput().should('have.value', data.userName);
+		login.enterPassword(data.password);
+		login.get.passwordInput().should('have.value', data.password);
+		login.buttonLogin();
+		addproduct.buttonAdd();
+		addproduct.bttnShoppingCart();
+		addproduct.bttnCheckout();
+		finalpurchase.firstNameField(data.FormularioDeDatos.firstName);
+		finalpurchase.get.firstNameInput().should('have.value', data.FormularioDeDatos.firstName);
+		finalpurchase.lastNameField(data.FormularioDeDatos.lastName);
+		finalpurchase.get.lastNameInput().should('have.value', data.FormularioDeDatos.lastName);
+		finalpurchase.postalCodeField(data.FormularioDeDatos.postalCode);
+		finalpurchase.get.postalCodeInput().should('have.value', data.FormularioDeDatos.postalCode);
+		finalpurchase.bttnContinue();
+		finalpurchase.payment(data.ValidacionFinal.dataPayment);
+		finalpurchase.get.paymentInfo().should('contain.text', data.ValidacionFinal.dataPayment);
+		finalpurchase.shipping(data.ValidacionFinal.dataShipping);
+		finalpurchase.get.shippingInfo().should('contain.text', data.ValidacionFinal.dataShipping);
+		finalpurchase.price(data.ValidacionFinal.dataPriceTotal);
+		finalpurchase.get.priceTotal().should('contain.text', data.ValidacionFinal.dataPriceTotal);
+		finalpurchase.resultTotal(data.ValidacionFinal.dataTotal);
+		finalpurchase.get.total().should('contain.text', data.ValidacionFinal.dataTotal);
+		finalpurchase.bttnFinish();
+		finalpurchase.resultOk(data.ValidacionFinal.buyOk);
+		finalpurchase.get.messageOk().should('contain.text', data.ValidacionFinal.buyOk);
+
+	});
 });

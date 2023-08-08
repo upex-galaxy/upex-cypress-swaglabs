@@ -71,7 +71,7 @@ describe('✅SwagLabs | Checkout | Visualizar el Resumen de Compra del Shopping 
 		finalpurchase.resultTotal(data.ValidacionFinal.dataTotal);
 		finalpurchase.get.total().should('contain.text', data.ValidacionFinal.dataTotal );
 	});
-	it.only('27381| TC5: Validar poder visualizar la finalizacion de la compra con exito al hacer click en el boton "finish" arrojando el mensaje "Thank you for your order!".', () => {
+	it('27381| TC5: Validar poder visualizar la finalizacion de la compra con exito al hacer click en el boton "finish" arrojando el mensaje "Thank you for your order!".', () => {
 		login.enterUsername(data.userName);
 		login.get.userNameInput().should('have.value', data.userName);
 		login.enterPassword(data.password);

@@ -17,6 +17,9 @@ class shoppingCartPage {
 		shoppingBack: () => cy.get('#continue-shopping'),
 		prodDetailsPdp: () => cy.get('[class=inventory_details_desc_container]'),
 		productBack: () => cy.get('[class=left_component]>button'),
+		titleProd: [],
+		descriptionProd: [],
+		priceProd: [],
 	};
 
 	btnLength() {
@@ -55,19 +58,29 @@ class shoppingCartPage {
 					.parents('.inventory_item_description')
 					.within(() => {
 						this.elements.prodInvTitle().then($title => {
-							titlePlp.push($title.text());
+							this.elements.titleProd.push($title.text());
 						});
 						this.elements.prodInvDesc().then($desc => {
-							descriptionPlp.push($desc.text());
+							this.elements.descriptionProd.push($desc.text());
 						});
 						this.elements.prodInvPrice().then($price => {
-							pricePlp.push($price.text());
+							this.elements.priceProd.push($price.text());
+							cy.log(this.elements.priceProd);
 						});
 						this.elements.btnAddToCart().click();
 					});
 			})
 			.then(() => {
-				return productDetalPlp();
+				let productDetailsPlp = (...arrays) => [
+					{
+						title: this.elements.titleProd,
+						description: this.elements.descriptionProd,
+						price: this.elements.priceProd,
+					},
+				];
+				Cypress.env('productDetailsPlp', productDetailsPlp());
+
+				return productDetailsPlp();
 			});
 	}
 
@@ -78,7 +91,7 @@ class shoppingCartPage {
 			.parents('[class=inventory_item_description]')
 			.then($el => {
 				cy.wrap($el)
-					.filter(`:contains(${productDetalPlp().titlePlp[number]})`)
+					.filter(`:contains(${Cypress.env('productDetailsPlp')[0].title[number]})`)
 					.find(valueClase)
 					.invoke('text')
 					.then($text => {
@@ -148,19 +161,29 @@ class shoppingCartPage {
 					.parents('.inventory_details_container')
 					.within(() => {
 						this.elements.prodInvDetailsTitle().then($title => {
-							titlePdp.push($title.text());
+							this.elements.titleProd.push($title.text());
 						});
 						this.elements.prodInvDetailsDesc().then($desc => {
-							descriptionPdp.push($desc.text());
+							this.elements.descriptionProd.push($desc.text());
 						});
 						this.elements.prodInvDetailsPrice().then($price => {
-							pricePdp.push($price.text());
+							this.elements.priceProd.push($price.text());
+							cy.log(this.elements.priceProd);
 						});
 						this.elements.btnPdp().click();
 					});
 			})
 			.then(() => {
-				return productDetalPdp();
+				let productDetailsPdp = (...arrays) => [
+					{
+						title: this.elements.titleProd,
+						description: this.elements.descriptionProd,
+						price: this.elements.priceProd,
+					},
+				];
+				Cypress.env('productDetailsPdp', productDetailsPdp());
+
+				return productDetailsPdp();
 			});
 	}
 
@@ -184,29 +207,10 @@ class shoppingCartPage {
 	}
 
 	deleteProduct() {
-		titlePdp.splice(0);
-		descriptionPdp.splice(0);
-		pricePdp.splice(0);
+		this.elements.titleProd.splice(0);
+		this.elements.descriptionProd.splice(0);
+		this.elements.priceProd.splice(0);
 	}
 }
 
-//constantes requeridas para capturar valores del producto seleccionado Plp
-
-let titlePlp = [];
-let descriptionPlp = [];
-let pricePlp = [];
-let productDetalPlp = (...arrays) => ({ titlePlp, descriptionPlp, pricePlp });
-productDetalPlp(titlePlp, descriptionPlp, pricePlp);
-
-//constantes requeridas para capturar valores del producto seleccionado Pdp
-
-let titlePdp = [];
-let descriptionPdp = [];
-let pricePdp = [];
-let productDetalPdp = (...arrays) => ({ titlePdp, descriptionPdp, pricePdp });
-productDetalPdp(titlePdp, descriptionPdp, pricePdp);
-
-Cypress.env('productDetailsPlp', productDetalPlp());
-Cypress.env('productDetailsPdp', productDetalPdp());
 export const shoppingCartPag = new shoppingCartPage();
-

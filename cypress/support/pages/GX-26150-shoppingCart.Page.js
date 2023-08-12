@@ -23,26 +23,19 @@ class shoppingCartPage {
 	};
 
 	btnLength() {
-		let btnLength;
-		return this.elements
-			.btnAddToCart()
-			.then($btn => {
-				btnLength = $btn.length;
-			})
-			.then(() => {
-				return btnLength;
-			});
+		return this.elements.btnAddToCart().then($btn => {
+			let btnLength = $btn.length;
+			Cypress.env('BtnLg', btnLength);
+			return btnLength;
+		});
 	}
 
 	filterBtnPlp(value) {
-		let btnFilter;
 		return this.elements
 			.btnPlp()
 			.filter(`:contains("${value}")`)
 			.then($btn => {
-				btnFilter = $btn.length;
-			})
-			.then(() => {
+				let btnFilter = $btn.length;
 				return btnFilter;
 			});
 	}
@@ -85,7 +78,6 @@ class shoppingCartPage {
 	}
 
 	detailsPlpRem(number, valueClase) {
-		let detailsPlpRem;
 		return this.elements
 			.btnRemoveFromCart()
 			.parents('[class=inventory_item_description]')
@@ -95,9 +87,7 @@ class shoppingCartPage {
 					.find(valueClase)
 					.invoke('text')
 					.then($text => {
-						detailsPlpRem = $text;
-					})
-					.then(() => {
+						let detailsPlpRem = $text;
 						return detailsPlpRem;
 					});
 			});
@@ -108,7 +98,6 @@ class shoppingCartPage {
 	}
 
 	detailsProdCar(number, valueClase) {
-		let detailsProdCar;
 		return this.elements
 			.cartItemLabel()
 			.eq(number)
@@ -117,9 +106,7 @@ class shoppingCartPage {
 					.find(valueClase)
 					.invoke('text')
 					.then($text => {
-						detailsProdCar = $text;
-					})
-					.then(() => {
+						let detailsProdCar = $text;
 						return detailsProdCar;
 					});
 			});
@@ -141,16 +128,13 @@ class shoppingCartPage {
 	}
 
 	textBtnPdp() {
-		let btnText;
 		return this.elements
 			.btnPdp()
 			.invoke('text')
 			.then($text => {
-				btnText = $text;
-			})
-			.then(() => {
+				let btnText = $text;
 				return btnText;
-			});
+			});		
 	}
 
 	addToCartPdp() {
@@ -192,15 +176,12 @@ class shoppingCartPage {
 	}
 
 	detailsProdPdp(valueClase) {
-		let detailsProdPdp;
 		return this.elements.prodDetailsPdp().then($el => {
 			cy.wrap($el)
 				.find(valueClase)
 				.invoke('text')
 				.then($text => {
-					detailsProdPdp = $text;
-				})
-				.then(() => {
+					let detailsProdPdp = $text;
 					return detailsProdPdp;
 				});
 		});

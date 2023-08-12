@@ -11,9 +11,7 @@ describe('SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o
 		homeSagPage.typePassword(swagLabs.login.users.correctPass);
 		homeSagPage.clickLogin();
 		cy.url().should('contain', swagLabs.endpoint.inventory);
-		shoppingCartPag.btnLength().then($btn => {
-			Cypress.env('BtnLg', $btn);
-		});
+		shoppingCartPag.btnLength();
 		shoppingCartPag.filterBtnPlp('Add to cart').then($btn => {
 			expect($btn).to.equal(Cypress.env('BtnLg'));
 		});
@@ -24,7 +22,7 @@ describe('SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o
 		shoppingCartPag.elements.headerSecondaryTitle().should('have.text', 'Products');
 		homeSagPage.elements.itemsContainer().should('be.visible');
 
-		for (let itemsCount = 0; itemsCount < values.itemsProd[1]; itemsCount++) {
+		for (let itemsCount = 0; itemsCount < values.itemsProd[0]; itemsCount++) {
 			// selecionar productos al azar
 			shoppingCartPag.addToCartItemRandomPlp();
 
@@ -62,7 +60,7 @@ describe('SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o
 			cy.url().should('contain', swagLabs.endpoint.cart);
 			shoppingCartPag.elements.headerSecondaryTitle().should('have.text', 'Your Cart');
 
-			shoppingCartPag.detailsProdCar(itemsCount, values.valueClass[1].cart[0]).then(val => {
+			shoppingCartPag.detailsProdCar(itemsCount, values.valueClass[ 1 ].cart[ 0 ]).then(val => {
 				expect(val).to.equal(Cypress.env('productDetailsPlp')[0].title[itemsCount]);
 			});
 			shoppingCartPag.detailsProdCar(itemsCount, values.valueClass[1].cart[1]).then(val => {

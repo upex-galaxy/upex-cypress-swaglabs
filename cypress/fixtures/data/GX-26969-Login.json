@@ -1,0 +1,36 @@
+{
+
+    "password":"secret_sauce",
+    "mensajesDeError":{
+    "UserNameError": "Username is required",
+	"PasswordError": "Password is required",
+	"lockedUserError": "Sorry, this user has been locked out.",
+	"invalidAccountError": "Username and password do not match any user in this service",
+    "inventoryError":"You can only access '/inventory.html' when you are logged in.",
+    "cartError":"You can only access '/cart.html' when you are logged in.",
+    "checkError":"You can only access '/checkout-step-one.html' when you are logged in.",
+    "checkError1":"You can only access '/checkout-step-one.html' when you are logged in.",
+    "checkError2":"You can only access '/checkout-step-two.html' when you are logged in.",
+    "checkErrorcomplete":"You can only access '/checkout-complete.html' when you are logged in."
+    },
+        "dataValida":
+    {
+        "userName1": "standard_user",
+        "userName2": "problem_user",
+        "userName3": "performance_glitch_user"
+    },
+        "dataInvalida":{
+        "userNameInvalido":"usuario_invalido",
+        "userName":"user_invalid"
+    },
+        "dataBloqueada":{
+        "Username":"locked_out_user"
+    },
+    
+    "endpointInventory":"/inventory.html",
+    "endpointCart":"/cart.html",
+    "endpointCheck1":"/checkout-step-one.html",
+    "endpointCheck2": "/checkout-step-two.html",
+    "endpointCheckComplete": "/checkout-complete.html",
+    "swabLabs": "saucedemo"
+}

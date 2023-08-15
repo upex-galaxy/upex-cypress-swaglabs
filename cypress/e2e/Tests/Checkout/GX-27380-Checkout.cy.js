@@ -39,7 +39,6 @@ const PurchaseOk = () => {
 	finalpurchase.resultOk(data.ValidacionFinal.buyOk);
 	finalpurchase.get.messageOk().should('contain.text', data.ValidacionFinal.buyOk);
 };
-
 describe('✅SwagLabs | Checkout | Visualizar el Resumen de Compra del Shopping Cart', () => {
 	beforeEach('visitar la página de SwagLabs', () => {
 		cy.visit('/');

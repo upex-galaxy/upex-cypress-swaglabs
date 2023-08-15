@@ -2,15 +2,11 @@ import { logOut, login } from '../../../support/pages/GX-26969-Login.page';
 import  data from 'cypress/fixtures/data/GX-26969-Login.json';
 import { removeLogs } from '@helper/RemoveLogs';
 removeLogs();
-
-
-
 describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	beforeEach('visitar la página de SwagLabs', () => {
 		cy.visit('/');
 		cy.url().should('include', data.swabLabs);
 	});
-
 	it('26970 | TC1: Validar que se pueda iniciar sesión con las credenciales correctas al hacer click en el botón “Login“.', () => {
 		login.enterUsername(data.dataValida.userName1);
 		login.get.usernameInput().should('have.value', data.dataValida.userName1);

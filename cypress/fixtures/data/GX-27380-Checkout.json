@@ -1,16 +1,18 @@
 {
-    "FormularioDeDatos":{
+    "dataForm":{
         "firstName":"Braian",
         "lastName":"Ferreyra",
         "postalCode":"08860"
 
     },
-    "ValidacionFinal": {
+    "FinishValidation": {
         "dataPayment":"Payment Information",
         "dataShipping":"Shipping Information",
         "dataPriceTotal":"Price Total",
         "dataTotal":"Total: $",
-        "buyOk":"Thank you for your order!"
+        "successfulPurchase":"Thank you for your order!",
+        "backPack":"Sauce Labs Backpack",
+        "numberProducts":"0,5"
 
     },
     "userName": "standard_user",

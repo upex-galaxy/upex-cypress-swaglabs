@@ -3,6 +3,8 @@ class Login {
 		userNameInput: () => cy.get('#user-name'),
 		passwordInput: () => cy.get('#password'),
 		loginButton: () => cy.get('#login-button'),
+		nameProductValidation: () => cy.get('#item_4_title_link'),
+		
 	};
 
 	enterUsername(user) {
@@ -14,12 +16,16 @@ class Login {
 	buttonLogin() {
 		this.get.loginButton().click();
 	}
+	backPackProduct() {
+		this.get.nameProductValidation();
+	}
 } 
 class AddProduct {
 	get = {
 		bttnAddProduct: () => cy.get('#add-to-cart-sauce-labs-backpack'),
 		shoppingCart: () => cy.get('#shopping_cart_container'),
-		CheckoutNext:()=> cy.get('#checkout')
+		CheckoutNext: () => cy.get('#checkout'),
+		cartContainer:() => cy.get('#shopping_cart_container')
 
 	};
 	buttonAdd() {
@@ -30,6 +36,9 @@ class AddProduct {
 	}
 	bttnCheckout() {
 		this.get.CheckoutNext().click();
+	}
+	ValidationContainer(number) {
+		this.get.cartContainer().type(number);
 	}
 }
 class ConfirmThePurchase{

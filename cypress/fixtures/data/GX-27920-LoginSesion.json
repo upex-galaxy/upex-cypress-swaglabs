@@ -1,0 +1,25 @@
+{
+
+    "password":"secret_sauce",
+    "mensajesDeError":{
+    "UserNameError": "Username is required",
+	"lockedUserError": "Sorry, this user has been locked out.",
+	"invalidAccountError": "Username and password do not match any user in this service"
+    
+    },
+        "dataValida":
+    {
+        "userName1": "standard_user",
+        "userName2": "problem_user",
+        "userName3": "performance_glitch_user"
+    },
+        "dataInvalida":{
+        "userNameInvalido":"usuario_invalido",
+        "userName":"user_invalid"
+    },
+        "dataBlock":{
+        "Username":"locked_out_user"
+    }
+    
+    
+}

@@ -5,7 +5,7 @@ class Login {
 		submitButton: () => cy.get('#login-button'),
 		usernameVacio: () => cy.get('#user-name'),
 		passwordVacio: () => cy.get('#password'),
-		dataError: () => cy.get('[data-test="error"]'),
+		Error: () => cy.get('[data-test="error"]'),
 	};
 
 	typeUsername(user) {
@@ -14,14 +14,16 @@ class Login {
 	typeUsernameVacio() {
 		this.get.usernameVacio().clear();
 	}
+
+	SubmitLogin() {
+		this.get.submitButton().click();
+	}
+
 	typePassword(password) {
 		this.get.password().type(password);
 	}
 	typePasswordVacio() {
 		this.get.passwordInputEmpty().clear();
-	}
-	SubmitLogin() {
-		this.get.submitButton().click();
 	}
 }
 

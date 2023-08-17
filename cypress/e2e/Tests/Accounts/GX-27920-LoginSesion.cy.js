@@ -1,5 +1,5 @@
 describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
-	beforeEach('visitar la página de SwagLabs', () => {
+	beforeEach('visitar la página', () => {
 		cy.visit('/');
 		cy.url().should('contain', 'saucedemo');
 	});
@@ -16,7 +16,7 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.typePassword(data.password);
 		login.get.password().should('have.value', data.password);
 		login.SubmitLogin();
-		login.get.dataError().should('contain.text', data.mensajesDeError.lockedUserError);
+		login.get.Error().should('contain', data.mensajesDeError.lockedUserError);
 	});
 	it('27921 | TC3: Validar no iniciar sesión exitosamente con datos inválidos.', () => {
 		login.typeUsername(data.Invalida.userNameInvalido);
@@ -24,7 +24,7 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.typePassword(data.password);
 		login.get.password().should('have.value', data.password);
 		login.SubmitLogin();
-		login.get.dataError().should('contain.text', data.mensajesDeError.invalidAccountError);
+		login.get.Error().should('contain.text', data.mensajesDeError.invalidAccountError);
 	});
 	it('27921 | TC4: Validar no iniciar sesión exitosamente cuando se dejan campos vacíos.', () => {
 		login.typeUsernameVacio(null);
@@ -32,10 +32,14 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.typePassword(data.password);
 		login.get.password().should('have.value', data.password);
 		login.SubmitLogin();
-		login.get.dataError().should('contain.text', data.mensajesDeError.UserNameError);
+		login.get.Error().should('contain.text', data.mensajesDeError.UserNameError);
 	});
 
-	it('27921 | TC5: Validar el no ingreso a un endpoint sin haber iniciado sesión.', () => {});
+	it('27921 | TC5: Validar el no ingreso a un endpoint sin haber iniciado sesión.', () => {
+		cy.visit(data.endPoint.Inventory, { failOnStatusCode: false });
+
+		login.get.Error().should('contain', data.mensajesDeError.endPointError);
+	});
 });
 
 import { login } from '../../../support/pages/GX-27920-LoginSesion.page';

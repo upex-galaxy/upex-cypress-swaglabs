@@ -1,8 +1,7 @@
-
 describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	beforeEach('visitar la página de SwagLabs', () => {
 		cy.visit('/');
-		cy.url().should('include', data.swabLabs);
+		cy.url().should('contain', 'saucedemo');
 	});
 	it('27921 | TC1: Validar iniciar sesión exitosamente con datos correctos.', () => {
 		login.typeUsername(data.dataValida.userName1);
@@ -10,7 +9,6 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.typePassword(data.password);
 		login.get.password().should('have.value', data.password);
 		login.SubmitLogin();
-	
 	});
 	it('27921 | TC2: Validar no iniciar sesión exitosamente al ingresar a una cuenta bloqueada.', () => {
 		login.typeUsername(data.dataBloqueada.Username);
@@ -36,17 +34,11 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		login.SubmitLogin();
 		login.get.dataError().should('contain.text', data.mensajesDeError.UserNameError);
 	});
-	
-	it('27921 | TC5: Validar el no ingreso a un endpoint sin haber iniciado sesión.', () => {
-		
-	});
-	
+
+	it('27921 | TC5: Validar el no ingreso a un endpoint sin haber iniciado sesión.', () => {});
 });
 
-
-
-
 import { login } from '../../../support/pages/GX-27920-LoginSesion.page';
-import  data from 'cypress/fixtures/data/GX-27920-LoginSesion.json';
+import data from 'cypress/fixtures/data/GX-27920-LoginSesion.json';
 import { removeLogs } from '@helper/RemoveLogs';
 removeLogs();

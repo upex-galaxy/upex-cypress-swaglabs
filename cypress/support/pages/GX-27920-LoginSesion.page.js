@@ -7,12 +7,12 @@ class Login {
 		passwordVacio: () => cy.get('#password'),
 		dataError: () => cy.get('[data-test="error"]'),
 	};
-	
+
 	typeUsername(user) {
 		this.get.username().type(user);
 	}
 	typeUsernameVacio() {
-		this.get.usernameInputVacio().clear();
+		this.get.usernameVacio().clear();
 	}
 	typePassword(password) {
 		this.get.password().type(password);
@@ -24,6 +24,5 @@ class Login {
 		this.get.submitButton().click();
 	}
 }
-
 
 export const login = new Login();

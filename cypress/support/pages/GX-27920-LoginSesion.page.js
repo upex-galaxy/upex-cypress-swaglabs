@@ -11,9 +11,6 @@ class Login {
 	typeUsername(user) {
 		this.get.username().type(user);
 	}
-	typeUsernameVacio() {
-		this.get.usernameVacio().clear();
-	}
 
 	SubmitLogin() {
 		this.get.submitButton().click();
@@ -21,9 +18,6 @@ class Login {
 
 	typePassword(password) {
 		this.get.password().type(password);
-	}
-	typePasswordVacio() {
-		this.get.passwordInputEmpty().clear();
 	}
 }
 

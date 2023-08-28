@@ -1,10 +1,13 @@
 import { loginPOM } from '../../../support/pages/GX-29331-Account/GX-29331-LoginPOM.page';
 import credentials from '../../../fixtures/data/GX-29331/GX-29331-My-data.json';
+import errorData from '../../../fixtures/data/GX-29331/GX-29331-Error-Messages.json';
 
 const validData = credentials.validDataFixture;
 const blockedData = credentials.blockedDataFixture;
 const invalidUsernameData = credentials.invalidUsernameFixture;
 const invalidPasswordData = credentials.invalidPasswordFixture;
+const error = errorData.dataErrorMsgs;
+
 const { login } = Cypress.env('swagLabs');
 
 describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
@@ -23,42 +26,42 @@ describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		loginPOM.enterUsername(blockedData.usernameBlocked);
 		loginPOM.enterPassword(validData.password);
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', 'Epic sadface: Sorry, this user has been locked out.');
+		loginPOM.elements.dataError().should('contain', errorData.dataErrorMsgs.blockedErrorMsg);
 	});
 
 	it('29333 | TC3: Verifique que el usuario no pueda iniciar sesión con una cuenta incorrecta o inexistente', () => {
 		loginPOM.enterUsername(invalidUsernameData.usernameInvalid);
 		loginPOM.enterPassword(validData.password);
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', 'Epic sadface: Username and password do not match any user in this service');
+		loginPOM.elements.dataError().should('contain', error.invalidErrorMsg);
 	});
 
 	it('29333 | TC4: Verifique que el usuario no pueda iniciar sesión con un password incorrecto o inexistente', () => {
 		loginPOM.enterUsername(validData.username);
 		loginPOM.enterPassword(invalidPasswordData.passwordInvalid);
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', 'Epic sadface: Username and password do not match any user in this service');
+		loginPOM.elements.dataError().should('contain', error.invalidErrorMsg);
 	});
 
 	it('29333 | TC5: Verifique que el usuario no pueda iniciar sesión dejando el username vacío en el formulario', () => {
 		loginPOM.emptyUsername();
 		loginPOM.enterPassword(validData.password);
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', 'Epic sadface: Username is required');
+		loginPOM.elements.dataError().should('contain', error.usernameErrorMsg);
 	});
 
 	it('29333 | TC6: Verifique que el usuario no pueda iniciar sesión dejando el password vacío en el formulario', () => {
 		loginPOM.enterUsername(validData.username);
 		loginPOM.emptyPassword();
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', 'Epic sadface: Password is required');
+		loginPOM.elements.dataError().should('contain', error.passwordErrorMsg);
 	});
 
 	it('29333 | TC7: Verifique que el usuario no pueda iniciar sesión dejando el username y el password vacío en el formulario', () => {
 		loginPOM.emptyUsername();
 		loginPOM.emptyPassword();
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', 'Epic sadface: Username is required');
+		loginPOM.elements.dataError().should('contain', error.usernameErrorMsg);
 	});
 
 	it('29333 | TC8: Verifique que el usuario no pueda ingresar a un endpoint checkout step one de la website sin haber iniciado sesión', () => {

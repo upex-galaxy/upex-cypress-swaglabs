@@ -1,0 +1,21 @@
+{
+    "dataForm":{
+        "firstName":"Braian",
+        "lastName":"Ferreyra",
+        "postalCode":"08860"
+
+    },
+    "FinishValidation": {
+        "dataPayment":"Payment Information",
+        "dataShipping":"Shipping Information",
+        "dataPriceTotal":"Price Total",
+        "dataTotal":"Total: $",
+        "successfulPurchase":"Thank you for your order!",
+        "backPack":"Sauce Labs Backpack",
+        "numberProducts":"0,5"
+
+    },
+    "userName": "standard_user",
+    "password": "secret_sauce",
+    "swagLabs": "saucedemo"
+}

@@ -1,4 +1,4 @@
-class Login {
+class LoginPOM {
 	elements = {
 		usernameInput: () => cy.get('[data-test="username"]'),
 		passwordInput: () => cy.get('#password'),
@@ -31,21 +31,8 @@ class Login {
 		this.elements.swagsWord().should('exist');
 	}
 
-	assertMessageBlocked() {
-		this.elements.dataError().should('contain', 'Epic sadface: Sorry, this user has been locked out.');
+	assertMsgError() {
+		this.elements.dataError();
 	}
-
-	assertAccountFailedMessage() {
-		this.elements.dataError().should('contain', 'Epic sadface: Username and password do not match any user in this service');
-	}
-
-	assertEmptyUsername() {
-		this.elements.dataError().should('contain', 'Epic sadface: Username is required');
-	}
-
-    assertEmptyPassword() {
-		this.elements.dataError().should('contain', 'Epic sadface: Password is required');
-	}
-
 }
-export const login = new Login();
+export const loginPOM = new LoginPOM();

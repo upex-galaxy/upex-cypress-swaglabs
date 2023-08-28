@@ -1,16 +1,31 @@
 {
-    "datosValidos": [
-		{
-			"username": "standard_user",
-			"password": "secret_sauce"
-		},
-		{
-			"username": "problem_user",
-			"password": "secret_sauce"
-		},
-		{
-			"username": "performance_glitch_user",
-			"password": "secret_sauce"
-		}
-	]
+    "validDataFixture": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+    },
+
+    "blockedDataFixture": {
+        "usernameBlocked":  "locked_out_user"
+    },
+
+    "invalidUsernameFixture": {
+        "usernameInvalid": "standard_user_not_exist"
+    },
+
+    "invalidPasswordFixture": {
+        "passwordInvalid": "password_not_exist"
+    },
+
+    "problemDataFixture": {
+        "usernameProblem": "performance_glitch_user"
+    },
+
+    "emptyUsernameFixture": {
+        "usernameEmpty": ""
+    },
+
+    "emptyPasswordFixture": {
+        "passwordEmpty": ""
+    }
+
 }

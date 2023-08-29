@@ -26,42 +26,42 @@ describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		loginPOM.enterUsername(blockedData.usernameBlocked);
 		loginPOM.enterPassword(validData.password);
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', errorData.dataErrorMsgs.blockedErrorMsg);
+		loginPOM.elements.dataError().should('contain', error.blocked);
 	});
 
 	it('29333 | TC3: Verifique que el usuario no pueda iniciar sesión con una cuenta incorrecta o inexistente', () => {
 		loginPOM.enterUsername(invalidUsernameData.usernameInvalid);
 		loginPOM.enterPassword(validData.password);
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', error.invalidErrorMsg);
+		loginPOM.elements.dataError().should('contain', error.invalid);
 	});
 
 	it('29333 | TC4: Verifique que el usuario no pueda iniciar sesión con un password incorrecto o inexistente', () => {
 		loginPOM.enterUsername(validData.username);
 		loginPOM.enterPassword(invalidPasswordData.passwordInvalid);
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', error.invalidErrorMsg);
+		loginPOM.elements.dataError().should('contain', error.invalid);
 	});
 
 	it('29333 | TC5: Verifique que el usuario no pueda iniciar sesión dejando el username vacío en el formulario', () => {
 		loginPOM.emptyUsername();
 		loginPOM.enterPassword(validData.password);
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', error.usernameErrorMsg);
+		loginPOM.elements.dataError().should('contain', error.usernameError);
 	});
 
 	it('29333 | TC6: Verifique que el usuario no pueda iniciar sesión dejando el password vacío en el formulario', () => {
 		loginPOM.enterUsername(validData.username);
 		loginPOM.emptyPassword();
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', error.passwordErrorMsg);
+		loginPOM.elements.dataError().should('contain', error.passwordError);
 	});
 
 	it('29333 | TC7: Verifique que el usuario no pueda iniciar sesión dejando el username y el password vacío en el formulario', () => {
 		loginPOM.emptyUsername();
 		loginPOM.emptyPassword();
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.elements.dataError().should('contain', error.usernameErrorMsg);
+		loginPOM.elements.dataError().should('contain', error.usernameError);
 	});
 
 	it('29333 | TC8: Verifique que el usuario no pueda ingresar a un endpoint checkout step one de la website sin haber iniciado sesión', () => {

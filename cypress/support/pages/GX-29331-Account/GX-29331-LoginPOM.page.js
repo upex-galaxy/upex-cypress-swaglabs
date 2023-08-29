@@ -18,21 +18,5 @@ class LoginPOM {
 	clickOnSubmitBtn() {
 		this.elements.submitButton().click();
 	}
-
-	emptyUsername() {
-		this.elements.usernameInput().invoke('val', '');
-	}
-
-	emptyPassword() {
-		this.elements.passwordInput().invoke('val', '');
-	}
-
-	assertTitlePage() {
-		this.elements.swagsWord().should('exist');
-	}
-
-	assertMsgError() {
-		this.elements.dataError();
-	}
 }
 export const loginPOM = new LoginPOM();

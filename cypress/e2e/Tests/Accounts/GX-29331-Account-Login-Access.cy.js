@@ -19,7 +19,7 @@ describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		loginPOM.enterUsername(validData.username);
 		loginPOM.enterPassword(validData.password);
 		loginPOM.clickOnSubmitBtn();
-		loginPOM.assertTitlePage();
+		loginPOM.elements.swagsWord().should('exist');
 	});
 
 	it('29333 | TC2: Verifique que el usuario no pueda iniciar sesión con cuenta bloqueada', () => {
@@ -44,7 +44,6 @@ describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	});
 
 	it('29333 | TC5: Verifique que el usuario no pueda iniciar sesión dejando el username vacío en el formulario', () => {
-		loginPOM.emptyUsername();
 		loginPOM.enterPassword(validData.password);
 		loginPOM.clickOnSubmitBtn();
 		loginPOM.elements.dataError().should('contain', error.usernameError);
@@ -52,14 +51,11 @@ describe('SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 
 	it('29333 | TC6: Verifique que el usuario no pueda iniciar sesión dejando el password vacío en el formulario', () => {
 		loginPOM.enterUsername(validData.username);
-		loginPOM.emptyPassword();
 		loginPOM.clickOnSubmitBtn();
 		loginPOM.elements.dataError().should('contain', error.passwordError);
 	});
 
 	it('29333 | TC7: Verifique que el usuario no pueda iniciar sesión dejando el username y el password vacío en el formulario', () => {
-		loginPOM.emptyUsername();
-		loginPOM.emptyPassword();
 		loginPOM.clickOnSubmitBtn();
 		loginPOM.elements.dataError().should('contain', error.usernameError);
 	});

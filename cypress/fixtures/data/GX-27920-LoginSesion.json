@@ -1,0 +1,26 @@
+{
+	"password": "secret_sauce",
+	"mensajesDeError": {
+		"UserNameError": "Username is required",
+		"lockedUserError": "Sorry, this user has been locked out.",
+		"invalidAccountError": "Username and password do not match any user in this service",
+		"endPointError": "You can only access '/inventory.html' when you are logged in."
+	},
+	"Valida": {
+		"userName1": "standard_user",
+		"userName2": "problem_user",
+		"userName3": "performance_glitch_user"
+	},
+	"Invalida": {
+		"userNameInvalido": "usuario_invalido",
+		"userName": "user_invalid"
+	},
+
+	"Bloqueada": {
+		"Username": "locked_out_user"
+	},
+
+	"endPoint": {
+		"Inventory": "/inventory.html"
+	}
+}

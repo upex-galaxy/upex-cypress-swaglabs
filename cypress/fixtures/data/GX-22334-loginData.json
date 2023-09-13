@@ -1,0 +1,44 @@
+{
+	"data": {
+		"valid": {
+			"correctUser": "standard_user",
+			"problemUser": "problem_user",
+			"performanceUser": "performance_glitch_user",
+			"password": "secret_sauce"
+		},
+		"invalid": {
+			"lockedUser": "locked_out_user",
+			"incorrectUser": "random_user"
+		}
+	},
+	"errorMsg": {
+		"errorMsg1": "Epic sadface: Sorry, this user has been locked out",
+		"errorMsg2": "Epic sadface: Username and password do not match any user in this service",
+		"errorMsg3": "Epic sadface: Username is required",
+		"errorMsg4": "Epic sadface: Password is required",
+		"inventoryErrorMsg": "Epic sadface: You can only access '/inventory.html' when you are logged in",
+		"cartErrorMsg": "Epic sadface: You can only access '/cart.html' when you are logged in",
+		"checkoutErrorMsg1": "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in",
+		"checkoutErrorMsg2": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in",
+		"checkoutErrorMsg3": "Epic sadface: You can only access '/checkout-complete.html' when you are logged in"
+	},
+	"product": {
+		"itemTitle1": "Sauce Labs Backpack",
+		"itemDescription1": "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
+		"itemPrice1": "$29.99",
+		"itemTitle2": "Sauce Labs Fleece Jacket",
+		"itemDescription2": "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.",
+		"itemPrice2": "$49.99"
+	},
+	"endpoint": {
+		"login": "https://www.saucedemo.com/",
+		"inventory": "https://www.saucedemo.com/inventory.html",
+		"cart": "https://www.saucedemo.com/cart.html",
+		"product1": "https://www.saucedemo.com/inventory-item.html?id=1",
+		"product2": "https://www.saucedemo.com/inventory-item.html?id=5"
+	},
+	"addedProductAssertion": {
+		"removeBtn": "Remove",
+		"oneItem": "1"
+	}
+}

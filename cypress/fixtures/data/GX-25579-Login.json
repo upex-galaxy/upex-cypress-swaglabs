@@ -1,0 +1,64 @@
+{
+	"datosValidos": [
+		{
+			"username": "standard_user",
+			"password": "secret_sauce"
+		},
+		{
+			"username": "problem_user",
+			"password": "secret_sauce"
+		},
+		{
+			"username": "performance_glitch_user",
+			"password": "secret_sauce"
+		}
+	],
+	"datosBloqueados": {
+		"username": "locked_out_user",
+		"password": "secret_sauce",
+		"expectedMessage": "Epic sadface: Sorry, this user has been locked out."
+	},
+
+	"datosInvalidos": [
+		{
+			"nameCase": "Usuario Invalido",
+			"username": "invalid_user",
+			"password": "secret_sauce",
+			"expectedMessage": "Epic sadface: Username and password do not match any user in this service"
+		},
+		{
+			"nameCase": "Contraseña Invalida",
+			"username": "standard_user",
+			"password": "invalid_password",
+			"expectedMessage": "Epic sadface: Username and password do not match any user in this service"
+		},
+		{
+			"nameCase": "Usuario y Contraseña Invalidos",
+			"username": "invalid_user",
+			"password": "invalid_password",
+			"expectedMessage": "Epic sadface: Username and password do not match any user in this service"
+		}
+	],
+	"camposVacios": [
+		{
+			"nameCase": "Campo Usuario Vacio",
+			"username": "",
+			"password": "secret_sauce",
+			"expectedMessage": "Epic sadface: Username is required"
+		},
+		{
+			"nameCase": "Campo Password Vacio",
+			"username": "standard_user",
+			"password": "",
+			"expectedMessage": "Epic sadface: Password is required"
+		},
+		{
+			"nameCase": "Campos Usuario y Password Vacios",
+			"username": "",
+			"password": "",
+			"expectedMessage": "Epic sadface: Username is required"
+		}
+	],
+
+	"endPoint": ["/inventory.html", "/cart.html", "/checkout-step-one.html", "/checkout-step-two.html", "/checkout-complete.html"]
+}

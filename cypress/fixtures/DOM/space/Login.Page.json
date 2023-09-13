@@ -1,0 +1,16 @@
+{
+	"input": {
+		"username": "#user-name",
+		"password": "#password"
+	},
+
+	"data": {
+		"password": "secret_sauce",
+		"user": "standard_user",
+		"Lockeduser": "locked_out_user",
+		"buguser": "problem_user",
+		"glitchuser": "performance_glitch_user",
+		"nullpass": ""
+	},
+	"error": "[data-test='error']"
+}

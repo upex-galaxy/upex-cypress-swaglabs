@@ -1,0 +1,30 @@
+{
+	"url": {
+		"loginPage": "https://demoqa.com"
+	},
+	"endpoints": {
+		"login": "/login.html",
+		"inventory": "/inventory.html",
+		"cart": "/cart.html",
+		"checkoutStep1": "/checkout-step-one.html",
+		"checkoutStep2": "/checkout-step-two.html",
+		"checkoutComplete": "/checkout-complete.html"
+	},
+	"credentials": {
+		"username": {
+			"valid": ["standard_user", "problem_user", "performance_glitch_user"],
+			"blocked": "locked_out_user",
+			"invalid": "invalidUsername"
+		},
+		"passwords": {
+			"valid": "secret_sauce",
+			"invalid": "invalidPassword"
+		}
+	},
+	"errorMessage": {
+		"usernameBlocked": "Epic sadface: Sorry, this user has been locked out",
+		"notMatch": "Epic sadface: Username and password do not match any user in this service",
+		"usernameNull": "Epic sadface: Username is required",
+		"passwordNull": "Epic sadface: Password is required"
+	}
+}

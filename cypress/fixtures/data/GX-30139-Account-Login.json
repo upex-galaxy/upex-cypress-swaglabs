@@ -1,9 +1,8 @@
 {
 	"url": {
-		"loginPage": "https://demoqa.com"
+		"loginPage": "https://www.saucedemo.com"
 	},
 	"endpoints": {
-		"login": "/login.html",
 		"inventory": "/inventory.html",
 		"cart": "/cart.html",
 		"checkoutStep1": "/checkout-step-one.html",
@@ -16,13 +15,13 @@
 			"blocked": "locked_out_user",
 			"invalid": "invalidUsername"
 		},
-		"passwords": {
+		"password": {
 			"valid": "secret_sauce",
 			"invalid": "invalidPassword"
 		}
 	},
 	"errorMessage": {
-		"usernameBlocked": "Epic sadface: Sorry, this user has been locked out",
+		"usernameBlocked": "Epic sadface: Sorry, this user has been locked out.",
 		"notMatch": "Epic sadface: Username and password do not match any user in this service",
 		"usernameNull": "Epic sadface: Username is required",
 		"passwordNull": "Epic sadface: Password is required"

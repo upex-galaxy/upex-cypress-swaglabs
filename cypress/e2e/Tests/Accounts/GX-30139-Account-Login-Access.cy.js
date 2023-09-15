@@ -1,4 +1,3 @@
-import { forEach } from 'cypress/types/lodash';
 import { login } from '../../../support/pages/GX-30139-Account-Login';
 
 describe('TS34140 | ✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
@@ -25,10 +24,14 @@ describe('TS34140 | ✅SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 			login.get.imgItems().should('be.visible');
 			login.get.imgItems().then(elm => {
 				Cypress.env('longitud', elm.length);
-				for (let i = 0; i < Cypress.env('longitud'); i = i + 1) {
-					cy.log(login.get.imgItems().eq(i).invoke('attr', 'src'));
+				for (var i = 0; i < Cypress.env('longitud'); i++) {
+					for (var j = 0; j < Cypress.env('longitud'); j++) {
+						if (login.get.imgItems().eq(i) == login.get.imgItems().eq(j) && i != j) {
+							Cypress.env('repetido', true);
+							Cypress.env('repetido').should('not.be.false');
+						}
+					}
 				}
-				cy.log(login.get.imgItems().eq(0).invoke('attr', 'src'));
 			});
 		});
 	});

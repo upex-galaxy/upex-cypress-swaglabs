@@ -2,18 +2,18 @@ import { Login } from '@pages/GX-34535-login';
 import data from '../../../fixtures/data/GX-34535-loginData.json';
 import { removeLogs } from '@helper/RemoveLogs';
 
-describe('GX-34535 | SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
+describe('GX-34534 | SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 	beforeEach(() => {
 		cy.visit('/');
 	});
-	it('34355 | TC1: Validar iniciar sesión con datos validos.', () => {
+	it('34535 | TC1: Validar iniciar sesión con datos validos.', () => {
 		Login.fillLogin({ username: data.userName.valid, password: data.password[0].valid });
 		cy.url().should('include', '/inventory.html');
 		Login.get.header().should('contain.text', 'Swag Labs');
 		Login.get.cards().should('exist');
 	});
 
-	it('3435 | TC2: Validar NO iniciar sesion con usuario bloqueado.', () => {
+	it('34535 | TC2: Validar NO iniciar sesión con usuario bloqueado.', () => {
 		Login.fillLogin({
 			username: data.userName.blocked,
 			password: data.password[0].valid,
@@ -22,7 +22,7 @@ describe('GX-34535 | SwagLabs | Account | Iniciar sesión y BR de Accesos', () =
 		Login.get.userError().should('have.text', 'Epic sadface: Sorry, this user has been locked out.');
 	});
 
-	it('3435 | TC3: Validar NO iniciar sesión con usuario no valido.', () => {
+	it('34535 | TC3: Validar NO iniciar sesión con usuario no valido.', () => {
 		Login.fillLogin({
 			username: data.userName.invalid,
 			password: data.password[1].invalid,

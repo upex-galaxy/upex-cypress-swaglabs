@@ -3,8 +3,9 @@ class loginPage {
 		usernameInput: () => cy.get('#user-name'),
 		passwordInput: () => cy.get('#password'),
 		loginButton: () => cy.get('#login-button'),
-		imgItems: () => cy.get('img.inventory_item_img'),
+		imgItems: () => cy.get('[id$="img_link"]'),
 		errorMessage: () => cy.get('div.error-message-container.error'),
+		dogImg: () => cy.get('[src="/static/media/sl-404.168b1cce.jpg"]'),
 	};
 	typeUsername(username) {
 		this.get.usernameInput().type(username);

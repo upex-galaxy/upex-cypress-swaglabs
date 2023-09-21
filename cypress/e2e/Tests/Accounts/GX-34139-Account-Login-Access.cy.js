@@ -6,13 +6,35 @@ describe('TS34140 | ✅SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 			cy.visit(data.url.loginPage);
 		});
 	});
-	it('34140 | TC01: Validate Log-in with username “standard_user” and valid password', () => {
+	it.only('34140 | TC01: Validate Log-in with username “standard_user” and valid password', () => {
 		cy.fixture('data/GX-34139-Account-Login').then(data => {
 			login.typeUsername(data.credentials.username.valid[0]);
 			login.typePassword(data.credentials.password.valid);
 			login.clickLoginButton();
 			cy.url().should('include', data.endpoints.inventory);
 			login.get.imgItems().should('be.visible');
+			login.get.imgItems().then($images => {
+				const imageSrcSet = new Set();
+				let isDuplicate = false;
+
+				$images.each((index, element) => {
+					const src = Cypress.$(element).attr('src');
+
+					if (imageSrcSet.has(src)) {
+						// La imagen está repetida
+						cy.log(`La imagen con src '${src}' está duplicada.`);
+						// Realiza alguna acción adicional si es necesario
+						isDuplicate = true;
+					} else {
+						// Agrega el src al conjunto
+						imageSrcSet.add(src);
+					}
+				});
+
+				cy.wrap(isDuplicate).then(duplicate => {
+					expect(duplicate).to.be.false;
+				});
+			});
 		});
 	});
 	it.only('34140 | TC02: Validate Log in with username “problem_user” and valid password', () => {
@@ -22,45 +44,60 @@ describe('TS34140 | ✅SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 			login.clickLoginButton();
 			cy.url().should('include', data.endpoints.inventory);
 			login.get.imgItems().should('be.visible');
-			//login.get.dogImg().should('have.length', 1); --> desactivar luego de pruebas
-			//cy.log(login.get.imgItems().eq(1).invoke('attr', 'src'));
+			/* --Validar que no se repitan las imagenes-- */
+			login.get.imgItems().then($images => {
+				const imageSrcSet = new Set();
+				let isDuplicate = false;
 
-			// login.get.imgItems().then(arrayImg => {
-			// 	Cypress.env('array', arrayImg);
-			// 	for (let i = 0; i < Cypress.env('array'); i++) {
-			// 		if (
-			// 			Cypress.env('array').eq(i).invoke('attr', 'src') ==
-			// 			Cypress.env('array')
-			// 				.eq(i + 1)
-			// 				.invoke('attr', 'src')
-			// 		) {
-			// 			return cy.log('1');
-			// 			return Cypress.env('repeatImg', true);
-			// 		}
-			// 		return cy.log('2');
-			// 		return Cypress.env('repeatImg').should('be.false');
-			// 	}
-			// 	cy.log('3');
-			// });
-			// Obtén todas las imágenes de la página
-			login.get.imgItems.each(($el, index, $list) => {
-				const src = $el.attr('src');
-				const duplicate = $list.some(($img, i) => i !== index && Cypress.$($img).attr('src') === src);
+				$images.each((index, element) => {
+					const src = Cypress.$(element).attr('src');
 
-				if (duplicate) {
-					cy.log(`La imagen con src '${src}' está duplicada.`);
-					// Perform additional actions if needed
-				}
+					if (imageSrcSet.has(src)) {
+						// La imagen está repetida
+						cy.log(`La imagen con src '${src}' está duplicada.`);
+						// Realiza alguna acción adicional si es necesario
+						isDuplicate = true;
+					} else {
+						// Agrega el src al conjunto
+						imageSrcSet.add(src);
+					}
+				});
+
+				cy.wrap(isDuplicate).then(duplicate => {
+					expect(duplicate).to.be.false;
+				});
 			});
 		});
 	});
-	it('34140 | TC03: Validate Log in with username “performance_glitch_user” and valid password', () => {
+	it.only('34140 | TC03: Validate Log in with username “performance_glitch_user” and valid password', () => {
 		cy.fixture('data/GX-34139-Account-Login').then(data => {
 			login.typeUsername(data.credentials.username.valid[2]);
 			login.typePassword(data.credentials.password.valid);
 			login.clickLoginButton();
 			cy.url().should('include', data.endpoints.inventory);
 			login.get.imgItems().should('be.visible');
+			login.get.imgItems().then($images => {
+				const imageSrcSet = new Set();
+				let isDuplicate = false;
+
+				$images.each((index, element) => {
+					const src = Cypress.$(element).attr('src');
+
+					if (imageSrcSet.has(src)) {
+						// La imagen está repetida
+						cy.log(`La imagen con src '${src}' está duplicada.`);
+						// Realiza alguna acción adicional si es necesario
+						isDuplicate = true;
+					} else {
+						// Agrega el src al conjunto
+						imageSrcSet.add(src);
+					}
+				});
+
+				cy.wrap(isDuplicate).then(duplicate => {
+					expect(duplicate).to.be.false;
+				});
+			});
 		});
 	});
 	it('34140 | TC04: Validate dont Log in with locked username', () => {

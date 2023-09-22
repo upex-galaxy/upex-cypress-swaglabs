@@ -6,7 +6,7 @@ describe('TS34140 | ✅SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 			cy.visit(data.url.loginPage);
 		});
 	});
-	it.only('34140 | TC01: Validate Log-in with username “standard_user” and valid password', () => {
+	it('34140 | TC01: Validate Log-in with username “standard_user” and valid password', () => {
 		cy.fixture('data/GX-34139-Account-Login').then(data => {
 			login.typeUsername(data.credentials.username.valid[0]);
 			login.typePassword(data.credentials.password.valid);
@@ -37,7 +37,7 @@ describe('TS34140 | ✅SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 			});
 		});
 	});
-	it.only('34140 | TC02: Validate Log in with username “problem_user” and valid password', () => {
+	it('34140 | TC02: Validate Log in with username “problem_user” and valid password', () => {
 		cy.fixture('data/GX-34139-Account-Login').then(data => {
 			login.typeUsername(data.credentials.username.valid[1]);
 			login.typePassword(data.credentials.password.valid);
@@ -69,7 +69,7 @@ describe('TS34140 | ✅SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 			});
 		});
 	});
-	it.only('34140 | TC03: Validate Log in with username “performance_glitch_user” and valid password', () => {
+	it('34140 | TC03: Validate Log in with username “performance_glitch_user” and valid password', () => {
 		cy.fixture('data/GX-34139-Account-Login').then(data => {
 			login.typeUsername(data.credentials.username.valid[2]);
 			login.typePassword(data.credentials.password.valid);

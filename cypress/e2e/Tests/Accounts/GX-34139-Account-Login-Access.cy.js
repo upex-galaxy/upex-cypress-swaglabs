@@ -62,7 +62,6 @@ describe('TS34140 | ✅SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 						imageSrcSet.add(src);
 					}
 				});
-
 				cy.wrap(isDuplicate).then(duplicate => {
 					expect(duplicate).to.be.false;
 				});

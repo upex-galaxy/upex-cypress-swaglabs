@@ -15,5 +15,11 @@
 			"invalid_null": ""
 		}
 	},
-	"endpoint": [" '/inventory.html', '/checkout-step-one.html','/checkout-step-two.html', '/checkout-complete.html'"]
+	"messageError": {
+		"data": {
+			"text_error1": "Epic sadface: Username and password do not match any user in this service",
+			"text_error2": "Epic sadface: Password is required"
+		}
+	},
+	"endpoint": ["'/checkout-step-one.html','/checkout-step-two.html', '/checkout-complete.html'"]
 }

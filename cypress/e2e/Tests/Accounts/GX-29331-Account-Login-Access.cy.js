@@ -2,7 +2,7 @@ import { loginPOM } from '../../../support/pages/GX-29331-Account/GX-29331-Login
 import credentials from '../../../fixtures/data/GX-29331/GX-29331-My-data.json';
 import errorData from '../../../fixtures/data/GX-29331/GX-29331-Error-Messages.json';
 
-const validData = credentials.validDataFixture;
+const validData = credentials.validDataFixture.usernameOK;
 const blockedData = credentials.blockedDataFixture;
 const invalidUsernameData = credentials.invalidUsernameFixture;
 const invalidPasswordData = credentials.invalidPasswordFixture;

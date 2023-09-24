@@ -18,7 +18,8 @@
 	"messageError": {
 		"data": {
 			"text_error1": "Epic sadface: Username and password do not match any user in this service",
-			"text_error2": "Epic sadface: Password is required"
+			"text_error2": "Epic sadface: Password is required",
+			"text_error3": "Epic sadface: Sorry, this user has been locked out."
 		}
 	},
 	"endpoint": ["'/checkout-step-one.html','/checkout-step-two.html', '/checkout-complete.html'"]

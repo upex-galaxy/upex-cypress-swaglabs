@@ -16,6 +16,9 @@ class Login {
 	submitLogin() {
 		this.get.buttonLogin().click();
 	}
+	errMsg() {
+		this.get.text_error().click();
+	}
 }
 
 export const loginAccount = new Login();

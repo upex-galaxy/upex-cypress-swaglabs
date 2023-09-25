@@ -65,10 +65,10 @@ jobs:
                         }
                       }
 
-            - name: 🧪Cypress Run Test Coverage in Chrome
+            - name: 🧪Cypress Run Test Coverage in electron
               uses: cypress-io/github-action@v4
               with:
-                  browser: chrome
+                  browser: electron
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
                       npm run file cypress/e2e/Tests/Accounts/GX-34534-Login.cy.js
             - name: ✅Import Test Results to Xray

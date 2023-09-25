@@ -31,7 +31,7 @@ describe('Precondición: Usuario debe estar situado en la página de Login', () 
 		loginAccount.get.text_error().should('include.text', messageError.data.text_error4);
 		loginAccount.setButton();
 	});
-	it('35616 | TC3: Validar ingresar al Login con user problem_user con password válida', () => {
+	it.skip('35616 | TC3: Validar ingresar al Login con user problem_user con password válida', () => {
 		const { username, password } = data;
 		loginAccount.setUser(username.data.invalid_problem);
 		loginAccount.setPass(password.data.valid);

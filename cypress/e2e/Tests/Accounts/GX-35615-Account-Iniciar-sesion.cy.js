@@ -31,11 +31,12 @@ describe('Precondición: Usuario debe estar situado en la página de Login', () 
 		loginAccount.get.text_error().should('include.text', messageError.data.text_error4);
 		loginAccount.setButton();
 	});
-	it.skip('35616 | TC3: Validar ingresar al Login con user problem_user con password válida', () => {
+	it('35616 | TC3: Validar ingresar al Login con user problem_user con password válida', () => {
 		const { username, password } = data;
 		loginAccount.setUser(username.data.invalid_problem);
 		loginAccount.setPass(password.data.valid);
 		loginAccount.submitLogin();
+		expect(true).to.equal(false);
 		cy.url().should('contain', '/inventory.html');
 	});
 	it('35616 | TC4: Validar no poder ingresar al Login con user perfomance_glitch_user con password válida', () => {

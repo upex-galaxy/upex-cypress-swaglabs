@@ -4,6 +4,7 @@ import { loginAccount } from '@pages/GX-35615-Login.page';
 
 describe('Precondición: Usuario debe estar situado en la página de Login', () => {
 	let data;
+
 	beforeEach(() => {
 		cy.visit('/');
 		cy.url().should('contain', 'saucedemo');
@@ -65,7 +66,7 @@ describe('Precondición: Usuario debe estar situado en la página de Login', () 
 
 		cy.get('body').should('not.contain', '/inventory.html');
 	});
-	it('35616 | TC7: Validar no poder ingresar al Login con user standar_user con password inválida', () => {
+	it('35616 | TC7: Validar no poder ingresar al Login con user standard_user con password inválida', () => {
 		const { username, password, messageError } = data;
 		loginAccount.setUser(username.data.valid);
 		loginAccount.setPass(password.data.invalid);
@@ -85,5 +86,21 @@ describe('Precondición: Usuario debe estar situado en la página de Login', () 
 		loginAccount.setButton();
 
 		cy.get('body').should('not.contain', '/inventory.html');
+	});
+
+	it('35616 | TC9: Validar no poder ingresar a los endpoint /checkout-step-one.html sin haberse logueado previamente', () => {
+		const { messageError } = data;
+		cy.visit('https://www.saucedemo.com/checkout-step-one.html', { failOnStatusCode: false });
+		loginAccount.get.text_error().should('contain', messageError.data.checkoutOneError);
+	});
+	it('35616 | TC10: Validar no poder ingresar a los endpoint  /checkout-step-two.html  sin haberse logueado previamente', () => {
+		const { messageError } = data;
+		cy.visit('https://www.saucedemo.com/checkout-step-two.html', { failOnStatusCode: false });
+		loginAccount.get.text_error().should('contain', messageError.data.checkoutTwoError);
+	});
+	it('35616 | TC11: Validar no poder ingresar a los endpoint  /checkout-complete.html  sin haberse logueado previamente', () => {
+		const { messageError } = data;
+		cy.visit('https://www.saucedemo.com/checkout-complete.html', { failOnStatusCode: false });
+		loginAccount.get.text_error().should('contain', messageError.data.checkoutAllError);
 	});
 });

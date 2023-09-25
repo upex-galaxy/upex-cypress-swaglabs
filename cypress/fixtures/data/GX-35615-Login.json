@@ -18,8 +18,10 @@
 			"text_error1": "Epic sadface: Username and password do not match any user in this service",
 			"text_error2": "Epic sadface: Password is required",
 			"text_error3": "Epic sadface: Username is required",
-			"text_error4": "Epic sadface: Sorry, this user has been locked out."
+			"text_error4": "Epic sadface: Sorry, this user has been locked out.",
+			"checkoutOneError": "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.",
+			"checkoutTwoError": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
+			"checkoutAllError": "Epic sadface: You can only access '/checkout-complete.html' when you are logged in."
 		}
-	},
-	"endpoint": ["'/checkout-step-one.html','/checkout-step-two.html', '/checkout-complete.html'"]
+	}
 }

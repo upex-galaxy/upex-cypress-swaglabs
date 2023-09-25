@@ -4,22 +4,21 @@
 			"valid": "standard_user",
 			"invalid_locked": "locked_out_user",
 			"invalid_problem": "problem_user",
-			"invalid_perfomance": "perfomance_glitch_user",
-			"invalid_null": ""
+			"invalid_perfomance": "perfomance_glitch_user"
 		}
 	},
 	"password": {
 		"data": {
 			"valid": "secret_sauce",
-			"invalid": "1236598",
-			"invalid_null": ""
+			"invalid": "1236598"
 		}
 	},
 	"messageError": {
 		"data": {
 			"text_error1": "Epic sadface: Username and password do not match any user in this service",
 			"text_error2": "Epic sadface: Password is required",
-			"text_error3": "Epic sadface: Sorry, this user has been locked out."
+			"text_error3": "Epic sadface: Username is required",
+			"text_error4": "Epic sadface: Sorry, this user has been locked out."
 		}
 	},
 	"endpoint": ["'/checkout-step-one.html','/checkout-step-two.html', '/checkout-complete.html'"]

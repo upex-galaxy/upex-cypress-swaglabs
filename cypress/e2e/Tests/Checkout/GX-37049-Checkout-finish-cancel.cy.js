@@ -2,9 +2,12 @@ import { removeLogs } from '@helper/RemoveLogs';
 import { SwagLogin } from '@pages/GX-25291-SwabLab-login.Page';
 import { swagLabPLPpage } from '@pages/GX-37049-SwagLabPLP.page';
 import { swagLabsPDPpage } from '@pages/GX-37049-SwagLabPDP.page';
-import {swgCheckout1Page} from '@pages/GX-37049-SwagLabCheckout1.page';
+import { swgCheckout1Page } from '@pages/GX-37049-SwagLabCheckout1.page';
 import data from '@data/GX-37049-Checkout-finish-cancel.json';
+import { faker } from '@faker-js/faker';
+const [Fname, pass, postalCode] = [faker.name.firstName(), faker.internet.password(), faker.datatype.number()];
 removeLogs();
+
 describe('SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en la Website', () => {
 	beforeEach(
 		'PCR: Situarse en la Web , Loguearse correctamente , add 1 producto o más, realizar proceso checkout , estar situado en la confirm del product',
@@ -19,10 +22,14 @@ describe('SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en
 				swagLabPLPpage.get.listItemName().should('have.text', itemName);
 				swagLabPLPpage.get.listItemPrice().should('have.text', itemPrice);
 				swagLabsPDPpage.ClickButtonCheckout();
-				cy.url().should('contain',data.checkout.step1);
-
+				cy.url().should('contain', data.checkout.step1);
+				swgCheckout1Page.fillCheckoutInfo({ Fname: Fname, pass: pass, postalCode: postalCode });
+				swgCheckout1Page.get.inputUsername().should('have.value', Fname);
+				swgCheckout1Page.get.inputPassword().invoke('val').should('deep.equal', pass);
+				swgCheckout1Page.get.inputPostalCode().invoke('val').should('contain', postalCode);
+				swgCheckout1Page.clickButtonContinueToChk2();
+				cy.url().should('include', data.checkout.step2);
 			});
-			
 		}
 	);
 	it('37050 | TC1: Validar finalizar la compra de un producto', () => {});

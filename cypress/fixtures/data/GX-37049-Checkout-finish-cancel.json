@@ -1,5 +1,6 @@
 {
 	"Url": "https://www.saucedemo.com/",
+	"endpointPLP": "/inventory",
 	"checkout": {
 		"step1": "checkout-step-one",
 		"step2": "checkout-step-two"

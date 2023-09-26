@@ -4,7 +4,7 @@ import { swagLabPLPpage } from '@pages/GX-37049-SwagLabPLP.page';
 import { swagLabsPDPpage } from '@pages/GX-37049-SwagLabPDP.page';
 import { swgCheckout1Page } from '@pages/GX-37049-SwagLabCheckout1.page';
 import { swglabCheckout2Page } from '@pages/GX-37049-SwaglabCheckout2.page';
-import { swgCompleteChkPage } from '@pages/GX-37049.SwgCompleteChechout';
+import { swgCompleteChkPage } from '@pages/GX-37049.SwgCompleteCheckout';
 import data from '@data/GX-37049-Checkout-finish-cancel.json';
 import { faker } from '@faker-js/faker';
 const [Fname, pass, postalCode] = [faker.name.firstName(), faker.internet.password(), faker.datatype.number()];
@@ -49,5 +49,11 @@ describe('SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en
 						expect(currentChildTxt).to.include(data.CompleteTxtCheckout.childTxt);
 					});
 			});
+	});
+
+	it('37050 | TC2: Validar cancelar la compra de un producto ', () => {
+		swglabCheckout2Page.clickButtonCancel();
+		cy.url().should('contain', data.endpointPLP);
+		swagLabPLPpage.get.badgeButtonShoppingCart().invoke('text').should('exist').and('have.lengthOf', 1);
 	});
 });

@@ -1,5 +1,8 @@
 {
 	"Url": "https://www.saucedemo.com/",
+	"checkout": {
+		"step1": "checkout-step-one"
+	},
 	"Username": "standard_user",
 	"Password": "secret_sauce"
 }

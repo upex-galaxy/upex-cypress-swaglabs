@@ -6,15 +6,15 @@ class SwagLabsPLP {
 		listItemPrice: () => cy.get('[class*="_item_price"]'),
 		badgeButtonShoppingCart: () => cy.get('[class="shopping_cart_badge"]'),
 		buttonAddItem: () => cy.get('[id^="add-to-cart"]'),
+		parentElementNoButtonRemove: index =>
+			cy.get('[class="inventory_item_name"]').parent().parent().parent().find('button:not([id*="remove"])').eq(`${index}`),
 	};
 
 	clickButtonShoppingCart() {
 		this.get.buttonShoppingCart().click();
 	}
 
-	AddItem() {
-		let randomIndex;
-
+	AddItem({ randomIndexOptional: randomIndex = '' }) {
 		let itemName;
 		let itemPrice;
 
@@ -23,28 +23,36 @@ class SwagLabsPLP {
 			.then($elements => {
 				const length = $elements.length;
 
-				randomIndex = Cypress._.random(0, length - 1);
-				this.get.listItemsPLP().eq(randomIndex);
+				randomIndex == '' ? (randomIndex = Cypress._.random(0, length - 1)) : randomIndex;
 
-				this.get.listItemName().eq(randomIndex).invoke('text');
+				this.get.parentElementNoButtonRemove(randomIndex).parent().parent().parent().find('[class*="item_name"]').invoke('text');
 			})
 			.then(name => {
 				itemName = name;
 
-				this.get.listItemsPLP().eq(randomIndex);
-				this.get.listItemPrice().eq(randomIndex).invoke('text');
+				this.get.parentElementNoButtonRemove(randomIndex).parent().parent().parent().find('[class*="_item_price"]').invoke('text');
 			})
 			.then(price => {
 				itemPrice = price;
 			})
 			.then(() => {
-				this.get.listItemsPLP().eq(randomIndex);
 				this.get.buttonAddItem().eq(randomIndex).click();
-				this.get.buttonShoppingCart().click();
 			})
 			.then(() => {
-				return [itemName, itemPrice];
+				return [itemName, itemPrice, randomIndex];
 			});
+	}
+	GenerateNewIndex({ oldRandomIndex: oldRandomIndex }) {
+		let newRandomIndex;
+		return this.get.buttonAddItem().then($elements => {
+			const length = $elements.length - 1;
+
+			do {
+				newRandomIndex = Math.floor(Math.random() * length);
+			} while (newRandomIndex === oldRandomIndex);
+
+			return newRandomIndex;
+		});
 	}
 }
 

@@ -59,7 +59,14 @@ describe('SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en
 		swglabCheckout2Page.clickButtonCancel();
 		cy.url().should('contain', data.endpointPLP);
 
-		swagLabPLPpage.get.badgeButtonShoppingCart().invoke('text').should('exist').and('have.lengthOf', 1);
+		swagLabPLPpage.get
+			.badgeButtonShoppingCart()
+			.invoke('text')
+			.then(text => {
+				const quantity = parseInt(text, 10);
+
+				expect(quantity).to.equal(1);
+			});
 	});
 
 	it('37050 | TC3: Validar finalizar la compra de 2 productos', () => {
@@ -100,7 +107,7 @@ describe('SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en
 		swgCheckout1Page.get.inputPostalCode().invoke('val').should('contain', postalCode);
 		swgCheckout1Page.clickButtonContinueToChk2();
 		cy.url().should('include', data.checkout.step2);
-
+		//TEST
 		swglabCheckout2Page.clickButtonFinish();
 		swgCompleteChkPage.get
 			.elementCompleteHeaderTxt()
@@ -114,6 +121,57 @@ describe('SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en
 					.then(currentChildTxt => {
 						expect(currentChildTxt).to.include(data.CompleteTxtCheckout.childTxt);
 					});
+			});
+	});
+	it('37050 | TC4: Validar cancelar la compra de 2 productos', () => {
+		//PRECONDITION
+		cy.visit('/');
+		SwagLogin.Login(data.Username, data.Password);
+		SwagLogin.ClickButtonSubmit();
+
+		swagLabPLPpage
+			.GenerateNewIndex({ oldRandomIndex: randomIndex })
+			.then(index => {
+				return index;
+			})
+			.then(index => {
+				swagLabPLPpage.AddItem({ randomIndexOptional: index });
+			})
+			.then(Values => {
+				let [itemName2, itemPrice2] = Values;
+
+				swagLabPLPpage.clickButtonShoppingCart();
+
+				swagLabsPDPpage.ValidateItemsOnPDP().then(itemsPDP => {
+					itemsPDP.forEach(item => {
+						const itemNamePDPText = item.name;
+						const itemPricePDPText = item.price;
+
+						expect(itemNamePDPText).to.include(itemName2);
+						expect(itemPricePDPText).to.include(itemPrice2);
+					});
+				});
+			});
+
+		swagLabsPDPpage.ClickButtonCheckout();
+		cy.url().should('contain', data.checkout.step1);
+		swgCheckout1Page.fillCheckoutInfo({ Fname: Fname, pass: pass, postalCode: postalCode });
+		swgCheckout1Page.get.inputUsername().should('have.value', Fname);
+		swgCheckout1Page.get.inputPassword().invoke('val').should('deep.equal', pass);
+		swgCheckout1Page.get.inputPostalCode().invoke('val').should('contain', postalCode);
+		swgCheckout1Page.clickButtonContinueToChk2();
+		cy.url().should('include', data.checkout.step2);
+		//TEST
+		swglabCheckout2Page.clickButtonCancel();
+		cy.url().should('contain', data.endpointPLP);
+
+		swagLabPLPpage.get
+			.badgeButtonShoppingCart()
+			.invoke('text')
+			.then(text => {
+				const quantity = parseInt(text, 10);
+
+				expect(quantity).to.equal(2);
 			});
 	});
 });

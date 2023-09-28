@@ -8,7 +8,7 @@ describe('Feature: iniciar Sesión', () => {
 		cy.visit('https://www.saucedemo.com/v1/index.html');
 		cy.url().should('match', /index.html/);
 	});
-	it('TC1: usuario inicia sesión correctamente', () => {
+	it('TC1: Validar usuario hace log-in correctamente', () => {
 		//el usuario ingresa el Username y password correctos y hace click en el botón "LOGIN"
 		//standard_user 
 		pom.login(thisCredentialsDB.usernameOK, thisCredentialsDB.passwordOK);
@@ -32,7 +32,7 @@ describe('Feature: iniciar Sesión', () => {
 		cy.url().should('contain', '/inventory.html'); //
 		pom.get.divInventoryItems().should('have.length.at.least', 1);
 	});
-	it('TC2: usuario intenta iniciar sesión con cuenta bloqueada', () => {
+	it('TC2: Validar NO hacer log-in con una cuenta bloqueada', () => {
 		// el usuario rellena el formulario ingresando el username "locked_out_user" y Password correcto
 		pom.login(thisCredentialsDB.usernameLocked, thisCredentialsDB.passwordOK);
 		// Then mensaje amigable indicando que el usuario está bloqueado como:
@@ -41,7 +41,7 @@ describe('Feature: iniciar Sesión', () => {
 		// And el sistema debe denegar el acceso al PLP
 		cy.url().should('contain', '/index.html');
 	});
-	it('TC3: usuario intenta iniciar sesión con un cuenta incorrecta o inexistente', () => {
+	it('TC3: Validar NO hacer log-in con una cuenta incorrecta o inexistente', () => {
 		// el usuario ingresa un Username inexistente en la Database
 		pom.login(thisCredentialsDB.usernameNOK, thisCredentialsDB.passwordOK);
 		// 	Then debe aparecer un mensaje amigable indicando que no hay match con la Database como:
@@ -68,7 +68,7 @@ describe('Feature: iniciar Sesión', () => {
 		// And el sistema debe denegar el acceso al PLP
 		cy.url().should('contain', '/index.html');            
 	});
-	it('TC4: usuario intenta iniciar sesión dejando campos vacíos en el formulario', () => {
+	it('TC4: Validar NO hacer log-in cuando se deja algún campo vacío', () => {
 		//     * Si el campo vacío es Username => "Epic sadface: Username is required"
 		//     * Si el campo vacío es Password => "Epic sadface: Password is required"
 		//     * Si el campo vacío es Username y Password => "Epic sadface: Username is required"
@@ -93,7 +93,7 @@ describe('Feature: iniciar Sesión', () => {
 		pom.get.ErrorMsg().contains('Username is required');
 		cy.url().should('contain', '/index.html');
 	});
-	it.skip('TC5: usuario intenta ingresar a un endpoint de la website sin haber iniciado sesión.', () => {
+	it.skip('TC5: Validar NO acceder a endpoints internos sin antes hacer log-in', () => {
 		//     When ingresa a un endpoint interno de la website que requiera autorización (ver ejemplo)
 		//     Then el usuario debe ser redirigido a la página de Login
 		//     And debe desplegarse un mensaje amigable indicando que no puede acceder sin antes iniciar sesión:

@@ -28,6 +28,7 @@ jobs:
             - name: 🧬Install All Dependencies
               run: |
                   npm ci
+                  npx cypress cache list
                   npm list
 
             - name: 🔌Cucumber Preprocessor JSON Setup

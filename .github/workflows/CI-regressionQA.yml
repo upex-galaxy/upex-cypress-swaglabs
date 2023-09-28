@@ -28,6 +28,7 @@ jobs:
             - name: 🧬Install All Dependencies
               run: |
                   npm ci
+                  npx cypress cache list
                   npm list
 
             - name: 🔌Cucumber Preprocessor JSON Setup
@@ -50,10 +51,10 @@ jobs:
                         }
                       }
 
-            - name: 🧪Cypress E2E Regression Test in Chrome
+            - name: 🧪Cypress E2E Regression Test in electron
               uses: cypress-io/github-action@v4
               with:
-                  browser: chrome
+                  browser: electron
                   command: | #NO EDITAR. Es para correr todas las pruebas del Repo.
                       npm run regression
 
@@ -121,10 +122,10 @@ jobs:
                         }
                       }
 
-            - name: 🧪VERIFICATION Cypress E2E Regression Test in Chrome
+            - name: 🧪VERIFICATION Cypress E2E Regression Test in electron
               uses: cypress-io/github-action@v4
               with:
-                  browser: chrome
+                  browser: electron
                   command: | #NO EDITAR. Es para correr todas las pruebas del Repo.
                       npm run regression:report
 

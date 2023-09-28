@@ -31,6 +31,7 @@ jobs:
             - name: 🧬Install All Dependencies
               run: |
                   npm ci
+                  npx cypress cache list
                   npm list
 
             - name: 💾Download Cucumber-Formatter
@@ -65,10 +66,10 @@ jobs:
                         }
                       }
 
-            - name: 🧪Cypress Run Test Coverage in Chrome
+            - name: 🧪Cypress Run Test Coverage in electron
               uses: cypress-io/github-action@v4
               with:
-                  browser: chrome
+                  browser: electron
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
                       npm run file cypress/e2e/Tests/PLP/GX-34846-AgregarProductos.cy.js
             - name: ✅Import Test Results to Xray

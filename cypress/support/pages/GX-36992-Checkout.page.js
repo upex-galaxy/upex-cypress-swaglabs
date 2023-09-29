@@ -3,10 +3,13 @@ class Checkout {
 		username: () => cy.get('#user-name'),
 		password: () => cy.get('#password'),
 		btnLogin: () => cy.get('#login-button'),
-		btnAddCart: () => cy.get('#add-to-cart-sauce-labs-backpack'),
 		btnSpan: () => cy.get('.shopping_cart_link> span'),
+		productoBack: () => cy.get('#add-to-cart-sauce-labs-backpack'),
+		productoTshirt: () => cy.get('#add-to-cart-sauce-labs-bolt-t-shirt'),
+		productBike: () => cy.get('#add-to-cart-sauce-labs-bike-light'),
+		productJacket: () => cy.get('add-to-cart-sauce-labs-fleece-jacket'),
+		productTshitRed: () => cy.get('add-to-cart-test.allthethings()-t-shirt-(red)'),
 		shoppingCart: () => cy.get('#shopping_cart_container> a'),
-		productoCart: () => cy.get('.inventory_item'), // requiere eq para los productos
 		firstName: () => cy.get('#first-name'),
 		lastName: () => cy.get('#last-name'),
 		postalCode: () => cy.get('#postal-code'),
@@ -21,13 +24,41 @@ class Checkout {
 	};
 
 	username() {
-		this.get.username().click();
+		this.get.username().type();
 	}
 	lastName() {
-		this.get.lastName().click();
+		this.get.password().type();
 	}
 	btnLogin() {
 		this.get.btnLogin().click();
 	}
-	productCart() {}
+
+	checkProduct() {
+		this.get.productoCart().click();
+	}
+	clickBtnCheckout() {
+		this.get.productoCart().click();
+	}
+	selectProduct() {
+		const productos = [productoBack(), productoTshirt(), productBike(), productJacket(), productTshitRed()];
+		const indexProduc = Math.floor(Math.random() * productos.length);
+		productos.eq(indexProduc).click();
+	}
+	btnCartShopping() {
+		this.get.btnCheckout().click();
+	}
+	firstName() {
+		this.get.firstName().type();
+	}
+	lastName() {
+		this.get.lasttName().type();
+	}
+	codePostal() {
+		this.get.postalCode().type();
+	}
+	btnContinue() {
+		this.get.btnContinue().click();
+	}
 }
+
+export const checkout = new Checkout();

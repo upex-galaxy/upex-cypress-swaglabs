@@ -3,12 +3,12 @@ class Checkout {
 		username: () => cy.get('#user-name'),
 		password: () => cy.get('#password'),
 		btnLogin: () => cy.get('#login-button'),
-		btnSpan: () => cy.get('.shopping_cart_link> span'),
+		btnSpan: () => cy.get('.shopping_cart_badge'),
 		productoBack: () => cy.get('#add-to-cart-sauce-labs-backpack'),
 		productoTshirt: () => cy.get('#add-to-cart-sauce-labs-bolt-t-shirt'),
 		productBike: () => cy.get('#add-to-cart-sauce-labs-bike-light'),
-		productJacket: () => cy.get('add-to-cart-sauce-labs-fleece-jacket'),
-		productTshitRed: () => cy.get('add-to-cart-test.allthethings()-t-shirt-(red)'),
+		productJacket: () => cy.get('#add-to-cart-sauce-labs-fleece-jacket'),
+		productTshitRed: () => cy.get('#add-to-cart-test.allthethings()-t-shirt-(red)'),
 		shoppingCart: () => cy.get('#shopping_cart_container> a'),
 		firstName: () => cy.get('#first-name'),
 		lastName: () => cy.get('#last-name'),
@@ -17,48 +17,51 @@ class Checkout {
 		btnContinue: () => cy.get('#continue'),
 		btCancel: () => cy.get('#cancel'),
 		btnfinish: () => cy.get('#finish'),
-		label1: () => cy.get('.summary_info_label'), // requiere eq para los labels
-		labelTotal: () => cy.get('summary_info_label summary_total_label'),
+		showLabels: () => cy.get('.inventory_item_name'),
+		labelTotal: () => cy.get('.inventory_item_price'),
 		h2: () => cy.get('.complete-header'),
 		text: () => cy.get('.complete-text'),
 	};
 
-	username() {
-		this.get.username().type();
+	username(username) {
+		this.get.username().type(username);
 	}
-	lastName() {
-		this.get.password().type();
+	password(password) {
+		this.get.password().type(password);
 	}
 	btnLogin() {
 		this.get.btnLogin().click();
 	}
 
-	checkProduct() {
-		this.get.productoCart().click();
-	}
-	clickBtnCheckout() {
-		this.get.productoCart().click();
-	}
 	selectProduct() {
-		const productos = [productoBack(), productoTshirt(), productBike(), productJacket(), productTshitRed()];
+		const productos = [this.get.productoBack, this.get.productoTshirt, this.get.productBike, this.get.productJacket, this.get.productTshitRed];
 		const indexProduc = Math.floor(Math.random() * productos.length);
-		productos.eq(indexProduc).click();
+		productos[indexProduc]().click();
 	}
 	btnCartShopping() {
+		this.get.shoppingCart().click();
+	}
+
+	clickBtnCheckout() {
 		this.get.btnCheckout().click();
 	}
-	firstName() {
-		this.get.firstName().type();
+
+	firstName(firstName) {
+		this.get.firstName().type(firstName);
 	}
-	lastName() {
-		this.get.lasttName().type();
+	lastName(lastName) {
+		this.get.lastName().type(lastName);
 	}
-	codePostal() {
-		this.get.postalCode().type();
+	codePostal(postalCode) {
+		this.get.postalCode().type(postalCode);
 	}
 	btnContinue() {
 		this.get.btnContinue().click();
 	}
+
+	// showTotal() {
+	// 	this.get.labelTotal().click();
+	// }
 }
 
 export const checkout = new Checkout();

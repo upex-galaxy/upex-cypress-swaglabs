@@ -2,14 +2,8 @@
 	"username": "standard_user",
 	"password": "secret_sauce",
 	"firstName": "Yesica",
-	"lastName": "lastName",
-	"codigoPostal": "1722",
-	"label1": "Sauce Labs Backpack",
-	"label2": "Sauce Labs Bolt T-Shirt",
-	"label3": "Payment Information",
-	"label4": "Shipping Information",
-	"label5": "Price total",
-	"label6": "Total",
+	"lastName": "Windecker",
+	"codigoPostal": "B1722",
 
 	"value1": "SauceCard #31337",
 	"value2": "Free Pony Express Delivery!"

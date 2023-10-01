@@ -26,7 +26,21 @@ describe('GX-36992-✅-swag-labs-checkout-finalizar-o-cancelar-la-compra-de-un-p
 	it('36993 | TC1: Validar Finalizar hacer la compra al hacer click en el botón finish.', () => {
 		cy.url().should('contain', 'checkout');
 		checkout.get.btnSpan().should('contain', '1');
-
-		// checkout.get.showTotal().click().should('exist').and('not.be.empty');
+		const selectLabel = checkout.selectLabels();
+		cy.contains(selectLabel).should('exist');
+		checkout.clickBtnFinish();
+		checkout.clickImg();
+		checkout.get.img().should('have.class', 'pony_express');
+		checkout.clickH2();
+		checkout.get.h2().should('contain', data.value1);
+		checkout.clickText();
+		checkout.get.text().should('contain', data.value2);
+		cy.url().should('contain', 'complete');
+	});
+	it('36993 | TC2: Validar cancelar la compra al hacer click en el botón Cancel.', () => {
+		cy.url().should('contain', 'checkout');
+		checkout.get.btnSpan().should('contain', '1');
+		checkout.clickBtnCancel();
+		cy.url().should('contain', 'inventory.html');
 	});
 });

@@ -5,20 +5,21 @@ class Checkout {
 		btnLogin: () => cy.get('#login-button'),
 		btnSpan: () => cy.get('.shopping_cart_badge'),
 		productoBack: () => cy.get('#add-to-cart-sauce-labs-backpack'),
-		productoTshirt: () => cy.get('#add-to-cart-sauce-labs-bolt-t-shirt'),
+		productoRemera: () => cy.get('#add-to-cart-sauce-labs-bolt-t-shirt'),
 		productBike: () => cy.get('#add-to-cart-sauce-labs-bike-light'),
 		productJacket: () => cy.get('#add-to-cart-sauce-labs-fleece-jacket'),
-		productTshitRed: () => cy.get('#add-to-cart-test.allthethings()-t-shirt-(red)'),
+		productRemeraRed: () => cy.get('[name="add-to-cart-test.allthethings()-t-shirt-(red)"]'),
 		shoppingCart: () => cy.get('#shopping_cart_container> a'),
 		firstName: () => cy.get('#first-name'),
 		lastName: () => cy.get('#last-name'),
 		postalCode: () => cy.get('#postal-code'),
 		btnCheckout: () => cy.get('#checkout'),
 		btnContinue: () => cy.get('#continue'),
-		btCancel: () => cy.get('#cancel'),
+		btnCancel: () => cy.get('#cancel'),
 		btnfinish: () => cy.get('#finish'),
 		showLabels: () => cy.get('.inventory_item_name'),
 		labelTotal: () => cy.get('.inventory_item_price'),
+		img: () => cy.get('.pony_express'),
 		h2: () => cy.get('.complete-header'),
 		text: () => cy.get('.complete-text'),
 	};
@@ -34,9 +35,9 @@ class Checkout {
 	}
 
 	selectProduct() {
-		const productos = [this.get.productoBack, this.get.productoTshirt, this.get.productBike, this.get.productJacket, this.get.productTshitRed];
-		const indexProduc = Math.floor(Math.random() * productos.length);
-		productos[indexProduc]().click();
+		const productos = [this.get.productoBack, this.get.productRemera, this.get.productBike, this.get.productJacket, this.get.productRemeraRed];
+		const indexProduct = Math.floor(Math.random() * productos.length);
+		productos[indexProduct]().click();
 	}
 	btnCartShopping() {
 		this.get.shoppingCart().click();
@@ -59,9 +60,26 @@ class Checkout {
 		this.get.btnContinue().click();
 	}
 
-	// showTotal() {
-	// 	this.get.labelTotal().click();
-	// }
+	selectLabels() {
+		const labels = ['SauceCard #31337', 'Shipping Information', 'Price Total', 'Total'];
+		const indexLabels = Math.floor(Math.random() * labels.length);
+		return labels[indexLabels];
+	}
+	clickBtnFinish() {
+		this.get.btnfinish().click();
+	}
+	clickH2() {
+		this.get.h2().click();
+	}
+	clickText() {
+		this.get.text().click();
+	}
+	clickImg() {
+		this.get.img().click();
+	}
+	clickBtnCancel() {
+		this.get.btnCancel().click();
+	}
 }
 
 export const checkout = new Checkout();

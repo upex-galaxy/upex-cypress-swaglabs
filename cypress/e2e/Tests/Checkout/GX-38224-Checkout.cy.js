@@ -38,4 +38,21 @@ describe('GX-38224-SwagLabs | Checkout | Finalizar o Cancelar la compra de un pr
 		checkout.get.header().should('have.text', 'Thank you for your order!');
 		checkout.get.text().should('have.text', 'Your order has been dispatched, and will arrive just as fast as the pony can get there!');
 	});
+
+	it('38225 | TC2: Validar cancelar compra del producto', () => {
+		plp.randomCard().then(index => {
+			const [title, desc, price, random] = index;
+			plp.get.cartIcon().should('have.text', '1');
+			plp.get.cardBtn().eq(random).should('have.text', 'Remove');
+			plp.cartClick();
+			checkout.get.title().should('have.text', title);
+			checkout.get.desc().should('have.text', desc);
+			checkout.get.price().should('have.text', price);
+			plp.cartClick();
+		});
+		checkout.clickRemoveBtn();
+		checkout.clickContinueShoppingBtn();
+		plp.get.cardContainer().should('have.class', 'inventory_item');
+		cy.url().should('include', 'inventory.html');
+	});
 });

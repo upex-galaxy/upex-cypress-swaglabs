@@ -11,10 +11,11 @@ class Checkout {
 		lastName: () => cy.get('[data-test="lastName"]'),
 		postalCode: () => cy.get('[data-test="postalCode"]'),
 		//buttons
-		removeBtn: () => cy.get('[data-test=remove-sauce-labs-bike-light]'),
+		removeBtn: () => cy.get('[class=cart_item] button'),
 		checkoutBtn: () => cy.get('[data-test="checkout"]'),
 		continueBtn: () => cy.get('[data-test="continue"]'),
 		finishBtn: () => cy.get('[data-test="finish"]'),
+		continueShoppingBtn: () => cy.get('[data-test="continue-shopping"]'),
 	};
 	clickCheckoutBtn() {
 		this.get.checkoutBtn().click();
@@ -30,6 +31,9 @@ class Checkout {
 	}
 	clickFinishBtn() {
 		this.get.finishBtn().click();
+	}
+	clickContinueShoppingBtn() {
+		this.get.continueShoppingBtn().click();
 	}
 }
 

@@ -1,0 +1,14 @@
+{
+	"Url": "https://www.saucedemo.com/",
+	"endpointPLP": "/inventory",
+	"checkout": {
+		"step1": "checkout-step-one",
+		"step2": "checkout-step-two"
+	},
+	"CompleteTxtCheckout": {
+		"header": "Thank you for your order!",
+		"childTxt": "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
+	},
+	"Username": "standard_user",
+	"Password": "secret_sauce"
+}

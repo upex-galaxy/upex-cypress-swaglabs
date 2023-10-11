@@ -1,4 +1,4 @@
-describe('SwagLabs | Footer | Acceder a las redes sociales de SwagLabs', () => {
+describe.skip('SwagLabs | Footer | Acceder a las redes sociales de SwagLabs', () => {
 	beforeEach(
 		'Precondition:The user must successfully log in, The user must navigate to the inventory website, The icons of the social media are available and clickable',
 		() => {

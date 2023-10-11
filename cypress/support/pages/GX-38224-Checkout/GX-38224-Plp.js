@@ -1,6 +1,7 @@
 class Plp {
 	get = {
 		cardContainer: () => cy.get('[class=inventory_item]'),
+		cardContainerButtons: () => cy.get('[class=inventory_item] button'),
 		title: () => cy.get('[class=inventory_item_name]'),
 		description: () => cy.get('[class=inventory_item_desc]'),
 		price: () => cy.get('[class=inventory_item_price]'),

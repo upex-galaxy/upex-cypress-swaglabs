@@ -31,6 +31,7 @@ jobs:
             - name: 🧬Install All Dependencies
               run: |
                   npm ci
+                  npx cypress cache list
                   npm list
 
             - name: 💾Download Cucumber-Formatter
@@ -71,6 +72,7 @@ jobs:
                   browser: electron
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
                       npm run file cypress/e2e/Tests/Checkout/GX-37049-Checkout-finish-cancel.cy.js
+                      
             - name: ✅Import Test Results to Xray
               if: always()
               uses: mikepenz/xray-action@v2

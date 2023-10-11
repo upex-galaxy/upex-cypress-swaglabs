@@ -1,8 +1,8 @@
 class Checkout {
 	get = {
-		username: () => cy.get('#user-name'),
-		password: () => cy.get('#password'),
-		btnLogin: () => cy.get('#login-button'),
+		inputUserName: () => cy.get('#user-name'),
+		inputPassword: () => cy.get('#password'),
+		bttnLogin: () => cy.get('#login-button'),
 		btnSpan: () => cy.get('.shopping_cart_badge'),
 		productoBack: () => cy.get('#add-to-cart-sauce-labs-backpack'),
 		productoRemera: () => cy.get('#add-to-cart-sauce-labs-bolt-t-shirt'),
@@ -24,18 +24,18 @@ class Checkout {
 		text: () => cy.get('.complete-text'),
 	};
 
-	username(username) {
-		this.get.username().type(username);
+	typeUserName(username) {
+		username && this.get.inputUserName().should('be.empty').type(username);
 	}
-	password(password) {
-		this.get.password().type(password);
+	typePassword(password) {
+		this.get.inputPassword().type(password);
 	}
-	btnLogin() {
-		this.get.btnLogin().click();
+	clickBttnLogin() {
+		this.get.bttnLogin().click();
 	}
 
 	selectProduct() {
-		const productos = [this.get.productoBack, this.get.productRemera, this.get.productBike, this.get.productJacket, this.get.productRemeraRed];
+		const productos = [this.get.productoBack, this.get.productoRemera, this.get.productBike, this.get.productJacket, this.get.productRemeraRed];
 		const indexProduct = Math.floor(Math.random() * productos.length);
 		productos[indexProduct]().click();
 	}
@@ -82,4 +82,4 @@ class Checkout {
 	}
 }
 
-export const checkout = new Checkout();
+export const checkoutPage = new Checkout();

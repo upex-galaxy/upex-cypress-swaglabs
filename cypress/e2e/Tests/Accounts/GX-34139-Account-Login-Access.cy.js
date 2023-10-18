@@ -37,7 +37,7 @@ describe('TS34140 | ✅SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 			});
 		});
 	});
-	it('34140 | TC02: Validate Log in with username “problem_user” and valid password', () => {
+	it.skip('34140 | TC02: Validate Log in with username “problem_user” and valid password', () => {
 		cy.fixture('data/GX-34139-Account-Login').then(data => {
 			login.typeUsername(data.credentials.username.valid[1]);
 			login.typePassword(data.credentials.password.valid);

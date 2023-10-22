@@ -11,10 +11,10 @@ class Login {
 	};
 
 	typeUsername(userName) {
-		this.get.username().type(userName);
+		userName && this.get.username().type(userName);
 	}
 	typePassword(password) {
-		this.get.password().type(password);
+		password && this.get.password().type(password);
 	}
 
 	typeUsernameBlock() {

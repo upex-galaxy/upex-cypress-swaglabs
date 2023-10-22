@@ -19,6 +19,7 @@ class Login {
 	clickLoginButton() {
 		this.get.loginButton().click();
 	}
+	
 }
 
 export const loginPage = new Login();

@@ -13,6 +13,10 @@ const fillFormAndSubmit = (userName, password, valueAssert) => {
 		loginPage.get.rules().should('have.text', valueAssert);
 	}
 };
+const visitEndpoint = (endpoint, valueAssert) => {
+	cy.visit(`/${endpoint}`, { failOnStatusCode: false });
+	loginPage.get.rules().should('have.text', valueAssert);
+};
 
 describe('', () => {
 	beforeEach('PRC:visit login SwagLab', () => {
@@ -58,23 +62,18 @@ describe('', () => {
 		fillFormAndSubmit(data.userInvalid, data.validPassword, data.message.match);
 	});
 	it('40630 | TC13: Validar NO ingresar al endpoint (/inventory.html) de la website sin haber iniciado sesión.', () => {
-		loginPage.visitEndpoint1();
-		loginPage.getMessageEndpoint1();
+		visitEndpoint(data.endpoints.endpoint1, data.message.inventory);
 	});
 	it('40630 | TC14: Validar NO ingresar al endpoint (/cart.html) de la website sin haber iniciado sesión.', () => {
-		loginPage.visitEndpoint2();
-		loginPage.getMessageEndpoint2();
+		visitEndpoint(data.endpoints.endpoint2, data.message.cart);
 	});
 	it('40630 | TC15: Validar NO ingresar al endpoint (/checkout-step-one.html) de la website sin haber iniciado sesión.', () => {
-		loginPage.visitEndpoint3();
-		loginPage.getMessageEndpoint3();
+		visitEndpoint(data.endpoints.endpoint3, data.message.checkoutOne);
 	});
 	it('40630 | TC16: Validar NO ingresar al endpoint (/checkout-step-two.html) de la website sin haber iniciado sesión.', () => {
-		loginPage.visitEndpoint4();
-		loginPage.getMessageEndpoint4();
+		visitEndpoint(data.endpoints.endpoint4, data.message.checkoutTwo);
 	});
 	it('40630 | TC17:Validar NO ingresar al endpoint (/checkout-complete.html) de la website sin haber iniciado sesión.', () => {
-		loginPage.visitEndpoint5();
-		loginPage.getMessageEndpoint5();
+		visitEndpoint(data.endpoints.endpoint5, data.message.complete);
 	});
 });

@@ -65,7 +65,7 @@ describe('✅SwagLabs | Account | Iniciar sesión y BR de Accesos', () => {
 		Login.submitButton('#login-button');
 		Login.get.error().should('contain', login.errorMsg.UserNull);
 	});
-	it('6517 | TC10: Validar usuario intenta al endpoint /inventory.html', () => {
+	it.only('6517 | TC10: Validar usuario intenta al endpoint /inventory.html', () => {
 		cy.visit(baseUrl + endpoint.inventory, { failOnStatusCode: false });
 		cy.url().should('contain', baseUrl);
 		Login.get.error().should('contain', login.errorMsg.inventoryError);

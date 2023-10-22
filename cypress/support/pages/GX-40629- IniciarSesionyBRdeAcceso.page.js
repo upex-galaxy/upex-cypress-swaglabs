@@ -1,7 +1,8 @@
 import data from '@data/GX-40629- IniciarSesionyBRdeAcceso.json';
+const { baseUrl } = Cypress.env();
 class Login {
 	get = {
-		endpoint: () => cy.visit('https://www.saucedemo.com/'),
+		endpoint: () => cy.visit('https://www.saucedemo.com'),
 		username: () => cy.get('#user-name'),
 		password: () => cy.get('#password'),
 		loginButton: () => cy.get('#login-button'),
@@ -42,20 +43,50 @@ class Login {
 	}
 
 	getElementLoginValid() {
-		this.get.elementInSwaglabs().should('have.text', 'Swag Labs');
+		this.get.elementInSwaglabs().should('have.text', data.title);
 	}
 	getBr3_5() {
-		this.get.rules().should('have.text', 'Epic sadface: Username is required');
+		this.get.rules().should('have.text', data.message.userRequired);
 	}
 
 	getBr4() {
-		this.get.rules().should('have.text', 'Epic sadface: Password is required');
+		this.get.rules().should('have.text', data.message.paswordRequired);
 	}
 	getBr2() {
-		this.get.rules().should('have.text', 'Epic sadface: Username and password do not match any user in this service');
+		this.get.rules().should('have.text', data.message.match);
 	}
 	getBr1() {
-		this.get.rules().should('have.text', 'Epic sadface: Sorry, this user has been locked out.');
+		this.get.rules().should('have.text', data.message.locked);
+	}
+	visitEndpoint1() {
+		cy.visit(baseUrl + data.endpoints.endpoint1, { failOnStatusCode: false });
+	}
+	visitEndpoint2() {
+		cy.visit(baseUrl + data.endpoints.endpoint2, { failOnStatusCode: false });
+	}
+	visitEndpoint3() {
+		cy.visit(baseUrl + data.endpoints.endpoint3, { failOnStatusCode: false });
+	}
+	visitEndpoint4() {
+		cy.visit(baseUrl + data.endpoints.endpoint4, { failOnStatusCode: false });
+	}
+	visitEndpoint5() {
+		cy.visit(baseUrl + data.endpoints.endpoint5, { failOnStatusCode: false });
+	}
+	getMessageEndpoint1() {
+		this.get.rules().should('have.text', data.message.inventory);
+	}
+	getMessageEndpoint2() {
+		this.get.rules().should('have.text', data.message.cart);
+	}
+	getMessageEndpoint3() {
+		this.get.rules().should('have.text', data.message.checkoutOne);
+	}
+	getMessageEndpoint4() {
+		this.get.rules().should('have.text', data.message.checkoutTwo);
+	}
+	getMessageEndpoint5() {
+		this.get.rules().should('have.text', data.message.complete);
 	}
 }
 

@@ -39,32 +39,23 @@ describe('', () => {
 	it('40630 | TC6: Validar NO iniciar sesión dejando el campo vacío en password', () => {
 		fillFormAndSubmit(data.performance_glitch_user, '', data.message.paswordRequired);
 	});
-	it.only('40630 | TC7: Validar NO iniciar sesión con cuenta bloqueada y password inválido', () => {
+	it('40630 | TC7: Validar NO iniciar sesión con cuenta bloqueada y password inválido', () => {
 		fillFormAndSubmit(data.userBlock, data.invalidPassword, data.message.match);
 	});
-	it.only('40630 | TC8: Validar NO iniciar sesión ingresando password inválido', () => {
+	it('40630 | TC8: Validar NO iniciar sesión ingresando password inválido', () => {
 		fillFormAndSubmit(data.problem_user, data.invalidPassword, data.message.match);
 	});
-	it.only('40630 | TC9: Validar NO iniciar sesión con cuenta bloqueada', () => {
+	it('40630 | TC9: Validar NO iniciar sesión con cuenta bloqueada', () => {
 		fillFormAndSubmit(data.userBlock, data.validPassword, data.message.locked);
 	});
 	it('40630 | TC10: Validar NO iniciar sesión ingresando campos incorrectos o inexistentes', () => {
-		loginPage.typeUsername(data.userInvalid);
-		loginPage.typePassword(data.invalidPassword);
-		loginPage.clickLoginButton();
-		loginPage.getBr2();
+		fillFormAndSubmit(data.userInvalid, data.invalidPassword, data.message.match);
 	});
 	it('40630 | TC11: Validar NO iniciar sesión ingresando una password inexistente', () => {
-		loginPage.typeUsername();
-		loginPage.typePassword(data.invalidPassword);
-		loginPage.clickLoginButton();
-		loginPage.getBr2();
+		fillFormAndSubmit(data.standard_user, data.invalidPassword, data.message.match);
 	});
 	it('40630 | TC12: Validar NO iniciar sesión ingresando un username inexistente', () => {
-		loginPage.typeUsernameInvalid();
-		loginPage.typePassword();
-		loginPage.clickLoginButton();
-		loginPage.getBr2();
+		fillFormAndSubmit(data.userInvalid, data.validPassword, data.message.match);
 	});
 	it('40630 | TC13: Validar NO ingresar al endpoint (/inventory.html) de la website sin haber iniciado sesión.', () => {
 		loginPage.visitEndpoint1();

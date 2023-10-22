@@ -1,4 +1,4 @@
-import data from '@data/GX-40629- IniciarSesionyBRdeAcceso.json';
+import data from '@data/GX-40629-IniciarSesionyBRdeAcceso.json';
 const { baseUrl } = Cypress.env();
 class Login {
 	get = {

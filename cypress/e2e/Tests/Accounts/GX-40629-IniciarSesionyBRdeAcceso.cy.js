@@ -1,4 +1,4 @@
-import { login } from '@pages/GX-40629- IniciarSesionyBRdeAcceso.page';
+import { login } from '@pages/GX-40629-IniciarSesionyBRdeAcceso.page';
 import data from '@data/GX-40629- IniciarSesionyBRdeAcceso.json';
 
 describe('', () => {

@@ -33,29 +33,20 @@ describe('', () => {
 		loginPage.clickLoginButton();
 		loginPage.get.rules().should('have.text', data.message.userRequired);
 	});
-	it.only('40630 | TC5: Validar NO iniciar sesión dejando el campo vacío en username', () => {
+	it('40630 | TC5: Validar NO iniciar sesión dejando el campo vacío en username', () => {
 		fillFormAndSubmit('', data.validPassword, data.message.userRequired);
 	});
-	it.only('40630 | TC6: Validar NO iniciar sesión dejando el campo vacío en password', () => {
+	it('40630 | TC6: Validar NO iniciar sesión dejando el campo vacío en password', () => {
 		fillFormAndSubmit(data.performance_glitch_user, '', data.message.paswordRequired);
 	});
-	it('40630 | TC7: Validar NO iniciar sesión con cuenta bloqueada y password inválido', () => {
-		loginPage.typeUsername(data.userBlock);
-		loginPage.typePassword(data.invalidPassword);
-		loginPage.clickLoginButton();
-		loginPage.getBr2();
+	it.only('40630 | TC7: Validar NO iniciar sesión con cuenta bloqueada y password inválido', () => {
+		fillFormAndSubmit(data.userBlock, data.invalidPassword, data.message.match);
 	});
-	it('40630 | TC8: Validar NO iniciar sesión ingresando password inválido', () => {
-		loginPage.typeUsername(data.problem_user);
-		loginPage.typePassword(data.invalidPassword);
-		loginPage.clickLoginButton();
-		loginPage.getBr2();
+	it.only('40630 | TC8: Validar NO iniciar sesión ingresando password inválido', () => {
+		fillFormAndSubmit(data.problem_user, data.invalidPassword, data.message.match);
 	});
-	it('40630 | TC9: Validar NO iniciar sesión con cuenta bloqueada', () => {
-		loginPage.typeUsername(data.userBlock);
-		loginPage.typePassword(data.validPassword);
-		loginPage.clickLoginButton();
-		loginPage.getBr1();
+	it.only('40630 | TC9: Validar NO iniciar sesión con cuenta bloqueada', () => {
+		fillFormAndSubmit(data.userBlock, data.validPassword, data.message.locked);
 	});
 	it('40630 | TC10: Validar NO iniciar sesión ingresando campos incorrectos o inexistentes', () => {
 		loginPage.typeUsername(data.userInvalid);

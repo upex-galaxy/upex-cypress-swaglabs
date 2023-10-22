@@ -1,29 +1,31 @@
 import { loginPage } from '@pages/GX-40629-IniciarSesionyBRdeAcceso.page';
 import data from '@data/GX-40629-IniciarSesionyBRdeAcceso.json';
 
+const fillFormAndSubmit = (userName, password, valueAssert) => {
+	loginPage.typeUsername(userName);
+	loginPage.get.username().should('have.value', userName);
+	loginPage.typePassword(password);
+	loginPage.get.password().should('have.value', password);
+	loginPage.clickLoginButton();
+	if (valueAssert === 'Swag Labs') {
+		loginPage.get.elementInSwaglabs().should('have.text', valueAssert);
+	} else {
+		loginPage.get.rules().should('have.text', valueAssert);
+	}
+};
+
 describe('', () => {
 	beforeEach('PRC:visit login SwagLab', () => {
 		loginPage.get.endpoint();
 	});
 	it.only('TC1: Validar iniciar sesión con campos válidos (standard_user.)', () => {
-		loginPage.typeUsername(data.standard_user);
-		loginPage.get.username().should('have.value', data.standard_user);
-		loginPage.typePassword(data.validPassword);
-		loginPage.get.password().should('have.value', data.validPassword);
-		loginPage.clickLoginButton();
-		loginPage.getElementLoginValid();
+		fillFormAndSubmit(data.standard_user, data.validPassword, data.title);
 	});
-	it('TC2: Validar iniciar sesión con campos válidos (problem_user)', () => {
-		loginPage.typeUsername(data.problem_user);
-		loginPage.typePassword(data.validPassword);
-		loginPage.clickLoginButton();
-		loginPage.getElementLoginValid();
+	it.only('TC2: Validar iniciar sesión con campos válidos (problem_user)', () => {
+		fillFormAndSubmit(data.problem_user, data.validPassword, data.title);
 	});
-	it('TC3: Validar iniciar sesión con campos válidos (performance_glitch_user)', () => {
-		loginPage.typeUsername(data.performance_glitch_user);
-		loginPage.typePassword(data.validPassword);
-		loginPage.clickLoginButton();
-		loginPage.getElementLoginValid();
+	it.only('TC3: Validar iniciar sesión con campos válidos (performance_glitch_user)', () => {
+		fillFormAndSubmit(data.performance_glitch_user, data.validPassword, data.title);
 	});
 	it('TC4: Validar NO iniciar sesión dejando campos vacíos en el formulario', () => {
 		loginPage.clickLoginButton();

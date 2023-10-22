@@ -1,15 +1,11 @@
 {
-	"username": {
-		"validUser1": "standard_user",
-		"validUser2": "problem_user",
-		"validUser3": "performance_glitch_user",
-		"userBlock": "locked_out_user",
-		"userInvalid": "A"
-	},
-	"password": {
-		"validPass": "secret_sauce",
-		"invalidPass": "A "
-	},
+	"standard_user": "standard_user",
+	"problem_user": "problem_user",
+	"performance_glitch_user": "performance_glitch_user",
+	"userBlock": "locked_out_user",
+	"userInvalid": "A",
+	"validPassword": "secret_sauce",
+	"invalidPassword": "A ",
 	"endpoints": {
 		"endpoint1": "/inventory.html",
 		"endpoint2": "/cart.html",

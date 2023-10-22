@@ -10,26 +10,22 @@ class Login {
 		rules: () => cy.get('h3[data-test="error"]'),
 	};
 
-	typeUsernameValid1() {
-		this.get.username().type(data.username.validUser1);
+	typeUsername(userName) {
+		this.get.username().type(userName);
 	}
-	typeUsernameValid2() {
-		this.get.username().type(data.username.validUser2);
+	typePassword(password) {
+		this.get.password().type(password);
 	}
-	typeUsernameValid3() {
-		this.get.username().type(data.username.validUser3);
-	}
+
 	typeUsernameBlock() {
-		this.get.username().type(data.username.userBlock);
+		this.get.username().type(data.userBlock);
 	}
 	typeUsernameInvalid() {
-		this.get.username().type(data.username.userInvalid);
+		this.get.username().type(data.userInvalid);
 	}
-	typePasswordValid() {
-		this.get.password().type(data.password.validPass);
-	}
+
 	typePasswordInvalid() {
-		this.get.password().type(data.password.invalidPass);
+		this.get.password().type(data.invalidPass);
 	}
 
 	clickUsername() {
@@ -90,4 +86,4 @@ class Login {
 	}
 }
 
-export const login = new Login();
+export const loginPage = new Login();

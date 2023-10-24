@@ -1,0 +1,43 @@
+{
+	"username": "standard_user",
+	"password": "secret_sauce",
+	"endpoints": {
+		"endpoint1": "/inventory.html",
+		"endpoint2": "/cart.html",
+		"endpoint3": "/checkout-step-one.html",
+		"endpoint4": "/checkout-step-two.html",
+		"endpoint5": "/checkout-complete.html"
+	},
+	"title": "Swag Labs",
+
+	"text": {
+		"titleCartEmpty": "Your Cart",
+		"quantityColumn": "QTY",
+		"descriptionColumn": "Description",
+		"buttonRemove": "Remove",
+		"inventoryItemName": "Sauce Labs Backpack",
+		"numShoppingcartBadge": "1",
+		"inventoryItemDesc": "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
+		"inventoryItemPrice": "$29.99"
+	},
+	"element": {
+		"titleCartEmpty": ".title",
+		"quantityColumn": ".cart_quantity_label",
+		"descriptionColumn": ".cart_desc_label",
+		"buttonContinueShopping": "#continue-shopping",
+		"buttonCheckout": "#checkout",
+		"buttonAddCard": "#add-to-cart-sauce-labs-backpack",
+		"buttonRemove": "#remove-sauce-labs-backpack",
+		"shoppingCartLink": ".shopping_cart_link",
+		"inventoryItemName": ".inventory_item_name",
+		"shoppingcartBadge": ".shopping_cart_badge",
+		"cartQuantity": ".cart_quantity",
+		"inventoryItemDesc": ".inventory_item_desc",
+		"inventoryItemPrice": ".inventory_item_price"
+	},
+
+	"id": {
+		"continueShopping": "continue-shopping",
+		"buttonCheckout": "checkout"
+	}
+}

@@ -1,0 +1,28 @@
+{
+	"standard_user": "standard_user",
+	"problem_user": "problem_user",
+	"performance_glitch_user": "performance_glitch_user",
+	"userBlock": "locked_out_user",
+	"userInvalid": "A",
+	"validPassword": "secret_sauce",
+	"invalidPassword": "A ",
+	"endpoints": {
+		"endpoint1": "/inventory.html",
+		"endpoint2": "/cart.html",
+		"endpoint3": "/checkout-step-one.html",
+		"endpoint4": "/checkout-step-two.html",
+		"endpoint5": "/checkout-complete.html"
+	},
+	"message": {
+		"userRequired": "Epic sadface: Username is required",
+		"paswordRequired": "Epic sadface: Password is required",
+		"match": "Epic sadface: Username and password do not match any user in this service",
+		"locked": "Epic sadface: Sorry, this user has been locked out.",
+		"inventory": "Epic sadface: You can only access '/inventory.html' when you are logged in.",
+		"cart": "Epic sadface: You can only access '/cart.html' when you are logged in.",
+		"checkoutOne": "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.",
+		"checkoutTwo": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
+		"complete": "Epic sadface: You can only access '/checkout-complete.html' when you are logged in."
+	},
+	"title": "Swag Labs"
+}

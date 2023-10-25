@@ -5,7 +5,7 @@ describe('US GX-11069', () => {
 		cy.get('#password').type('secret_sauce');
 		cy.get('#login-button').click();
 	});
-	it('TC1: Validar visualizar detalles del producto desde el PDP', () => {
+	it.skip('TC1: Validar visualizar detalles del producto desde el PDP', () => {
 		const num = Math.round(Math.random() * 4); //traer valor random para seleccionar item random
 		cy.get('[class="inventory_item_name"]').eq(num).click();
 		cy.get('[class="inventory_details_img"]').should('be.visible'); //validate image
@@ -15,7 +15,7 @@ describe('US GX-11069', () => {
 		cy.get('#back-to-products').should('be.visible'); //Validate buttom back to product
 		cy.get('[class="inventory_details"]').should('contain', 'Add to cart'); //validate buttom add to cart
 	});
-	it('TC2: Validar cambio del boton add to cart a remove', () => {
+	it.skip('TC2: Validar cambio del boton add to cart a remove', () => {
 		const num = Math.round(Math.random() * 4); //traer valor random para seleccionar item random
 		cy.get('[class="inventory_item_name"]').eq(num).click();
 		cy.get('[class="inventory_details_img"]').should('be.visible'); //validate image

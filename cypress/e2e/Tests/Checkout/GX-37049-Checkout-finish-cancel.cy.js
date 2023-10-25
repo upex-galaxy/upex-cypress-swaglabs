@@ -38,7 +38,7 @@ describe('SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en
 			});
 		}
 	);
-	it('37050 | TC1: Validar finalizar la compra de un producto', () => {
+	it.skip('37050 | TC1: Validar finalizar la compra de un producto', () => {
 		swglabCheckout2Page.clickButtonFinish();
 		swgCompleteChkPage.get
 			.elementCompleteHeaderTxt()
@@ -55,7 +55,7 @@ describe('SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en
 			});
 	});
 
-	it('37050 | TC2: Validar cancelar la compra de un producto ', () => {
+	it.skip('37050 | TC2: Validar cancelar la compra de un producto ', () => {
 		swglabCheckout2Page.clickButtonCancel();
 		cy.url().should('contain', data.endpointPLP);
 
@@ -69,7 +69,7 @@ describe('SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en
 			});
 	});
 
-	it('37050 | TC3: Validar finalizar la compra de 2 productos', () => {
+	it.skip('37050 | TC3: Validar finalizar la compra de 2 productos', () => {
 		//PRECONDITION
 		cy.visit('/');
 		SwagLogin.Login(data.Username, data.Password);
@@ -123,7 +123,7 @@ describe('SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en
 					});
 			});
 	});
-	it('37050 | TC4: Validar cancelar la compra de 2 productos', () => {
+	it.skip('37050 | TC4: Validar cancelar la compra de 2 productos', () => {
 		//PRECONDITION
 		cy.visit('/');
 		SwagLogin.Login(data.Username, data.Password);

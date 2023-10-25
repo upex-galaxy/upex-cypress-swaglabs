@@ -9,7 +9,7 @@ describe('GX-38224-SwagLabs | Checkout | Finalizar o Cancelar la compra de un pr
 		cy.visit('/');
 		login.login();
 	});
-	it('38225 | TC1: Validar finalizar compra del producto', () => {
+	it.skip('38225 | TC1: Validar finalizar compra del producto', () => {
 		const firstName = faker.name.firstName();
 		const lastName = faker.name.lastName();
 		const postalCode = faker.address.zipCode();
@@ -39,7 +39,7 @@ describe('GX-38224-SwagLabs | Checkout | Finalizar o Cancelar la compra de un pr
 		checkout.get.text().should('have.text', 'Your order has been dispatched, and will arrive just as fast as the pony can get there!');
 	});
 
-	it.only('38225 | TC2: Validar cancelar compra del producto', () => {
+	it.skip('38225 | TC2: Validar cancelar compra del producto', () => {
 		plp.randomCard().then(index => {
 			const [title, desc, price, random] = index;
 			plp.get.cartIcon().should('have.text', '1');

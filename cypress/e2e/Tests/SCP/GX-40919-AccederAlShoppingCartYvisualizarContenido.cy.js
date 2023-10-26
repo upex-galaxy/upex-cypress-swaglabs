@@ -19,20 +19,20 @@ describe('GX-40919 | SwagLabs | SCP | Acceder al Shopping Cart y visualizar cont
 	});
 	it('40920 | TC1: Validar acceder al carrito vacío)', () => {
 		shoppingCartPage.clickIconShoppingCart();
-		shoppingCartPage.titleCartEmptyAssert();
-		shoppingCartPage.quantityColumnAssert();
-		shoppingCartPage.descriptionColumnAssert();
-		shoppingCartPage.buttonContinueShoppingAssert();
-		shoppingCartPage.buttonCheckoutAssert();
+		shoppingCartPage.get.titleCartEmpty().should('have.text', data.text.titleCartEmpty);
+		shoppingCartPage.get.quantityColumn().should('have.text', data.text.quantityColumn);
+		shoppingCartPage.get.descriptionColumn().should('have.text', data.text.descriptionColumn);
+		shoppingCartPage.get.buttonContinueShopping().should('have.id', 'continue-shopping');
+		shoppingCartPage.get.buttonCheckout().should('have.id', 'checkout');
 	});
 	it('40920 | TC2: Validar acceder al carrito lleno)', () => {
 		shoppingCartPage.clickInButtonAddCard();
 		shoppingCartPage.buttonRemoveAssert();
 		shoppingCartPage.clickInShoppingCartLink();
-		shoppingCartPage.inventoryItemNameAssert();
-		shoppingCartPage.shoppingcartBadgeAssert();
-		shoppingCartPage.cartQuantityAssert();
-		shoppingCartPage.inventoryItemDescAssert();
-		shoppingCartPage.inventoryItemPriceAssert();
+		shoppingCartPage.get.inventoryItemName().should('have.text', data.text.inventoryItemName);
+		shoppingCartPage.get.shoppingcartBadge().should('have.text', data.text.numShoppingcartBadge);
+		shoppingCartPage.get.cartQuantity().should('have.attr', 'class', 'cart_quantity');
+		shoppingCartPage.get.inventoryItemDesc().should('have.text', data.text.inventoryItemDesc);
+		shoppingCartPage.get.inventoryItemPrice().should('have.text', data.text.inventoryItemPrice);
 	});
 });

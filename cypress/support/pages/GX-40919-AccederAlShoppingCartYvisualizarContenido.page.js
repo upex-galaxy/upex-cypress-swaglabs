@@ -31,51 +31,17 @@ class ShoppingCartPage {
 	clickLoginButton() {
 		this.get.loginButton().click();
 	}
-
 	clickIconShoppingCart() {
 		this.get.iconShoppingCart().click();
 	}
-
 	buttonRemoveAssert() {
 		this.get.buttonRemove().should('have.text', data.text.buttonRemove);
 	}
-
 	clickInButtonAddCard() {
 		this.get.buttonAddCard().click();
 	}
 	clickInShoppingCartLink() {
 		this.get.shoppingCartLink().click();
-	}
-	titleCartEmptyAssert() {
-		this.get.titleCartEmpty().should('have.text', data.text.titleCartEmpty);
-	}
-	quantityColumnAssert() {
-		this.get.quantityColumn().should('have.text', data.text.quantityColumn);
-	}
-	descriptionColumnAssert() {
-		this.get.descriptionColumn().should('have.text', data.text.descriptionColumn);
-	}
-	buttonContinueShoppingAssert() {
-		this.get.buttonContinueShopping().should('have.id', 'continue-shopping');
-	}
-	buttonCheckoutAssert() {
-		this.get.buttonCheckout().should('have.id', 'checkout');
-	}
-
-	inventoryItemNameAssert() {
-		this.get.inventoryItemName().should('have.text', data.text.inventoryItemName);
-	}
-	shoppingcartBadgeAssert() {
-		this.get.shoppingcartBadge().should('have.text', data.text.numShoppingcartBadge);
-	}
-	cartQuantityAssert() {
-		this.get.cartQuantity().should('have.attr', 'class', 'cart_quantity');
-	}
-	inventoryItemDescAssert() {
-		this.get.inventoryItemDesc().should('have.text', data.text.inventoryItemDesc);
-	}
-	inventoryItemPriceAssert() {
-		this.get.inventoryItemPrice().should('have.text', data.text.inventoryItemPrice);
 	}
 }
 

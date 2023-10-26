@@ -1,0 +1,17 @@
+{
+	"username": "standard_user",
+	"password": "secret_sauce",
+
+	"title": "Swag Labs",
+
+	"text": {
+		"titleCartEmpty": "Your Cart",
+		"quantityColumn": "QTY",
+		"descriptionColumn": "Description",
+		"buttonRemove": "Remove",
+		"inventoryItemName": "Sauce Labs Backpack",
+		"numShoppingcartBadge": "1",
+		"inventoryItemDesc": "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
+		"inventoryItemPrice": "$29.99"
+	}
+}

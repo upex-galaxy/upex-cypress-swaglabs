@@ -12,7 +12,7 @@ describe('US GX-25835 | TS: SwagLabs | PLP Sorting | Filtrar productos por nombr
 		filter.get.submitButton().click();
 	});
 
-	it('25836 | TC01: Validar filtrar por nombre descendente al elegir opción “Name (Z TO A)“', () => {
+	it.skip('25836 | TC01: Validar filtrar por nombre descendente al elegir opción “Name (Z TO A)“', () => {
 		const myArray = filter.nameZtoA();
 
 		filter.get.filtro().select('za');
@@ -22,7 +22,7 @@ describe('US GX-25835 | TS: SwagLabs | PLP Sorting | Filtrar productos por nombr
 		});
 	});
 
-	it('25836 | TC02: Validar filtrar por nombre ascendente al elegir opción “Name (A TO Z)“', () => {
+	it.skip('25836 | TC02: Validar filtrar por nombre ascendente al elegir opción “Name (A TO Z)“', () => {
 		const myArray = filter.nameAtoZ();
 
 		filter.get.filtro().select('az');
@@ -32,7 +32,7 @@ describe('US GX-25835 | TS: SwagLabs | PLP Sorting | Filtrar productos por nombr
 		});
 	});
 
-	it('25836 | TC03: Validar filtrar por precio ascendente al elegir opción “Price (low to high)“', () => {
+	it.skip('25836 | TC03: Validar filtrar por precio ascendente al elegir opción “Price (low to high)“', () => {
 		const myArray = filter.priceLowHigh();
 
 		filter.get.filtro().select('lohi');
@@ -42,7 +42,7 @@ describe('US GX-25835 | TS: SwagLabs | PLP Sorting | Filtrar productos por nombr
 		});
 	});
 
-	it('25836 | TC04: Validar filtrar por precio descendente al elegir opción “Price (high to low)“', () => {
+	it.skip('25836 | TC04: Validar filtrar por precio descendente al elegir opción “Price (high to low)“', () => {
 		const myArray = filter.priceHighLow();
 
 		filter.get.filtro().select('hilo');

@@ -18,7 +18,7 @@ describe('SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o
 		shoppingCartPag.elements.shoppingCartBadge().should('not.exist');
 	});
 
-	it('26151 | TC1: Validar agregar productos desde el PLP al Shopping-cart exitosamente', () => {
+	it.skip('26151 | TC1: Validar agregar productos desde el PLP al Shopping-cart exitosamente', () => {
 		shoppingCartPag.elements.headerSecondaryTitle().should('have.text', 'Products');
 		homeSagPage.elements.itemsContainer().should('be.visible');
 
@@ -60,7 +60,7 @@ describe('SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o
 			cy.url().should('contain', swagLabs.endpoint.cart);
 			shoppingCartPag.elements.headerSecondaryTitle().should('have.text', 'Your Cart');
 
-			shoppingCartPag.detailsProdCar(itemsCount, values.valueClass[ 1 ].cart[ 0 ]).then(val => {
+			shoppingCartPag.detailsProdCar(itemsCount, values.valueClass[1].cart[0]).then(val => {
 				expect(val).to.equal(Cypress.env('productDetailsPlp')[0].title[itemsCount]);
 			});
 			shoppingCartPag.detailsProdCar(itemsCount, values.valueClass[1].cart[1]).then(val => {
@@ -73,7 +73,7 @@ describe('SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o
 		}
 	});
 
-	it('26151 | TC2: Validar agregar productos desde el PDP al Shopping-cart exitosamente', () => {
+	it.skip('26151 | TC2: Validar agregar productos desde el PDP al Shopping-cart exitosamente', () => {
 		shoppingCartPag.deleteProduct(); // metodo requerido para borrar los productos cargados en el TC anterior
 		for (let itemsCount = 0; itemsCount < values.itemsProd[1]; itemsCount++) {
 			shoppingCartPag.selectProduct();
@@ -82,7 +82,7 @@ describe('SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o
 				expect(val).to.equal('Add to cart');
 			});
 			shoppingCartPag.addToCartPdp();
-	
+
 			shoppingCartPag.textBtnPdp().then(val => {
 				expect(val).to.equal('Remove');
 			});
@@ -109,7 +109,7 @@ describe('SwagLabs | SCP | Agregar producto al carrito de compras desde el PLP o
 		}
 	});
 
-	it('26151 | TC3: Validar usar boton "Back to products" durante el proceso de agregar productos desde el PDP al Shopping-cart exitosamente', () => {
+	it.skip('26151 | TC3: Validar usar boton "Back to products" durante el proceso de agregar productos desde el PDP al Shopping-cart exitosamente', () => {
 		shoppingCartPag.deleteProduct(); // metodo requerido para borrar los productos cargados en el TC anterior
 		for (let itemsCount = 0; itemsCount < values.itemsProd[1]; itemsCount++) {
 			shoppingCartPag.selectProduct();

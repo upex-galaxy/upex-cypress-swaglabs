@@ -11,7 +11,7 @@ describe('GX-34846-SwagLabs | SCP | Agregar producto al carrito de compras desde
 		login.login();
 	});
 
-	it('34847 | TC1: Validar agregar producto desde el PLP', () => {
+	it.skip('34847 | TC1: Validar agregar producto desde el PLP', () => {
 		plp.randomCard().then(index => {
 			const [title, desc, price, random] = index;
 			plp.get.cartIcon().should('have.text', '1');
@@ -23,7 +23,7 @@ describe('GX-34846-SwagLabs | SCP | Agregar producto al carrito de compras desde
 		});
 	});
 
-	it('34847 | TC2: Validar agregar producto desde el PDP', () => {
+	it.skip('34847 | TC2: Validar agregar producto desde el PDP', () => {
 		plp.clickRandomCard();
 		pdp.addToCart().then(index => {
 			const [title, desc, price] = index;

@@ -3,7 +3,7 @@ import data from '@data/GX-40629-IniciarSesionyBRdeAcceso.json';
 
 const fillFormAndSubmit = (userName, password, valueAssert) => {
 	loginPage.typeUsername(userName);
-	loginPage.get.username().should('have.value', userName);
+	loginPage.get.userName().should('have.value', userName);
 	loginPage.typePassword(password);
 	loginPage.get.password().should('have.value', password);
 	loginPage.clickLoginButton();
@@ -22,7 +22,7 @@ describe('', () => {
 	beforeEach('PRC:visit login SwagLab', () => {
 		loginPage.get.endpoint();
 	});
-	it('40630 | TC1: Validar iniciar sesión con campos válidos (standard_user.)', () => {
+	it.only('40630 | TC1: Validar iniciar sesión con campos válidos (standard_user.)', () => {
 		fillFormAndSubmit(data.standard_user, data.validPassword, data.title);
 	});
 	it('40630 | TC2: Validar iniciar sesión con campos válidos (problem_user)', () => {

@@ -18,6 +18,26 @@ import { initSessionSwagLabs } from '@pages/loginLCasco2.Page';
 const { login } = Cypress.env('swagLabs');
 const { baseUrl } = Cypress.env();
 
+import { loginPage } from '@pages/GX-41928-Login.Page';
+
+Cypress.Commands.add('visitEndpoint', (endpoint, valueAssert) => {
+	cy.visit(`/${endpoint}`, { failOnStatusCode: false });
+	loginPage.get.loginError().should('have.text', valueAssert);
+});
+
+Cypress.Commands.add('fillFormAndSubmit', (userName, password, valueAssert) => {
+	userName && loginPage.typeUserName(userName);
+	userName && loginPage.get.userName().should('have.text', 'user');
+	password && loginPage.typePassword(password);
+	password && loginPage.get.password().should('have.text', 'secret');
+	loginPage.selectLoginButton();
+	if (valueAssert === 'Swag Labs') {
+		loginPage.get.exitLogin().should('have.text', valueAssert);
+	} else {
+		loginPage.get.loginError().should('have.text', valueAssert);
+	}
+});
+
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //

@@ -1,0 +1,30 @@
+{
+	"userName": {
+		"validUser1": "standard_user",
+		"validUser2": "problem_user",
+		"validUser3": "performance_glitch_user",
+		"validUser4": "error_user",
+		"validUser5": "visual_user",
+		"lockedUser": "locked_out_user",
+		"notMachUser": "problem_user2"
+	},
+	"password": {
+		"validPass": "secret_sauce",
+		"invalidPass": "secret_sauce2"
+	},
+	"message": {
+		"locked": "Epic sadface: Sorry, this user has been locked out.",
+		"notMatch": "Epic sadface: Username and password do not match any user in this service",
+		"userRequired": "Epic sadface: Username is required",
+		"passwordRequired": "Epic sadface: Password is required",
+		"needLogIn": "Epic sadface: You can only access '/inventory.html' when you are logged in."
+	},
+	"endpoints": {
+		"endpointUnRegistered1": "/inventory.html",
+		"endpointUnRegistered2": "/cart.html",
+		"endpointUnRegistered3": "/checkout-step-one.html",
+		"endpointUnRegistered4": "/checkout-step-two.html",
+		"endpointUnRegistered5": "/checkout-complete.html"
+	},
+	"endpointInventory": "exitLogin"
+}

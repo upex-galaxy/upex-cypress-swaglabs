@@ -63,3 +63,21 @@ Inicio de sesión fallido (Null username + Null password)
 Epic sadface: Username is required
 
 Validations:
+
+42152| TC1: Validar iniciar sesión correctamente con el username “standard_user”
+
+42152| TC2: Validar iniciar sesión correctamente con el username “problem_user”
+
+42152| TC3: Validar iniciar sesión correctamente con el username “performance_glitch_user”
+
+42152| TC4: Validar no poder iniciar sesión con un username bloqueado
+
+42152| TC5 Validar inicar sesión con un username y un password diferente al servicio web
+
+42152| TC6 Validar no poder iniciar sesión sin el username
+
+42152 TC7 Validar no poder iniciar sesión sin el password
+
+42152| TC8 Validar no poder iniciar sesión sin username ni password
+
+41426| TC9 Validar intentar ingresar a un endpoint de la website sin haber iniciado sesión

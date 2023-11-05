@@ -7,34 +7,33 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
+
 import 'cypress-file-upload';
 import 'cypress-wait-until';
 import '@4tw/cypress-drag-drop';
 import 'cypress-downloadfile/lib/downloadFileCommand';
-import { loginExample } from '@pages/Login.Page';
-const { authLogin, dashboardIndex } = Cypress.env('endpoint');
 import { signin } from '@pages/SignIn.Page.js';
 import { initSessionSwagLabs } from '@pages/loginLCasco2.Page';
 const { login } = Cypress.env('swagLabs');
 const { baseUrl } = Cypress.env();
 
-import { loginPage } from '@pages/GX-41928-Login.Page';
+import { LoginPage } from '@pages/GX-41928-Login.Page';
 
-Cypress.Commands.add('visitEndpoint', (endpoint, valueAssert) => {
+Cypress.Commands.add('visitEndpoint', (endpoint, AssertError) => {
 	cy.visit(`/${endpoint}`, { failOnStatusCode: false });
-	loginPage.get.loginError().should('have.text', valueAssert);
+	LoginPage.get.loginError().should('have.text', AssertError);
 });
 
-Cypress.Commands.add('fillFormAndSubmit', (userName, password, valueAssert) => {
-	userName && loginPage.typeUserName(userName);
-	userName && loginPage.get.userName().should('have.text', 'user');
-	password && loginPage.typePassword(password);
-	password && loginPage.get.password().should('have.text', 'secret');
-	loginPage.selectLoginButton();
-	if (valueAssert === 'Swag Labs') {
-		loginPage.get.exitLogin().should('have.text', valueAssert);
+Cypress.Commands.add('fillFormAndSubmit', (userName, password, AssertError) => {
+	userName && LoginPage.typeUserName(userName);
+	userName && LoginPage.get.userName().should('have.value', userName);
+	password && LoginPage.typePassword(password);
+	password && LoginPage.get.password().should('have.value', password);
+	LoginPage.selectLoginButton();
+	if (AssertError) {
+		LoginPage.get.loginError().should('have.text', AssertError);
 	} else {
-		loginPage.get.loginError().should('have.text', valueAssert);
+		LoginPage.get.headerContainer().should('have.text', 'Products');
 	}
 });
 

@@ -17,7 +17,11 @@
 		"notMatch": "Epic sadface: Username and password do not match any user in this service",
 		"userRequired": "Epic sadface: Username is required",
 		"passwordRequired": "Epic sadface: Password is required",
-		"needLogIn": "Epic sadface: You can only access '/inventory.html' when you are logged in."
+		"needLogIn1": "Epic sadface: You can only access '/inventory.html' when you are logged in.",
+		"needLogIn2": "Epic sadface: You can only access '/cart.html' when you are logged in.",
+		"needLogIn3": "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.",
+		"needLogIn4": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
+		"needLogIn5": "Epic sadface: You can only access '/checkout-complete.html' when you are logged in."
 	},
 	"endpoints": {
 		"endpointUnRegistered1": "/inventory.html",
@@ -26,5 +30,5 @@
 		"endpointUnRegistered4": "/checkout-step-two.html",
 		"endpointUnRegistered5": "/checkout-complete.html"
 	},
-	"endpointInventory": "exitLogin"
+	"inventoryEndpoint": "/inventory.html"
 }

@@ -49,7 +49,7 @@ describe('Login', () => {
 		cy.log(data);
 		cy.fillFormAndSubmit(data.userName.validUser1, '', data.message.passwordRequired);
 	});
-	it('41929 | TC10: Validar NO poder INICIAR SESIÓN cuando USERNAME y PASSWORD estan VACIOS.', () => {
+	it('41929 | TC10: Validar NO poder INICIAR SESIÓN cuando USERNAME y PASSWORD están VACIOS.', () => {
 		cy.log(data);
 		cy.fillFormAndSubmit(undefined, undefined, data.message.userRequired);
 	});
@@ -57,19 +57,19 @@ describe('Login', () => {
 		cy.log(data);
 		cy.visitEndpoint(data.endpoints.endpointUnRegistered1, data.message.needLogIn1);
 	});
-	it('41929 | TC12: Validar NO ingresar a la website (www.saucedemo.com/inventory.html) sin haber iniciado sesión.', () => {
+	it('41929 | TC12: Validar NO ingresar a la website (www.saucedemo.com/cart.html) sin haber iniciado sesión.', () => {
 		cy.log(data);
 		cy.visitEndpoint(data.endpoints.endpointUnRegistered2, data.message.needLogIn2);
 	});
-	it('41929 | TC13: Validar NO ingresar a la website (www.saucedemo.com/inventory.html) sin haber iniciado sesión.', () => {
+	it('41929 | TC13: Validar NO ingresar a la website (www.saucedemo.com/checkout-step-one.html) sin haber iniciado sesión.', () => {
 		cy.log(data);
 		cy.visitEndpoint(data.endpoints.endpointUnRegistered3, data.message.needLogIn3);
 	});
-	it('41929 | TC14: Validar NO ingresar a la website (www.saucedemo.com/inventory.html) sin haber iniciado sesión.', () => {
+	it('41929 | TC14: Validar NO ingresar a la website (www.saucedemo.com/checkout-step-two.html) sin haber iniciado sesión.', () => {
 		cy.log(data);
 		cy.visitEndpoint(data.endpoints.endpointUnRegistered4, data.message.needLogIn4);
 	});
-	it('41929 | TC15: Validar NO ingresar a la website (www.saucedemo.com/inventory.html) sin haber iniciado sesión.', () => {
+	it('41929 | TC15: Validar NO ingresar a la website (www.saucedemo.com/checkout-complete.html) sin haber iniciado sesión.', () => {
 		cy.log(data);
 		cy.visitEndpoint(data.endpoints.endpointUnRegistered5, data.message.needLogIn5);
 	});

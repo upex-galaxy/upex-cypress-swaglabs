@@ -10,7 +10,7 @@ describe('GX-42151 | TS: 🪶SwagLabs | Account | Iniciar sesión y BR de Acceso
 			cy.url().should('contain', 'inventory');
 		});
 	});
-	interfaces('42152| TC2: Validar  iniciar sesión correctamente con el username “problem_user”', () => {
+	it('42152| TC2: Validar  iniciar sesión correctamente con el username “problem_user”', () => {
 		cy.fixture('data/GX-29331/GX-42151-SwaglabsLogin.json').then(the => {
 			cy.get('#user-name').type(the.UserName.valid.Problem);
 			cy.get('#password').type(the.Password.ValidP.valido);
@@ -86,5 +86,4 @@ describe('GX-42151 | TS: 🪶SwagLabs | Account | Iniciar sesión y BR de Acceso
 });
 
 import { removeLogs } from '@helper/RemoveLogs';
-import { interfaces } from 'mocha';
 removeLogs();

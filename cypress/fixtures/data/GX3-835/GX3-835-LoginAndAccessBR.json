@@ -1,0 +1,43 @@
+{
+	"data": {
+		"valid": {
+			"validUser": "standard_user",
+			"problemUser": "problem_user",
+			"performanceUser": "performance_glitch_user",
+			"errorUser": "error_user",
+			"password": "secret_sauce",
+			"visualUser": "visual_user"
+		},
+		"invalid": {
+			"lockedUser": "locked_out_user",
+			"incorrectUser": "newUser",
+			"emptyUser": ""
+		}
+	},
+	
+	"passsword": {
+		"validPassword": "secret_sauce",
+		"invalidPassword": {
+			"invalid": "newUser",
+			"empty": ""
+		}
+	},
+	
+	"URL": {
+		"HomeURL": "/inventory.html",
+		"BaseURL": "https://www.saucedemo.com",
+		"CartURL": "/cart.html",
+		"Checkout1URL": "/checkout-step-one.html",
+		"Checkout2URL": "/checkout-step-two.html",
+		"CheckoutComURL": "/checkout-complete.html"
+	},
+	
+	"ErrorMessage": {
+		"BlockedMessage": "Epic sadface: Sorry, this user has been locked out.",
+		"NotMatchMessage": "Epic sadface: Username and password do not match any user in this service",
+		"UserRequiredMessage": "Epic sadface: Username is required",
+		"PassRequiredMessage": "Epic sadface: Password is required",
+		"InitialMessageMessage": "Epic sadface: You can only access",
+		"EndMessageMessage": "when you are logged in."
+	}
+}

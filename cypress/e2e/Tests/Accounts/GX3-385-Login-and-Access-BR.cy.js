@@ -18,34 +18,40 @@ describe('GX3-385 | SwagLabs | Account | Login and sccessBR', () => {
 		cy.url().should('contain', baseUrl);
 		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.lockedUser);
 	});
-	/*
+
 	it('416 | TC03: Check that the user can not log in with an incorrect or nonexistent username', () => {
-		loginSwagLabs.Login(loginCredentials.users.correctUser, loginCredentials.users.correctPass);
-		cy.url().should('contain', 'inventory.html');
+		loginSwagLabs.Login(loginProperties.users.userInv, loginProperties.users.correctPass);
+		cy.url().should('contain', baseUrl);
+		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.PassOrUserInv);
 	});
+
 	it('416 | TC04: Check that the user cannot log in with an incorrect or nonexistent password', () => {
-		loginSwagLabs.Login(loginCredentials.users.correctUser, loginCredentials.users.correctPass);
-		cy.url().should('contain', 'inventory.html');
+		loginSwagLabs.Login(loginProperties.users.correctUser, loginProperties.users.passInv);
+		cy.url().should('contain', baseUrl);
+		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.PassOrUserInv);
 	});
+
 	it('416 | TC05: Check that the user can not log in with an incorrect or nonexistent username and password', () => {
-		loginSwagLabs.Login(loginCredentials.users.correctUser, loginCredentials.users.correctPass);
-		cy.url().should('contain', 'inventory.html');
+		loginSwagLabs.Login(loginProperties.users.userInv, loginProperties.users.passInv);
+		cy.url().should('contain', baseUrl);
+		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.PassOrUserInv);
 	});
+	/*
 	it('416 | TC06: Check that the user can not log in when leaving the username empty in the form', () => {
-		loginSwagLabs.Login(loginCredentials.users.correctUser, loginCredentials.users.correctPass);
-		cy.url().should('contain', 'inventory.html');
+		loginSwagLabs.Login(loginProperties.users.correctUser, loginProperties.users.correctPass);
+		cy.url().should('contain', baseUrl);
 	});
 	it('416 | TC07: Check that the user can not log in when leaving the password empty in the form', () => {
-		loginSwagLabs.Login(loginCredentials.users.correctUser, loginCredentials.users.correctPass);
-		cy.url().should('contain', 'inventory.html');
+		loginSwagLabs.Login(loginProperties.users.correctUser, loginProperties.users.correctPass);
+		cy.url().should('contain', baseUrl);
 	});
 	it('416 | TC08: Check that the user can not log in when leaving the username and password empty in the form', () => {
-		loginSwagLabs.Login(loginCredentials.users.correctUser, loginCredentials.users.correctPass);
-		cy.url().should('contain', 'inventory.html');
+		loginSwagLabs.Login(loginProperties.users.correctUser, loginProperties.users.correctPass);
+		cy.url().should('contain', baseUrl);
 	});
 	it('416 | TC09: Check that the user can not access an endpoint without logging in', () => {
-		loginSwagLabs.Login(loginCredentials.users.correctUser, loginCredentials.users.correctPass);
-		cy.url().should('contain', 'inventory.html');
+		loginSwagLabs.Login(loginProperties.users.correctUser, loginProperties.users.correctPass);
+		cy.url().should('contain', baseUrl);
 	});*/
 });
 

@@ -72,6 +72,24 @@ describe('GX3-385 | SwagLabs | Account | Login and sccessBR', () => {
 		cy.url().should('contain', baseUrl);
 		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.checkoutOneError);
 	});
+
+	it('416 | TC12: Check that the user can not access an endpoint without logging in (/checkout-step-two.html)', () => {
+		cy.visit(baseUrl + endpoint.checkoutTwo, { failOnStatusCode: false });
+		cy.url().should('contain', baseUrl);
+		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.checkoutTwoError);
+	});
+
+	it('416 | TC13: Check that the user can not access an endpoint without logging in (/checkout-complete.html)', () => {
+		cy.visit(baseUrl + endpoint.checkoutAll, { failOnStatusCode: false });
+		cy.url().should('contain', baseUrl);
+		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.checkoutAllError);
+	});
+
+	// it('416 | TC14: Check that the user can not access an endpoint without logging in (/inventory-item.html)', () => {
+	// 	cy.visit(baseUrl + endpoint.product, { failOnStatusCode: false });
+	// 	cy.url().should('contain', baseUrl);
+	// 	loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.inventoryError);
+	// });
 });
 
 // NOTA:

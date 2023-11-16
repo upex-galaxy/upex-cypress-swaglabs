@@ -16,74 +16,77 @@ describe('GX3-385 | SwagLabs | Account | Login and sccessBR', () => {
 	it('416 | TC02: Check that the user can not log in when the username is locked', () => {
 		loginSwagLabs.Login(loginProperties.users.lockUser, loginProperties.users.correctPass);
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.lockedUser);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.lockedUser);
 	});
 
 	it('416 | TC03: Check that the user can not log in with an incorrect or nonexistent username', () => {
 		loginSwagLabs.Login(loginProperties.users.userInv, loginProperties.users.correctPass);
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.PassOrUserInv);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.PassOrUserInv);
 	});
 
 	it('416 | TC04: Check that the user cannot log in with an incorrect or nonexistent password', () => {
 		loginSwagLabs.Login(loginProperties.users.correctUser, loginProperties.users.passInv);
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.PassOrUserInv);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.PassOrUserInv);
 	});
 
 	it('416 | TC05: Check that the user can not log in with an incorrect or nonexistent username and password', () => {
 		loginSwagLabs.Login(loginProperties.users.userInv, loginProperties.users.passInv);
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.PassOrUserInv);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.PassOrUserInv);
 	});
 
 	it('416 | TC06: Check that the user can not log in when leaving the username empty in the form', () => {
 		loginSwagLabs.Login('', loginProperties.users.correctPass);
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.UserNull);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.UserNull);
 	});
 
 	it('416 | TC07: Check that the user can not log in when leaving the password empty in the form', () => {
 		loginSwagLabs.Login(loginProperties.users.correctUser, '');
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.PassNull);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.PassNull);
 	});
 
 	it('416 | TC08: Check that the user can not log in when leaving the username and password empty in the form', () => {
 		loginSwagLabs.Login('', '');
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.UserNull);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.UserNull);
 	});
 
 	it('416 | TC09: Check that the user can not access an endpoint without logging in (/inventory.html)', () => {
 		cy.visit(baseUrl + endpoint.inventory, { failOnStatusCode: false });
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.inventoryError);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.inventoryError);
 	});
 
 	it('416 | TC10: Check that the user can not access an endpoint without logging in (/cart.html)', () => {
 		cy.visit(baseUrl + endpoint.cart, { failOnStatusCode: false });
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.cartError);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.cartError);
 	});
 
 	it('416 | TC11: Check that the user can not access an endpoint without logging in (/checkout-step-one.html)', () => {
 		cy.visit(baseUrl + endpoint.checkoutOne, { failOnStatusCode: false });
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.checkoutOneError);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.checkoutOneError);
 	});
 
 	it('416 | TC12: Check that the user can not access an endpoint without logging in (/checkout-step-two.html)', () => {
 		cy.visit(baseUrl + endpoint.checkoutTwo, { failOnStatusCode: false });
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.checkoutTwoError);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.checkoutTwoError);
 	});
 
 	it('416 | TC13: Check that the user can not access an endpoint without logging in (/checkout-complete.html)', () => {
 		cy.visit(baseUrl + endpoint.checkoutAll, { failOnStatusCode: false });
 		cy.url().should('contain', baseUrl);
-		loginSwagLabs.get.notMatchMessage().should('contain', loginProperties.errorMsg.checkoutAllError);
+		loginSwagLabs.get.errorMessageDisplay().should('contain', loginProperties.errorMsg.checkoutAllError);
 	});
+
+	// no veo el mensaje de este caso:
+	// Epic sadface: You can only access '/inventory-item.html' when you are logged in.
 
 	// it('416 | TC14: Check that the user can not access an endpoint without logging in (/inventory-item.html)', () => {
 	// 	cy.visit(baseUrl + endpoint.product, { failOnStatusCode: false });

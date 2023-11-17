@@ -1,5 +1,4 @@
 import { loginSwagLabs } from '@pages/GX3-385-LoginAndAccessBRPage/GX3-385-LoginAndAccessBRPage';
-// import { fill } from 'cypress/types/lodash';
 
 const { baseUrl } = Cypress.env(); //para acceder a la propiedad de "baseUrl" (ver archivo cypress.config.js)
 const { login: loginProperties, endpoint } = Cypress.env('swagLabs'); // significa loginProperties = Cypress.env('swagLabs').login

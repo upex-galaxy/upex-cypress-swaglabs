@@ -1,0 +1,10 @@
+{
+	"username": "standard_user",
+	"password": "secret_sauce",
+
+	"form": {
+		"firstname": "Andrea",
+		"lastname": "Lawrence",
+		"zip": "14"
+	}
+}

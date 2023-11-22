@@ -1,0 +1,41 @@
+{
+	"Username": {
+		"input": "[data-test = 'username']",
+		"data": {
+			"valid": {
+				"username1": "standard_user",
+				"username2": "problem_user",
+				"username3": "performance_glitch_user",
+				"username4": "error_user",
+				"username5": "visual_user"
+			},
+			"invalid": {
+				"username6": "franco_user",
+				"username7": ""
+			},
+			"blocked": {
+				"username8": "locked_out_user"
+			}
+		}
+	},
+	"Password": {
+		"input": "[data-test = 'password']",
+		"data": {
+			"valid": {
+				"password": "secret_sauce"
+			},
+			"invalid": {
+				"invalidPass": "salsa_secreta",
+				"emptyPass": ""
+			}
+		}
+	},
+	"SubmitButton": {
+		"button": "[type = 'submit']",
+		"appLogo": ".app_logo",
+		"isLoggedIn": "Swag"
+	},
+	"ErrorMessage": {
+		"tag": "[data-test = 'error']"
+	}
+}

@@ -17,23 +17,23 @@ import { initSessionSwagLabs } from '@pages/loginLCasco2.Page';
 const { login } = Cypress.env('swagLabs');
 const { baseUrl } = Cypress.env();
 
-import { LoginPage } from '@pages/GX-41928-Login.Page';
+import { IniciarSesiónPage } from '@pages/GX3-582-IniciarSesión.Page';
 
 Cypress.Commands.add('visitEndpoint', (endpoint, AssertError) => {
 	cy.visit(`/${endpoint}`, { failOnStatusCode: false });
-	LoginPage.get.loginError().should('have.text', AssertError);
+	IniciarSesiónPage.loginErrorMessage().should('have.text', AssertError);
 });
 
 Cypress.Commands.add('fillFormAndSubmit', (userName, password, AssertError) => {
-	userName && LoginPage.typeUserName(userName);
-	userName && LoginPage.get.userName().should('have.value', userName);
-	password && LoginPage.typePassword(password);
-	password && LoginPage.get.password().should('have.value', password);
-	LoginPage.selectLoginButton();
+	userName && IniciarSesiónPage.typeUserName(userName);
+	userName && IniciarSesiónPage.get.userName().should('have.value', userName);
+	password && IniciarSesiónPage.typePassword(password);
+	password && IniciarSesiónPage.get.password().should('have.value', password);
+	IniciarSesiónPage.selectLoginButton();
 	if (AssertError) {
-		LoginPage.get.loginError().should('have.text', AssertError);
+		IniciarSesiónPage.loginErrorMessage().should('have.text', AssertError);
 	} else {
-		LoginPage.get.headerContainer().should('have.text', 'Products');
+		IniciarSesiónPage.successfulLoginMessage().should('have.text', 'Products');
 	}
 });
 

@@ -77,7 +77,8 @@ jobs:
 
 
 
-                      npm run cypress/e2e/Tests/Accounts/GX3-582-IniciarSesión.cy.js
+
+                      npm run file cypress/e2e/Tests/Accounts/GX3-582-IniciarSesión.cy.js
 
             - name: ✅Import Test Results to Xray
               if: always()

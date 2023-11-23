@@ -163,8 +163,10 @@ Cypress.Commands.add('swabLabsLogin', (username, password) => {
 	cy.visit('https://www.saucedemo.com/');
 	cy.url().should('contain', 'saucedemo');
 	cy.fixture('DOM/space/SwabLogin').then(the => {
-		cy.get(the.username.input).type(username);
-		cy.get(the.password.input).type(password);
+		username && cy.get(the.username.input).type(username);
+		username && cy.get(the.username.input).should('have.value', username);
+		password && cy.get(the.password.input).type(password);
+		password && cy.get(the.password.input).should('have.value', password);
 		cy.get(the.submit).click();
 	});
 });

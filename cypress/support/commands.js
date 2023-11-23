@@ -158,3 +158,13 @@ Cypress.Commands.add('addFromPDP', () => {
 		});
 	});
 });
+
+Cypress.Commands.add('swabLabsLogin', (username, password) => {
+	cy.visit('https://www.saucedemo.com/');
+	cy.url().should('contain', 'saucedemo');
+	cy.fixture('DOM/space/SwabLogin').then(the => {
+		cy.get(the.username.input).type(username);
+		cy.get(the.password.input).type(password);
+		cy.get(the.submit).click();
+	});
+});

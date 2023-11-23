@@ -1,0 +1,22 @@
+{
+	"username": {
+		"input": "#user-name"
+	},
+	"password": {
+		"input": "#password"
+	},
+	"valid": {
+		"password": "secret_sauce",
+		"username": "standard_user"
+	},
+	"invalid": {
+		"LockedUser": "locked_out_user",
+		"bugUser": "problem_user",
+		"glitchUser": "performance_glitch_user",
+		"nullPass": "",
+		"random": "DaniEnseñameComoUsarFaker"
+	},
+
+	"submit": "#login-button",
+	"error": "[data-test='error']"
+}

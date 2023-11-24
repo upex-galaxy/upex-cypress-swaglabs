@@ -15,7 +15,14 @@ describe('GX-44479 | Swag-Labs | Account | Iniciar sesión y BRs de accesos', ()
 			cy.url().should('contain', data.endpoint.inventory);
 		});
 	});
-	// it('GX-44479 | TC2 : ', () => {});
+	it('GX-44479 | TC2: Validar poder acceder exitosamente como ´problem´ user ', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			newAccess.typeUsername(data.credentials.problemUser);
+			newAccess.typePassword(data.credentials.password);
+			newAccess.submitLogin();
+			cy.url().should('contain', data.endpoint.inventory);
+		});
+	});
 	// it('GX-44479 | TC :  ', () => {});
 	// it('GX-44479 | TC :  ', () => {});
 	// it('GX-44479 | TC :  ', () => {});

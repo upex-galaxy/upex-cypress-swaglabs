@@ -40,6 +40,30 @@ describe('GX-44479 | Swag-Labs | Account | Iniciar sesión y BRs de accesos', ()
 			newAccess.get.messContainer().should('be.visible').and('contain', data.message.lockedMess);
 		});
 	});
-	// it('GX-44479 | TC :  ', () => {});
-	// it('GX-44479 | TC :  ', () => {});
+	it('GX-44479 | TC5: Validar NO poder acceder con username no registrado ', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			newAccess.typeUsername(data.credentials.invalidUser);
+			newAccess.typePassword(data.credentials.password);
+			newAccess.submitLogin();
+			cy.url().should('contain', data.pageUrl);
+			newAccess.get.messContainer().should('be.visible').and('contain', data.message.noMatchMess);
+		});
+	});
+	it('GX-44479 | TC6: Validar NO poder acceder con password no registrado ', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			newAccess.typeUsername(data.credentials.standardUser);
+			newAccess.typePassword(data.credentials.invalidPass);
+			newAccess.submitLogin();
+			cy.url().should('contain', data.pageUrl);
+			newAccess.get.messContainer().should('be.visible').and('contain', data.message.noMatchMess);
+		});
+	});
+	// it('GX-44479 | TC7: Validar NO poder acceder con username vacío ', () => {});
+	// it('GX-44479 | TC8: Validar NO poder acceder con password vacío', () => {});
+	// it('GX-44479 | TC9: Validar NO poder acceder con campos username y password vacíos', () => {});
+	// it('GX-44479 | TC10: Validar NO poder acceder al endpoint ´inventory.html´ ', () => {});
+	// it('GX-44479 | TC11: Validar NO poder acceder al endpoint ´cart.html´ ', () => {});
+	// it('GX-44479 | TC12: Validar NO poder acceder al endpoint ´checkout_step_one.html´', () => {});
+	// it('GX-44479 | TC13: Validar NO poder acceder al endpoint ´checkout_step_two.html´', () => {});
+	// it('GX-44479 | TC14: Validar NO poder acceder al endpoint ´checkout_complete.html´', () => {});
 });

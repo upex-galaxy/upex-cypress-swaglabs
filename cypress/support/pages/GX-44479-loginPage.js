@@ -13,11 +13,11 @@ class userAccess {
 	};
 	//  Accionables de Cypress
 	//  Method, Function
-	typeUsername(data) {
-		this.get.usernameInput().type(data);
+	typeUsername(dato) {
+		this.get.usernameInput().type(dato);
 	}
-	typePassword(data) {
-		this.get.passwordInput().type(data);
+	typePassword(dato) {
+		this.get.passwordInput().type(dato);
 	}
 	submitLogin() {
 		this.get.submitButton().click();

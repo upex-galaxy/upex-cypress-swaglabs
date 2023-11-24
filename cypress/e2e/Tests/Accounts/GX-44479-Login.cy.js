@@ -1,18 +1,18 @@
-const { newAccess } = require('../../support/pages/GX-44479-loginPage');
+import { newAccess } from '../../../support/pages/GX-44479-loginPage';
 
 describe('GX-44479 | Swag-Labs | Account | Iniciar sesión y BRs de accesos', () => {
 	beforeEach('Precondición: Usuario debe estar en la pagina de inicio de sesión', () => {
-		cy.fixture('data/GX-44479-loginData').then(the => {
-			cy.visit(the.pageUrl);
-			newAccess.loginBox().should('exist').and('be.visible');
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			cy.visit(data.pageUrl);
+			newAccess.get.loginBox().should('exist').and('be.visible');
 		});
 	});
-	it.only('GX-44479 | TC1 : Validar poder acceder exitosamente como ´standard user´', () => {
-		cy.fixture('data/GX-44479-loginData').then(the => {
-			newAccess.typeUsername(the.standard);
-			newAccess.typePassword(the.password);
+	it('GX-44479 | TC1 : Validar poder acceder exitosamente como ´standard user´', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			newAccess.typeUsername(data.credentials.standardUser);
+			newAccess.typePassword(data.credentials.password);
 			newAccess.submitLogin();
-			cy.url().should('contain', the.inventory);
+			cy.url().should('contain', data.endpoint.inventory);
 		});
 	});
 	// it('GX-44479 | TC2 : ', () => {});

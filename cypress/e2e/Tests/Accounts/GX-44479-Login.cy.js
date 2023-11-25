@@ -36,7 +36,7 @@ describe('GX-44479 | Swag-Labs | Account | Iniciar sesión y BRs de accesos', ()
 			newAccess.typeUsername(data.credentials.lockedUser);
 			newAccess.typePassword(data.credentials.password);
 			newAccess.submitLogin();
-			cy.url().should('contain', data.pageUrl);
+			cy.url().should('not.contain', data.endpoint.inventory);
 			newAccess.get.messContainer().should('be.visible').and('contain', data.message.lockedMess);
 		});
 	});
@@ -45,7 +45,7 @@ describe('GX-44479 | Swag-Labs | Account | Iniciar sesión y BRs de accesos', ()
 			newAccess.typeUsername(data.credentials.invalidUser);
 			newAccess.typePassword(data.credentials.password);
 			newAccess.submitLogin();
-			cy.url().should('contain', data.pageUrl);
+			cy.url().should('not.contain', data.endpoint.inventory);
 			newAccess.get.messContainer().should('be.visible').and('contain', data.message.noMatchMess);
 		});
 	});
@@ -54,16 +54,66 @@ describe('GX-44479 | Swag-Labs | Account | Iniciar sesión y BRs de accesos', ()
 			newAccess.typeUsername(data.credentials.standardUser);
 			newAccess.typePassword(data.credentials.invalidPass);
 			newAccess.submitLogin();
-			cy.url().should('contain', data.pageUrl);
+			cy.url().should('not.contain', data.endpoint.inventory);
 			newAccess.get.messContainer().should('be.visible').and('contain', data.message.noMatchMess);
 		});
 	});
-	// it('GX-44479 | TC7: Validar NO poder acceder con username vacío ', () => {});
-	// it('GX-44479 | TC8: Validar NO poder acceder con password vacío', () => {});
-	// it('GX-44479 | TC9: Validar NO poder acceder con campos username y password vacíos', () => {});
-	// it('GX-44479 | TC10: Validar NO poder acceder al endpoint ´inventory.html´ ', () => {});
-	// it('GX-44479 | TC11: Validar NO poder acceder al endpoint ´cart.html´ ', () => {});
-	// it('GX-44479 | TC12: Validar NO poder acceder al endpoint ´checkout_step_one.html´', () => {});
-	// it('GX-44479 | TC13: Validar NO poder acceder al endpoint ´checkout_step_two.html´', () => {});
-	// it('GX-44479 | TC14: Validar NO poder acceder al endpoint ´checkout_complete.html´', () => {});
+	it('GX-44479 | TC7: Validar NO poder acceder con username vacío ', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			newAccess.typePassword(data.credentials.password);
+			newAccess.submitLogin();
+			cy.url().should('not.contain', data.endpoint.inventory);
+			newAccess.get.messContainer().should('be.visible').and('contain', data.message.noUsernameMess);
+		});
+	});
+	it('GX-44479 | TC8: Validar NO poder acceder con password vacío', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			newAccess.typeUsername(data.credentials.standardUser);
+			newAccess.submitLogin();
+			cy.url().should('not.contain', data.endpoint.inventory);
+			newAccess.get.messContainer().should('be.visible').and('contain', data.message.noPassMess);
+		});
+	});
+	it('GX-44479 | TC9: Validar NO poder acceder con campos username y password vacíos', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			newAccess.submitLogin();
+			cy.url().should('not.contain', data.endpoint.inventory);
+			newAccess.get.messContainer().should('be.visible').and('contain', data.message.noUsernameMess);
+		});
+	});
+	it('GX-44479 | TC10: Validar NO poder acceder al endpoint ´inventory.html´ ', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			cy.visit(data.pageUrl + data.endpoint.inventory, { failOnStatusCode: false });
+			cy.url().should('not.contain', data.endpoint.inventory);
+			newAccess.get.messContainer().should('be.visible').and('contain', data.message.errorInventory);
+		});
+	});
+	it('GX-44479 | TC11: Validar NO poder acceder al endpoint ´cart.html´ ', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			cy.visit(data.pageUrl + data.endpoint.cart, { failOnStatusCode: false });
+			cy.url().should('not.contain', data.endpoint.cart);
+			newAccess.get.messContainer().should('be.visible').and('contain', data.message.errorCart);
+		});
+	});
+	it('GX-44479 | TC12: Validar NO poder acceder al endpoint ´checkout_step_one.html´', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			cy.visit(data.pageUrl + data.endpoint.check1, { failOnStatusCode: false });
+			cy.url().should('not.contain', data.endpoint.check1);
+			newAccess.get.messContainer().should('be.visible').and('contain', data.message.errorCheckout1);
+		});
+	});
+	it('GX-44479 | TC13: Validar NO poder acceder al endpoint ´checkout_step_two.html´', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			cy.visit(data.pageUrl + data.endpoint.check2, { failOnStatusCode: false });
+			cy.url().should('not.contain', data.endpoint.check2);
+			newAccess.get.messContainer().should('be.visible').and('contain', data.message.errorCheckout2);
+		});
+	});
+	it('GX-44479 | TC14: Validar NO poder acceder al endpoint ´checkout_complete.html´', () => {
+		cy.fixture('data/GX-44479-loginData').then(data => {
+			cy.visit(data.pageUrl + data.endpoint.complete, { failOnStatusCode: false });
+			cy.url().should('not.contain', data.endpoint.complete);
+			newAccess.get.messContainer().should('be.visible').and('contain', data.message.errorCheckoutCompleto);
+		});
+	});
 });

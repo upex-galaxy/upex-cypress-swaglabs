@@ -25,14 +25,14 @@ describe(" GX3-756 [Automation] SwagLabs | Account | Iniciar sesión y BR de Acc
   
     });
 
-    it('TC3: Validar no poder iniciar sesión cuando el campo Username es incorrecto', () => {
+    it('GX3-756 | TC3: Validar no poder iniciar sesión cuando el campo Username es incorrecto', () => {
         cy.get('#user-name').type(data.userName.incorrectUser)
         cy.get('#password').type(data.password.validPassword)
         cy.get('#login-button').click()
         cy.get('[data-test="error"]').should('have.text', data.errorMessage.noMatchMessage)
     });
 
-    it('TC4: Validar no poder iniciar sesión cuando el campo password es incorrecto', () => {
+    it('GX3-756 | TC4: Validar no poder iniciar sesión cuando el campo password es incorrecto', () => {
         cy.get('#user-name').type(data.userName.validUser)
         cy.get('#password').type(data.password.incorrectPassword)
         cy.get('#login-button').click()

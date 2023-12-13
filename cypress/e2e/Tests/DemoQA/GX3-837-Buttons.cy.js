@@ -1,6 +1,7 @@
 describe('US GX3-837 | ToolsQA | Elements | Buttons', () => {
 	beforeEach('PRC: User must be at button section page', () => {
 		cy.visit('https://demoqa.com/buttons');
+		cy.url().should('contain', 'buttons');
 
 		Cypress.on('uncaught:exception', () => {
 			// returning false here prevents Cypress from

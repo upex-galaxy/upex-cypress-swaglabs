@@ -90,6 +90,7 @@ export default defineConfig({
 					checkoutOneError: "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.",
 					checkoutTwoError: "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
 					checkoutAllError: "Epic sadface: You can only access '/checkout-complete.html' when you are logged in.",
+					inventoryItemError: "Epic sadface: You can only access '/inventory-item.html' when you are logged in.",
 					lockedUser: 'Epic sadface: Sorry, this user has been locked out.',
 					PassOrUserInv: 'Epic sadface: Username and password do not match any user in this service',
 					UserNull: 'Epic sadface: Username is required',

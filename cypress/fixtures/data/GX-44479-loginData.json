@@ -1,0 +1,30 @@
+{
+	"pageUrl": "https://www.saucedemo.com",
+	"credentials": {
+		"standardUser": "standard_user",
+		"lockedUser": "locked_out_user",
+		"problemUser": "problem_user",
+		"performanceUser": "performance_glitch_user",
+		"password": "secret_sauce",
+		"invalidUser": "new_user",
+		"invalidPass": "new_sauce"
+	},
+	"endpoint": {
+		"inventory": "/inventory.html",
+		"cart": "/cart.html",
+		"check1": "/checkout-step-one.html",
+		"check2": "/checkout-step-two.html",
+		"complete": "/checkout-complete.html"
+	},
+	"message": {
+		"lockedMess": "Epic sadface: Sorry, this user has been locked out.",
+		"noMatchMess": "Epic sadface: Username and password do not match any user in this service",
+		"noUsernameMess": "Epic sadface: Username is required",
+		"noPassMess": "Epic sadface: Password is required",
+		"errorInventory": "Epic sadface: You can only access '/inventory.html' when you are logged in.",
+		"errorCart": "Epic sadface: You can only access '/cart.html' when you are logged in.",
+		"errorCheckout1": "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in.",
+		"errorCheckout2": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.",
+		"errorCheckoutCompleto": "Epic sadface: You can only access '/checkout-complete.html' when you are logged in."
+	}
+}

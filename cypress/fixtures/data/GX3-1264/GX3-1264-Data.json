@@ -1,23 +1,29 @@
-{
-	"DataValidate": {
+[
+	{
+		"nameTest": "GX3-1268|TC1 Correct user access",
 		"username": "standard_user",
-		"password": "secret_sauce"
+		"password": "secret_sauce",
+		"Expected": "Products"
 	},
 
-	"usernameBlocked": "locked_out_user",
+	{
+		"nameTest": "GX3-1268|TC2 Login with blocked accounts",
+		"username": "locked_out_user",
+		"password": "secret_sauce",
+		"Expected": "Epic sadface: Sorry, this user has been locked out."
+	},
 
-	"UserNotExist": "Lucas",
+	{
+		"nameTest": "GX3-1268|TC003 Login with incorrect account",
+		"username": "LucasCasco",
+		"password": "secret_sauce",
+		"Expected": "Epic sadface: Username and password do not match any user in this service"
+	},
 
-	"passwordInvalid": "passwordNotExist",
-
-	"userWithoutData": "",
-
-	"passwordWithoutData": "",
-
-	"MsgsError": {
-		"blocked": "Epic sadface: Sorry, this user has been locked out.",
-		"invalid": "Epic sadface: Username and password do not match any user in this service",
-		"usernameError": "Epic sadface: Username is required",
-		"passwordError": "Epic sadface: Password is required"
+	{
+		"nameTest": "GX3-1268|TC004 Login without password'",
+		"username": "standard_user",
+		"password": "LucasCasco",
+		"Expected": "Epic sadface: Username and password do not match any user in this service"
 	}
-}
+]

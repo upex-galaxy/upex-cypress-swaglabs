@@ -4,15 +4,15 @@ class AccessPOM {
 		inputPassword: () => cy.get('#password'),
 		submitButton: () => cy.get('#login-button'),
 		dataError: () => cy.get('[data-test="error"]'),
-		swagsWord: () => cy.get('.app_logo'),
+		titleProducts: () => cy.get('.title'),
 	};
 
 	enterUserName(name) {
 		return this.get.inputUserName().type(name);
 	}
 
-	enterPassword(passw) {
-		return this.get.inputPassword().type(passw);
+	enterPassword(password) {
+		return this.get.inputPassword().type(password);
 	}
 
 	clickOnSubmitBtn() {

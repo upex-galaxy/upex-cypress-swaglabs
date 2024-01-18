@@ -8,15 +8,17 @@ class AccessPOM {
 	};
 
 	enterUserName(name) {
-		return this.get.inputUserName().type(name);
+		this.get.inputUserName().type(name);
+		this.get.inputUserName().should('have.value', name);
 	}
 
 	enterPassword(password) {
-		return this.get.inputPassword().type(password);
+		this.get.inputPassword().type(password);
+		this.get.inputPassword().should('have.value', password);
 	}
 
 	clickOnSubmitBtn() {
-		return this.get.submitButton().click();
+		this.get.submitButton().click();
 	}
 }
 

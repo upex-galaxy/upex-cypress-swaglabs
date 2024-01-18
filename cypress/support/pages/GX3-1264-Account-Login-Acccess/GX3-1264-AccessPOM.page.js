@@ -5,6 +5,7 @@ class AccessPOM {
 		submitButton: () => cy.get('#login-button'),
 		dataError: () => cy.get('[data-test="error"]'),
 		titleProducts: () => cy.get('.title'),
+		msgErrorEndpoint: () => cy.get('[class="error-message-container error"]'),
 	};
 
 	enterUserName(name) {

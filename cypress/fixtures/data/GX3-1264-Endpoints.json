@@ -1,0 +1,36 @@
+[
+	{
+		"testName": "1264|TC5 validando inventory html",
+		"Endpoint": "https://www.saucedemo.com/inventory.html",
+		"msgError": "Epic sadface: You can only access '/inventory.html' when you are logged in."
+	},
+	{
+		"testName": "1264|TC6 validando cart html",
+		"Endpoint": "https://www.saucedemo.com/cart.html",
+		"msgError": "Epic sadface: You can only access '/cart.html' when you are logged in."
+	},
+
+	{
+		"testName": "1264|TC7 validando checkout one html",
+		"Endpoint": "https://www.saucedemo.com/checkout-step-one.html",
+		"msgError": "Epic sadface: You can only access '/checkout-step-one.html' when you are logged in."
+	},
+
+	{
+		"testName": "1264|TC8 validando checkout two html",
+		"Endpoint": "https://www.saucedemo.com/checkout-step-two.html",
+		"msgError": "Epic sadface: You can only access '/checkout-step-two.html' when you are logged in."
+	},
+
+	{
+		"testName": "1264|TC9 validando checkout complete html",
+		"Endpoint": "https://www.saucedemo.com/checkout-complete.html",
+		"msgError": "Epic sadface: You can only access '/checkout-complete.html' when you are logged in."
+	},
+
+	{
+		"testName": "1264|TC10 validando inventory item html",
+		"Endpoint": "https://www.saucedemo.com/inventory-item.html",
+		"msgError": "Epic sadface: You can only access '/inventory-item.html' when you are logged in."
+	}
+]

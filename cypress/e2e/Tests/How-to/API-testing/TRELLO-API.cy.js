@@ -12,9 +12,9 @@
 let cardID;
 // Como buena práctica, es mejor tener todos nuestros parámetros dentro de una variable, ejemplo simple:
 // Según la documentación de esta API, debemos usar:
-const listA = '626e016e310d1a836fb72de8'; // ID para obtener la Lista que queremos
-const key = '191a488f5f9b25380f53f34531eea047'; // Nuestra autenticación
-const token = '03d4b617f0ed756a1e74de3856627c5dcba89a366f81cc04fee1e388df60f9a7'; // la autorización
+const listA = '65aa8f18cd9f000a34600e4c'; // ID para obtener la Lista que queremos
+const key = 'e7bf6c176c042a798af851ba40af168c'; // Nuestra autenticación
+const token = 'ATTAab9147de998d24f2a54c86659dc47141191b8f3075d83d81843fe32c4f6627e21029F43B'; // la autorización
 
 describe('Ejemplo para demostrar cómo probar una API', () => {
 	// Recordemos siempre seguir la Documentación de la API de nuestro SUT, cada API tiene sus propios endpoints y parámetros.
@@ -93,8 +93,8 @@ describe('Ejemplo para demostrar cómo probar una API', () => {
 	});
 	it('TC4: REQUEST de Método DELETE a la API de TRELLO para ELIMINAR UNA CARD', () => {
 		// Según la documentación de esta API, debemos usar:
-		const key = '191a488f5f9b25380f53f34531eea047'; // Nuestra autenticación
-		const token = '03d4b617f0ed756a1e74de3856627c5dcba89a366f81cc04fee1e388df60f9a7'; // la autorización
+		const key = 'e7bf6c176c042a798af851ba40af168c'; // Nuestra autenticación
+		const token = 'ATTAab9147de998d24f2a54c86659dc47141191b8f3075d83d81843fe32c4f6627e21029F43B'; // la autorización
 		// La variable Global: "cardID", la misma que creamos y editamos con el Step anterior, para eliminarla
 
 		cy.api({

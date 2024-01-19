@@ -1,0 +1,29 @@
+[
+	{
+		"nameTest": "1268|TC1 Correct user access",
+		"username": "standard_user",
+		"password": "secret_sauce",
+		"Expected": "Products"
+	},
+
+	{
+		"nameTest": "1268|TC2 Login with blocked accounts",
+		"username": "locked_out_user",
+		"password": "secret_sauce",
+		"Expected": "Epic sadface: Sorry, this user has been locked out."
+	},
+
+	{
+		"nameTest": "1268|TC3 Login with incorrect account",
+		"username": "LucasCasco",
+		"password": "secret_sauce",
+		"Expected": "Epic sadface: Username and password do not match any user in this service"
+	},
+
+	{
+		"nameTest": "1268|TC4 Login without password'",
+		"username": "standard_user",
+		"password": "LucasCasco",
+		"Expected": "Epic sadface: Username and password do not match any user in this service"
+	}
+]

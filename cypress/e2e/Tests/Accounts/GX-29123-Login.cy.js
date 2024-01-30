@@ -19,4 +19,8 @@ describe('[Automation] SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 		login.loginCorrectly(data.validUsernames.performanceUser, data.validPassword);
 		login.get.logOutButton().should('exist');
 	});
+	it('49541 | TC4: Check that an error message is shown when trying to login as “locked_out_user” and correct password. ', () => {
+		login.loginCorrectly(data.lockedUser, data.validPassword);
+		login.get.errorMessage().should('be.visible').and('have.text', data.errorMessages.lockedOutMessage);
+	});
 });

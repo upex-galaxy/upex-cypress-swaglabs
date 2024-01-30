@@ -5,5 +5,8 @@
 		"performanceUser": "performance_glitch_user"
 	},
 	"lockedUser": "locked_out_user",
-	"validPassword": "secret_sauce"
+	"validPassword": "secret_sauce",
+	"errorMessages": {
+		"lockedOutMessage": "Epic sadface: Sorry, this user has been locked out."
+	}
 }

@@ -15,7 +15,7 @@ class Login {
 		this.get.inputUsername().should('be.visible').type(username);
 		this.get.loginButton().should('be.visible').click();
 	}
-	loginCorrectly(username, password) {
+	login(username, password) {
 		this.get.inputUsername().should('be.visible').type(username);
 		this.get.inputPassword().should('be.visible').type(password);
 		this.get.loginButton().should('be.visible').click();

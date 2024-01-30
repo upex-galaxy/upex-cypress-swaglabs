@@ -4,11 +4,14 @@
 		"problemUser": "problem_user",
 		"performanceUser": "performance_glitch_user"
 	},
+	"unregisteredUsername": "noRegistered",
 	"lockedUser": "locked_out_user",
 	"validPassword": "secret_sauce",
+	"invalidPassword": "1234",
 	"errorMessages": {
 		"lockedOutMessage": "Epic sadface: Sorry, this user has been locked out.",
 		"requiredUsername": "Epic sadface: Username is required",
-		"requiredPassword": "Epic sadface: Password is required"
+		"requiredPassword": "Epic sadface: Password is required",
+		"noRegisteredUser": "Epic sadface: Username and password do not match any user in this service"
 	}
 }

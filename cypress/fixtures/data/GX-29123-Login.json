@@ -12,6 +12,14 @@
 		"lockedOutMessage": "Epic sadface: Sorry, this user has been locked out.",
 		"requiredUsername": "Epic sadface: Username is required",
 		"requiredPassword": "Epic sadface: Password is required",
-		"noRegisteredUser": "Epic sadface: Username and password do not match any user in this service"
+		"noRegisteredUser": "Epic sadface: Username and password do not match any user in this service",
+		"endpointMessage": "Epic sadface: You can only access '{{endpoint}}' when you are logged in."
+	},
+	"endpoints": {
+		"inventory": "/inventory.html",
+		"cart": "/cart.html",
+		"checkoutStepOne": "/checkout-step-one.html",
+		"checkoutStepTwo": "/checkout-step-two.html",
+		"checkoutComplete": "/checkout-complete.html"
 	}
 }

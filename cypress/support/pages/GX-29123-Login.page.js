@@ -8,12 +8,12 @@ class Login {
 	};
 	//Methods
 	loginWithoutUsername(password) {
-		this.get.inputPassword().type(password);
-		this.get.loginButton().click();
+		this.get.inputPassword().should('be.visible').type(password);
+		this.get.loginButton().should('be.visible').click();
 	}
 	loginWithoutPassword(username) {
-		this.get.inputUsername().type(username);
-		this.get.loginButton().click();
+		this.get.inputUsername().should('be.visible').type(username);
+		this.get.loginButton().should('be.visible').click();
 	}
 	loginCorrectly(username, password) {
 		this.get.inputUsername().should('be.visible').type(username);

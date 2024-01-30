@@ -7,6 +7,8 @@
 	"lockedUser": "locked_out_user",
 	"validPassword": "secret_sauce",
 	"errorMessages": {
-		"lockedOutMessage": "Epic sadface: Sorry, this user has been locked out."
+		"lockedOutMessage": "Epic sadface: Sorry, this user has been locked out.",
+		"requiredUsername": "Epic sadface: Username is required",
+		"requiredPassword": "Epic sadface: Password is required"
 	}
 }

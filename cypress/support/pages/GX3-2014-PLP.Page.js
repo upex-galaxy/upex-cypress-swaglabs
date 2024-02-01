@@ -44,5 +44,8 @@ class PLP {
 				return [title, desc, price, randomIndex];
 			});
 	}
+	clickCartButton(numberOfItems) {
+		this.get.cartButton().should('have.text', numberOfItems).click();
+	}
 }
 export const PLPPage = new PLP();

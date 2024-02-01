@@ -20,11 +20,12 @@ describe('[Automation] SwagLabs | Checkout | Finalizar o Cancelar la compra de u
 
 			buttonMessage(dataInventory.addToCartOption).click();
 			buttonMessage(dataInventory.removeOption);
-			PLPPage.get.cartButton().should('have.text', dataInventory.numberOfProductsInCart).click();
+			PLPPage.clickCartButton(dataInventory.numberOfProductsInCart);
 
 			ShoppingCartPage.get.itemName().invoke('text').should('eq', title);
 			ShoppingCartPage.get.itemDesc().invoke('text').should('eq', desc);
 			ShoppingCartPage.get.itemPrice().invoke('text').should('eq', price);
+			ShoppingCartPage.clickCheckoutButton();
 		});
 	});
 });

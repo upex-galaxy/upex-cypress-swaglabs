@@ -1,0 +1,7 @@
+{
+	"inventoryEndpoint": "/inventory.html",
+	"numberOfItems": 6,
+	"numberOfProductsInCart": "1",
+	"addToCartOption": "Add to cart",
+	"removeOption": "Remove"
+}

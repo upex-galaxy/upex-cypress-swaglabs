@@ -1,29 +1,48 @@
 class PLP {
 	get = {
-		item: () => cy.get('.inventory_item'),
+		itemContainer: () => cy.get('.inventory_item'),
 		addToCartButtons: () => cy.get('.btn_inventory'),
 		cartButton: () => cy.get('.shopping_cart_badge'),
-		itemName: () => cy.get('.inventory_item_name'),
+		title: () => cy.get('.inventory_item_name'),
+		desc: () => cy.get('.inventory_item_desc'),
+		price: () => cy.get('.inventory_item_price'),
 	};
-
-	itemName;
 
 	//Methods
-	getRandomItem = () => {
-		this.get.addToCartButtons().then($buttons => {
-			const randomIndex = Math.floor(Math.random() * $buttons.length);
-			this.get.addToCartButtons().eq(randomIndex).click();
+	getDataFromRandomItem() {
+		let title;
+		let desc;
+		let price;
+		let randomIndex;
 
-			this.get
-				.itemName()
-				.eq(randomIndex)
-				.invoke('text')
-				.then(text => {
-					this.itemName = text;
-					console.log(this.itemName);
-				});
-		});
-	};
+		return this.get
+			.itemContainer()
+			.then($items => {
+				randomIndex = Math.floor(Math.random() * $items.length);
+
+				this.get
+					.title()
+					.eq(randomIndex)
+					.then($title => {
+						console.log($title);
+						title = $title.text();
+					});
+				this.get
+					.desc()
+					.eq(randomIndex)
+					.then($desc => {
+						desc = $desc.text();
+					});
+				this.get
+					.price()
+					.eq(randomIndex)
+					.then($price => {
+						price = $price.text();
+					});
+			})
+			.then(() => {
+				return [title, desc, price, randomIndex];
+			});
+	}
 }
-
 export const PLPPage = new PLP();

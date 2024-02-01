@@ -1,5 +1,4 @@
 {
 	"username": "standard_user",
-	"password": "secret_sauce",
-	"inventoryEndpoint": "/inventory.html"
+	"password": "secret_sauce"
 }

@@ -1,0 +1,15 @@
+{
+	"endpoints": {
+		"checkoutStepOneEndpoint": "/checkout-step-one.html",
+		"checkoutStepTwoEndpoint": "/checkout-step-two.html"
+	},
+	"formData": {
+		"name": "Pepe",
+		"lastName": "Grillo",
+		"zip": "1234"
+	},
+	"completeCheckoutMessages": {
+		"checkoutHeader": "Thank you for your order!",
+		"checkoutText": "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
+	}
+}

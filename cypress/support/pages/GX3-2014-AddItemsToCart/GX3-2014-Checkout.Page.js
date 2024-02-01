@@ -1,10 +1,13 @@
-class CheckoutStepOne {
+class CheckoutPage {
 	get = {
 		inputName: () => cy.get('[data-test= "firstName"]'),
 		inputLastName: () => cy.get('[data-test= "lastName"]'),
 		inputZip: () => cy.get('[data-test= "postalCode"]'),
 		continueBtn: () => cy.get('[data-test= "continue"]'),
 		cancelBtn: () => cy.get('[data-test= "cancel"]'),
+		finishBtn: () => cy.get('[data-test= "finish"]'),
+		checkoutCompleteHeader: () => cy.get('.complete-header'),
+		checkoutCompleteText: () => cy.get('.complete-text'),
 	};
 	fillInForm(name, lastName, zip) {
 		name && this.get.inputName().type(name);
@@ -15,4 +18,4 @@ class CheckoutStepOne {
 		this.get.continueBtn().click();
 	}
 }
-export const checkoutStepOnePage = new CheckoutStepOne();
+export const checkoutPage = new CheckoutPage();

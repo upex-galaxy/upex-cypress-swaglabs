@@ -1,10 +1,10 @@
 import { loginPage } from '@pages/GX3-2014-AddItemsToCart/GX3-2014-Login.Page';
 import { PLPPage } from '@pages/GX3-2014-AddItemsToCart/GX3-2014-PLP.Page';
 import { ShoppingCartPage } from '@pages/GX3-2014-AddItemsToCart/GX3-2014-ShoppingCart.Page';
-import { checkoutStepOnePage } from '@pages/GX3-2014-AddItemsToCart/GX3-2014-Checkout-step-one.Page';
+import { checkoutPage } from '@pages/GX3-2014-AddItemsToCart/GX3-2014-Checkout.Page';
 import data from '@data/GX3-2014-Login.json';
 import dataInventory from '@data/GX3-2014-Inventory.json';
-import dataCheckout from '@data/GX3-2014-Checkout-step-one.json';
+import dataCheckout from '@data/GX3-2014-Checkout.json';
 
 describe('[Automation] SwagLabs | Checkout | Finalizar o Cancelar la compra de un producto en la Website', () => {
 	beforeEach('PRC: The user is logged in. One product is added to the shopping cart. The user fills in a form.', () => {
@@ -29,14 +29,18 @@ describe('[Automation] SwagLabs | Checkout | Finalizar o Cancelar la compra de u
 			ShoppingCartPage.get.itemDesc().invoke('text').should('eq', desc);
 			ShoppingCartPage.get.itemPrice().invoke('text').should('eq', price);
 			ShoppingCartPage.clickCheckoutButton();
-			cy.url().should('contain', dataCheckout.checkoutStepOneEndpoint);
+			cy.url().should('contain', dataCheckout.endpoints.checkoutStepOneEndpoint);
 		});
 
 		//User fills in a form
-		checkoutStepOnePage.fillInForm(dataCheckout.name, dataCheckout.lastName, dataCheckout.zip);
-		checkoutStepOnePage.submitForm();
-		cy.url().should('contain', dataCheckout.checkoutStepTwoEndpoint);
+		checkoutPage.fillInForm(dataCheckout.formData.name, dataCheckout.formData.lastName, dataCheckout.formData.zip);
+		checkoutPage.submitForm();
+		cy.url().should('contain', dataCheckout.endpoints.checkoutStepTwoEndpoint);
 	});
 
-	it('2014 | TC1: Check that the user can finish a purchase', () => {});
+	it('2014 | TC1: Check that the user can finish a purchase', () => {
+		checkoutPage.get.finishBtn().click();
+		checkoutPage.get.checkoutCompleteHeader().invoke('text').should('eq', dataCheckout.completeCheckoutMessages.checkoutHeader);
+		checkoutPage.get.checkoutCompleteText().invoke('text').should('eq', dataCheckout.completeCheckoutMessages.checkoutText);
+	});
 });

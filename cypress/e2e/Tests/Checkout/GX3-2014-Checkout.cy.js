@@ -43,4 +43,9 @@ describe('[Automation] SwagLabs | Checkout | Finalizar o Cancelar la compra de u
 		checkoutPage.get.checkoutCompleteHeader().invoke('text').should('eq', dataCheckout.completeCheckoutMessages.checkoutHeader);
 		checkoutPage.get.checkoutCompleteText().invoke('text').should('eq', dataCheckout.completeCheckoutMessages.checkoutText);
 	});
+	it('2014 | TC2: Check that the user can  Cancel a purchase', () => {
+		checkoutPage.get.cancelBtn().click();
+		cy.url().should('contain', dataInventory.inventoryEndpoint);
+		PLPPage.get.cartButton().invoke('text').should('eq', dataInventory.numberOfProductsInCart);
+	});
 });

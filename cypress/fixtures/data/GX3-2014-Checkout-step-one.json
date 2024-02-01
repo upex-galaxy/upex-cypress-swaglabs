@@ -1,0 +1,7 @@
+{
+	"checkoutStepOneEndpoint": "/checkout-step-one.html",
+	"checkoutStepTwoEndpoint": "/checkout-step-two.html",
+	"name": "Pepe",
+	"lastName": "Grillo",
+	"zip": "1234"
+}

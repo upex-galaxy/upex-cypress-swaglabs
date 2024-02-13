@@ -18,7 +18,7 @@ describe('GX3-2281: SwagLabs | Checkout | Finalizar o Cancelar la compra de un p
 	});
 
 	it('GX3-2281 | TC1: Should finalize purchace checkout', function () {
-		cy.get('#shopping_cart_container .shopping_cart_link').then(()=>{
+		cy.visit('https://www.saucedemo.com/cart.html').then(()=>{
 			cy.dataTestElement('remove-','*').should('have.length',Cypress.env('addedProducts'));
 			cy.dataTestElement('checkout').click();
 			cy.url().should('contains','/checkout-step-one.html');
@@ -37,7 +37,7 @@ describe('GX3-2281: SwagLabs | Checkout | Finalizar o Cancelar la compra de un p
 	});
 
 	it('GX3-2281 | TC1: Should cancel purchace checkout', function () {
-		cy.visit('/cart.html').then(()=>{
+		cy.visit('https://www.saucedemo.com/cart.html').then(()=>{
 			cy.dataTestElement('remove-','*').should('have.length',Cypress.env('addedProducts'));
 			cy.dataTestElement('checkout').click();
 			cy.url().should('contains','/checkout-step-one.html');

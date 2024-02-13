@@ -27,6 +27,27 @@ declare global {
              * cy.react('button', { hasText: 'Log in' }).click()
             */
             react(dataReactToolbox: string, options?: { hasText: string }): Cypress.Chainable<JQuery<HTMLElement>>
+
+            /**
+             * @description
+             * El método dataTest() obtiene por selector
+             * cy.get(cy.dataTest('menu-ejemplo'))
+            */
+            dataTestElement(id: string, options?:string|boolean): Cypress.Chainable<JQuery<HTMLElement>>
+            /**
+             * @description
+             * El método LoginLau() ejecuta el login con usuario valido
+             * @example
+             * let nro = randomNumber(10, 1)
+            */
+            LoginLau(): void
+            /**
+             * @description
+             * El método AddItems()
+             * @example
+             * cy.AddItems(4)
+            */
+            AddItems(): void
         }
         interface CardProps {
             title: string

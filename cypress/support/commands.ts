@@ -6,6 +6,8 @@ import { SpaceCheckoutPage } from '@pages/SpaceCheckout.Page';
 import { SpaceLoginPage } from '@pages/SpaceLogin.Page';
 import { SpaceDestinationPage } from '@pages/SpaceProduct.Page';
 import 'cypress-file-upload';
+import user from '@data/sauceUsersLau.json';
+import { randomNumber } from '@helper/testUtilities';
 
 beforeEach(() => {
 	Cypress.on('uncaught:exception', () => false); // returning false here prevents Cypress from failing the test
@@ -31,3 +33,29 @@ Cypress.Commands.add('react', (dataReactToolbox: string, options?: { hasText: st
 		cy.get(selector);
 	}
 });
+
+Cypress.Commands.add('dataTestElement', (id,options=false) => {
+	let selector = `[data-test='${id}']`;
+	if(options){
+		selector = `[data-test${options}='${id}']`;
+	}
+	return cy.get(selector);
+});
+
+Cypress.Commands.add('LoginLau', () => {
+	cy.dataTestElement('username').type(user.name.valid);
+	cy.dataTestElement('password').type(user.password);
+	cy.dataTestElement('login-button').click();
+});
+Cypress.Commands.add('AddItems', () => {
+	cy.dataTestElement('add-to-cart','*').its('length').then((length)=>{
+		let  addProducts = randomNumber(length-1,1);
+		for (let index = 0; index < addProducts; index++) {
+			cy.dataTestElement('add-to-cart','*').its('length').then((length)=>{
+				cy.dataTestElement('add-to-cart','*').eq(randomNumber(length-1)).click();
+			});
+		}
+		Cypress.env('addedProducts',addProducts);
+	});
+});
+

@@ -42,5 +42,28 @@ export default defineConfig({
 		},
 	},
 	env: {
+		swagLabs: {
+			endpoint: {
+				inventory: '/inventory.html',
+				cart: '/cart.html',
+				checkoutOne: '/checkout-step-one.html',
+				checkoutTwo: '/checkout-step-two.html',
+				checkoutAll: '/checkout-complete.html',
+				product: '/inventory-item.html',
+			},
+			login: {
+				users: {
+					correctUser: 'standard_user',
+					correctPass: 'secret_sauce',
+					lockUser: 'locked_out_user',
+					problemUser: 'problem_user',
+					passInv: 'invalid_password',
+					glitchUser: 'performance_glitch_user',
+					userInv: 'invalid_username',
+					errorUser: 'error_user',
+					visualUser: 'visual_user',
+				},
+			}
+		}
 	},
 });

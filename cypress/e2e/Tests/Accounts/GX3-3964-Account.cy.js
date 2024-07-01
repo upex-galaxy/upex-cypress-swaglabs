@@ -1,5 +1,5 @@
 //nos traemos al POM para aquí el suite de pruebas
-import { login } from "../../../support/pages/GX3-3489-AccountAndBR/GX3-3489-AccountAndBRPage";
+import { login } from "../../../support/pages/GX3-3964-AccountAndBR/GX3-3964-AccountAndBRPage";
 
 //debajo llamamos a las variables de entorno del cypress config
 //const loginPage = Cypress.env('endpoint').authLogin;

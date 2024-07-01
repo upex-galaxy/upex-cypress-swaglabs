@@ -26,7 +26,7 @@ describe('[Automation] SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 		//valida que la url contenga lo que esta en la variable inventory
 		cy.url().should('contain', inventory);
 	});
-	it('587 | TC2: Validar iniciar sesión con username “problem_user“', () => {
+	it.only('587 | TC2: Validar iniciar sesión con username “problem_user“', () => {
 		login.typeUsername(problemUser);
 		login.typePassword(correctPass);
 		login.submitLogin();
@@ -34,12 +34,14 @@ describe('[Automation] SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 		cy.url().should('contain', inventory);
 		//THIS TEST CASE PASS
 	});
-	it('587 | TC3: Validar iniciar sesión con username “performance_glitch_user', () => {
+	it.only('587 | TC3: Validar iniciar sesión con username “performance_glitch_user', () => {
+		setTimeout(() => {
 		login.typeUsername(glitchUser);
 		login.typePassword(correctPass);
 		login.submitLogin();
 
 		cy.url().should('contain', inventory);
+		}, 4000)
 		//THIS TEST CASE PASS
 	});
 	it('587 | TC4: Validar NO iniciar sesión al ingresar un username “locked_out_user“', () => {
@@ -105,7 +107,7 @@ describe('[Automation] SwagLabs | Account | Iniciar sesión y BR de Accesos', ()
 		cy.visit({ url: checkoutTwo, failOnStatusCode: false });
 		login.get.errorEndpoint().should('exist').and('have.attr', 'data-test');
 	});
-	it.only('587 | TC14: Validar ingresar al endpoint "/checkout-complete.html” de la aplicación sin autenticarse', () => {
+	it('587 | TC14: Validar ingresar al endpoint "/checkout-complete.html” de la aplicación sin autenticarse', () => {
 		cy.visit({ url: checkoutAll, failOnStatusCode: false });
 		login.get.errorEndpoint().should('be.visible').and('contain.text', 'Epic sadface');
 	});

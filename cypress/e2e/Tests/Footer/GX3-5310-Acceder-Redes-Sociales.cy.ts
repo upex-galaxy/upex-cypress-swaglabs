@@ -9,16 +9,30 @@ describe('[Automation] SwagLabs | Footer | Acceder a las redes sociales de SwagL
 		cy.url().should('include', '/inventory');
 	});
 	it('5320 | TC1: Validar que se puede acceder exitosamente al link de la red social Twitter',()=>{
-		RedesPage.clickTwitter();
-		cy.url().should('include','twitter');
+		cy.intercept('*/x.com/**').as('redSocialtwitter');
+		RedesPage.clickRedesSociales('twitter');
+		cy.url().should('include','x.com');
+		cy.wait('@redSocialtwitter').then (resp =>{
+			expect(resp.response?.statusCode).equal(200);
+
+		});
+
 	});
 	it('5320 | TC2: Validar que se puede acceder exitosamente al link de la red social Facebook',()=>{
-		RedesPage.clickFacebook();
+		cy.intercept('*/www.facebook.com/**').as('redSocialfacebook');
+		RedesPage.clickRedesSociales('facebook');
 		cy.url().should('include','facebook');
+		cy.wait('@redSocialfacebook').then (resp =>{
+			expect(resp.response?.statusCode).equal(200);
+		});
 	});
 	it('5320 | TC3: Validar que se puede acceder exitosamente al link de la red social Linkedin',()=>{
-		RedesPage.clickLinkedin();
+		cy.intercept('*/www.linkedin.com/**').as('redSociallinkedin');
+		RedesPage.clickRedesSociales('linkedin');
 		cy.url().should('include','linkedin');
+		cy.wait('@redSociallinkedin').then (resp =>{
+			expect(resp.response?.statusCode).equal(200);
+		});
 	});
 
 });

@@ -6,29 +6,24 @@ class redes {
 		buttonLogin: () => cy.get ('[name="login-button"]'),
 		labelError:()=> cy.get ('[data-test="error"]'),
 
-		inputTwitter: () =>  cy.get('[data-test="social-twitter"]'),
-		inputFacebook: () => cy.get('data-test="social-facebook"]'),
+		inputRedesSociales: (redes:string) =>  cy.get(`[data-test="social-${redes}"]`),
+		inputFacebook: () => cy.get('[data-test="social-facebook"]'),
 		inputLinkedin: () => cy.get ('[data-test="social-linkedin"]'),
 
 	};
 
 	enterUserName(UserName: string){
-		UserName &&this.get.inputUserName().type(UserName);
+		this.get.inputUserName().type(UserName);
 	}
 	enterPassword(Password: string){
-		Password &&this.get.inputPassword().type(Password);
+		this.get.inputPassword().type(Password);
 	}
 	submitLogin() {
-		this.get.buttonLogin().click({ force: true });
+		this.get.buttonLogin().click();
 	}
-	clickTwitter(){
-	 	this.get.inputTwitter().invoke('removeAttr', 'target').click();
+	clickRedesSociales(redes:string){
+	 	this.get.inputRedesSociales(redes).invoke('removeAttr', 'target').click();
 	}
-	clickFacebook(){
-		this.get.inputFacebook().invoke('removeAttr', 'target').click();
-	}
-	clickLinkedin() {
-		this.get.inputLinkedin().invoke('removeAttr', 'target').click();
-	}
+
 }
 export const RedesPage = new redes();

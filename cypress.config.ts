@@ -37,6 +37,12 @@ export default defineConfig({
 		setupNodeEvents(on, config) {
 			// This is required for the preprocessor to be able to generate JSON reports after each run, and more,
 			on('file:preprocessor', createBundler());
+			on('before:browser:launch', (browser, launchOptions) => {
+				if (browser.name === 'chrome') {
+					launchOptions.args.push('--incognito');
+				}
+				return launchOptions;
+			});
 			// Make sure to return the config object as it might have been modified by the plugin.
 			return config;
 		},

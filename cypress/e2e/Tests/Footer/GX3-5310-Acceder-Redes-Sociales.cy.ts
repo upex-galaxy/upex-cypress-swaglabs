@@ -19,7 +19,7 @@ describe('[Automation] SwagLabs | Footer | Acceder a las redes sociales de SwagL
 
 	});
 	it('5320 | TC2: Validar que se puede acceder exitosamente al link de la red social Facebook',()=>{
-		cy.intercept('*/www.facebook.com/**').as('redSocialfacebook');
+		cy.intercept('*/www.facebook.com/*').as('redSocialfacebook');
 		RedesPage.clickRedesSociales('facebook');
 		cy.url().should('include','facebook');
 		cy.wait('@redSocialfacebook').then (resp =>{

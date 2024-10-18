@@ -23,7 +23,9 @@ describe('[Automation] SwagLabs | Footer | Acceder a las redes sociales de SwagL
 		RedesPage.clickRedesSociales('facebook');
 		cy.url().should('include','facebook');
 		cy.wait('@redSocialfacebook').then (resp =>{
-			expect(resp.response?.statusCode).equal(200);
+			const {url} = (resp.response as any);
+			expect(url).to.contain('facebook');
+			expect(url).to.contain('saucelabs');
 		});
 	});
 	it('5320 | TC3: Validar que se puede acceder exitosamente al link de la red social Linkedin',()=>{

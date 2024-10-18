@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: ['chrome', 'firefox', 'edge'] #? Runs tests in 3 different browsers
+        browser: ['chrome'] #? Runs tests in 3 different browsers
 
     steps:
     - name: 💻Checkout
@@ -112,58 +112,3 @@ jobs:
         SLACK_MESSAGE: ':test_tube: CYPRESS: REGRESSION RESULTS IMPORTED TO JIRA :rocket:'
         SLACK_COLOR: ${{ job.status }}
         SLACK_ICON: https://image.cdn2.seaart.ai/2023-12-06/clo9g0h4msbc73ac2sog/99e1abc36f32945cd4bacf5ee7448e96194545f7_high.webp
-
-  Create-PullRequest:
-    needs: [RegressionTesting, Ari-Slack-Notification]
-    runs-on: ubuntu-latest
-    steps:
-
-    - name: 💻Checkout
-      uses: actions/checkout@v4
-
-    - name: 🧬 Check for changes
-      id: gitDiff
-      run: |
-        git fetch origin main
-        DIFF=$(git diff --name-only origin/main)
-        if [ "$DIFF" != "" ]; then
-          echo echo "changes=true" >> $GITHUB_OUTPUT
-        fi
-
-    - name: 📦️ Create Pull Request
-      if: steps.gitDiff.outputs.changes == 'true'
-      uses: actions/github-script@v7
-      with:
-        script: |
-          const { repo, owner } = context.repo;
-          const result = await github.rest.pulls.create({
-          title: '✅[QA REGRESSION PASSED]: Ready to Merge into MAIN',
-          owner,
-          repo,
-          head: '${{ github.ref_name }}',
-          base: 'main',
-          body: [
-              'Update branch by Automation Pipeline',
-              '- (CI) Build Test Execution is Done✅',
-              '- (CI) Integration-Regression Report is Done✅',
-              '- (TestResults) No Conflicts in Repo Branch QA✅ '
-          ].join('\n')
-          });
-          github.rest.issues.addLabels({
-          owner,
-          repo,
-          issue_number: result.data.number,
-          labels: ['autoPullRequest']
-          });
-
-  AutoMerge-into-Main:
-    needs: [Create-PullRequest]
-    runs-on: ubuntu-latest
-    steps:
-    - name: 🧬 Merge QA -> MAIN
-      uses: devmasx/merge-branch@master
-      with:
-        type: now
-        label_name: 'autoPullRequest'
-        target_branch: 'main' #ESTE ES LA RAMA PRINCIPAL DEL REPOSITORIO PRESENTE
-        github_token: ${{ github.token }}

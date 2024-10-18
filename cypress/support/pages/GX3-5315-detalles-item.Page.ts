@@ -1,28 +1,13 @@
 class checkout {
 	get = {
-		inputUserName: () =>  cy.get('[data-test="username"]'),
-		inputPassword: () => cy.get('[data-test="password"]'),
-		buttonLogin: () => cy.get ('[name="login-button"]'),
-		labelError:()=> cy.get ('[data-test="error"]'),
-
 		itemsPlp:()=> cy.get('[class="inventory_item_description"]'),
 		labelItem:(Elem:string)=>cy.get(`[data-test="inventory-item-${Elem}"]`),
 		buttonShoppingCard:() =>cy.get('[data-test="shopping-cart-link"]'),
 		buttonAddCart:()=>cy.get('[data-test*="add-to-cart"]'),
 		buttonBackToCard:()=>cy.get('[data-test="back-to-products"]'),
 		buttonRemove:()=>cy.get('[data-test*="remove"]')
-
-
 	};
-	enterUserName(UserName: string){
-		this.get.inputUserName().type(UserName);
-	}
-	enterPassword(Password: string){
-		this.get.inputPassword().type(Password);
-	}
-	submitLogin() {
-		this.get.buttonLogin().click();
-	}
+
 	getIteRandoms(){
 		return this.get.itemsPlp().its('length').then(Cant =>{
 			const indexRandoms = Cypress._.random(0,Cant-1);

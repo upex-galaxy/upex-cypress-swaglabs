@@ -1,4 +1,5 @@
 import { checkoutPage } from '../../support/pages/GX3-5315-detalles-item.Page';
+import { LoginPage} from '../../support/pages/GX3-5263-iniciar-sesion.Page';
 
 describe('[Automation] SwagLabs | PDP | Visualizar Detalles del Item (Producto)',()=>{
 	after('Eliminar los productos del carrito',()=>{
@@ -6,9 +7,9 @@ describe('[Automation] SwagLabs | PDP | Visualizar Detalles del Item (Producto)'
 	});
 	beforeEach('PRC:El usuario debe estar logueado y situado en el PLP',()=>{
 		cy.visit('https://www.saucedemo.com/');
-		checkoutPage.enterUserName('standard_user');
-		checkoutPage.enterPassword('secret_sauce');
-		checkoutPage.submitLogin();
+		LoginPage.enterUserName('standard_user');
+		LoginPage.enterPassword('secret_sauce');
+		LoginPage.submitLogin();
 		cy.url().should('include', '/inventory');
 
 	});

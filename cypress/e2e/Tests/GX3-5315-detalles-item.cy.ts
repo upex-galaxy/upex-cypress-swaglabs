@@ -1,24 +1,47 @@
-class checkout {
-	get = {
-		inputUserName: () =>  cy.get('[data-test="username"]'),
-		inputPassword: () => cy.get('[data-test="password"]'),
-		buttonLogin: () => cy.get ('[name="login-button"]'),
-		labelError:()=> cy.get ('[data-test="error"]'),
+import { checkoutPage } from '../../support/pages/GX3-5315-detalles-item.Page';
 
-		itemsPlp:()=> cy.get('[class="inventory_item_description"]'),
-		nameItem:()=>cy.get('[data-test="inventory-item-name"]')
-	};
-	enterUserName(UserName: string){
-		UserName &&this.get.inputUserName().type(UserName);
-	}
-	enterPassword(Password: string){
-		Password &&this.get.inputPassword().type(Password);
-	}
-	submitLogin() {
-		this.get.buttonLogin().click({ force: true });
-	}
-	clickTituloProd (){
-		this.get.nameItem().click();
-	}
-}
-export const checkoutPage = new checkout();
+describe('[Automation] SwagLabs | PDP | Visualizar Detalles del Item (Producto)',()=>{
+	after('Eliminar los productos del carrito',()=>{
+		checkoutPage.get.buttonRemove().click();
+	});
+	beforeEach('PRC:El usuario debe estar logueado y situado en el PLP',()=>{
+		cy.visit('https://www.saucedemo.com/');
+		checkoutPage.enterUserName('standard_user');
+		checkoutPage.enterPassword('secret_sauce');
+		checkoutPage.submitLogin();
+		cy.url().should('include', '/inventory');
+
+	});
+	it('5321 | TC1: Validar que se visualice el detalle del producto cuando no este agregado al carrito',()=>{
+		checkoutPage.getIteRandoms().then(indexrandom =>{
+			checkoutPage.getValuesItemPlp(indexrandom,'namePlp','descPlp','pricePlp');
+			checkoutPage.openItemDetails(indexrandom);
+			cy.then(()=>{
+				checkoutPage.getValuesItemDp('nameDp','descDp','priceDp');
+				cy.then(()=>{
+					expect(Cypress.env('namePlp')).equal(Cypress.env('nameDp'));
+					expect(Cypress.env('descPlp')).equal(Cypress.env('descDp'));
+					expect(Cypress.env('pricePlp')).equal(Cypress.env('priceDp'));
+				});
+			});
+		});
+	});
+
+	it('5321 | TC2: Validar que se visualice el detalle del producto cuando este agregado al carrito',()=>{
+		checkoutPage.getIteRandoms().then(indexrandom =>{
+			checkoutPage.getValuesItemPlp(indexrandom,'namePlp','descPlp','pricePlp');
+			checkoutPage.clickAddCard(indexrandom);
+			checkoutPage.clickShoppingCard();
+
+			cy.then(()=>{
+				checkoutPage.getValuesItemDp('nameDp','descDp','priceDp');
+				cy.then(()=>{
+					expect(Cypress.env('namePlp')).equal(Cypress.env('nameDp'));
+					expect(Cypress.env('descPlp')).equal(Cypress.env('descDp'));
+					expect(Cypress.env('pricePlp')).equal(Cypress.env('priceDp'));
+				});
+			});
+		});
+
+	});
+});

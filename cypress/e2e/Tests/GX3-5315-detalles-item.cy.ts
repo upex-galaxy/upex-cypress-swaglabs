@@ -11,7 +11,6 @@ describe('[Automation] SwagLabs | PDP | Visualizar Detalles del Item (Producto)'
 		LoginPage.enterPassword('secret_sauce');
 		LoginPage.submitLogin();
 		cy.url().should('include', '/inventory');
-
 	});
 	it('5321 | TC1: Validar que se visualice el detalle del producto cuando no este agregado al carrito',()=>{
 		checkoutPage.getIteRandoms().then(indexrandom =>{
@@ -27,13 +26,11 @@ describe('[Automation] SwagLabs | PDP | Visualizar Detalles del Item (Producto)'
 			});
 		});
 	});
-
 	it('5321 | TC2: Validar que se visualice el detalle del producto cuando este agregado al carrito',()=>{
 		checkoutPage.getIteRandoms().then(indexrandom =>{
 			checkoutPage.getValuesItemPlp(indexrandom,'namePlp','descPlp','pricePlp');
 			checkoutPage.clickAddCard(indexrandom);
 			checkoutPage.clickShoppingCard();
-
 			cy.then(()=>{
 				checkoutPage.getValuesItemDp('nameDp','descDp','priceDp');
 				cy.then(()=>{
@@ -43,6 +40,5 @@ describe('[Automation] SwagLabs | PDP | Visualizar Detalles del Item (Producto)'
 				});
 			});
 		});
-
 	});
 });

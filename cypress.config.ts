@@ -44,6 +44,12 @@ export default defineConfig({
 				return launchOptions;
 			});
 			// Make sure to return the config object as it might have been modified by the plugin.
+			on('before:browser:launch', (browser, launchOptions) => {
+				if (browser.name === 'chrome') {
+					launchOptions.args.push('--incognito');
+				}
+				return launchOptions;
+			});
 			return config;
 		},
 	},

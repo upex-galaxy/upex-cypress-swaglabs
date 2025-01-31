@@ -1,3 +1,4 @@
+import {loginPage} from '../../../support/pages/GX3-6047-iniciarSesion.page.js';
 describe ('GX3-6047 SwagLabs | Account | Iniciar sesión y BR de Accesos', () =>{
 	beforeEach ('PRC Visitar la pagina de SwagLabs', () => {
 		cy.visit('https://www.saucedemo.com');
@@ -5,9 +6,17 @@ describe ('GX3-6047 SwagLabs | Account | Iniciar sesión y BR de Accesos', () =>
 		cy.get('.login_logo').should('exist');
 	});
 
-	it('Validar que usuario inicie sesión correctamente', () =>{
-		cy.get('#user-name').type('standard_user').should('have.value', 'standard_user');
-		cy.get('#password').type('secret_sauce').should('have.value', 'secret_sauce');
-		cy.get('#login-button').click().should('have.id', 'root');
+	it('Validar inicio de sesion satisfactoriamente', () =>{
+		cy.fixture('data/GX3-6047-login').then(data =>{
+			loginPage.typeUserName(data.userName.userNameValido);
+			loginPage.elements.userName().should('have.value', data.userName.userNameValido);
+			loginPage.typePassword(data.password.passwordValido);
+			loginPage.elements.password().should('have.value', data.password.passwordValido);
+			loginPage.clicksubmit();
+			cy.url().should('contain', data.inventoryURL);
+			loginPage.elements.tittlePage1().should('have.text', 'Products');
+
+
+		});
 	});
 });

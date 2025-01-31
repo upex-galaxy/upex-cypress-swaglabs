@@ -1,0 +1,14 @@
+{
+	"userName" : {
+		"userNameValido": "standard_user",
+		"userNameBlocqued": "locked_out_user",
+		"userNameInvalido": "problem_user"
+},
+
+    "password" : {
+        "passwordValido": "secret_sauce",
+        "passwordInvalido": "secret-sauce"
+},
+"inventoryURL":"inventory"
+
+}

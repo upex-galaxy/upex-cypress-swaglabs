@@ -3,8 +3,9 @@ class LoginPage {
 		userName : () => cy.get('#user-name'),
 		password: () => cy.get('#password'),
 		submit: () => cy.get('#login-button'),
-		labelError: () => cy.get('button.error-button'),
-		tittlePage1: () => cy.get('[data-test="title"]')
+		labelError: () => cy.get('.error-message-container.error'),
+		tittlePage1: () => cy.get('[data-test="title"]'),
+		mensError: () => cy.get('.error-message-container.error')
 	};
 
 	typeUserName (userName) {

@@ -2,13 +2,13 @@
 	"userName" : {
 		"userNameValido": "standard_user",
 		"userNameBlocqued": "locked_out_user",
-		"userNameInvalido": "problem_user"
+		"userNameInvalido": "error_user"
 },
 
     "password" : {
         "passwordValido": "secret_sauce",
         "passwordInvalido": "secret-sauce"
 },
-"inventoryURL":"inventory"
-
+"inventoryURL":"inventory",
+"textError":"Epic sadface: Sorry, this user has been locked out"
 }
